@@ -1,0 +1,4 @@
+name: covertype
+task: classification
+kind: openml
+loader: covertype   # OpenML 1596, 581,012 x 54, 7 classes

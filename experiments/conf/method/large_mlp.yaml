@@ -1,0 +1,2 @@
+# Naive baseline: the largest MLP in the search space.
+name: large_mlp

@@ -5,3 +5,5 @@ TabGNS is a neural arhcitecture search method for multi layer perceptrons. It us
 This repository contains an implementation of TabGNS. The method can be run on simple task using `eval.py`. For comparison, the script trains two separete models; TabGNS and the largest MLP within the search. To run TabGNS using hyperparameters used in the paper, use configurations in `conf/paper.yaml` instead. This can be done by running `python eval.py --config-name=paper`.
 
 An example use of TabGNS is provided in [nb.ipynb](nb.ipynb).
+
+To reproduce the paper's tables and figures, including the TabNAS and AgE baselines, see [experiments/README.md](experiments/README.md).

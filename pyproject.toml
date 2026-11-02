@@ -9,6 +9,8 @@ dependencies = [
     "numpy",
     "pandas",
     "scikit-learn",
+    "scipy",
+    "matplotlib",
     "openml",
     "tqdm",
     "notebook",

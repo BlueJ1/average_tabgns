@@ -1,0 +1,8 @@
+# DeepMIMO O1 (outdoor urban microcell), 18 BSs, ~31k UE locations:
+# 3.5 GHz path loss per BS (18 inputs) -> 28/60/140 GHz path loss per BS (54 targets).
+name: deepmimo
+task: regression
+kind: table
+path: ${oc.env:TABGNS_DATA,data}/deepmimo.csv
+n_targets: 54
+target_columns: null

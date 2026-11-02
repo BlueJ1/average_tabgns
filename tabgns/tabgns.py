@@ -176,6 +176,7 @@ class TabGNS:
         self.arch_optimiser.step()
         
       n_params = param_count(self.net.curr_architecture())
+      self.arch_hist.append(self.net.curr_architecture())
       train_loss /= len(train_loader)
       valid_loss /= len(train_loader)
       val_acc /= len(train_loader)
@@ -212,7 +213,7 @@ class TabGNS:
         torch.zeros_like(gate_vals)
       )
 
-      rows_indexes = torch.nonzero(on_gates).squeeze()
+      rows_indexes = torch.nonzero(on_gates).flatten()
 
       weights = src_block.linear.weight
       bias = src_block.linear.bias

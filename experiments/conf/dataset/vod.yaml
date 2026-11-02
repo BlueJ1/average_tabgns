@@ -1,0 +1,7 @@
+# Video-on-demand frame-rate prediction: 46 server metrics -> 1 target, 50,000 rows (Yanggratoke et al., CNSM 2015).
+name: vod
+task: regression
+kind: table
+path: ${oc.env:TABGNS_DATA,data}/vod.csv
+n_targets: 1          # last column(s) are targets, or set target_columns: [...]
+target_columns: null
