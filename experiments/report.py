@@ -48,24 +48,44 @@ def _best_set(groups: Dict[str, np.ndarray], higher_better: bool) -> set:
   return bold
 
 
-def table2(df: pd.DataFrame) -> str:
+def _much_worse(perf: Dict[str, np.ndarray], higher_better: bool, tolerance: float) -> set:
+  """Methods whose mean metric is more than `tolerance` (relative) worse than the best mean."""
+  means = {k: np.mean(v) for k, v in perf.items() if len(v)}
+  if not means:
+    return set()
+  best = (max if higher_better else min)(means.values())
+  return {k for k, m in means.items() if abs(m - best) > tolerance * abs(best)}
+
+
+def table2(df: pd.DataFrame, size_tolerance: float = 0.05) -> str:
   df = df[df.experiment == 'table2']
   lines = ['| Dataset | Metric | ' + ' | '.join(METHOD_LABELS[m] for m in METHODS) + ' |',
            '|---|---|' + '---|' * len(METHODS)]
+  any_excluded = False
   for ds in [d for d in DATASETS if d in set(df.dataset)] + sorted(set(df.dataset) - set(DATASETS)):
     sub = df[df.dataset == ds]
     metric = sub.metric.iloc[0]
     higher = metric == 'accuracy'
     perf = {m: sub[sub.method == m].test_metric.to_numpy() for m in METHODS}
     size = {m: sub[sub.method == m].n_params.to_numpy() for m in METHODS}
-    bold_perf, bold_size = _best_set(perf, higher), _best_set({k: v for k, v in size.items() if k != 'large_mlp'}, False)
-    cell = lambda vals, b, d: '' if not len(vals) else (f'**{_fmt(vals, d)}**' if b else _fmt(vals, d))
+    # Table II footnote 1: a small model with much worse predictions does not win on size.
+    # Only methods that would otherwise be bold get the footnote, as in the paper.
+    candidates = {k: v for k, v in size.items() if k != 'large_mlp'}
+    excluded = _much_worse(perf, higher, size_tolerance) & _best_set(candidates, False)
+    any_excluded |= bool(excluded)
+    bold_perf = _best_set(perf, higher)
+    bold_size = _best_set({k: v for k, v in candidates.items() if k not in excluded}, False)
+    cell = lambda vals, b, d, note='': '' if not len(vals) else (f'**{_fmt(vals, d)}**' if b else _fmt(vals, d)) + note
     lines.append(f'| {ds} | {"Accuracy ↑" if higher else "MSE ↓"} | '
                  + ' | '.join(cell(perf[m], m in bold_perf, 3) for m in METHODS) + ' |')
     lines.append(f'| | # Parameters ↓ | '
-                 + ' | '.join(cell(size[m], m in bold_size, 0) for m in METHODS) + ' |')
+                 + ' | '.join(cell(size[m], m in bold_size, 0, '¹' if m in excluded else '') for m in METHODS) + ' |')
     n = {m: len(perf[m]) for m in METHODS}
     lines.append(f'| | runs | ' + ' | '.join(str(n[m]) for m in METHODS) + ' |')
+  if any_excluded:
+    lines.append('')
+    lines.append(f'¹ Parameter count ignored from bolding: mean prediction performance is more than '
+                 f'{size_tolerance:.0%} worse than the best method.')
   return '\n'.join(lines)
 
 
@@ -179,10 +199,13 @@ def main() -> None:
   parser = argparse.ArgumentParser()
   parser.add_argument('--results', type=Path, default=Path('results'))
   parser.add_argument('--out', type=Path, default=Path('reports'))
+  parser.add_argument('--size-tolerance', type=float, default=0.05,
+                      help='Relative gap to the best mean metric beyond which a method cannot win on size '
+                           '(Table II footnote 1). 0.05 reproduces the paper\'s exclusions.')
   args = parser.parse_args()
   df = load_results(args.results)
   args.out.mkdir(parents=True, exist_ok=True)
-  for name, fn in [('table2', table2), ('table3', table3), ('headline', headline)]:
+  for name, fn in [('table2', lambda d: table2(d, args.size_tolerance)), ('table3', table3), ('headline', headline)]:
     text = fn(df)
     (args.out / f'{name}.md').write_text(text + '\n')
     print(f'## {name}\n{text}\n')

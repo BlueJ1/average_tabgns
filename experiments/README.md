@@ -98,14 +98,19 @@ search on a GPU.
 These are set in `conf/` and can be changed there.
 
 - **Seeds and statistics:** 5 seeds; split seed = run seed; Welch's t-test (p < 0.05) for bolding.
+- **Size bolding (Table II footnote 1):** a method cannot win on size if its mean metric is more than
+  5% worse than the best method's (`report.py --size-tolerance`); it gets a ¹ instead. On the paper's
+  own numbers this excludes the same entries the paper footnotes.
 - **Splits and preprocessing:** 60/20/20, quantile-normal feature scaling fitted on the full data
   (as in `load_data.py`), regression targets left unscaled.
 - **Batch size:** 256 (from `conf/paper.yaml`).
 - **TabGNS fine-tuning after warm start:** `finetune_epochs: null` means up to 300 epochs with early
   stopping, as `TabGNSTrainer` does.
 - **TabNAS/AgE width options:** 20 geometrically spaced widths from 2 to 512.
-- **TabNAS:** the search stops early once the argmax architecture's validation objective has not
-  improved for 20 epochs after warm-up. Rewards are −MSE or accuracy on a validation batch.
+- **TabNAS:** the reward is the negative validation-batch loss (MSE or cross-entropy), as in the
+  TabNAS appendix. The search stops early once the validation loss of the policy's most likely
+  architecture has not improved for 20 epochs after warm-up. With `max_params` set, the final
+  architecture is the most likely one within the budget.
 - **AgE:** a self-contained asynchronous aging evolution instead of DeepHyper (whose API has changed
   across versions). It only mutates layer widths, since the paper fixes the search space to plain
   5-layer MLPs. Candidates are scored by validation −MSE or accuracy.
