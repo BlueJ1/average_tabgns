@@ -1,0 +1,57 @@
+[2026-11-03 19:39:41,140][HYDRA] Launching 14 jobs locally
+[2026-11-03 19:39:41,140][HYDRA] 	#0 : experiment=pilot dataset=friedman_reg seed=3 results_dir=results/mean_gate
+friedman_reg seed 3 zero: widths=[19, 22] best_epoch=49 fixed=3.1635 extracted=3.1635 finetuned=1.6108 max|diff|=4.77e-07
+friedman_reg seed 3 mean: widths=[15, 22] best_epoch=49 fixed=3.5511 extracted=3.5511 finetuned=1.6664 max|diff|=5.96e-07
+-> results/mean_gate/pilot/friedman_reg/seed3.json
+[2026-11-03 19:39:48,348][HYDRA] 	#1 : experiment=pilot dataset=friedman_reg seed=4 results_dir=results/mean_gate
+friedman_reg seed 4 zero: widths=[24, 18] best_epoch=48 fixed=3.8276 extracted=3.8276 finetuned=1.7779 max|diff|=4.77e-07
+friedman_reg seed 4 mean: widths=[23, 16] best_epoch=49 fixed=5.1503 extracted=5.1503 finetuned=1.8638 max|diff|=7.15e-07
+-> results/mean_gate/pilot/friedman_reg/seed4.json
+[2026-11-03 19:39:54,129][HYDRA] 	#2 : experiment=pilot dataset=friedman_reg seed=5 results_dir=results/mean_gate
+friedman_reg seed 5 zero: widths=[15, 12] best_epoch=49 fixed=4.4593 extracted=4.4593 finetuned=2.0234 max|diff|=4.77e-07
+friedman_reg seed 5 mean: widths=[15, 16] best_epoch=49 fixed=4.1625 extracted=4.1625 finetuned=1.7938 max|diff|=4.77e-07
+-> results/mean_gate/pilot/friedman_reg/seed5.json
+[2026-11-03 19:39:59,687][HYDRA] 	#3 : experiment=pilot dataset=friedman_reg seed=6 results_dir=results/mean_gate
+friedman_reg seed 6 zero: widths=[14, 18] best_epoch=49 fixed=3.5344 extracted=3.5344 finetuned=1.7606 max|diff|=4.77e-07
+friedman_reg seed 6 mean: widths=[17, 13] best_epoch=49 fixed=3.0841 extracted=3.0841 finetuned=1.4778 max|diff|=7.15e-07
+-> results/mean_gate/pilot/friedman_reg/seed6.json
+[2026-11-03 19:40:05,223][HYDRA] 	#4 : experiment=pilot dataset=friedman_reg seed=7 results_dir=results/mean_gate
+friedman_reg seed 7 zero: widths=[19, 20] best_epoch=49 fixed=2.9421 extracted=2.9421 finetuned=1.6395 max|diff|=4.77e-07
+friedman_reg seed 7 mean: widths=[18, 24] best_epoch=49 fixed=3.1939 extracted=3.1939 finetuned=1.4826 max|diff|=7.15e-07
+-> results/mean_gate/pilot/friedman_reg/seed7.json
+[2026-11-03 19:40:11,638][HYDRA] 	#5 : experiment=pilot dataset=friedman_reg seed=8 results_dir=results/mean_gate
+friedman_reg seed 8 zero: widths=[15, 15] best_epoch=49 fixed=4.4996 extracted=4.4996 finetuned=1.6325 max|diff|=3.58e-07
+friedman_reg seed 8 mean: widths=[16, 17] best_epoch=49 fixed=3.9361 extracted=3.9361 finetuned=1.6257 max|diff|=7.15e-07
+-> results/mean_gate/pilot/friedman_reg/seed8.json
+[2026-11-03 19:40:17,547][HYDRA] 	#6 : experiment=pilot dataset=friedman_reg seed=9 results_dir=results/mean_gate
+friedman_reg seed 9 zero: widths=[17, 22] best_epoch=49 fixed=2.9775 extracted=2.9775 finetuned=1.7888 max|diff|=5.96e-07
+friedman_reg seed 9 mean: widths=[20, 23] best_epoch=49 fixed=2.6691 extracted=2.6691 finetuned=1.5600 max|diff|=4.77e-07
+-> results/mean_gate/pilot/friedman_reg/seed9.json
+[2026-11-03 19:40:23,670][HYDRA] 	#7 : experiment=pilot dataset=synthetic_cls_4k seed=3 results_dir=results/mean_gate
+synthetic_cls_4k seed 3 zero: widths=[22, 24] best_epoch=46 fixed=88.5000 extracted=88.5000 finetuned=89.7500 max|diff|=1.91e-06
+synthetic_cls_4k seed 3 mean: widths=[23, 23] best_epoch=49 fixed=87.3750 extracted=87.3750 finetuned=88.7500 max|diff|=2.86e-06
+-> results/mean_gate/pilot/synthetic_cls_4k/seed3.json
+[2026-11-03 19:40:28,839][HYDRA] 	#8 : experiment=pilot dataset=synthetic_cls_4k seed=4 results_dir=results/mean_gate
+synthetic_cls_4k seed 4 zero: widths=[21, 18] best_epoch=48 fixed=86.8750 extracted=86.8750 finetuned=88.8750 max|diff|=1.91e-06
+synthetic_cls_4k seed 4 mean: widths=[19, 19] best_epoch=49 fixed=85.0000 extracted=85.0000 finetuned=87.1250 max|diff|=2.86e-06
+-> results/mean_gate/pilot/synthetic_cls_4k/seed4.json
+[2026-11-03 19:40:34,135][HYDRA] 	#9 : experiment=pilot dataset=synthetic_cls_4k seed=5 results_dir=results/mean_gate
+synthetic_cls_4k seed 5 zero: widths=[23, 15] best_epoch=48 fixed=90.0000 extracted=90.0000 finetuned=90.8750 max|diff|=1.91e-06
+synthetic_cls_4k seed 5 mean: widths=[19, 19] best_epoch=49 fixed=88.7500 extracted=88.7500 finetuned=90.5000 max|diff|=1.91e-06
+-> results/mean_gate/pilot/synthetic_cls_4k/seed5.json
+[2026-11-03 19:40:39,523][HYDRA] 	#10 : experiment=pilot dataset=synthetic_cls_4k seed=6 results_dir=results/mean_gate
+synthetic_cls_4k seed 6 zero: widths=[22, 24] best_epoch=49 fixed=87.5000 extracted=87.5000 finetuned=90.0000 max|diff|=2.38e-06
+synthetic_cls_4k seed 6 mean: widths=[21, 21] best_epoch=49 fixed=87.8750 extracted=87.8750 finetuned=89.5000 max|diff|=2.86e-06
+-> results/mean_gate/pilot/synthetic_cls_4k/seed6.json
+[2026-11-03 19:40:44,311][HYDRA] 	#11 : experiment=pilot dataset=synthetic_cls_4k seed=7 results_dir=results/mean_gate
+synthetic_cls_4k seed 7 zero: widths=[20, 16] best_epoch=49 fixed=87.8750 extracted=87.8750 finetuned=88.1250 max|diff|=2.38e-06
+synthetic_cls_4k seed 7 mean: widths=[20, 20] best_epoch=49 fixed=88.5000 extracted=88.5000 finetuned=89.2500 max|diff|=2.38e-06
+-> results/mean_gate/pilot/synthetic_cls_4k/seed7.json
+[2026-11-03 19:40:49,288][HYDRA] 	#12 : experiment=pilot dataset=synthetic_cls_4k seed=8 results_dir=results/mean_gate
+synthetic_cls_4k seed 8 zero: widths=[24, 18] best_epoch=49 fixed=87.7500 extracted=87.7500 finetuned=90.0000 max|diff|=1.91e-06
+synthetic_cls_4k seed 8 mean: widths=[20, 17] best_epoch=49 fixed=86.8750 extracted=86.8750 finetuned=90.1250 max|diff|=1.91e-06
+-> results/mean_gate/pilot/synthetic_cls_4k/seed8.json
+[2026-11-03 19:40:54,131][HYDRA] 	#13 : experiment=pilot dataset=synthetic_cls_4k seed=9 results_dir=results/mean_gate
+synthetic_cls_4k seed 9 zero: widths=[21, 24] best_epoch=49 fixed=87.1250 extracted=87.1250 finetuned=89.3750 max|diff|=1.91e-06
+synthetic_cls_4k seed 9 mean: widths=[26, 23] best_epoch=49 fixed=87.3750 extracted=87.3750 finetuned=90.5000 max|diff|=1.91e-06
+-> results/mean_gate/pilot/synthetic_cls_4k/seed9.json

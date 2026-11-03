@@ -1,0 +1,41 @@
+defaults:
+  - dataset: friedman_reg
+  - _self_
+
+# Results go to ${results_dir}/${experiment}/<dataset>/seed<seed>.json (one file holds both arms).
+experiment: mean_gate_pilot
+seed: 0                 # split seed = model seed; derived stream seeds are recorded in the result
+device: cpu             # the study runs on CPU only
+results_dir: results
+overwrite: false
+torch_threads: 1
+arms: [zero, mean]
+dense_reference: true   # full-width MLP trained from scratch with the fine-tuning budget, for context
+
+general:
+  batch_size: 256
+  weight_lr: 0.001      # as conf/config.yaml
+
+search:
+  layer_widths: [32, 32]
+  epochs: 50            # gates start opening after ~8 epochs at logit -3; 50 is the top of the planned 30-50
+  patience: 20          # on the fixed-mask validation loss, as conf/config.yaml's stop_patience
+  arch_lr: 0.05         # as conf/method/tabgns.yaml
+  temperature: 1.0
+  gate_initialisation_val: -3   # p_open = sigmoid(-3) = 4.7% under the corrected sampler
+  mean_momentum: 0.1    # EMA coefficient for mu (BatchNorm default); mu starts at the first batch mean
+
+finetune:
+  epochs: 100           # same cap for both arms and the dense reference
+  patience: 20
+  lr: 0.001             # AdamW, as tabgns.mlp.MLP.fit
+
+eval:
+  stochastic_samples: 20
+
+hydra:
+  run:
+    dir: outputs/${experiment}/${dataset.name}/seed${seed}
+  sweep:
+    dir: outputs/multirun/${experiment}/${now:%Y-%m-%d_%H-%M-%S}
+    subdir: ${hydra.job.num}

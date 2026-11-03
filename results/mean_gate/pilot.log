@@ -1,0 +1,25 @@
+[2026-11-03 19:38:45,330][HYDRA] Launching 6 jobs locally
+[2026-11-03 19:38:45,330][HYDRA] 	#0 : experiment=pilot dataset=friedman_reg seed=0 results_dir=results/mean_gate
+friedman_reg seed 0 zero: widths=[18, 17] best_epoch=47 fixed=5.1655 extracted=5.1655 finetuned=1.8872 max|diff|=4.77e-07
+friedman_reg seed 0 mean: widths=[15, 15] best_epoch=49 fixed=4.7480 extracted=4.7480 finetuned=1.7613 max|diff|=4.77e-07
+-> results/mean_gate/pilot/friedman_reg/seed0.json
+[2026-11-03 19:38:53,429][HYDRA] 	#1 : experiment=pilot dataset=friedman_reg seed=1 results_dir=results/mean_gate
+friedman_reg seed 1 zero: widths=[13, 18] best_epoch=49 fixed=3.8984 extracted=3.8984 finetuned=1.8855 max|diff|=4.77e-07
+friedman_reg seed 1 mean: widths=[16, 16] best_epoch=49 fixed=3.5250 extracted=3.5250 finetuned=1.7175 max|diff|=9.54e-07
+-> results/mean_gate/pilot/friedman_reg/seed1.json
+[2026-11-03 19:39:00,931][HYDRA] 	#2 : experiment=pilot dataset=friedman_reg seed=2 results_dir=results/mean_gate
+friedman_reg seed 2 zero: widths=[15, 23] best_epoch=49 fixed=3.6449 extracted=3.6449 finetuned=1.7287 max|diff|=4.77e-07
+friedman_reg seed 2 mean: widths=[17, 19] best_epoch=49 fixed=3.5194 extracted=3.5194 finetuned=1.6850 max|diff|=4.77e-07
+-> results/mean_gate/pilot/friedman_reg/seed2.json
+[2026-11-03 19:39:08,668][HYDRA] 	#3 : experiment=pilot dataset=synthetic_cls_4k seed=0 results_dir=results/mean_gate
+synthetic_cls_4k seed 0 zero: widths=[18, 21] best_epoch=49 fixed=88.8750 extracted=88.8750 finetuned=90.6250 max|diff|=1.91e-06
+synthetic_cls_4k seed 0 mean: widths=[22, 24] best_epoch=49 fixed=91.5000 extracted=91.5000 finetuned=91.3750 max|diff|=2.38e-06
+-> results/mean_gate/pilot/synthetic_cls_4k/seed0.json
+[2026-11-03 19:39:15,544][HYDRA] 	#4 : experiment=pilot dataset=synthetic_cls_4k seed=1 results_dir=results/mean_gate
+synthetic_cls_4k seed 1 zero: widths=[21, 22] best_epoch=49 fixed=84.7500 extracted=84.7500 finetuned=87.5000 max|diff|=1.43e-06
+synthetic_cls_4k seed 1 mean: widths=[21, 24] best_epoch=49 fixed=85.2500 extracted=85.2500 finetuned=87.2500 max|diff|=2.38e-06
+-> results/mean_gate/pilot/synthetic_cls_4k/seed1.json
+[2026-11-03 19:39:21,755][HYDRA] 	#5 : experiment=pilot dataset=synthetic_cls_4k seed=2 results_dir=results/mean_gate
+synthetic_cls_4k seed 2 zero: widths=[16, 21] best_epoch=49 fixed=86.3750 extracted=86.3750 finetuned=88.3750 max|diff|=1.43e-06
+synthetic_cls_4k seed 2 mean: widths=[20, 19] best_epoch=49 fixed=85.5000 extracted=85.5000 finetuned=89.2500 max|diff|=2.86e-06
+-> results/mean_gate/pilot/synthetic_cls_4k/seed2.json
