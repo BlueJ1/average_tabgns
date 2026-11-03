@@ -1,0 +1,18 @@
+test_all_open (experiments.mean_gate.test_mean_gate.Extraction.test_all_open) ... ok
+test_bias_fold_is_needed (experiments.mean_gate.test_mean_gate.Extraction.test_bias_fold_is_needed) ... ok
+test_fully_removed_hidden_layer (experiments.mean_gate.test_mean_gate.Extraction.test_fully_removed_hidden_layer) ... ok
+test_mixed_masks_three_layers (experiments.mean_gate.test_mean_gate.Extraction.test_mixed_masks_three_layers) ... ok
+test_gate_gradient_uses_centred_activation (experiments.mean_gate.test_mean_gate.GateSemantics.test_gate_gradient_uses_centred_activation) ... ok
+test_mean_with_zero_mu_equals_zero_gating (experiments.mean_gate.test_mean_gate.GateSemantics.test_mean_with_zero_mu_equals_zero_gating) ... ok
+test_open_and_closed_gates (experiments.mean_gate.test_mean_gate.GateSemantics.test_open_and_closed_gates) ... ok
+test_sampling_threshold_matches_extraction_threshold (experiments.mean_gate.test_mean_gate.GateSemantics.test_sampling_threshold_matches_extraction_threshold) ... ok
+test_checkpoint_round_trip (experiments.mean_gate.test_mean_gate.MeanStatistics.test_checkpoint_round_trip) ... ok
+test_eval_and_validation_passes_leave_means_unchanged (experiments.mean_gate.test_mean_gate.MeanStatistics.test_eval_and_validation_passes_leave_means_unchanged) ... ok
+test_search_updates_means_on_training_steps_only (experiments.mean_gate.test_mean_gate.MeanStatistics.test_search_updates_means_on_training_steps_only) ... ok
+test_update_rule (experiments.mean_gate.test_mean_gate.MeanStatistics.test_update_rule) ... ok
+test_arms_share_initial_weights_and_gate_samples (experiments.mean_gate.test_mean_gate.Pairing.test_arms_share_initial_weights_and_gate_samples) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 1.338s
+
+OK

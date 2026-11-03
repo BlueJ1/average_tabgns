@@ -117,6 +117,13 @@ These are set in `conf/` and can be changed there.
 - **Parameter count:** `n_params` counts hidden-to-hidden weights only, which is how the paper gets
   1,048,576 for the 5×512 MLP. `n_params_full` includes input/output layers and biases.
 
+## Exploration: mean replacement instead of zero gating
+
+`experiments/mean_gate/` is an opt-in, self-contained study of `h̃ = g·h + (1−g)·μ` against the
+original `h̃ = g·h`, on a controlled pipeline that fixes the quirks below for both arms. It does not
+change `tabgns/` or `experiments/run.py`. See `experiments/mean_gate/REPORT.md` for the protocol,
+commands and results.
+
 ## Known quirks in `tabgns/`
 
 - `BinaryGumbelSoftmax` uses logits `[g, 1]`, so during the search a gate is open with probability

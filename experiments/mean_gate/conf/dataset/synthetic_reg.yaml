@@ -1,0 +1,9 @@
+# Same generator settings as experiments/conf/dataset/synthetic_reg.yaml (linear; smoke tests only).
+name: synthetic_reg
+task: regression
+generator: regression
+n_samples: 2000
+n_features: 9
+n_targets: 3
+noise: 5.0
+data_seed: 0

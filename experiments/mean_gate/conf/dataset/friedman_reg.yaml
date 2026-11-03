@@ -1,0 +1,8 @@
+# Nonlinear regression: y = 10 sin(pi x1 x2) + 20 (x3 - 0.5)^2 + 10 x4 + 5 x5 + noise; x6..x10 are irrelevant.
+name: friedman_reg
+task: regression
+generator: friedman1
+n_samples: 4000
+n_features: 10
+noise: 1.0
+data_seed: 0

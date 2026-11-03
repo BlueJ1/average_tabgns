@@ -1,0 +1,6 @@
+# Supplementary real tabular regression: sklearn.datasets.load_diabetes (442 x 10, bundled, no download).
+# Run with general.batch_size=32 so its 265 training rows give ~9 steps per epoch, like the synthetic sets.
+name: diabetes
+task: regression
+generator: sklearn_diabetes
+data_seed: null
