@@ -1,5 +1,5 @@
 defaults:
-  - dataset: vod
+  - dataset: covertype
   - method: tabgns
   - _self_
 
@@ -11,6 +11,9 @@ device: cpu
 results_dir: results
 overwrite: false
 save_history: false
+# torch CPU threads per run; null keeps torch's default. Set 1 when running several jobs at once
+# with hydra/launcher=joblib: these small MLPs barely use more than one thread.
+threads: null
 
 # Shared training protocol (Sec. VI-A): lr 1e-3, max 300 epochs, early stopping patience 20.
 # Batch size is not in the paper; 256 is what conf/paper.yaml uses.
