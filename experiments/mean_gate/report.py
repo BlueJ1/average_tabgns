@@ -5,10 +5,15 @@ Paired comparison tables for the mean-gate study.
 
 Writes runs.csv (one row per dataset/seed/arm) and summary.md. Seeds 0-2 are the primary pilot;
 the 0-9 rows add the supplementary seeds run under the same frozen protocol.
+
+Results are only ever pooled within one (experiment, dataset) group. Every run in a group must have
+the same protocol signature (resolved config without the seed, plus the hashes of the code that
+produced it), and a (seed, arm) pair may appear only once; otherwise load() raises.
 """
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 from pathlib import Path
 from typing import List
@@ -21,6 +26,30 @@ from scipy import stats
 REG = [('mse_orig', 'MSE', False), ('mse', 'MSE (std. targets)', False)]
 CLS = [('accuracy', 'Acc. %', True), ('cross_entropy', 'CE', False)]
 
+# Config keys that may differ between runs of one protocol, and the sources whose hashes define it.
+PER_RUN_KEYS = ('seed', 'overwrite', 'results_dir')
+PROTOCOL_SOURCES = ('experiments/mean_gate/model.py', 'experiments/mean_gate/protocol.py', 'experiments/mean_gate/run.py')
+
+
+def protocol_signature(record: dict) -> str:
+  config = {k: v for k, v in record['config'].items() if k not in PER_RUN_KEYS}
+  sources = {k: record['provenance']['source_sha256'].get(k) for k in PROTOCOL_SOURCES}
+  return hashlib.sha256(json.dumps([config, sources], sort_keys=True).encode()).hexdigest()[:12]
+
+
+def validate(df: pd.DataFrame) -> None:
+  """Refuse to pool different protocols or to count a (seed, arm) pair twice."""
+  dup = df[df.duplicated(['experiment', 'dataset', 'seed', 'arm'], keep=False)]
+  if not dup.empty:
+    raise ValueError('Duplicate (experiment, dataset, seed, arm) results:\n'
+                     + dup[['experiment', 'dataset', 'seed', 'arm', 'source']].to_string(index=False))
+  n_protocols = df.groupby(['experiment', 'dataset']).protocol.nunique()
+  mixed = n_protocols[n_protocols > 1]
+  if not mixed.empty:
+    detail = df[df.set_index(['experiment', 'dataset']).index.isin(mixed.index)]
+    raise ValueError('Different protocols under one experiment name; give each its own `experiment=`:\n'
+                     + detail[['experiment', 'dataset', 'seed', 'protocol', 'source']].drop_duplicates().to_string(index=False))
+
 
 def load(root: Path) -> pd.DataFrame:
   rows = []
@@ -28,11 +57,12 @@ def load(root: Path) -> pd.DataFrame:
     r = json.loads(p.read_text())
     if r['experiment'] == 'mean_gate_smoke':
       continue
+    base = {'experiment': r['experiment'], 'dataset': r['dataset'], 'task': r['task'], 'seed': r['seed'],
+            'protocol': protocol_signature(r), 'source': str(p)}
     for arm, failure in r['failures'].items():
-      rows.append({'experiment': r['experiment'], 'dataset': r['dataset'], 'seed': r['seed'], 'arm': arm, 'failed': True})
+      rows.append({**base, 'arm': arm, 'failed': True})
     for arm, a in r['arms'].items():
-      row = {'experiment': r['experiment'], 'dataset': r['dataset'], 'task': r['task'], 'seed': r['seed'],
-             'arm': arm, 'failed': False, 'widths': a['widths'], 'zero_width_layers': len(a['zero_width_layers']),
+      row = {**base, 'arm': arm, 'failed': False, 'widths': a['widths'], 'zero_width_layers': len(a['zero_width_layers']),
              'n_params_full': a['n_params_full'], 'n_params': a['n_params'], 'best_epoch': a['search']['best_epoch'],
              'epochs_run': a['search']['epochs_run'], 'max_abs_diff': a['extraction_max_abs_diff'],
              'nonfinite': a['nonfinite'], 'search_time_s': a['search']['search_time_s'],
@@ -49,14 +79,16 @@ def load(root: Path) -> pd.DataFrame:
       rows.append(row)
     if 'dense_reference' in r:
       d = r['dense_reference']
-      row = {'experiment': r['experiment'], 'dataset': r['dataset'], 'task': r['task'], 'seed': r['seed'],
-             'arm': 'dense', 'failed': False, 'widths': d['widths'], 'n_params_full': d['n_params_full'],
+      row = {**base, 'arm': 'dense', 'failed': False, 'widths': d['widths'], 'n_params_full': d['n_params_full'],
              'n_params': d['n_params'], 'finetune_time_s': d['finetune']['finetune_time_s']}
       for split_ in ('valid', 'test'):
         for k, v in d['finetuned'][split_].items():
           row[f'finetuned.{split_}.{k}'] = v
       rows.append(row)
-  return pd.DataFrame(rows)
+  df = pd.DataFrame(rows)
+  if not df.empty:
+    validate(df)
+  return df
 
 
 def ms(x) -> str:
@@ -68,6 +100,8 @@ def paired(df: pd.DataFrame, col: str, higher: bool) -> str:
   """Three table cells: paired difference (mean - zero), seeds where the mean arm is better, t 95% CI."""
   z = df[df.arm == 'zero'].set_index('seed')[col]
   m = df[df.arm == 'mean'].set_index('seed')[col]
+  if not (z.index.is_unique and m.index.is_unique):
+    raise ValueError('paired() needs one row per seed and arm; split the input by experiment first')
   d = (m - z).dropna()
   wins = int((d > 0).sum() if higher else (d < 0).sum())
   ci = ''
@@ -125,20 +159,24 @@ def dataset_section(df: pd.DataFrame, seeds: List[int]) -> List[str]:
   out.append(f'| mean arm extracted *without* bias fold, {mets[0][1]} | | {ms(nb)} | | | |')
   dense = df[df.arm == 'dense'][f'finetuned.test.{key}']
   out.append(f'| dense full-width reference, fine-tuned {mets[0][1]} | {ms(dense)} | (same) | | | |')
-  for label, col in (('search time s', 'search_time_s'), ('mean-statistics update time s', 'stats_time_s'),
+  # Wall times are short and the arms always run in the same order (zero, then mean) in one process.
+  for label, col in (('total search time s (observed)', 'search_time_s'),
+                     ('of which: EMA update body s (timed alone)', 'stats_time_s'),
                      ('extraction time s', 'extraction_time_s'), ('fine-tune time s', 'finetune_time_s'),
                      ('fine-tune epochs run', 'ft_epochs')):
     out.append(f'| {label} | {ms(arms["zero"][col])} | {ms(arms["mean"][col])} | | | |')
   out.append('')
 
-  # Size vs accuracy: is the paired metric change explained by the paired size change?
+  # Descriptive only: size is an outcome of the search, and one parameter-count covariate does not
+  # control architecture shape or inherited weights, so this is not a matched-size comparison.
   z, m = arms['zero'].set_index('seed'), arms['mean'].set_index('seed')
   dp = (m.n_params_full - z.n_params_full) / 1000
   dm = m[f'finetuned.test.{key}'] - z[f'finetuned.test.{key}']
   if len(dp) >= 5 and dp.std() > 0:
     fit = stats.linregress(dp, dm)
-    out.append(f'Size check (fine-tuned {mets[0][1]}): corr(Δparams, Δmetric) = {fit.rvalue:+.2f}; '
-               f'least-squares Δmetric at Δparams = 0: {fit.intercept:+.3f} (slope {fit.slope:+.3f} per 1k params).')
+    out.append(f'Size association (descriptive, not a matched-size control; fine-tuned {mets[0][1]}): '
+               f'corr(Δparams, Δmetric) = {fit.rvalue:+.2f}; least-squares intercept {fit.intercept:+.3f}, '
+               f'slope {fit.slope:+.3f} per 1k params.')
     out.append('')
   flags = df[(df.arm != 'dense') & ((df.zero_width_layers > 0) | df.nonfinite.astype(bool) | df.failed.astype(bool))]
   out.append(f'Zero-width layers / non-finite / failed runs: {len(flags)}'
@@ -148,11 +186,11 @@ def dataset_section(df: pd.DataFrame, seeds: List[int]) -> List[str]:
 
 
 def compact(df: pd.DataFrame) -> List[str]:
-  """One row per dataset and seed set: size, extracted and fine-tuned test metric, paired difference."""
-  out = ['| dataset | seeds | metric | params zero / mean | extracted zero / mean | fine-tuned zero / mean | '
+  """One row per (experiment, dataset) and seed set: size, extracted and fine-tuned test metric, paired difference."""
+  out = ['| experiment | dataset | seeds | metric | params zero / mean | extracted zero / mean | fine-tuned zero / mean | '
          'Δ fine-tuned (mean − zero) | mean better | max abs extraction diff |',
-         '|---|---|---|---|---|---|---|---|---|']
-  for ds, g in df.groupby('dataset', sort=False):
+         '|---|---|---|---|---|---|---|---|---|---|']
+  for (exp, ds), g in df.groupby(['experiment', 'dataset'], sort=False):
     task = g.task.dropna().iloc[0]
     key, label, higher = (REG if task == 'regression' else CLS)[0]
     seeds_all = sorted(g.seed.unique())
@@ -161,7 +199,7 @@ def compact(df: pd.DataFrame) -> List[str]:
       z, m = h[h.arm == 'zero'], h[h.arm == 'mean']
       cell = lambda c: f'{z[c].mean():.3g} / {m[c].mean():.3g}'
       d, wins, ci = paired(h, f'finetuned.test.{key}', higher).split(' | ')
-      out.append(f'| {ds} | {seeds[0]}–{seeds[-1]} | {label} | {z.n_params_full.mean():.0f} / {m.n_params_full.mean():.0f} | '
+      out.append(f'| {exp} | {ds} | {seeds[0]}–{seeds[-1]} | {label} | {z.n_params_full.mean():.0f} / {m.n_params_full.mean():.0f} | '
                  f'{cell(f"extracted.test.{key}")} | {cell(f"finetuned.test.{key}")} | {d} {ci} | {wins} | '
                  f'{h[h.arm != "dense"].max_abs_diff.max():.1e} |')
   return out + ['']

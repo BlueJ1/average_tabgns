@@ -11,8 +11,11 @@ test_eval_and_validation_passes_leave_means_unchanged (experiments.mean_gate.tes
 test_search_updates_means_on_training_steps_only (experiments.mean_gate.test_mean_gate.MeanStatistics.test_search_updates_means_on_training_steps_only) ... ok
 test_update_rule (experiments.mean_gate.test_mean_gate.MeanStatistics.test_update_rule) ... ok
 test_arms_share_initial_weights_and_gate_samples (experiments.mean_gate.test_mean_gate.Pairing.test_arms_share_initial_weights_and_gate_samples) ... ok
+test_duplicate_seed_is_rejected (experiments.mean_gate.test_mean_gate.ReportGrouping.test_duplicate_seed_is_rejected) ... ok
+test_mixed_protocol_under_one_name_is_rejected (experiments.mean_gate.test_mean_gate.ReportGrouping.test_mixed_protocol_under_one_name_is_rejected) ... ok
+test_protocols_stay_separate (experiments.mean_gate.test_mean_gate.ReportGrouping.test_protocols_stay_separate) ... ok
 
 ----------------------------------------------------------------------
-Ran 13 tests in 1.338s
+Ran 16 tests in 1.390s
 
 OK

@@ -7,13 +7,20 @@ from __future__ import annotations
 
 import copy
 import io
+import json
+import shutil
+import tempfile
 import unittest
+from pathlib import Path
 import numpy as np
 import torch
 
 from experiments.datasets import Dataset
 from experiments.mean_gate.model import ControlledGatedNet, extract_mlp, sample_gates
+from experiments.mean_gate import report
 from experiments.mean_gate.protocol import generator, prepare, search
+
+RESULTS = Path(__file__).resolve().parents[2] / 'results' / 'mean_gate'
 
 
 def make_net(mode: str, widths=(7, 5, 6), inp=4, out=3, seed=0) -> ControlledGatedNet:
@@ -188,6 +195,45 @@ class Extraction(unittest.TestCase):
     masks = [torch.ones(7), torch.ones(5), torch.ones(6)]
     for mode in ('zero', 'mean'):
       self.check(mode, masks)
+
+
+@unittest.skipUnless((RESULTS / 'pilot' / 'friedman_reg' / 'seed0.json').exists(), 'needs the saved pilot results')
+class ReportGrouping(unittest.TestCase):
+  """A second protocol next to `pilot` must never be pooled with it (PR #3 review)."""
+
+  def setUp(self):
+    self.root = Path(tempfile.mkdtemp())
+    self.addCleanup(shutil.rmtree, self.root)
+    for seed in range(3):
+      self.write('pilot', seed)
+
+  def write(self, experiment: str, seed: int, finetune_epochs: int = 100, name: str = None):
+    r = json.loads((RESULTS / 'pilot' / 'friedman_reg' / f'seed{seed}.json').read_text())
+    r['experiment'] = experiment
+    r['config']['experiment'] = experiment
+    r['config']['finetune']['epochs'] = finetune_epochs
+    out = self.root / experiment / 'friedman_reg' / (name or f'seed{seed}.json')
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(json.dumps(r))
+
+  def test_protocols_stay_separate(self):
+    for seed in range(3):
+      self.write('pilot_long_ft', seed, finetune_epochs=300)
+    rows = [l for l in report.compact(report.load(self.root)) if 'friedman_reg' in l]
+    self.assertEqual(len(rows), 2)
+    for row in rows:
+      self.assertIn('| 0–2 |', row)
+      self.assertRegex(row, r'\| \d/3 \|')
+
+  def test_mixed_protocol_under_one_name_is_rejected(self):
+    self.write('pilot', 3, finetune_epochs=300)
+    with self.assertRaisesRegex(ValueError, 'Different protocols'):
+      report.load(self.root)
+
+  def test_duplicate_seed_is_rejected(self):
+    self.write('pilot', 0, name='seed0_copy.json')
+    with self.assertRaisesRegex(ValueError, 'Duplicate'):
+      report.load(self.root)
 
 
 if __name__ == '__main__':

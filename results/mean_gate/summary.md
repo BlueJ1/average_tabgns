@@ -6,13 +6,13 @@ The 95% CI (t, n ≥ 5 only) is descriptive; seeds are the only replication unit
 
 ## Compact comparison (test split)
 
-| dataset | seeds | metric | params zero / mean | extracted zero / mean | fine-tuned zero / mean | Δ fine-tuned (mean − zero) | mean better | max abs extraction diff |
-|---|---|---|---|---|---|---|---|---|
-| friedman_reg | 0–2 | MSE | 503 / 478 | 4.24 / 3.93 | 1.83 / 1.72 | -0.113 ± 0.063  | 3/3 | 9.5e-07 |
-| friedman_reg | 0–9 | MSE | 538 / 539 | 3.81 / 3.75 | 1.77 / 1.66 | -0.110 ± 0.127 [-0.201, -0.019] | 8/10 | 9.5e-07 |
-| synthetic_cls_4k | 0–2 | Acc. % | 865 / 1004 | 86.7 / 87.4 | 88.8 / 89.3 | +0.458 ± 0.617  | 2/3 | 2.9e-06 |
-| synthetic_cls_4k | 0–9 | Acc. % | 942 / 974 | 87.6 / 87.4 | 89.3 / 89.4 | +0.013 ± 0.965 [-0.678, +0.703] | 5/10 | 2.9e-06 |
-| diabetes | 0–2 | MSE | 298 / 351 | 3.2e+03 / 3.17e+03 | 3.2e+03 / 3.17e+03 | -34.763 ± 121.281  | 2/3 | 3.6e-07 |
+| experiment | dataset | seeds | metric | params zero / mean | extracted zero / mean | fine-tuned zero / mean | Δ fine-tuned (mean − zero) | mean better | max abs extraction diff |
+|---|---|---|---|---|---|---|---|---|---|
+| pilot | friedman_reg | 0–2 | MSE | 503 / 478 | 4.24 / 3.93 | 1.83 / 1.72 | -0.113 ± 0.063  | 3/3 | 9.5e-07 |
+| pilot | friedman_reg | 0–9 | MSE | 538 / 539 | 3.81 / 3.75 | 1.77 / 1.66 | -0.110 ± 0.127 [-0.201, -0.019] | 8/10 | 9.5e-07 |
+| pilot | synthetic_cls_4k | 0–2 | Acc. % | 865 / 1004 | 86.7 / 87.4 | 88.8 / 89.3 | +0.458 ± 0.617  | 2/3 | 2.9e-06 |
+| pilot | synthetic_cls_4k | 0–9 | Acc. % | 942 / 974 | 87.6 / 87.4 | 89.3 / 89.4 | +0.013 ± 0.965 [-0.678, +0.703] | 5/10 | 2.9e-06 |
+| supp_diabetes | diabetes | 0–2 | MSE | 298 / 351 | 3.2e+03 / 3.17e+03 | 3.2e+03 / 3.17e+03 | -34.763 ± 121.281  | 2/3 | 3.6e-07 |
 
 ## friedman_reg — pilot, primary pilot, seeds 0–2
 
@@ -42,8 +42,8 @@ The 95% CI (t, n ≥ 5 only) is descriptive; seeds are the only replication unit
 | fixed-mask minus stochastic test loss | -0.001 ± 0.003 | -0.004 ± 0.008 | -0.003 ± 0.005 | | |
 | mean arm extracted *without* bias fold, MSE | | 5.603 ± 0.507 | | | |
 | dense full-width reference, fine-tuned MSE | 1.852 ± 0.059 | (same) | | | |
-| search time s | 1.559 ± 0.051 | 1.604 ± 0.105 | | | |
-| mean-statistics update time s | 0.000 ± 0.000 | 0.053 ± 0.006 | | | |
+| total search time s (observed) | 1.559 ± 0.051 | 1.604 ± 0.105 | | | |
+| of which: EMA update body s (timed alone) | 0.000 ± 0.000 | 0.053 ± 0.006 | | | |
 | extraction time s | 0.001 ± 0.000 | 0.001 ± 0.000 | | | |
 | fine-tune time s | 1.494 ± 0.157 | 1.275 ± 0.034 | | | |
 | fine-tune epochs run | 100.000 ± 0.000 | 100.000 ± 0.000 | | | |
@@ -99,13 +99,13 @@ Zero-width layers / non-finite / failed runs: 0
 | fixed-mask minus stochastic test loss | -0.005 ± 0.004 | -0.005 ± 0.005 | -0.000 ± 0.005 | | |
 | mean arm extracted *without* bias fold, MSE | | 5.110 ± 0.539 | | | |
 | dense full-width reference, fine-tuned MSE | 1.802 ± 0.096 | (same) | | | |
-| search time s | 1.302 ± 0.192 | 1.396 ± 0.200 | | | |
-| mean-statistics update time s | 0.000 ± 0.000 | 0.048 ± 0.008 | | | |
+| total search time s (observed) | 1.302 ± 0.192 | 1.396 ± 0.200 | | | |
+| of which: EMA update body s (timed alone) | 0.000 ± 0.000 | 0.048 ± 0.008 | | | |
 | extraction time s | 0.001 ± 0.000 | 0.001 ± 0.000 | | | |
 | fine-tune time s | 1.153 ± 0.250 | 1.106 ± 0.140 | | | |
 | fine-tune epochs run | 100.000 ± 0.000 | 100.000 ± 0.000 | | | |
 
-Size check (fine-tuned MSE): corr(Δparams, Δmetric) = -0.57; least-squares Δmetric at Δparams = 0: -0.110 (slope -0.850 per 1k params).
+Size association (descriptive, not a matched-size control; fine-tuned MSE): corr(Δparams, Δmetric) = -0.57; least-squares intercept -0.110, slope -0.850 per 1k params.
 
 Zero-width layers / non-finite / failed runs: 0
 
@@ -137,8 +137,8 @@ Zero-width layers / non-finite / failed runs: 0
 | fixed-mask minus stochastic test loss | -0.006 ± 0.002 | -0.002 ± 0.001 | 0.004 ± 0.002 | | |
 | mean arm extracted *without* bias fold, Acc. % | | 86.083 ± 2.126 | | | |
 | dense full-width reference, fine-tuned Acc. % | 89.083 ± 2.326 | (same) | | | |
-| search time s | 1.682 ± 0.139 | 1.792 ± 0.062 | | | |
-| mean-statistics update time s | 0.000 ± 0.000 | 0.052 ± 0.002 | | | |
+| total search time s (observed) | 1.682 ± 0.139 | 1.792 ± 0.062 | | | |
+| of which: EMA update body s (timed alone) | 0.000 ± 0.000 | 0.052 ± 0.002 | | | |
 | extraction time s | 0.001 ± 0.000 | 0.001 ± 0.000 | | | |
 | fine-tune time s | 0.890 ± 0.081 | 0.847 ± 0.488 | | | |
 | fine-tune epochs run | 61.333 ± 1.528 | 57.000 ± 33.151 | | | |
@@ -194,13 +194,13 @@ Zero-width layers / non-finite / failed runs: 0
 | fixed-mask minus stochastic test loss | -0.006 ± 0.003 | -0.003 ± 0.003 | 0.003 ± 0.003 | | |
 | mean arm extracted *without* bias fold, Acc. % | | 86.375 ± 1.431 | | | |
 | dense full-width reference, fine-tuned Acc. % | 89.138 ± 1.208 | (same) | | | |
-| search time s | 1.416 ± 0.218 | 1.575 ± 0.305 | | | |
-| mean-statistics update time s | 0.000 ± 0.000 | 0.052 ± 0.012 | | | |
+| total search time s (observed) | 1.416 ± 0.218 | 1.575 ± 0.305 | | | |
+| of which: EMA update body s (timed alone) | 0.000 ± 0.000 | 0.052 ± 0.012 | | | |
 | extraction time s | 0.001 ± 0.000 | 0.001 ± 0.000 | | | |
 | fine-tune time s | 0.632 ± 0.227 | 0.634 ± 0.297 | | | |
 | fine-tune epochs run | 50.600 ± 11.749 | 49.900 ± 17.972 | | | |
 
-Size check (fine-tuned Acc. %): corr(Δparams, Δmetric) = +0.62; least-squares Δmetric at Δparams = 0: -0.127 (slope +4.395 per 1k params).
+Size association (descriptive, not a matched-size control; fine-tuned Acc. %): corr(Δparams, Δmetric) = +0.62; least-squares intercept -0.127, slope +4.395 per 1k params.
 
 Zero-width layers / non-finite / failed runs: 0
 
@@ -232,8 +232,8 @@ Zero-width layers / non-finite / failed runs: 0
 | fixed-mask minus stochastic test loss | -0.009 ± 0.001 | -0.010 ± 0.003 | -0.001 ± 0.002 | | |
 | mean arm extracted *without* bias fold, MSE | | 3723.307 ± 723.805 | | | |
 | dense full-width reference, fine-tuned MSE | 3398.720 ± 347.282 | (same) | | | |
-| search time s | 0.609 ± 0.011 | 0.680 ± 0.016 | | | |
-| mean-statistics update time s | 0.000 ± 0.000 | 0.037 ± 0.001 | | | |
+| total search time s (observed) | 0.609 ± 0.011 | 0.680 ± 0.016 | | | |
+| of which: EMA update body s (timed alone) | 0.000 ± 0.000 | 0.037 ± 0.001 | | | |
 | extraction time s | 0.001 ± 0.000 | 0.000 ± 0.000 | | | |
 | fine-tune time s | 0.161 ± 0.138 | 0.077 ± 0.003 | | | |
 | fine-tune epochs run | 41.333 ± 36.950 | 20.000 ± 0.000 | | | |
