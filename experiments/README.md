@@ -42,7 +42,8 @@ https://www.deepmimo.net/ (scenario O1, 3.5 GHz path loss per BS → 28/60/140 G
 Everything runs on the CPU. On Apple silicon the MPS backend is 2–7× slower for these small MLPs at
 batch size 256 and breaks TabGNS (see Known quirks). A single run barely uses more than one thread,
 so independent runs go in parallel with Hydra's joblib launcher, one thread each
-(`hydra/launcher=joblib hydra.launcher.n_jobs=6 threads=1`). Six jobs fit 16 GB of memory with Higgs.
+(`hydra/launcher=joblib hydra.launcher.n_jobs=6 threads=1`). Six jobs should fit 16 GB of memory with
+Higgs (an estimate of ~1 GB peak per job, not yet measured on the full data).
 Five seeds are used below; the paper does not say how many it used.
 
 **Experiment 1, Table II (prediction performance and size).**
@@ -93,13 +94,17 @@ Measured on an M1 Pro (6+2 cores, 16 GB): per-epoch times of every component, an
 full runs on a 50k-row CoverType subsample (Large MLP ~60 epochs, TabGNS search ~140 + fine-tune ~23,
 TabNAS search ~270–300 + retrain ~85).
 
-| Part | CPU-hours | Wall-clock with the commands above |
+"Run-hours" is the time to do every run one after another, each run as it would go alone: one job
+on all cores for Large MLP, TabGNS and TabNAS, and one search with its 8 workers for AgE. It is not
+core-hours (an AgE search keeps all 8 cores busy). "Wall-clock" is with the commands above.
+
+| Part | Run-hours | Wall-clock |
 |---|---|---|
 | Table II, Large MLP + TabGNS + TabNAS (30 runs) | ~20 | ~6 h |
 | Table II, AgE (10 searches) | ~43 | ~43 h |
 | Fig. 4 (2 runs) | ~1.5 | ~1 h |
 | Fig. 5 (40 runs) | ~31 | ~9 h |
-| **Total** | **~95** | **~2.5 days** (1.5–5 days depending on epoch counts) |
+| **Total** | **~95** | **~58 h (~2.4 days)**, 1.5–5 days depending on epoch counts |
 
 AgE dominates: it trains all 300 candidates to convergence (~3 h per CoverType search, ~5 h per Higgs
 search). Fig. 5 is the next largest; fewer seeds or gate values cut it proportionally.

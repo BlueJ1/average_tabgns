@@ -32,9 +32,10 @@ add new instructions here when they are given.
 
 ## Runtime estimate (M1 Pro numbers)
 
-Planned experiments with the commands in `experiments/README.md`:
+Planned experiments with the commands in `experiments/README.md`. Run-hours = all runs one after
+another, each as it would go alone (AgE: one search with its 8 workers); not core-hours.
 
-| Part | CPU-hours | Wall-clock |
+| Part | Run-hours | Wall-clock |
 |---|---|---|
 | Table II: Large MLP, TabGNS, TabNAS (30 runs, 6 parallel) | ~20 | ~6 h |
 | Table II: AgE (10 searches, sequential, 8 workers) | ~43 | ~43 h |
@@ -59,4 +60,4 @@ parallel Higgs jobs.
 
 - Include DeepMIMO? It is public, but generating the paper's exact export (scenario O1, 18 BSs,
   3.5 GHz → 28/60/140 GHz path loss) is extra work.
-- Fig. 5 on CoverType is ~31 CPU-hours with 8 gate values × 5 seeds; fewer seeds would cut it.
+- Fig. 5 on CoverType is ~31 run-hours with 8 gate values × 5 seeds; fewer seeds would cut it.
