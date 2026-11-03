@@ -29,9 +29,22 @@ add new instructions here when they are given.
 - **AgE:** 20 workers are no faster than 8 on this machine; use `method.n_workers=8`.
 - **Epochs until early stopping** on a 50k-row CoverType subsample: Large MLP ~60, TabGNS search
   ~130–150 + fine-tune ~23, TabNAS search ~270–300 (it rarely stops early) + retrain ~85.
-- **Runtime estimate** for the full scope (Table II on both datasets incl. AgE, Fig. 4, Fig. 5 with
-  5 seeds): ~95 CPU-hours, ~2.5 days wall-clock with the commands in `experiments/README.md`
-  (1.5–5 days depending on epoch counts). AgE is ~43 h of that, Fig. 5 on CoverType ~31 CPU-hours.
+
+## Runtime estimate (M1 Pro numbers)
+
+Planned experiments with the commands in `experiments/README.md`:
+
+| Part | CPU-hours | Wall-clock |
+|---|---|---|
+| Table II: Large MLP, TabGNS, TabNAS (30 runs, 6 parallel) | ~20 | ~6 h |
+| Table II: AgE (10 searches, sequential, 8 workers) | ~43 | ~43 h |
+| Fig. 4 (2 runs) | ~1.5 | ~1 h |
+| Fig. 5 (40 runs, 6 parallel) | ~31 | ~9 h |
+| **Total** | **~95** | **~58 h (~2.4 days)** |
+
+Range 1.5–5 days depending on epoch counts (9 days if every phase ran all 300 epochs). Not verified:
+epoch counts on the full datasets, the parallel speed-up on CoverType/Higgs, and memory with 6
+parallel Higgs jobs.
 
 ## State
 
