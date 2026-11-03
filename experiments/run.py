@@ -2,7 +2,7 @@
 Runs one (experiment, dataset, method, seed) cell and writes its result to
 results/<experiment>/<dataset>/<method>/<run_name>.json. Use Hydra multirun for grids, e.g.
 
-  python -m experiments.run -m experiment=table2 dataset=vod,sim_a method=large_mlp,tabgns,tabnas,age seed=0,1,2,3,4
+  python -m experiments.run -m experiment=table2 dataset=covertype,higgs method=large_mlp,tabgns,tabnas seed=0,1,2,3,4
 
 See experiments/README.md for the command behind every table and figure of the paper.
 """
@@ -40,6 +40,8 @@ def main(cfg: DictConfig) -> None:
     print(f'{out_path} exists, skipping (overwrite=true to rerun)')
     return
 
+  if cfg.threads:
+    torch.set_num_threads(cfg.threads)
   set_seed(cfg.seed)
   ds = load_dataset(cfg_dict['dataset'])
   train, valid, test = split(ds, seed=cfg.seed)

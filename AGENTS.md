@@ -3,3 +3,5 @@ This is a clone of the repository provided alongside the paper Automated Model D
 The main goal in this project is to replicate and explore the methods that were introduced in that paper.
 
 Do not open PRs to the upstream repository.
+
+Project decisions, findings and progress are tracked in STATUS.md. Read it first, and record new instructions there.

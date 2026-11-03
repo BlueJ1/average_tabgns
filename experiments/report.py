@@ -3,7 +3,8 @@ Builds the paper's tables and figures from the JSON results written by experimen
 
   python -m experiments.report --results results --out reports
 
-Writes table2.md, table3.md, headline.md and fig2/fig4/fig5 PNGs to --out. Missing cells are skipped.
+Writes table2.md, headline.md and fig4/fig5 PNGs to --out. Missing cells are skipped.
+Search time is out of scope (see STATUS.md), so Table III and Fig. 2 are not built.
 """
 from __future__ import annotations
 
@@ -18,7 +19,8 @@ from scipy import stats
 
 METHODS = ['large_mlp', 'tabnas', 'age', 'tabgns']
 METHOD_LABELS = {'large_mlp': 'Large MLP', 'tabnas': 'TabNAS', 'age': 'AgE', 'tabgns': 'TabGNS'}
-DATASETS = ['vod', 'deepmimo', 'sim_a', 'sim_b', 'covertype', 'higgs']
+# Row order of Table II; datasets not listed here are appended alphabetically.
+DATASETS = ['deepmimo', 'covertype', 'higgs']
 
 
 def load_results(root: Path) -> pd.DataFrame:
@@ -89,65 +91,18 @@ def table2(df: pd.DataFrame, size_tolerance: float = 0.05) -> str:
   return '\n'.join(lines)
 
 
-def table3(df: pd.DataFrame) -> str:
-  df = df[df.method.isin(['tabnas', 'age', 'tabgns']) & df.experiment.isin(['table2', 'table3'])]
-  methods = ['tabnas', 'age', 'tabgns']
-  lines = ['| Dataset | Device | ' + ' | '.join(METHOD_LABELS[m] for m in methods) + ' |',
-           '|---|---|' + '---|' * len(methods)]
-  for ds in [d for d in DATASETS if d in set(df.dataset)]:
-    for dev in ['cpu', 'cuda']:
-      sub = df[(df.dataset == ds) & (df.search_device == dev)]
-      if sub.empty:
-        continue
-      hours = {m: sub[sub.method == m].search_time_s.to_numpy() / 3600 for m in methods}
-      bold = _best_set(hours, higher_better=False)
-      cells = ['–' if not len(hours[m]) else (f'**{_fmt(hours[m], 2)}**' if m in bold else _fmt(hours[m], 2))
-               for m in methods]
-      lines.append(f'| {ds} | {dev.upper()} | ' + ' | '.join(cells) + ' |')
-  return '\n'.join(lines)
-
-
 def headline(df: pd.DataFrame) -> str:
-  """The abstract/conclusion numbers: size reduction and search-time speed-up versus TabNAS and AgE."""
+  """The abstract/conclusion size numbers: TabGNS model size relative to TabNAS and AgE."""
   lines = []
   t2 = df[df.experiment == 'table2']
-  times = df[df.experiment.isin(['table2', 'table3'])]
-  for ds in [d for d in DATASETS if d in set(t2.dataset)]:
+  for ds in [d for d in DATASETS if d in set(t2.dataset)] + sorted(set(t2.dataset) - set(DATASETS)):
     sub = t2[t2.dataset == ds]
     g = sub[sub.method == 'tabgns'].n_params.mean()
     for m in ['tabnas', 'age']:
       o = sub[sub.method == m].n_params.mean()
       if np.isfinite(g) and np.isfinite(o) and o > 0:
         lines.append(f'- {ds}: TabGNS uses {g / o:.0%} of {METHOD_LABELS[m]} parameters ({1 - g / o:.0%} smaller)')
-    for dev in ['cpu', 'cuda']:
-      tsub = times[(times.dataset == ds) & (times.search_device == dev)]
-      g_t = tsub[tsub.method == 'tabgns'].search_time_s.mean()
-      for m in ['tabnas', 'age']:
-        # AgE only runs on CPU; compare GPU TabGNS against it too, as the paper's "up to 36x" does for TabNAS.
-        o_t = (times[(times.dataset == ds) & (times.method == m)] if m == 'age' else tsub[tsub.method == m]).search_time_s.mean()
-        if np.isfinite(g_t) and np.isfinite(o_t) and g_t > 0:
-          lines.append(f'- {ds} ({dev}): TabGNS search is {o_t / g_t:.1f}x faster than {METHOD_LABELS[m]}')
   return '\n'.join(lines)
-
-
-def fig2(df: pd.DataFrame, out: Path, dataset: str = 'vod') -> None:
-  import matplotlib.pyplot as plt
-  t2 = df[(df.experiment == 'table2') & (df.dataset == dataset)]
-  cpu = df[(df.dataset == dataset) & (df.search_device == 'cpu') & df.experiment.isin(['table2', 'table3'])]
-  ref = cpu[cpu.method == 'tabgns'].search_time_s.mean()
-  if t2.empty or not np.isfinite(ref):
-    return
-  fig, ax = plt.subplots(figsize=(6, 4))
-  for m in ['tabgns', 'tabnas', 'age']:
-    perf, params = t2[t2.method == m].test_metric.mean(), t2[t2.method == m].n_params.mean()
-    rel = cpu[cpu.method == m].search_time_s.mean() / ref
-    if np.isfinite(perf) and np.isfinite(rel):
-      ax.scatter(rel, perf, s=max(params / 500, 10), label=f'{METHOD_LABELS[m]} ({params / 1000:.0f}k params)')
-  ax.set_xlabel('Relative search time (CPU)')
-  ax.set_ylabel(t2.metric.iloc[0].upper())
-  ax.legend()
-  fig.tight_layout()
-  fig.savefig(out / 'fig2.png', dpi=150)
 
 
 def _param_curve(history: List[List[int]]) -> List[int]:
@@ -170,22 +125,23 @@ def fig4(df: pd.DataFrame, out: Path) -> None:
   fig.savefig(out / 'fig4.png', dpi=150)
 
 
-def fig5(df: pd.DataFrame, out: Path, dataset: str = 'vod') -> None:
+def fig5(df: pd.DataFrame, out: Path, dataset: str = 'covertype') -> None:
   import matplotlib.pyplot as plt
   sub = df[(df.experiment == 'fig5') & (df.dataset == dataset)]
   if sub.empty:
     return
-  agg = sub.groupby('gate_init').agg(mse=('test_metric', 'mean'), params=('n_params', 'mean')).reset_index()
+  label = 'Accuracy' if sub.metric.iloc[0] == 'accuracy' else 'MSE'
+  agg = sub.groupby('gate_init').agg(perf=('test_metric', 'mean'), params=('n_params', 'mean')).reset_index()
   agg['p_open'] = 1 / (1 + np.exp(-agg.gate_init))
   fig, ax = plt.subplots(figsize=(6, 4))
-  ax.plot(agg.p_open, agg.mse, 'o-', label='TabGNS (MSE)')
+  ax.plot(agg.p_open, agg.perf, 'o-', label=f'TabGNS ({label})')
   t2 = df[(df.experiment == 'table2') & (df.dataset == dataset)]
   for m, style, color in [('age', ':', 'tab:orange'), ('tabnas', '--', 'tab:red')]:
     v = t2[t2.method == m].test_metric.mean()
     if np.isfinite(v):
-      ax.axhline(v, linestyle=style, color=color, label=f'{METHOD_LABELS[m]} (MSE)')
+      ax.axhline(v, linestyle=style, color=color, label=f'{METHOD_LABELS[m]} ({label})')
   ax.set_xlabel('Initial probability of gate being open (p_open)')
-  ax.set_ylabel('MSE')
+  ax.set_ylabel(label)
   ax2 = ax.twinx()
   ax2.plot(agg.p_open, agg.params, 's-', color='tab:green', label='Number of parameters')
   ax2.set_yscale('log')
@@ -205,11 +161,10 @@ def main() -> None:
   args = parser.parse_args()
   df = load_results(args.results)
   args.out.mkdir(parents=True, exist_ok=True)
-  for name, fn in [('table2', lambda d: table2(d, args.size_tolerance)), ('table3', table3), ('headline', headline)]:
+  for name, fn in [('table2', lambda d: table2(d, args.size_tolerance)), ('headline', headline)]:
     text = fn(df)
     (args.out / f'{name}.md').write_text(text + '\n')
     print(f'## {name}\n{text}\n')
-  fig2(df, args.out)
   fig4(df, args.out)
   fig5(df, args.out)
   print(f'Figures written to {args.out}')
