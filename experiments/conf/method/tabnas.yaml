@@ -1,0 +1,10 @@
+name: tabnas
+width_options: ${nas_width_options}
+# Shared-weight pre-training for a quarter of the epochs, as described by the TabNAS authors.
+warmup_fraction: 0.25
+search_epochs: ${general.iters}
+mc_samples: 2048
+rl_lr: 0.001
+baseline_momentum: 0.9
+# The paper does not use TabNAS' parameter constraint, so every architecture is feasible.
+max_params: null

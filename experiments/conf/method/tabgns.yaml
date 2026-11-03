@@ -1,0 +1,9 @@
+# Same hyperparameters for every dataset (Sec. VI-A).
+name: tabgns
+temperature: 1.0
+arch_lr: 0.05
+# Gate logit g. The paper's p_open = sigmoid(g): -3 -> 4.7%. Fig. 4 uses p_open 0.12 / 0.88 (g = -2 / +2).
+gate_initialisation_val: -3
+scale: true
+# Warm-start fine-tuning epochs ("a small number" in the paper). null = general.iters with early stopping.
+finetune_epochs: null

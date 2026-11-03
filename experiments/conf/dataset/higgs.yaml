@@ -1,0 +1,4 @@
+name: higgs
+task: classification
+kind: openml
+loader: higgs_large   # OpenML 44129, 940,160 x 24, 2 classes (matches Table I)

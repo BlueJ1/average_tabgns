@@ -1,0 +1,8 @@
+# Small synthetic regression set for smoke-testing the pipeline.
+name: synthetic_reg
+task: regression
+kind: synthetic
+n_samples: 2000
+n_features: 9
+n_targets: 3
+noise: 5.0

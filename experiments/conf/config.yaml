@@ -1,0 +1,38 @@
+defaults:
+  - dataset: vod
+  - method: tabgns
+  - _self_
+
+# Name of the experiment; results go to ${results_dir}/${experiment}/<dataset>/<method>/<run_name>.json
+experiment: table2
+run_name: seed${seed}
+seed: 0
+device: cpu
+results_dir: results
+overwrite: false
+save_history: false
+
+# Shared training protocol (Sec. VI-A): lr 1e-3, max 300 epochs, early stopping patience 20.
+# Batch size is not in the paper; 256 is what conf/paper.yaml uses.
+general:
+  stop_criteria: 'val_loss'
+  batch_size: 256
+  iters: 300
+  stop_patience: 20
+  weight_lr: 0.001
+
+# Search space S: five layers of at most 512 units.
+search_space:
+  layer_widths: [512, 512, 512, 512, 512]
+  activation: 'relu'
+
+# The 20 discrete widths between 2 and 512 for TabNAS and AgE. The paper does not list them;
+# these are geometrically spaced (np.geomspace(2, 512, 20) rounded).
+nas_width_options: [2, 3, 4, 5, 6, 9, 12, 15, 21, 28, 37, 50, 66, 89, 119, 159, 213, 286, 382, 512]
+
+hydra:
+  run:
+    dir: outputs/${experiment}/${dataset.name}/${method.name}/${run_name}
+  sweep:
+    dir: outputs/multirun/${experiment}/${now:%Y-%m-%d_%H-%M-%S}
+    subdir: ${hydra.job.num}

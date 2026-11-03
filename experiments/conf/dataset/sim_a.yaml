@@ -1,0 +1,7 @@
+# Simulated 3 BS x 3 cells, 100 snapshots x 1,000 UEs: LTE 900 MHz RSRP (9) -> NR 4.5 GHz RSRP (9).
+name: sim_a
+task: regression
+kind: table
+path: ${oc.env:TABGNS_DATA,data}/sim_a.csv
+n_targets: 9
+target_columns: null
