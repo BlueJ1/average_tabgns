@@ -1,0 +1,11 @@
+# TabGNS on a gated TabM, with an independent gate mask per ensemble member (same gate logits).
+name: tabm_gns_member
+noise: member           # every ensemble member draws its own mask from the shared gate logits
+temperature: 1.0
+arch_lr: 0.05
+gate_initialisation_val: -3
+scale: true
+epochs: ${train.epochs}
+patience: ${train.patience}
+checkpoint: last        # as TabGNS (its EarlyStopper holds the live net, so it returns the last epoch)
+scratch_retrain: true   # also train the found widths from a fresh init, to separate warm start from architecture
