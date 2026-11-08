@@ -1,0 +1,9 @@
+[2026-11-03 19:38:40,455][HYDRA] Launching 2 jobs locally
+[2026-11-03 19:38:40,455][HYDRA] 	#0 : experiment=mean_gate_smoke dataset=synthetic_reg seed=0 search.epochs=4 finetune.epochs=4 search.layer_widths=[32,32,32] results_dir=results/mean_gate overwrite=True
+synthetic_reg seed 0 zero: widths=[0, 0, 0] best_epoch=3 fixed=37196.7617 extracted=37196.7617 finetuned=37198.7344 max|diff|=0.00e+00
+synthetic_reg seed 0 mean: widths=[0, 0, 0] best_epoch=3 fixed=37199.9961 extracted=37199.9961 finetuned=37196.7266 max|diff|=7.45e-09
+-> results/mean_gate/mean_gate_smoke/synthetic_reg/seed0.json
+[2026-11-03 19:38:41,923][HYDRA] 	#1 : experiment=mean_gate_smoke dataset=synthetic_cls seed=0 search.epochs=4 finetune.epochs=4 search.layer_widths=[32,32,32] results_dir=results/mean_gate overwrite=True
+synthetic_cls seed 0 zero: widths=[0, 0, 0] best_epoch=1 fixed=34.7500 extracted=34.7500 finetuned=34.7500 max|diff|=0.00e+00
+synthetic_cls seed 0 mean: widths=[0, 0, 0] best_epoch=0 fixed=30.0000 extracted=30.0000 finetuned=30.0000 max|diff|=1.40e-09
+-> results/mean_gate/mean_gate_smoke/synthetic_cls/seed0.json

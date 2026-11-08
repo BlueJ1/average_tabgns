@@ -1,0 +1,13 @@
+[2026-11-03 19:41:04,332][HYDRA] Launching 3 jobs locally
+[2026-11-03 19:41:04,332][HYDRA] 	#0 : experiment=supp_diabetes dataset=diabetes general.batch_size=32 seed=0 results_dir=results/mean_gate
+diabetes seed 0 zero: widths=[11, 7] best_epoch=44 fixed=3100.6052 extracted=3100.6052 finetuned=3100.6052 max|diff|=2.38e-07
+diabetes seed 0 mean: widths=[13, 13] best_epoch=39 fixed=3205.8757 extracted=3205.8765 finetuned=3205.8765 max|diff|=2.38e-07
+-> results/mean_gate/supp_diabetes/diabetes/seed0.json
+[2026-11-03 19:41:07,197][HYDRA] 	#1 : experiment=supp_diabetes dataset=diabetes general.batch_size=32 seed=1 results_dir=results/mean_gate
+diabetes seed 1 zero: widths=[14, 13] best_epoch=49 fixed=3129.1162 extracted=3129.1162 finetuned=3139.3599 max|diff|=2.38e-07
+diabetes seed 1 mean: widths=[15, 18] best_epoch=47 fixed=3033.1626 extracted=3033.1626 finetuned=3033.1626 max|diff|=3.58e-07
+-> results/mean_gate/supp_diabetes/diabetes/seed1.json
+[2026-11-03 19:41:09,268][HYDRA] 	#2 : experiment=supp_diabetes dataset=diabetes general.batch_size=32 seed=2 results_dir=results/mean_gate
+diabetes seed 2 zero: widths=[11, 15] best_epoch=38 fixed=3362.8469 extracted=3362.8462 finetuned=3362.8462 max|diff|=2.38e-07
+diabetes seed 2 mean: widths=[10, 11] best_epoch=48 fixed=3259.4846 extracted=3259.4846 finetuned=3259.4846 max|diff|=3.58e-07
+-> results/mean_gate/supp_diabetes/diabetes/seed2.json

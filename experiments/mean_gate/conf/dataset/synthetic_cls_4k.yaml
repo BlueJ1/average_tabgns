@@ -1,0 +1,9 @@
+# experiments/conf/dataset/synthetic_cls.yaml's generator (make_classification) with 4,000 rows.
+name: synthetic_cls_4k
+task: classification
+generator: classification
+n_samples: 4000
+n_features: 20
+n_informative: 10
+n_classes: 3
+data_seed: 0
