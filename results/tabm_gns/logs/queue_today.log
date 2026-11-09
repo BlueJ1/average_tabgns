@@ -1,0 +1,1533 @@
+[2026-11-09 13:07:15,647][openml.config][INFO] - No config file found at /Users/uni/.openml/config, using default configuration.
+[2026-11-09 13:07:15,807][urllib3.poolmanager][INFO] - Redirecting http://data.openml.org/datasets/0000/1590/dataset_1590.pq -> https://data.openml.org:443/datasets/0000/1590/dataset_1590.pq
+[2026-11-09 13:07:16,079][urllib3.poolmanager][INFO] - Redirecting http://data.openml.org/datasets/0000/1590/dataset_1590.pq -> https://data.openml.org:443/datasets/0000/1590/dataset_1590.pq
+[2026-11-09 13:07:16,879][openml.config][INFO] - No config file found at /Users/uni/.openml/config, using default configuration.
+[2026-11-09 13:07:16,898][openml.config][INFO] - No config file found at /Users/uni/.openml/config, using default configuration.
+[2026-11-09 13:07:17,018][urllib3.poolmanager][INFO] - Redirecting http://data.openml.org/datasets/0000/1590/dataset_1590.pq -> https://data.openml.org:443/datasets/0000/1590/dataset_1590.pq
+[2026-11-09 13:07:17,021][urllib3.poolmanager][INFO] - Redirecting http://data.openml.org/datasets/0000/1590/dataset_1590.pq -> https://data.openml.org:443/datasets/0000/1590/dataset_1590.pq
+[2026-11-09 13:07:17,234][urllib3.poolmanager][INFO] - Redirecting http://data.openml.org/datasets/0000/1590/dataset_1590.pq -> https://data.openml.org:443/datasets/0000/1590/dataset_1590.pq
+[2026-11-09 13:07:17,264][urllib3.poolmanager][INFO] - Redirecting http://data.openml.org/datasets/0000/1590/dataset_1590.pq -> https://data.openml.org:443/datasets/0000/1590/dataset_1590.pq
+[2026-11-09 13:07:17,823][openml.config][INFO] - No config file found at /Users/uni/.openml/config, using default configuration.
+[2026-11-09 13:07:17,941][urllib3.poolmanager][INFO] - Redirecting http://data.openml.org/datasets/0000/1590/dataset_1590.pq -> https://data.openml.org:443/datasets/0000/1590/dataset_1590.pq
+[2026-11-09 13:07:18,393][urllib3.poolmanager][INFO] - Redirecting http://data.openml.org/datasets/0000/1590/dataset_1590.pq -> https://data.openml.org:443/datasets/0000/1590/dataset_1590.pq
+[2026-11-09 13:07:18,817][openml.config][INFO] - No config file found at /Users/uni/.openml/config, using default configuration.
+[2026-11-09 13:07:18,870][openml.datasets.functions][WARNING] - Could not download file from https://data.openml.org/datasets/0000/1590/dataset_1590.pq: [Errno 2] No such file or directory: '/Users/uni/.openml/org/openml/www/datasets/1590/dataset_1590.pq.6f9af14fb61d70198b494ed54b7cf7b6.part.minio' -> '/Users/uni/.openml/org/openml/www/datasets/1590/dataset_1590.pq'
+[2026-11-09 13:07:18,871][openml.datasets.functions][WARNING] - Failed to download parquet, fallback on ARFF.
+[2026-11-09 13:07:18,872][openml.datasets.dataset][INFO] - pickle load data adult
+[2026-11-09 13:07:19,029][openml.datasets.functions][WARNING] - Could not download file from https://data.openml.org/datasets/0000/1590/dataset_1590.pq: [Errno 2] No such file or directory: '/Users/uni/.openml/org/openml/www/datasets/1590/dataset_1590.pq.6f9af14fb61d70198b494ed54b7cf7b6.part.minio' -> '/Users/uni/.openml/org/openml/www/datasets/1590/dataset_1590.pq'
+[2026-11-09 13:07:19,030][openml.datasets.functions][WARNING] - Failed to download parquet, fallback on ARFF.
+[2026-11-09 13:07:19,031][openml.datasets.dataset][INFO] - pickle load data adult
+Error executing job with overrides: ['dataset=adult', 'method=mlp_gns', 'seed=0']
+Error executing job with overrides: ['dataset=adult', 'method=mlp_large', 'seed=2']
+Traceback (most recent call last):
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 593, in _parse_data_from_pq
+    data = pd.read_parquet(data_file)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pandas/io/parquet.py", line 654, in read_parquet
+    impl = get_engine(engine)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pandas/io/parquet.py", line 62, in get_engine
+    return engine_class()
+           ^^^^^^^^^^^^^^
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pandas/io/parquet.py", line 165, in __init__
+    import pyarrow.parquet
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pyarrow/parquet/__init__.py", line 20, in <module>
+    from .core import *
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pyarrow/parquet/core.py", line 45, in <module>
+    from pyarrow.fs import (LocalFileSystem, FileSystem, FileType,
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pyarrow/fs.py", line 49, in <module>
+    from pyarrow._gcsfs import GcsFileSystem  # noqa
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pyarrow/_gcsfs.pyx", line 1, in init pyarrow._gcsfs
+ValueError: pyarrow.lib.IpcWriteOptions size changed, may indicate binary incompatibility. Expected 88 from C header, got 72 from PyObject
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/run.py", line 317, in main
+    _main(c, method, out)
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/run.py", line 325, in _main
+    data = prepare(c['dataset'], c['seed'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/protocol.py", line 73, in prepare
+    X, y, cat_mask, names = _openml_frame(cfg['openml_id'])
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/protocol.py", line 65, in _openml_frame
+    X, y, cat_mask, names = d.get_data(target=d.default_target_attribute, dataset_format='dataframe')
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 820, in get_data
+    data, categorical, attribute_names = self._load_data()
+                                         ^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 611, in _load_data
+    return self._cache_compressed_file_from_file(Path(file_to_load))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 556, in _cache_compressed_file_from_file
+    attribute_names, categorical, data = self._parse_data_from_file(data_file)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 586, in _parse_data_from_file
+    attribute_names, categorical, data = self._parse_data_from_pq(data_file)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 595, in _parse_data_from_pq
+    raise Exception(f"File: {data_file}") from e
+Exception: File: /Users/uni/.openml/org/openml/www/datasets/1590/dataset_1590.pq
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
+Traceback (most recent call last):
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 593, in _parse_data_from_pq
+    data = pd.read_parquet(data_file)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pandas/io/parquet.py", line 654, in read_parquet
+    impl = get_engine(engine)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pandas/io/parquet.py", line 62, in get_engine
+    return engine_class()
+           ^^^^^^^^^^^^^^
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pandas/io/parquet.py", line 165, in __init__
+    import pyarrow.parquet
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pyarrow/parquet/__init__.py", line 20, in <module>
+    from .core import *
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pyarrow/parquet/core.py", line 45, in <module>
+    from pyarrow.fs import (LocalFileSystem, FileSystem, FileType,
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pyarrow/fs.py", line 49, in <module>
+    from pyarrow._gcsfs import GcsFileSystem  # noqa
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pyarrow/_gcsfs.pyx", line 1, in init pyarrow._gcsfs
+ValueError: pyarrow.lib.IpcWriteOptions size changed, may indicate binary incompatibility. Expected 88 from C header, got 72 from PyObject
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/run.py", line 317, in main
+    _main(c, method, out)
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/run.py", line 325, in _main
+    data = prepare(c['dataset'], c['seed'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/protocol.py", line 73, in prepare
+    X, y, cat_mask, names = _openml_frame(cfg['openml_id'])
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/protocol.py", line 65, in _openml_frame
+    X, y, cat_mask, names = d.get_data(target=d.default_target_attribute, dataset_format='dataframe')
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 820, in get_data
+    data, categorical, attribute_names = self._load_data()
+                                         ^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 611, in _load_data
+    return self._cache_compressed_file_from_file(Path(file_to_load))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 556, in _cache_compressed_file_from_file
+    attribute_names, categorical, data = self._parse_data_from_file(data_file)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 586, in _parse_data_from_file
+    attribute_names, categorical, data = self._parse_data_from_pq(data_file)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 595, in _parse_data_from_pq
+    raise Exception(f"File: {data_file}") from e
+Exception: File: /Users/uni/.openml/org/openml/www/datasets/1590/dataset_1590.pq
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
+Early stopper initialized. Patience: 20
+  0%|          | 0/300 [00:00<?, ?it/s]Error executing job with overrides: ['dataset=adult', 'method=mlp_large', 'seed=0']
+Early stopper initialized. Patience: 20
+Training:   0%|          | 0/300 [00:00<?, ?it/s]Traceback (most recent call last):
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 593, in _parse_data_from_pq
+    data = pd.read_parquet(data_file)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pandas/io/parquet.py", line 654, in read_parquet
+    impl = get_engine(engine)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pandas/io/parquet.py", line 62, in get_engine
+    return engine_class()
+           ^^^^^^^^^^^^^^
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pandas/io/parquet.py", line 165, in __init__
+    import pyarrow.parquet
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pyarrow/parquet/__init__.py", line 20, in <module>
+    from .core import *
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pyarrow/parquet/core.py", line 45, in <module>
+    from pyarrow.fs import (LocalFileSystem, FileSystem, FileType,
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pyarrow/fs.py", line 49, in <module>
+    from pyarrow._gcsfs import GcsFileSystem  # noqa
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pyarrow/_gcsfs.pyx", line 1, in init pyarrow._gcsfs
+ValueError: pyarrow.lib.IpcWriteOptions size changed, may indicate binary incompatibility. Expected 88 from C header, got 72 from PyObject
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/run.py", line 317, in main
+    _main(c, method, out)
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/run.py", line 325, in _main
+    data = prepare(c['dataset'], c['seed'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/protocol.py", line 73, in prepare
+    X, y, cat_mask, names = _openml_frame(cfg['openml_id'])
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/protocol.py", line 65, in _openml_frame
+    X, y, cat_mask, names = d.get_data(target=d.default_target_attribute, dataset_format='dataframe')
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 820, in get_data
+    data, categorical, attribute_names = self._load_data()
+                                         ^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 611, in _load_data
+    return self._cache_compressed_file_from_file(Path(file_to_load))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 556, in _cache_compressed_file_from_file
+    attribute_names, categorical, data = self._parse_data_from_file(data_file)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 586, in _parse_data_from_file
+    attribute_names, categorical, data = self._parse_data_from_pq(data_file)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 595, in _parse_data_from_pq
+    raise Exception(f"File: {data_file}") from e
+Exception: File: /Users/uni/.openml/org/openml/www/datasets/1590/dataset_1590.pq
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
+Epoch 1/300, Train Loss: 0.3614, Valid Loss: 0.3342:   0%|          | 0/300 [00:03<?, ?it/s]Epoch 1/300, Train Loss: 0.3614, Valid Loss: 0.3342:   0%|          | 1/300 [00:03<16:43,  3.35s/it]Epoch 2/300, Train Loss: 0.3171, Valid Loss: 0.3199:   0%|          | 1/300 [00:06<16:43,  3.35s/it]Epoch 2/300, Train Loss: 0.3171, Valid Loss: 0.3199:   1%|          | 2/300 [00:06<16:35,  3.34s/it][2026-11-09 13:07:27,283][openml.config][INFO] - No config file found at /Users/uni/.openml/config, using default configuration.
+Error executing job with overrides: ['dataset=adult', 'method=mlp_gns', 'seed=2']
+Traceback (most recent call last):
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 593, in _parse_data_from_pq
+    data = pd.read_parquet(data_file)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pandas/io/parquet.py", line 654, in read_parquet
+    impl = get_engine(engine)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pandas/io/parquet.py", line 62, in get_engine
+    return engine_class()
+           ^^^^^^^^^^^^^^
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pandas/io/parquet.py", line 165, in __init__
+    import pyarrow.parquet
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pyarrow/parquet/__init__.py", line 20, in <module>
+    from .core import *
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pyarrow/parquet/core.py", line 45, in <module>
+    from pyarrow.fs import (LocalFileSystem, FileSystem, FileType,
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pyarrow/fs.py", line 49, in <module>
+    from pyarrow._gcsfs import GcsFileSystem  # noqa
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pyarrow/_gcsfs.pyx", line 1, in init pyarrow._gcsfs
+ValueError: pyarrow.lib.IpcWriteOptions size changed, may indicate binary incompatibility. Expected 88 from C header, got 72 from PyObject
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/run.py", line 317, in main
+    _main(c, method, out)
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/run.py", line 325, in _main
+    data = prepare(c['dataset'], c['seed'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/protocol.py", line 73, in prepare
+    X, y, cat_mask, names = _openml_frame(cfg['openml_id'])
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/protocol.py", line 65, in _openml_frame
+    X, y, cat_mask, names = d.get_data(target=d.default_target_attribute, dataset_format='dataframe')
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 820, in get_data
+    data, categorical, attribute_names = self._load_data()
+                                         ^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 611, in _load_data
+    return self._cache_compressed_file_from_file(Path(file_to_load))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 556, in _cache_compressed_file_from_file
+    attribute_names, categorical, data = self._parse_data_from_file(data_file)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 586, in _parse_data_from_file
+    attribute_names, categorical, data = self._parse_data_from_pq(data_file)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 595, in _parse_data_from_pq
+    raise Exception(f"File: {data_file}") from e
+Exception: File: /Users/uni/.openml/org/openml/www/datasets/1590/dataset_1590.pq
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
+[2026-11-09 13:07:27,580][openml.config][INFO] - No config file found at /Users/uni/.openml/config, using default configuration.
+[2026-11-09 13:07:27,729][urllib3.poolmanager][INFO] - Redirecting http://data.openml.org/datasets/0004/44025/dataset_44025.pq -> https://data.openml.org:443/datasets/0004/44025/dataset_44025.pq
+[2026-11-09 13:07:27,957][urllib3.poolmanager][INFO] - Redirecting http://data.openml.org/datasets/0004/44025/dataset_44025.pq -> https://data.openml.org:443/datasets/0004/44025/dataset_44025.pq
+Error executing job with overrides: ['dataset=california', 'method=tabm_gns', 'seed=1']
+Traceback (most recent call last):
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 593, in _parse_data_from_pq
+    data = pd.read_parquet(data_file)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pandas/io/parquet.py", line 654, in read_parquet
+    impl = get_engine(engine)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pandas/io/parquet.py", line 62, in get_engine
+    return engine_class()
+           ^^^^^^^^^^^^^^
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pandas/io/parquet.py", line 165, in __init__
+    import pyarrow.parquet
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pyarrow/parquet/__init__.py", line 20, in <module>
+    from .core import *
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pyarrow/parquet/core.py", line 45, in <module>
+    from pyarrow.fs import (LocalFileSystem, FileSystem, FileType,
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pyarrow/fs.py", line 49, in <module>
+    from pyarrow._gcsfs import GcsFileSystem  # noqa
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pyarrow/_gcsfs.pyx", line 1, in init pyarrow._gcsfs
+ValueError: pyarrow.lib.IpcWriteOptions size changed, may indicate binary incompatibility. Expected 88 from C header, got 72 from PyObject
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/run.py", line 317, in main
+    _main(c, method, out)
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/run.py", line 325, in _main
+    data = prepare(c['dataset'], c['seed'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/protocol.py", line 73, in prepare
+    X, y, cat_mask, names = _openml_frame(cfg['openml_id'])
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/protocol.py", line 65, in _openml_frame
+    X, y, cat_mask, names = d.get_data(target=d.default_target_attribute, dataset_format='dataframe')
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 820, in get_data
+    data, categorical, attribute_names = self._load_data()
+                                         ^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 611, in _load_data
+    return self._cache_compressed_file_from_file(Path(file_to_load))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 556, in _cache_compressed_file_from_file
+    attribute_names, categorical, data = self._parse_data_from_file(data_file)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 586, in _parse_data_from_file
+    attribute_names, categorical, data = self._parse_data_from_pq(data_file)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 595, in _parse_data_from_pq
+    raise Exception(f"File: {data_file}") from e
+Exception: File: /Users/uni/.openml/org/openml/www/datasets/44025/dataset_44025.pq
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
+Epoch 3/300, Train Loss: 0.3098, Valid Loss: 0.3128:   1%|          | 2/300 [00:10<16:35,  3.34s/it]Epoch 3/300, Train Loss: 0.3098, Valid Loss: 0.3128:   1%|          | 3/300 [00:10<17:04,  3.45s/it]Epochs: 0 Train Loss 0.6439, Val Acc 0.6478, N params 3751:   0%|          | 0/300 [00:10<?, ?it/s]Epochs: 0 Train Loss 0.6439, Val Acc 0.6478, N params 3751:   0%|          | 1/300 [00:10<52:22, 10.51s/it][2026-11-09 13:07:31,373][openml.config][INFO] - No config file found at /Users/uni/.openml/config, using default configuration.
+Error executing job with overrides: ['dataset=california', 'method=tabm_controls', 'seed=2']
+Traceback (most recent call last):
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 593, in _parse_data_from_pq
+    data = pd.read_parquet(data_file)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pandas/io/parquet.py", line 654, in read_parquet
+    impl = get_engine(engine)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pandas/io/parquet.py", line 62, in get_engine
+    return engine_class()
+           ^^^^^^^^^^^^^^
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pandas/io/parquet.py", line 165, in __init__
+    import pyarrow.parquet
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pyarrow/parquet/__init__.py", line 20, in <module>
+    from .core import *
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pyarrow/parquet/core.py", line 45, in <module>
+    from pyarrow.fs import (LocalFileSystem, FileSystem, FileType,
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pyarrow/fs.py", line 49, in <module>
+    from pyarrow._gcsfs import GcsFileSystem  # noqa
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pyarrow/_gcsfs.pyx", line 1, in init pyarrow._gcsfs
+ValueError: pyarrow.lib.IpcWriteOptions size changed, may indicate binary incompatibility. Expected 88 from C header, got 72 from PyObject
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/run.py", line 317, in main
+    _main(c, method, out)
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/run.py", line 325, in _main
+    data = prepare(c['dataset'], c['seed'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/protocol.py", line 73, in prepare
+    X, y, cat_mask, names = _openml_frame(cfg['openml_id'])
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/protocol.py", line 65, in _openml_frame
+    X, y, cat_mask, names = d.get_data(target=d.default_target_attribute, dataset_format='dataframe')
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 820, in get_data
+    data, categorical, attribute_names = self._load_data()
+                                         ^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 611, in _load_data
+    return self._cache_compressed_file_from_file(Path(file_to_load))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 556, in _cache_compressed_file_from_file
+    attribute_names, categorical, data = self._parse_data_from_file(data_file)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 586, in _parse_data_from_file
+    attribute_names, categorical, data = self._parse_data_from_pq(data_file)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 595, in _parse_data_from_pq
+    raise Exception(f"File: {data_file}") from e
+Exception: File: /Users/uni/.openml/org/openml/www/datasets/44025/dataset_44025.pq
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
+Epoch 4/300, Train Loss: 0.3004, Valid Loss: 0.3141:   1%|          | 3/300 [00:13<17:04,  3.45s/it]Epoch 4/300, Train Loss: 0.3004, Valid Loss: 0.3141:   1%|▏         | 4/300 [00:13<17:11,  3.49s/it][2026-11-09 13:07:34,860][openml.config][INFO] - No config file found at /Users/uni/.openml/config, using default configuration.
+Error executing job with overrides: ['dataset=adult', 'method=tabm_large', 'seed=0']
+Traceback (most recent call last):
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 593, in _parse_data_from_pq
+    data = pd.read_parquet(data_file)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pandas/io/parquet.py", line 654, in read_parquet
+    impl = get_engine(engine)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pandas/io/parquet.py", line 62, in get_engine
+    return engine_class()
+           ^^^^^^^^^^^^^^
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pandas/io/parquet.py", line 165, in __init__
+    import pyarrow.parquet
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pyarrow/parquet/__init__.py", line 20, in <module>
+    from .core import *
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pyarrow/parquet/core.py", line 45, in <module>
+    from pyarrow.fs import (LocalFileSystem, FileSystem, FileType,
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pyarrow/fs.py", line 49, in <module>
+    from pyarrow._gcsfs import GcsFileSystem  # noqa
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pyarrow/_gcsfs.pyx", line 1, in init pyarrow._gcsfs
+ValueError: pyarrow.lib.IpcWriteOptions size changed, may indicate binary incompatibility. Expected 88 from C header, got 72 from PyObject
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/run.py", line 317, in main
+    _main(c, method, out)
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/run.py", line 325, in _main
+    data = prepare(c['dataset'], c['seed'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/protocol.py", line 73, in prepare
+    X, y, cat_mask, names = _openml_frame(cfg['openml_id'])
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/protocol.py", line 65, in _openml_frame
+    X, y, cat_mask, names = d.get_data(target=d.default_target_attribute, dataset_format='dataframe')
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 820, in get_data
+    data, categorical, attribute_names = self._load_data()
+                                         ^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 611, in _load_data
+    return self._cache_compressed_file_from_file(Path(file_to_load))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 556, in _cache_compressed_file_from_file
+    attribute_names, categorical, data = self._parse_data_from_file(data_file)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 586, in _parse_data_from_file
+    attribute_names, categorical, data = self._parse_data_from_pq(data_file)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 595, in _parse_data_from_pq
+    raise Exception(f"File: {data_file}") from e
+Exception: File: /Users/uni/.openml/org/openml/www/datasets/1590/dataset_1590.pq
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
+Epoch 5/300, Train Loss: 0.2974, Valid Loss: 0.3178:   1%|▏         | 4/300 [00:16<17:11,  3.49s/it]Epoch 5/300, Train Loss: 0.2974, Valid Loss: 0.3178:   2%|▏         | 5/300 [00:16<16:32,  3.37s/it][2026-11-09 13:07:40,140][openml.config][INFO] - No config file found at /Users/uni/.openml/config, using default configuration.
+Error executing job with overrides: ['dataset=adult', 'method=tabm_large', 'seed=2']
+Traceback (most recent call last):
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 593, in _parse_data_from_pq
+    data = pd.read_parquet(data_file)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pandas/io/parquet.py", line 654, in read_parquet
+    impl = get_engine(engine)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pandas/io/parquet.py", line 62, in get_engine
+    return engine_class()
+           ^^^^^^^^^^^^^^
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pandas/io/parquet.py", line 165, in __init__
+    import pyarrow.parquet
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pyarrow/parquet/__init__.py", line 20, in <module>
+    from .core import *
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pyarrow/parquet/core.py", line 45, in <module>
+    from pyarrow.fs import (LocalFileSystem, FileSystem, FileType,
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pyarrow/fs.py", line 49, in <module>
+    from pyarrow._gcsfs import GcsFileSystem  # noqa
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pyarrow/_gcsfs.pyx", line 1, in init pyarrow._gcsfs
+ValueError: pyarrow.lib.IpcWriteOptions size changed, may indicate binary incompatibility. Expected 88 from C header, got 72 from PyObject
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/run.py", line 317, in main
+    _main(c, method, out)
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/run.py", line 325, in _main
+    data = prepare(c['dataset'], c['seed'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/protocol.py", line 73, in prepare
+    X, y, cat_mask, names = _openml_frame(cfg['openml_id'])
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/protocol.py", line 65, in _openml_frame
+    X, y, cat_mask, names = d.get_data(target=d.default_target_attribute, dataset_format='dataframe')
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 820, in get_data
+    data, categorical, attribute_names = self._load_data()
+                                         ^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 611, in _load_data
+    return self._cache_compressed_file_from_file(Path(file_to_load))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 556, in _cache_compressed_file_from_file
+    attribute_names, categorical, data = self._parse_data_from_file(data_file)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 586, in _parse_data_from_file
+    attribute_names, categorical, data = self._parse_data_from_pq(data_file)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 595, in _parse_data_from_pq
+    raise Exception(f"File: {data_file}") from e
+Exception: File: /Users/uni/.openml/org/openml/www/datasets/1590/dataset_1590.pq
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
+[2026-11-09 13:07:40,914][openml.config][INFO] - No config file found at /Users/uni/.openml/config, using default configuration.
+Epoch 6/300, Train Loss: 0.2926, Valid Loss: 0.3277:   2%|▏         | 5/300 [00:20<16:32,  3.37s/it]Epoch 6/300, Train Loss: 0.2926, Valid Loss: 0.3277:   2%|▏         | 6/300 [00:20<16:31,  3.37s/it]Epochs: 1 Train Loss 0.5506, Val Acc 0.7637, N params 6150:   0%|          | 1/300 [00:20<52:22, 10.51s/it]Epochs: 1 Train Loss 0.5506, Val Acc 0.7637, N params 6150:   1%|          | 2/300 [00:20<50:45, 10.22s/it]Error executing job with overrides: ['dataset=adult', 'method=tabm_large', 'seed=1']
+Traceback (most recent call last):
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 593, in _parse_data_from_pq
+    data = pd.read_parquet(data_file)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pandas/io/parquet.py", line 654, in read_parquet
+    impl = get_engine(engine)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pandas/io/parquet.py", line 62, in get_engine
+    return engine_class()
+           ^^^^^^^^^^^^^^
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pandas/io/parquet.py", line 165, in __init__
+    import pyarrow.parquet
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pyarrow/parquet/__init__.py", line 20, in <module>
+    from .core import *
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pyarrow/parquet/core.py", line 45, in <module>
+    from pyarrow.fs import (LocalFileSystem, FileSystem, FileType,
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pyarrow/fs.py", line 49, in <module>
+    from pyarrow._gcsfs import GcsFileSystem  # noqa
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pyarrow/_gcsfs.pyx", line 1, in init pyarrow._gcsfs
+ValueError: pyarrow.lib.IpcWriteOptions size changed, may indicate binary incompatibility. Expected 88 from C header, got 72 from PyObject
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/run.py", line 317, in main
+    _main(c, method, out)
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/run.py", line 325, in _main
+    data = prepare(c['dataset'], c['seed'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/protocol.py", line 73, in prepare
+    X, y, cat_mask, names = _openml_frame(cfg['openml_id'])
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/protocol.py", line 65, in _openml_frame
+    X, y, cat_mask, names = d.get_data(target=d.default_target_attribute, dataset_format='dataframe')
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 820, in get_data
+    data, categorical, attribute_names = self._load_data()
+                                         ^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 611, in _load_data
+    return self._cache_compressed_file_from_file(Path(file_to_load))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 556, in _cache_compressed_file_from_file
+    attribute_names, categorical, data = self._parse_data_from_file(data_file)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 586, in _parse_data_from_file
+    attribute_names, categorical, data = self._parse_data_from_pq(data_file)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 595, in _parse_data_from_pq
+    raise Exception(f"File: {data_file}") from e
+Exception: File: /Users/uni/.openml/org/openml/www/datasets/1590/dataset_1590.pq
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
+Epoch 7/300, Train Loss: 0.2895, Valid Loss: 0.3152:   2%|▏         | 6/300 [00:23<16:31,  3.37s/it]Epoch 7/300, Train Loss: 0.2895, Valid Loss: 0.3152:   2%|▏         | 7/300 [00:23<16:35,  3.40s/it][2026-11-09 13:07:45,088][openml.config][INFO] - No config file found at /Users/uni/.openml/config, using default configuration.
+Error executing job with overrides: ['dataset=california', 'method=tabm_controls_member', 'seed=0']
+Traceback (most recent call last):
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 593, in _parse_data_from_pq
+    data = pd.read_parquet(data_file)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pandas/io/parquet.py", line 654, in read_parquet
+    impl = get_engine(engine)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pandas/io/parquet.py", line 62, in get_engine
+    return engine_class()
+           ^^^^^^^^^^^^^^
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pandas/io/parquet.py", line 165, in __init__
+    import pyarrow.parquet
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pyarrow/parquet/__init__.py", line 20, in <module>
+    from .core import *
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pyarrow/parquet/core.py", line 45, in <module>
+    from pyarrow.fs import (LocalFileSystem, FileSystem, FileType,
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pyarrow/fs.py", line 49, in <module>
+    from pyarrow._gcsfs import GcsFileSystem  # noqa
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pyarrow/_gcsfs.pyx", line 1, in init pyarrow._gcsfs
+ValueError: pyarrow.lib.IpcWriteOptions size changed, may indicate binary incompatibility. Expected 88 from C header, got 72 from PyObject
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/run.py", line 317, in main
+    _main(c, method, out)
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/run.py", line 325, in _main
+    data = prepare(c['dataset'], c['seed'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/protocol.py", line 73, in prepare
+    X, y, cat_mask, names = _openml_frame(cfg['openml_id'])
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/protocol.py", line 65, in _openml_frame
+    X, y, cat_mask, names = d.get_data(target=d.default_target_attribute, dataset_format='dataframe')
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 820, in get_data
+    data, categorical, attribute_names = self._load_data()
+                                         ^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 611, in _load_data
+    return self._cache_compressed_file_from_file(Path(file_to_load))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 556, in _cache_compressed_file_from_file
+    attribute_names, categorical, data = self._parse_data_from_file(data_file)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 586, in _parse_data_from_file
+    attribute_names, categorical, data = self._parse_data_from_pq(data_file)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 595, in _parse_data_from_pq
+    raise Exception(f"File: {data_file}") from e
+Exception: File: /Users/uni/.openml/org/openml/www/datasets/44025/dataset_44025.pq
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
+Epoch 8/300, Train Loss: 0.2849, Valid Loss: 0.3194:   2%|▏         | 7/300 [00:27<16:35,  3.40s/it]Epoch 8/300, Train Loss: 0.2849, Valid Loss: 0.3194:   3%|▎         | 8/300 [00:27<16:53,  3.47s/it][2026-11-09 13:07:48,307][openml.config][INFO] - No config file found at /Users/uni/.openml/config, using default configuration.
+Error executing job with overrides: ['dataset=california', 'method=tabm_controls_member', 'seed=1']
+Traceback (most recent call last):
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 593, in _parse_data_from_pq
+    data = pd.read_parquet(data_file)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pandas/io/parquet.py", line 654, in read_parquet
+    impl = get_engine(engine)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pandas/io/parquet.py", line 62, in get_engine
+    return engine_class()
+           ^^^^^^^^^^^^^^
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pandas/io/parquet.py", line 165, in __init__
+    import pyarrow.parquet
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pyarrow/parquet/__init__.py", line 20, in <module>
+    from .core import *
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pyarrow/parquet/core.py", line 45, in <module>
+    from pyarrow.fs import (LocalFileSystem, FileSystem, FileType,
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pyarrow/fs.py", line 49, in <module>
+    from pyarrow._gcsfs import GcsFileSystem  # noqa
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pyarrow/_gcsfs.pyx", line 1, in init pyarrow._gcsfs
+ValueError: pyarrow.lib.IpcWriteOptions size changed, may indicate binary incompatibility. Expected 88 from C header, got 72 from PyObject
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/run.py", line 317, in main
+    _main(c, method, out)
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/run.py", line 325, in _main
+    data = prepare(c['dataset'], c['seed'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/protocol.py", line 73, in prepare
+    X, y, cat_mask, names = _openml_frame(cfg['openml_id'])
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/protocol.py", line 65, in _openml_frame
+    X, y, cat_mask, names = d.get_data(target=d.default_target_attribute, dataset_format='dataframe')
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 820, in get_data
+    data, categorical, attribute_names = self._load_data()
+                                         ^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 611, in _load_data
+    return self._cache_compressed_file_from_file(Path(file_to_load))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 556, in _cache_compressed_file_from_file
+    attribute_names, categorical, data = self._parse_data_from_file(data_file)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 586, in _parse_data_from_file
+    attribute_names, categorical, data = self._parse_data_from_pq(data_file)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 595, in _parse_data_from_pq
+    raise Exception(f"File: {data_file}") from e
+Exception: File: /Users/uni/.openml/org/openml/www/datasets/44025/dataset_44025.pq
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
+[2026-11-09 13:07:48,982][openml.config][INFO] - No config file found at /Users/uni/.openml/config, using default configuration.
+Error executing job with overrides: ['dataset=california', 'method=tabm_controls_member', 'seed=2']
+Traceback (most recent call last):
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 593, in _parse_data_from_pq
+    data = pd.read_parquet(data_file)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pandas/io/parquet.py", line 654, in read_parquet
+    impl = get_engine(engine)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pandas/io/parquet.py", line 62, in get_engine
+    return engine_class()
+           ^^^^^^^^^^^^^^
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pandas/io/parquet.py", line 165, in __init__
+    import pyarrow.parquet
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pyarrow/parquet/__init__.py", line 20, in <module>
+    from .core import *
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pyarrow/parquet/core.py", line 45, in <module>
+    from pyarrow.fs import (LocalFileSystem, FileSystem, FileType,
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pyarrow/fs.py", line 49, in <module>
+    from pyarrow._gcsfs import GcsFileSystem  # noqa
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pyarrow/_gcsfs.pyx", line 1, in init pyarrow._gcsfs
+ValueError: pyarrow.lib.IpcWriteOptions size changed, may indicate binary incompatibility. Expected 88 from C header, got 72 from PyObject
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/run.py", line 317, in main
+    _main(c, method, out)
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/run.py", line 325, in _main
+    data = prepare(c['dataset'], c['seed'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/protocol.py", line 73, in prepare
+    X, y, cat_mask, names = _openml_frame(cfg['openml_id'])
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/protocol.py", line 65, in _openml_frame
+    X, y, cat_mask, names = d.get_data(target=d.default_target_attribute, dataset_format='dataframe')
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 820, in get_data
+    data, categorical, attribute_names = self._load_data()
+                                         ^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 611, in _load_data
+    return self._cache_compressed_file_from_file(Path(file_to_load))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 556, in _cache_compressed_file_from_file
+    attribute_names, categorical, data = self._parse_data_from_file(data_file)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 586, in _parse_data_from_file
+    attribute_names, categorical, data = self._parse_data_from_pq(data_file)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 595, in _parse_data_from_pq
+    raise Exception(f"File: {data_file}") from e
+Exception: File: /Users/uni/.openml/org/openml/www/datasets/44025/dataset_44025.pq
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
+Epochs: 2 Train Loss 0.5182, Val Acc 0.7656, N params 21551:   1%|          | 2/300 [00:30<50:45, 10.22s/it]Epochs: 2 Train Loss 0.5182, Val Acc 0.7656, N params 21551:   1%|          | 3/300 [00:30<48:57,  9.89s/it]Epoch 9/300, Train Loss: 0.2817, Valid Loss: 0.3180:   3%|▎         | 8/300 [00:31<16:53,  3.47s/it]Epoch 9/300, Train Loss: 0.2817, Valid Loss: 0.3180:   3%|▎         | 9/300 [00:31<17:07,  3.53s/it]Epoch 10/300, Train Loss: 0.2768, Valid Loss: 0.3230:   3%|▎         | 9/300 [00:34<17:07,  3.53s/it]Epoch 10/300, Train Loss: 0.2768, Valid Loss: 0.3230:   3%|▎         | 10/300 [00:34<16:56,  3.50s/it][2026-11-09 13:07:56,004][openml.config][INFO] - No config file found at /Users/uni/.openml/config, using default configuration.
+[2026-11-09 13:07:56,137][urllib3.poolmanager][INFO] - Redirecting http://data.openml.org/datasets/0004/45548/dataset_45548.pq -> https://data.openml.org:443/datasets/0004/45548/dataset_45548.pq
+[2026-11-09 13:07:56,374][urllib3.poolmanager][INFO] - Redirecting http://data.openml.org/datasets/0004/45548/dataset_45548.pq -> https://data.openml.org:443/datasets/0004/45548/dataset_45548.pq
+[2026-11-09 13:07:57,357][openml.config][INFO] - No config file found at /Users/uni/.openml/config, using default configuration.
+[2026-11-09 13:07:57,422][openml.config][INFO] - No config file found at /Users/uni/.openml/config, using default configuration.
+[2026-11-09 13:07:57,497][urllib3.poolmanager][INFO] - Redirecting http://data.openml.org/datasets/0004/45548/dataset_45548.pq -> https://data.openml.org:443/datasets/0004/45548/dataset_45548.pq
+[2026-11-09 13:07:57,562][urllib3.poolmanager][INFO] - Redirecting http://data.openml.org/datasets/0004/45548/dataset_45548.pq -> https://data.openml.org:443/datasets/0004/45548/dataset_45548.pq
+[2026-11-09 13:07:57,696][urllib3.poolmanager][INFO] - Redirecting http://data.openml.org/datasets/0004/45548/dataset_45548.pq -> https://data.openml.org:443/datasets/0004/45548/dataset_45548.pq
+[2026-11-09 13:07:57,886][urllib3.poolmanager][INFO] - Redirecting http://data.openml.org/datasets/0004/45548/dataset_45548.pq -> https://data.openml.org:443/datasets/0004/45548/dataset_45548.pq
+Epoch 11/300, Train Loss: 0.2749, Valid Loss: 0.3214:   3%|▎         | 10/300 [00:37<16:56,  3.50s/it]Epoch 11/300, Train Loss: 0.2749, Valid Loss: 0.3214:   4%|▎         | 11/300 [00:37<16:30,  3.43s/it]Epochs: 3 Train Loss 0.3571, Val Acc 0.8184, N params 24043:   1%|          | 3/300 [00:39<48:57,  9.89s/it]Epochs: 3 Train Loss 0.3571, Val Acc 0.8184, N params 24043:   1%|▏         | 4/300 [00:39<48:15,  9.78s/it]Error executing job with overrides: ['dataset=otto', 'method=tabm_controls', 'method.rewind=false', 'seed=1']
+Traceback (most recent call last):
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 593, in _parse_data_from_pq
+    data = pd.read_parquet(data_file)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pandas/io/parquet.py", line 654, in read_parquet
+    impl = get_engine(engine)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pandas/io/parquet.py", line 62, in get_engine
+    return engine_class()
+           ^^^^^^^^^^^^^^
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pandas/io/parquet.py", line 165, in __init__
+    import pyarrow.parquet
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pyarrow/parquet/__init__.py", line 20, in <module>
+    from .core import *
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pyarrow/parquet/core.py", line 45, in <module>
+    from pyarrow.fs import (LocalFileSystem, FileSystem, FileType,
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pyarrow/fs.py", line 49, in <module>
+    from pyarrow._gcsfs import GcsFileSystem  # noqa
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pyarrow/_gcsfs.pyx", line 1, in init pyarrow._gcsfs
+ValueError: pyarrow.lib.IpcWriteOptions size changed, may indicate binary incompatibility. Expected 88 from C header, got 72 from PyObject
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/run.py", line 317, in main
+    _main(c, method, out)
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/run.py", line 325, in _main
+    data = prepare(c['dataset'], c['seed'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/protocol.py", line 73, in prepare
+    X, y, cat_mask, names = _openml_frame(cfg['openml_id'])
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/protocol.py", line 65, in _openml_frame
+    X, y, cat_mask, names = d.get_data(target=d.default_target_attribute, dataset_format='dataframe')
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 820, in get_data
+    data, categorical, attribute_names = self._load_data()
+                                         ^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 611, in _load_data
+    return self._cache_compressed_file_from_file(Path(file_to_load))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 556, in _cache_compressed_file_from_file
+    attribute_names, categorical, data = self._parse_data_from_file(data_file)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 586, in _parse_data_from_file
+    attribute_names, categorical, data = self._parse_data_from_pq(data_file)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 595, in _parse_data_from_pq
+    raise Exception(f"File: {data_file}") from e
+Exception: File: /Users/uni/.openml/org/openml/www/datasets/45548/dataset_45548.pq
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
+Epoch 12/300, Train Loss: 0.2719, Valid Loss: 0.3250:   4%|▎         | 11/300 [00:41<16:30,  3.43s/it]Epoch 12/300, Train Loss: 0.2719, Valid Loss: 0.3250:   4%|▍         | 12/300 [00:41<16:26,  3.43s/it]Epoch 13/300, Train Loss: 0.2654, Valid Loss: 0.3335:   4%|▍         | 12/300 [00:44<16:26,  3.43s/it]Epoch 13/300, Train Loss: 0.2654, Valid Loss: 0.3335:   4%|▍         | 13/300 [00:44<15:48,  3.31s/it][2026-11-09 13:08:06,525][openml.config][INFO] - No config file found at /Users/uni/.openml/config, using default configuration.
+Error executing job with overrides: ['dataset=otto', 'method=tabm_controls_member', 'seed=0']
+Traceback (most recent call last):
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 593, in _parse_data_from_pq
+    data = pd.read_parquet(data_file)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pandas/io/parquet.py", line 654, in read_parquet
+    impl = get_engine(engine)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pandas/io/parquet.py", line 62, in get_engine
+    return engine_class()
+           ^^^^^^^^^^^^^^
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pandas/io/parquet.py", line 165, in __init__
+    import pyarrow.parquet
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pyarrow/parquet/__init__.py", line 20, in <module>
+    from .core import *
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pyarrow/parquet/core.py", line 45, in <module>
+    from pyarrow.fs import (LocalFileSystem, FileSystem, FileType,
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pyarrow/fs.py", line 49, in <module>
+    from pyarrow._gcsfs import GcsFileSystem  # noqa
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pyarrow/_gcsfs.pyx", line 1, in init pyarrow._gcsfs
+ValueError: pyarrow.lib.IpcWriteOptions size changed, may indicate binary incompatibility. Expected 88 from C header, got 72 from PyObject
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/run.py", line 317, in main
+    _main(c, method, out)
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/run.py", line 325, in _main
+    data = prepare(c['dataset'], c['seed'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/protocol.py", line 73, in prepare
+    X, y, cat_mask, names = _openml_frame(cfg['openml_id'])
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/protocol.py", line 65, in _openml_frame
+    X, y, cat_mask, names = d.get_data(target=d.default_target_attribute, dataset_format='dataframe')
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 820, in get_data
+    data, categorical, attribute_names = self._load_data()
+                                         ^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 611, in _load_data
+    return self._cache_compressed_file_from_file(Path(file_to_load))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 556, in _cache_compressed_file_from_file
+    attribute_names, categorical, data = self._parse_data_from_file(data_file)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 586, in _parse_data_from_file
+    attribute_names, categorical, data = self._parse_data_from_pq(data_file)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 595, in _parse_data_from_pq
+    raise Exception(f"File: {data_file}") from e
+Exception: File: /Users/uni/.openml/org/openml/www/datasets/45548/dataset_45548.pq
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
+Epoch 14/300, Train Loss: 0.2627, Valid Loss: 0.3604:   4%|▍         | 13/300 [00:47<15:48,  3.31s/it]Epoch 14/300, Train Loss: 0.2627, Valid Loss: 0.3604:   5%|▍         | 14/300 [00:47<15:12,  3.19s/it]Epochs: 4 Train Loss 0.3348, Val Acc 0.8410, N params 25217:   1%|▏         | 4/300 [00:48<48:15,  9.78s/it]Epochs: 4 Train Loss 0.3348, Val Acc 0.8410, N params 25217:   2%|▏         | 5/300 [00:48<46:15,  9.41s/it]Error executing job with overrides: ['dataset=otto', 'method=tabm_controls', 'method.rewind=false', 'seed=2']
+Traceback (most recent call last):
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 593, in _parse_data_from_pq
+    data = pd.read_parquet(data_file)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pandas/io/parquet.py", line 654, in read_parquet
+    impl = get_engine(engine)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pandas/io/parquet.py", line 62, in get_engine
+    return engine_class()
+           ^^^^^^^^^^^^^^
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pandas/io/parquet.py", line 165, in __init__
+    import pyarrow.parquet
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pyarrow/parquet/__init__.py", line 20, in <module>
+    from .core import *
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pyarrow/parquet/core.py", line 45, in <module>
+    from pyarrow.fs import (LocalFileSystem, FileSystem, FileType,
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pyarrow/fs.py", line 49, in <module>
+    from pyarrow._gcsfs import GcsFileSystem  # noqa
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pyarrow/_gcsfs.pyx", line 1, in init pyarrow._gcsfs
+ValueError: pyarrow.lib.IpcWriteOptions size changed, may indicate binary incompatibility. Expected 88 from C header, got 72 from PyObject
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/run.py", line 317, in main
+    _main(c, method, out)
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/run.py", line 325, in _main
+    data = prepare(c['dataset'], c['seed'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/protocol.py", line 73, in prepare
+    X, y, cat_mask, names = _openml_frame(cfg['openml_id'])
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/protocol.py", line 65, in _openml_frame
+    X, y, cat_mask, names = d.get_data(target=d.default_target_attribute, dataset_format='dataframe')
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 820, in get_data
+    data, categorical, attribute_names = self._load_data()
+                                         ^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 611, in _load_data
+    return self._cache_compressed_file_from_file(Path(file_to_load))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 556, in _cache_compressed_file_from_file
+    attribute_names, categorical, data = self._parse_data_from_file(data_file)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 586, in _parse_data_from_file
+    attribute_names, categorical, data = self._parse_data_from_pq(data_file)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 595, in _parse_data_from_pq
+    raise Exception(f"File: {data_file}") from e
+Exception: File: /Users/uni/.openml/org/openml/www/datasets/45548/dataset_45548.pq
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
+[2026-11-09 13:08:09,651][openml.datasets.functions][WARNING] - Could not download file from https://data.openml.org/datasets/0004/45548/dataset_45548.pq: [Errno 2] No such file or directory: '/Users/uni/.openml/org/openml/www/datasets/45548/dataset_45548.pq.e991bd287bafd7670b7297a79881bfdf.part.minio' -> '/Users/uni/.openml/org/openml/www/datasets/45548/dataset_45548.pq'
+[2026-11-09 13:08:09,653][openml.datasets.functions][WARNING] - Failed to download parquet, fallback on ARFF.
+[2026-11-09 13:08:09,654][openml.datasets.dataset][INFO] - pickle load data Otto-Group-Product-Classification-Challenge
+[2026-11-09 13:08:09,661][openml.datasets.dataset][INFO] - Going to remove the following attributes: ['id']
+Epoch 15/300, Train Loss: 0.2584, Valid Loss: 0.3415:   5%|▍         | 14/300 [00:50<15:12,  3.19s/it]Epoch 15/300, Train Loss: 0.2584, Valid Loss: 0.3415:   5%|▌         | 15/300 [00:50<15:03,  3.17s/it][2026-11-09 13:08:13,023][openml.config][INFO] - No config file found at /Users/uni/.openml/config, using default configuration.
+[2026-11-09 13:08:13,172][urllib3.poolmanager][INFO] - Redirecting http://data.openml.org/datasets/0004/45548/dataset_45548.pq -> https://data.openml.org:443/datasets/0004/45548/dataset_45548.pq
+[2026-11-09 13:08:13,600][urllib3.poolmanager][INFO] - Redirecting http://data.openml.org/datasets/0004/45548/dataset_45548.pq -> https://data.openml.org:443/datasets/0004/45548/dataset_45548.pq
+Epoch 16/300, Train Loss: 0.2554, Valid Loss: 0.3845:   5%|▌         | 15/300 [00:53<15:03,  3.17s/it]Epoch 16/300, Train Loss: 0.2554, Valid Loss: 0.3845:   5%|▌         | 16/300 [00:53<14:43,  3.11s/it][2026-11-09 13:08:15,931][openml.config][INFO] - No config file found at /Users/uni/.openml/config, using default configuration.
+[2026-11-09 13:08:16,096][urllib3.poolmanager][INFO] - Redirecting http://data.openml.org/datasets/0004/45548/dataset_45548.pq -> https://data.openml.org:443/datasets/0004/45548/dataset_45548.pq
+[2026-11-09 13:08:16,295][urllib3.poolmanager][INFO] - Redirecting http://data.openml.org/datasets/0004/45548/dataset_45548.pq -> https://data.openml.org:443/datasets/0004/45548/dataset_45548.pq
+Epoch 17/300, Train Loss: 0.2501, Valid Loss: 0.3683:   5%|▌         | 16/300 [00:55<14:43,  3.11s/it]Epoch 17/300, Train Loss: 0.2501, Valid Loss: 0.3683:   6%|▌         | 17/300 [00:55<14:01,  2.98s/it]Epochs: 5 Train Loss 0.3229, Val Acc 0.8479, N params 23090:   2%|▏         | 5/300 [00:56<46:15,  9.41s/it]Epochs: 5 Train Loss 0.3229, Val Acc 0.8479, N params 23090:   2%|▏         | 6/300 [00:56<44:27,  9.07s/it]Epoch 18/300, Train Loss: 0.2411, Valid Loss: 0.4134:   6%|▌         | 17/300 [00:58<14:01,  2.98s/it]Epoch 18/300, Train Loss: 0.2411, Valid Loss: 0.4134:   6%|▌         | 18/300 [00:58<13:08,  2.79s/it]Epoch 19/300, Train Loss: 0.2428, Valid Loss: 0.3946:   6%|▌         | 18/300 [01:00<13:08,  2.79s/it]Epoch 19/300, Train Loss: 0.2428, Valid Loss: 0.3946:   6%|▋         | 19/300 [01:00<12:38,  2.70s/it]Error executing job with overrides: ['dataset=otto', 'method=tabm_controls_member', 'seed=1']
+Traceback (most recent call last):
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 593, in _parse_data_from_pq
+    data = pd.read_parquet(data_file)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pandas/io/parquet.py", line 654, in read_parquet
+    impl = get_engine(engine)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pandas/io/parquet.py", line 62, in get_engine
+    return engine_class()
+           ^^^^^^^^^^^^^^
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pandas/io/parquet.py", line 165, in __init__
+    import pyarrow.parquet
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pyarrow/parquet/__init__.py", line 20, in <module>
+    from .core import *
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pyarrow/parquet/core.py", line 45, in <module>
+    from pyarrow.fs import (LocalFileSystem, FileSystem, FileType,
+  File "/Users/uni/anaconda3/envs/torch311/lib/python3.11/site-packages/pyarrow/fs.py", line 49, in <module>
+    from pyarrow._gcsfs import GcsFileSystem  # noqa
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pyarrow/_gcsfs.pyx", line 1, in init pyarrow._gcsfs
+ValueError: pyarrow.lib.IpcWriteOptions size changed, may indicate binary incompatibility. Expected 88 from C header, got 72 from PyObject
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/run.py", line 317, in main
+    _main(c, method, out)
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/run.py", line 325, in _main
+    data = prepare(c['dataset'], c['seed'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/protocol.py", line 73, in prepare
+    X, y, cat_mask, names = _openml_frame(cfg['openml_id'])
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/experiments/tabm_gns/protocol.py", line 65, in _openml_frame
+    X, y, cat_mask, names = d.get_data(target=d.default_target_attribute, dataset_format='dataframe')
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 820, in get_data
+    data, categorical, attribute_names = self._load_data()
+                                         ^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 611, in _load_data
+    return self._cache_compressed_file_from_file(Path(file_to_load))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 556, in _cache_compressed_file_from_file
+    attribute_names, categorical, data = self._parse_data_from_file(data_file)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 586, in _parse_data_from_file
+    attribute_names, categorical, data = self._parse_data_from_pq(data_file)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/.venv/lib/python3.11/site-packages/openml/datasets/dataset.py", line 595, in _parse_data_from_pq
+    raise Exception(f"File: {data_file}") from e
+Exception: File: /Users/uni/.openml/org/openml/www/datasets/45548/dataset_45548.pq
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
+[2026-11-09 13:08:24,160][openml.datasets.functions][WARNING] - Could not download file from https://data.openml.org/datasets/0004/45548/dataset_45548.pq: [Errno 2] No such file or directory: '/Users/uni/.openml/org/openml/www/datasets/45548/dataset_45548.pq.e991bd287bafd7670b7297a79881bfdf.part.minio' -> '/Users/uni/.openml/org/openml/www/datasets/45548/dataset_45548.pq'
+[2026-11-09 13:08:24,163][openml.datasets.functions][WARNING] - Failed to download parquet, fallback on ARFF.
+[2026-11-09 13:08:24,163][openml.datasets.dataset][INFO] - pickle load data Otto-Group-Product-Classification-Challenge
+[2026-11-09 13:08:24,170][openml.datasets.dataset][INFO] - Going to remove the following attributes: ['id']
+Epoch 20/300, Train Loss: 0.2353, Valid Loss: 0.4204:   6%|▋         | 19/300 [01:03<12:38,  2.70s/it]Epoch 20/300, Train Loss: 0.2353, Valid Loss: 0.4204:   7%|▋         | 20/300 [01:03<12:55,  2.77s/it]Epochs: 6 Train Loss 0.3163, Val Acc 0.8488, N params 21045:   2%|▏         | 6/300 [01:04<44:27,  9.07s/it]Epochs: 6 Train Loss 0.3163, Val Acc 0.8488, N params 21045:   2%|▏         | 7/300 [01:04<42:17,  8.66s/it]Epoch 21/300, Train Loss: 0.2285, Valid Loss: 0.4365:   7%|▋         | 20/300 [01:06<12:55,  2.77s/it]Epoch 21/300, Train Loss: 0.2285, Valid Loss: 0.4365:   7%|▋         | 21/300 [01:06<12:46,  2.75s/it]Epoch 22/300, Train Loss: 0.2268, Valid Loss: 0.4723:   7%|▋         | 21/300 [01:08<12:46,  2.75s/it]Epoch 22/300, Train Loss: 0.2268, Valid Loss: 0.4723:   7%|▋         | 22/300 [01:08<12:26,  2.69s/it]Epoch 22/300, Train Loss: 0.2268, Valid Loss: 0.4723:   7%|▋         | 22/300 [01:11<15:04,  3.26s/it]
+Early stopping
+adult / mlp_large / seed 1: test={'accuracy': 85.60753403623707, 'logloss': 0.31132128842821305} widths=[512, 512, 512, 512, 512] time=73s -> /Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/results/tabm_gns/adult/mlp_large/seed1.json
+Epochs: 7 Train Loss 0.3106, Val Acc 0.8549, N params 18390:   2%|▏         | 7/300 [01:12<42:17,  8.66s/it]Epochs: 7 Train Loss 0.3106, Val Acc 0.8549, N params 18390:   3%|▎         | 8/300 [01:12<40:57,  8.42s/it]Epochs: 8 Train Loss 0.3052, Val Acc 0.8533, N params 16226:   3%|▎         | 8/300 [01:19<40:57,  8.42s/it]Epochs: 8 Train Loss 0.3052, Val Acc 0.8533, N params 16226:   3%|▎         | 9/300 [01:19<39:22,  8.12s/it]Epochs: 9 Train Loss 0.3057, Val Acc 0.8555, N params 15045:   3%|▎         | 9/300 [01:27<39:22,  8.12s/it]Epochs: 9 Train Loss 0.3057, Val Acc 0.8555, N params 15045:   3%|▎         | 10/300 [01:27<37:50,  7.83s/it]Epochs: 10 Train Loss 0.3005, Val Acc 0.8557, N params 12492:   3%|▎         | 10/300 [01:34<37:50,  7.83s/it]Epochs: 10 Train Loss 0.3005, Val Acc 0.8557, N params 12492:   4%|▎         | 11/300 [01:34<37:19,  7.75s/it]Epochs: 11 Train Loss 0.3030, Val Acc 0.8553, N params 9554:   4%|▎         | 11/300 [01:42<37:19,  7.75s/it] Epochs: 11 Train Loss 0.3030, Val Acc 0.8553, N params 9554:   4%|▍         | 12/300 [01:42<37:17,  7.77s/it][otto/tabm_gns_member uniform/s2 train] epoch 1 train 1.0575 valid 0.7849 widths [295, 295, 295] 43s
+Epochs: 12 Train Loss 0.3046, Val Acc 0.8523, N params 7766:   4%|▍         | 12/300 [01:50<37:17,  7.77s/it]Epochs: 12 Train Loss 0.3046, Val Acc 0.8523, N params 7766:   4%|▍         | 13/300 [01:50<36:47,  7.69s/it]Epochs: 13 Train Loss 0.3022, Val Acc 0.8572, N params 7482:   4%|▍         | 13/300 [01:58<36:47,  7.69s/it]Epochs: 13 Train Loss 0.3022, Val Acc 0.8572, N params 7482:   5%|▍         | 14/300 [01:58<37:02,  7.77s/it]Epochs: 14 Train Loss 0.3005, Val Acc 0.8549, N params 7061:   5%|▍         | 14/300 [02:05<37:02,  7.77s/it]Epochs: 14 Train Loss 0.3005, Val Acc 0.8549, N params 7061:   5%|▌         | 15/300 [02:05<36:26,  7.67s/it]Epochs: 15 Train Loss 0.2989, Val Acc 0.8567, N params 5896:   5%|▌         | 15/300 [02:13<36:26,  7.67s/it]Epochs: 15 Train Loss 0.2989, Val Acc 0.8567, N params 5896:   5%|▌         | 16/300 [02:13<36:17,  7.67s/it]Epochs: 16 Train Loss 0.3021, Val Acc 0.8560, N params 4997:   5%|▌         | 16/300 [02:20<36:17,  7.67s/it]Epochs: 16 Train Loss 0.3021, Val Acc 0.8560, N params 4997:   6%|▌         | 17/300 [02:20<35:59,  7.63s/it]Epochs: 17 Train Loss 0.2977, Val Acc 0.8565, N params 4435:   6%|▌         | 17/300 [02:28<35:59,  7.63s/it]Epochs: 17 Train Loss 0.2977, Val Acc 0.8565, N params 4435:   6%|▌         | 18/300 [02:28<36:03,  7.67s/it][otto/tabm_gns_member uniform/s2 train] epoch 2 train 0.8215 valid 0.7254 widths [295, 295, 295] 84s
+Epochs: 18 Train Loss 0.2977, Val Acc 0.8552, N params 4572:   6%|▌         | 18/300 [02:35<36:03,  7.67s/it]Epochs: 18 Train Loss 0.2977, Val Acc 0.8552, N params 4572:   6%|▋         | 19/300 [02:35<34:35,  7.39s/it]Epochs: 19 Train Loss 0.2984, Val Acc 0.8544, N params 4587:   6%|▋         | 19/300 [02:43<34:35,  7.39s/it]Epochs: 19 Train Loss 0.2984, Val Acc 0.8544, N params 4587:   7%|▋         | 20/300 [02:43<35:43,  7.66s/it]Epochs: 20 Train Loss 0.2987, Val Acc 0.8522, N params 4496:   7%|▋         | 20/300 [02:50<35:43,  7.66s/it]Epochs: 20 Train Loss 0.2987, Val Acc 0.8522, N params 4496:   7%|▋         | 21/300 [02:50<35:18,  7.59s/it]Epochs: 21 Train Loss 0.2968, Val Acc 0.8491, N params 4148:   7%|▋         | 21/300 [02:58<35:18,  7.59s/it]Epochs: 21 Train Loss 0.2968, Val Acc 0.8491, N params 4148:   7%|▋         | 22/300 [02:58<35:30,  7.66s/it]Epochs: 22 Train Loss 0.2941, Val Acc 0.8554, N params 3370:   7%|▋         | 22/300 [03:06<35:30,  7.66s/it]Epochs: 22 Train Loss 0.2941, Val Acc 0.8554, N params 3370:   8%|▊         | 23/300 [03:06<35:51,  7.77s/it][otto/tabm_gns_member uniform/s2 train] epoch 3 train 0.7792 valid 0.7106 widths [295, 295, 295] 125s
+Epochs: 23 Train Loss 0.2950, Val Acc 0.8552, N params 2818:   8%|▊         | 23/300 [03:13<35:51,  7.77s/it]Epochs: 23 Train Loss 0.2950, Val Acc 0.8552, N params 2818:   8%|▊         | 24/300 [03:13<34:36,  7.52s/it]Epochs: 24 Train Loss 0.2910, Val Acc 0.8558, N params 2799:   8%|▊         | 24/300 [03:20<34:36,  7.52s/it]Epochs: 24 Train Loss 0.2910, Val Acc 0.8558, N params 2799:   8%|▊         | 25/300 [03:20<33:23,  7.28s/it]Epochs: 25 Train Loss 0.2915, Val Acc 0.8524, N params 1956:   8%|▊         | 25/300 [03:28<33:23,  7.28s/it]Epochs: 25 Train Loss 0.2915, Val Acc 0.8524, N params 1956:   9%|▊         | 26/300 [03:28<34:18,  7.51s/it]Epochs: 26 Train Loss 0.2909, Val Acc 0.8542, N params 1804:   9%|▊         | 26/300 [03:35<34:18,  7.51s/it]Epochs: 26 Train Loss 0.2909, Val Acc 0.8542, N params 1804:   9%|▉         | 27/300 [03:35<33:33,  7.38s/it]Epochs: 27 Train Loss 0.2949, Val Acc 0.8573, N params 1528:   9%|▉         | 27/300 [03:43<33:33,  7.38s/it]Epochs: 27 Train Loss 0.2949, Val Acc 0.8573, N params 1528:   9%|▉         | 28/300 [03:43<33:47,  7.45s/it]Epochs: 28 Train Loss 0.2894, Val Acc 0.8529, N params 1293:   9%|▉         | 28/300 [03:50<33:47,  7.45s/it]Epochs: 28 Train Loss 0.2894, Val Acc 0.8529, N params 1293:  10%|▉         | 29/300 [03:50<33:15,  7.36s/it][otto/tabm_gns_member uniform/s2 train] epoch 4 train 0.7587 valid 0.6880 widths [295, 295, 295] 167s
+Epochs: 29 Train Loss 0.2899, Val Acc 0.8543, N params 1476:  10%|▉         | 29/300 [03:57<33:15,  7.36s/it]Epochs: 29 Train Loss 0.2899, Val Acc 0.8543, N params 1476:  10%|█         | 30/300 [03:57<32:51,  7.30s/it]Epochs: 30 Train Loss 0.2881, Val Acc 0.8567, N params 1296:  10%|█         | 30/300 [04:04<32:51,  7.30s/it]Epochs: 30 Train Loss 0.2881, Val Acc 0.8567, N params 1296:  10%|█         | 31/300 [04:04<32:54,  7.34s/it]Epochs: 31 Train Loss 0.2908, Val Acc 0.8529, N params 1602:  10%|█         | 31/300 [04:11<32:54,  7.34s/it]Epochs: 31 Train Loss 0.2908, Val Acc 0.8529, N params 1602:  11%|█         | 32/300 [04:11<31:45,  7.11s/it]Epochs: 32 Train Loss 0.2885, Val Acc 0.8538, N params 1381:  11%|█         | 32/300 [04:19<31:45,  7.11s/it]Epochs: 32 Train Loss 0.2885, Val Acc 0.8538, N params 1381:  11%|█         | 33/300 [04:19<32:20,  7.27s/it]Epochs: 33 Train Loss 0.2898, Val Acc 0.8557, N params 1253:  11%|█         | 33/300 [04:26<32:20,  7.27s/it]Epochs: 33 Train Loss 0.2898, Val Acc 0.8557, N params 1253:  11%|█▏        | 34/300 [04:26<32:42,  7.38s/it][otto/tabm_gns_member uniform/s2 train] epoch 5 train 0.7457 valid 0.6814 widths [295, 295, 295] 208s
+Epochs: 34 Train Loss 0.2881, Val Acc 0.8531, N params 1334:  11%|█▏        | 34/300 [04:35<32:42,  7.38s/it]Epochs: 34 Train Loss 0.2881, Val Acc 0.8531, N params 1334:  12%|█▏        | 35/300 [04:35<33:49,  7.66s/it]Epochs: 35 Train Loss 0.2892, Val Acc 0.8523, N params 1358:  12%|█▏        | 35/300 [04:41<33:49,  7.66s/it]Epochs: 35 Train Loss 0.2892, Val Acc 0.8523, N params 1358:  12%|█▏        | 36/300 [04:41<32:39,  7.42s/it]Epochs: 36 Train Loss 0.2879, Val Acc 0.8578, N params 1368:  12%|█▏        | 36/300 [04:49<32:39,  7.42s/it]Epochs: 36 Train Loss 0.2879, Val Acc 0.8578, N params 1368:  12%|█▏        | 37/300 [04:49<33:02,  7.54s/it]Epochs: 37 Train Loss 0.2839, Val Acc 0.8524, N params 1350:  12%|█▏        | 37/300 [04:57<33:02,  7.54s/it]Epochs: 37 Train Loss 0.2839, Val Acc 0.8524, N params 1350:  13%|█▎        | 38/300 [04:57<32:47,  7.51s/it]Epochs: 38 Train Loss 0.2870, Val Acc 0.8479, N params 1294:  13%|█▎        | 38/300 [05:04<32:47,  7.51s/it]Epochs: 38 Train Loss 0.2870, Val Acc 0.8479, N params 1294:  13%|█▎        | 39/300 [05:04<32:46,  7.53s/it]Epochs: 39 Train Loss 0.2868, Val Acc 0.8539, N params 1265:  13%|█▎        | 39/300 [05:11<32:46,  7.53s/it]Epochs: 39 Train Loss 0.2868, Val Acc 0.8539, N params 1265:  13%|█▎        | 40/300 [05:11<32:07,  7.41s/it][otto/tabm_gns_member uniform/s2 train] epoch 6 train 0.7321 valid 0.6586 widths [295, 295, 295] 249s
+Epochs: 40 Train Loss 0.2849, Val Acc 0.8550, N params 1284:  13%|█▎        | 40/300 [05:19<32:07,  7.41s/it]Epochs: 40 Train Loss 0.2849, Val Acc 0.8550, N params 1284:  14%|█▎        | 41/300 [05:19<32:02,  7.42s/it]Epochs: 41 Train Loss 0.2846, Val Acc 0.8571, N params 1186:  14%|█▎        | 41/300 [05:26<32:02,  7.42s/it]Epochs: 41 Train Loss 0.2846, Val Acc 0.8571, N params 1186:  14%|█▍        | 42/300 [05:26<31:32,  7.34s/it]Epochs: 42 Train Loss 0.2820, Val Acc 0.8536, N params 1073:  14%|█▍        | 42/300 [05:33<31:32,  7.34s/it]Epochs: 42 Train Loss 0.2820, Val Acc 0.8536, N params 1073:  14%|█▍        | 43/300 [05:33<31:28,  7.35s/it]Epochs: 43 Train Loss 0.2850, Val Acc 0.8536, N params 1220:  14%|█▍        | 43/300 [05:41<31:28,  7.35s/it]Epochs: 43 Train Loss 0.2850, Val Acc 0.8536, N params 1220:  15%|█▍        | 44/300 [05:41<31:33,  7.40s/it]Epochs: 44 Train Loss 0.2853, Val Acc 0.8526, N params 1020:  15%|█▍        | 44/300 [05:49<31:33,  7.40s/it]Epochs: 44 Train Loss 0.2853, Val Acc 0.8526, N params 1020:  15%|█▍        | 44/300 [05:49<33:52,  7.94s/it]
+Early stopping
+Early stopper initialized. Patience: 20
+Training:   0%|          | 0/300 [00:00<?, ?it/s]Epoch 1/300, Train Loss: 0.2767, Valid Loss: 0.3135:   0%|          | 0/300 [00:00<?, ?it/s]Epoch 1/300, Train Loss: 0.2767, Valid Loss: 0.3135:   0%|          | 1/300 [00:00<02:28,  2.01it/s]Epoch 2/300, Train Loss: 0.2737, Valid Loss: 0.3158:   0%|          | 1/300 [00:01<02:28,  2.01it/s]Epoch 2/300, Train Loss: 0.2737, Valid Loss: 0.3158:   1%|          | 2/300 [00:01<02:30,  1.98it/s]Epoch 3/300, Train Loss: 0.2741, Valid Loss: 0.3152:   1%|          | 2/300 [00:01<02:30,  1.98it/s]Epoch 3/300, Train Loss: 0.2741, Valid Loss: 0.3152:   1%|          | 3/300 [00:01<02:25,  2.04it/s]Epoch 4/300, Train Loss: 0.2725, Valid Loss: 0.3142:   1%|          | 3/300 [00:01<02:25,  2.04it/s]Epoch 4/300, Train Loss: 0.2725, Valid Loss: 0.3142:   1%|▏         | 4/300 [00:01<02:21,  2.10it/s]Epoch 5/300, Train Loss: 0.2709, Valid Loss: 0.3150:   1%|▏         | 4/300 [00:02<02:21,  2.10it/s]Epoch 5/300, Train Loss: 0.2709, Valid Loss: 0.3150:   2%|▏         | 5/300 [00:02<02:21,  2.09it/s]Epoch 6/300, Train Loss: 0.2696, Valid Loss: 0.3179:   2%|▏         | 5/300 [00:03<02:21,  2.09it/s]Epoch 6/300, Train Loss: 0.2696, Valid Loss: 0.3179:   2%|▏         | 6/300 [00:03<02:37,  1.86it/s]Epoch 7/300, Train Loss: 0.2696, Valid Loss: 0.3210:   2%|▏         | 6/300 [00:03<02:37,  1.86it/s]Epoch 7/300, Train Loss: 0.2696, Valid Loss: 0.3210:   2%|▏         | 7/300 [00:03<02:33,  1.91it/s]Epoch 8/300, Train Loss: 0.2698, Valid Loss: 0.3224:   2%|▏         | 7/300 [00:04<02:33,  1.91it/s]Epoch 8/300, Train Loss: 0.2698, Valid Loss: 0.3224:   3%|▎         | 8/300 [00:04<02:31,  1.93it/s]Epoch 9/300, Train Loss: 0.2672, Valid Loss: 0.3228:   3%|▎         | 8/300 [00:04<02:31,  1.93it/s]Epoch 9/300, Train Loss: 0.2672, Valid Loss: 0.3228:   3%|▎         | 9/300 [00:04<02:25,  2.00it/s]Epoch 10/300, Train Loss: 0.2659, Valid Loss: 0.3244:   3%|▎         | 9/300 [00:04<02:25,  2.00it/s]Epoch 10/300, Train Loss: 0.2659, Valid Loss: 0.3244:   3%|▎         | 10/300 [00:04<02:21,  2.05it/s]Epoch 11/300, Train Loss: 0.2645, Valid Loss: 0.3268:   3%|▎         | 10/300 [00:05<02:21,  2.05it/s]Epoch 11/300, Train Loss: 0.2645, Valid Loss: 0.3268:   4%|▎         | 11/300 [00:05<02:18,  2.09it/s]Epoch 12/300, Train Loss: 0.2639, Valid Loss: 0.3211:   4%|▎         | 11/300 [00:05<02:18,  2.09it/s]Epoch 12/300, Train Loss: 0.2639, Valid Loss: 0.3211:   4%|▍         | 12/300 [00:05<02:18,  2.09it/s]Epoch 13/300, Train Loss: 0.2624, Valid Loss: 0.3274:   4%|▍         | 12/300 [00:06<02:18,  2.09it/s]Epoch 13/300, Train Loss: 0.2624, Valid Loss: 0.3274:   4%|▍         | 13/300 [00:06<02:16,  2.11it/s]Epoch 14/300, Train Loss: 0.2617, Valid Loss: 0.3279:   4%|▍         | 13/300 [00:06<02:16,  2.11it/s]Epoch 14/300, Train Loss: 0.2617, Valid Loss: 0.3279:   5%|▍         | 14/300 [00:06<02:17,  2.08it/s]Epoch 15/300, Train Loss: 0.2612, Valid Loss: 0.3288:   5%|▍         | 14/300 [00:07<02:17,  2.08it/s]Epoch 15/300, Train Loss: 0.2612, Valid Loss: 0.3288:   5%|▌         | 15/300 [00:07<02:27,  1.94it/s][otto/tabm_gns_member uniform/s2 train] epoch 7 train 0.7179 valid 0.6634 widths [295, 295, 295] 291s
+Epoch 16/300, Train Loss: 0.2593, Valid Loss: 0.3355:   5%|▌         | 15/300 [00:07<02:27,  1.94it/s]Epoch 16/300, Train Loss: 0.2593, Valid Loss: 0.3355:   5%|▌         | 16/300 [00:07<02:23,  1.97it/s]Epoch 17/300, Train Loss: 0.2589, Valid Loss: 0.3294:   5%|▌         | 16/300 [00:08<02:23,  1.97it/s]Epoch 17/300, Train Loss: 0.2589, Valid Loss: 0.3294:   6%|▌         | 17/300 [00:08<02:21,  1.99it/s]Epoch 18/300, Train Loss: 0.2577, Valid Loss: 0.3373:   6%|▌         | 17/300 [00:08<02:21,  1.99it/s]Epoch 18/300, Train Loss: 0.2577, Valid Loss: 0.3373:   6%|▌         | 18/300 [00:08<02:18,  2.04it/s]Epoch 19/300, Train Loss: 0.2579, Valid Loss: 0.3335:   6%|▌         | 18/300 [00:09<02:18,  2.04it/s]Epoch 19/300, Train Loss: 0.2579, Valid Loss: 0.3335:   6%|▋         | 19/300 [00:09<02:17,  2.04it/s]Epoch 20/300, Train Loss: 0.2566, Valid Loss: 0.3353:   6%|▋         | 19/300 [00:09<02:17,  2.04it/s]Epoch 20/300, Train Loss: 0.2566, Valid Loss: 0.3353:   7%|▋         | 20/300 [00:09<02:13,  2.10it/s]Epoch 20/300, Train Loss: 0.2566, Valid Loss: 0.3353:   7%|▋         | 20/300 [00:10<02:25,  1.93it/s]
+Early stopping
+adult / mlp_gns / seed 1: test={'accuracy': 85.2185484696489, 'logloss': 0.31994991616148677} widths=[49, 15, 12, 5, 9] time=361s -> /Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/results/tabm_gns/adult/mlp_gns/seed1.json
+[otto/tabm_gns_member uniform/s2 train] epoch 8 train 0.7145 valid 0.6631 widths [295, 295, 295] 331s
+[otto/tabm_gns_member uniform/s2 train] epoch 9 train 0.7056 valid 0.6421 widths [295, 295, 295] 370s
+[otto/tabm_gns_member uniform/s2 train] epoch 10 train 0.6962 valid 0.6335 widths [295, 295, 295] 408s
+[otto/tabm_gns_member uniform/s2 train] epoch 11 train 0.6864 valid 0.6311 widths [295, 295, 295] 447s
+[otto/tabm_gns_member uniform/s2 train] epoch 12 train 0.6872 valid 0.6302 widths [295, 295, 295] 486s
+[otto/tabm_gns_member uniform/s2 train] epoch 13 train 0.6838 valid 0.6311 widths [295, 295, 295] 525s
+[otto/tabm_gns_member uniform/s2 train] epoch 14 train 0.6892 valid 0.6272 widths [295, 295, 295] 564s
+[otto/tabm_gns_member uniform/s2 train] epoch 15 train 0.6869 valid 0.6211 widths [295, 295, 295] 603s
+[otto/tabm_gns_member uniform/s2 train] epoch 16 train 0.6703 valid 0.6241 widths [295, 295, 295] 643s
+[otto/tabm_gns_member uniform/s2 train] epoch 17 train 0.6674 valid 0.6153 widths [295, 295, 295] 681s
+[otto/tabm_gns_member uniform/s2 train] epoch 18 train 0.6614 valid 0.6162 widths [295, 295, 295] 719s
+[otto/tabm_gns_member uniform/s2 train] epoch 19 train 0.6617 valid 0.6140 widths [295, 295, 295] 757s
+[otto/tabm_gns_member uniform/s2 train] epoch 20 train 0.6680 valid 0.6185 widths [295, 295, 295] 793s
+[otto/tabm_gns_member uniform/s2 train] epoch 21 train 0.6651 valid 0.6137 widths [295, 295, 295] 828s
+[otto/tabm_gns_member uniform/s2 train] epoch 22 train 0.6520 valid 0.6178 widths [295, 295, 295] 868s
+[otto/tabm_gns_member uniform/s2 train] epoch 23 train 0.6523 valid 0.6045 widths [295, 295, 295] 906s
+[otto/tabm_gns_member uniform/s2 train] epoch 24 train 0.6419 valid 0.6053 widths [295, 295, 295] 943s
+[otto/tabm_gns_member uniform/s2 train] epoch 25 train 0.6372 valid 0.6035 widths [295, 295, 295] 980s
+[otto/tabm_gns_member uniform/s2 train] epoch 26 train 0.6411 valid 0.6033 widths [295, 295, 295] 1016s
+[otto/tabm_gns_member uniform/s2 train] epoch 27 train 0.6463 valid 0.6013 widths [295, 295, 295] 1054s
+[otto/tabm_gns_member uniform/s2 train] epoch 28 train 0.6375 valid 0.6024 widths [295, 295, 295] 1093s
+[otto/tabm_gns_member uniform/s2 train] epoch 29 train 0.6388 valid 0.6058 widths [295, 295, 295] 1126s
+[otto/tabm_gns_member uniform/s2 train] epoch 30 train 0.6293 valid 0.5952 widths [295, 295, 295] 1157s
+[otto/tabm_gns_member uniform/s2 train] epoch 31 train 0.6263 valid 0.6021 widths [295, 295, 295] 1188s
+[otto/tabm_gns_member uniform/s2 train] epoch 32 train 0.6349 valid 0.5957 widths [295, 295, 295] 1220s
+[otto/tabm_gns_member uniform/s2 train] epoch 33 train 0.6319 valid 0.5953 widths [295, 295, 295] 1252s
+[otto/tabm_gns_member uniform/s2 train] epoch 34 train 0.6299 valid 0.5925 widths [295, 295, 295] 1283s
+[otto/tabm_gns_member uniform/s2 train] epoch 35 train 0.6289 valid 0.5967 widths [295, 295, 295] 1315s
+[otto/tabm_gns_member uniform/s2 train] epoch 36 train 0.6366 valid 0.5923 widths [295, 295, 295] 1347s
+[otto/tabm_gns_member uniform/s2 train] epoch 37 train 0.6319 valid 0.5966 widths [295, 295, 295] 1379s
+[otto/tabm_gns_member uniform/s2 train] epoch 38 train 0.6230 valid 0.5918 widths [295, 295, 295] 1410s
+[otto/tabm_gns_member uniform/s2 train] epoch 39 train 0.6182 valid 0.5896 widths [295, 295, 295] 1442s
+[otto/tabm_gns_member uniform/s2 train] epoch 40 train 0.6159 valid 0.5912 widths [295, 295, 295] 1474s
+[otto/tabm_gns_member uniform/s2 train] epoch 41 train 0.6205 valid 0.5893 widths [295, 295, 295] 1505s
+[otto/tabm_gns_member uniform/s2 train] epoch 42 train 0.6248 valid 0.5960 widths [295, 295, 295] 1536s
+[otto/tabm_gns_member uniform/s2 train] epoch 43 train 0.6220 valid 0.5915 widths [295, 295, 295] 1568s
+[otto/tabm_gns_member uniform/s2 train] epoch 44 train 0.6157 valid 0.5889 widths [295, 295, 295] 1596s
+[otto/tabm_gns_member uniform/s2 train] epoch 45 train 0.6121 valid 0.5847 widths [295, 295, 295] 1624s
+[otto/tabm_gns_member uniform/s2 train] epoch 46 train 0.6125 valid 0.5881 widths [295, 295, 295] 1652s
+[otto/tabm_gns_member uniform/s2 train] epoch 47 train 0.6192 valid 0.5871 widths [295, 295, 295] 1680s
+[otto/tabm_gns_member uniform/s2 train] epoch 48 train 0.6127 valid 0.5855 widths [295, 295, 295] 1708s
+[otto/tabm_gns_member uniform/s2 train] epoch 49 train 0.6143 valid 0.5826 widths [295, 295, 295] 1736s
+[otto/tabm_gns_member uniform/s2 train] epoch 50 train 0.6193 valid 0.5908 widths [295, 295, 295] 1765s
+[otto/tabm_gns_member uniform/s2 train] epoch 51 train 0.6136 valid 0.5855 widths [295, 295, 295] 1794s
+[otto/tabm_gns_member uniform/s2 train] epoch 52 train 0.6107 valid 0.5870 widths [295, 295, 295] 1822s
+[otto/tabm_gns_member uniform/s2 train] epoch 53 train 0.6145 valid 0.5838 widths [295, 295, 295] 1850s
+[otto/tabm_gns_member uniform/s2 train] epoch 54 train 0.6074 valid 0.5844 widths [295, 295, 295] 1880s
+[otto/tabm_gns_member uniform/s2 train] epoch 55 train 0.6049 valid 0.5851 widths [295, 295, 295] 1909s
+[otto/tabm_gns_member uniform/s2 train] epoch 56 train 0.6010 valid 0.5849 widths [295, 295, 295] 1935s
+[otto/tabm_gns_member uniform/s2 train] epoch 57 train 0.5994 valid 0.5842 widths [295, 295, 295] 1962s
+[otto/tabm_gns_member uniform/s2 train] epoch 58 train 0.5994 valid 0.5800 widths [295, 295, 295] 1990s
+[otto/tabm_gns_member uniform/s2 train] epoch 59 train 0.6052 valid 0.5855 widths [295, 295, 295] 2017s
+[otto/tabm_gns_member uniform/s2 train] epoch 60 train 0.6030 valid 0.5787 widths [295, 295, 295] 2044s
+[otto/tabm_gns_member uniform/s2 train] epoch 61 train 0.5963 valid 0.5780 widths [295, 295, 295] 2072s
+[otto/tabm_gns_member uniform/s2 train] epoch 62 train 0.5988 valid 0.5799 widths [295, 295, 295] 2100s
+[otto/tabm_gns_member uniform/s2 train] epoch 63 train 0.5978 valid 0.5824 widths [295, 295, 295] 2127s
+[otto/tabm_gns_member uniform/s2 train] epoch 64 train 0.6059 valid 0.5768 widths [295, 295, 295] 2155s
+[otto/tabm_gns_member uniform/s2 train] epoch 65 train 0.5971 valid 0.5790 widths [295, 295, 295] 2183s
+[otto/tabm_gns_member uniform/s2 train] epoch 66 train 0.5974 valid 0.5803 widths [295, 295, 295] 2212s
+[otto/tabm_gns_member uniform/s2 train] epoch 67 train 0.5954 valid 0.5778 widths [295, 295, 295] 2240s
+[otto/tabm_gns_member uniform/s2 train] epoch 68 train 0.5941 valid 0.5771 widths [295, 295, 295] 2267s
+[otto/tabm_gns_member uniform/s2 train] epoch 69 train 0.5948 valid 0.5752 widths [295, 295, 295] 2294s
+[otto/tabm_gns_member uniform/s2 train] epoch 70 train 0.5877 valid 0.5769 widths [295, 295, 295] 2320s
+[otto/tabm_gns_member uniform/s2 train] epoch 71 train 0.5902 valid 0.5719 widths [295, 295, 295] 2346s
+[otto/tabm_gns_member uniform/s2 train] epoch 72 train 0.5890 valid 0.5740 widths [295, 295, 295] 2373s
+[otto/tabm_gns_member uniform/s2 train] epoch 73 train 0.5921 valid 0.5789 widths [295, 295, 295] 2399s
+[otto/tabm_gns_member uniform/s2 train] epoch 74 train 0.5935 valid 0.5731 widths [295, 295, 295] 2426s
+[otto/tabm_gns_member uniform/s2 train] epoch 75 train 0.5885 valid 0.5772 widths [295, 295, 295] 2453s
+[otto/tabm_gns_member uniform/s2 train] epoch 76 train 0.5965 valid 0.5756 widths [295, 295, 295] 2480s
+[otto/tabm_gns_member uniform/s2 train] epoch 77 train 0.5996 valid 0.5754 widths [295, 295, 295] 2506s
+[otto/tabm_gns_member uniform/s2 train] epoch 78 train 0.5866 valid 0.5739 widths [295, 295, 295] 2530s
+[otto/tabm_gns_member uniform/s2 train] epoch 79 train 0.5859 valid 0.5722 widths [295, 295, 295] 2554s
+[otto/tabm_gns_member uniform/s2 train] epoch 80 train 0.5833 valid 0.5700 widths [295, 295, 295] 2578s
+[otto/tabm_gns_member uniform/s2 train] epoch 81 train 0.5834 valid 0.5716 widths [295, 295, 295] 2601s
+[otto/tabm_gns_member uniform/s2 train] epoch 82 train 0.5853 valid 0.5701 widths [295, 295, 295] 2624s
+[otto/tabm_gns_member uniform/s2 train] epoch 83 train 0.5811 valid 0.5713 widths [295, 295, 295] 2647s
+[otto/tabm_gns_member uniform/s2 train] epoch 84 train 0.5757 valid 0.5699 widths [295, 295, 295] 2670s
+[otto/tabm_gns_member uniform/s2 train] epoch 85 train 0.5782 valid 0.5728 widths [295, 295, 295] 2693s
+[otto/tabm_gns_member uniform/s2 train] epoch 86 train 0.5828 valid 0.5667 widths [295, 295, 295] 2716s
+[otto/tabm_gns_member uniform/s2 train] epoch 87 train 0.5885 valid 0.5686 widths [295, 295, 295] 2739s
+[otto/tabm_gns_member uniform/s2 train] epoch 88 train 0.5786 valid 0.5649 widths [295, 295, 295] 2761s
+[otto/tabm_gns_member uniform/s2 train] epoch 89 train 0.5789 valid 0.5707 widths [295, 295, 295] 2783s
+[otto/tabm_gns_member uniform/s2 train] epoch 90 train 0.5759 valid 0.5704 widths [295, 295, 295] 2805s
+[otto/tabm_gns_member uniform/s2 train] epoch 91 train 0.5829 valid 0.5719 widths [295, 295, 295] 2827s
+[otto/tabm_gns_member uniform/s2 train] epoch 92 train 0.5893 valid 0.5666 widths [295, 295, 295] 2849s
+[otto/tabm_gns_member uniform/s2 train] epoch 93 train 0.5784 valid 0.5661 widths [295, 295, 295] 2870s
+[otto/tabm_gns_member uniform/s2 train] epoch 94 train 0.5772 valid 0.5679 widths [295, 295, 295] 2890s
+[otto/tabm_gns_member uniform/s2 train] epoch 95 train 0.5742 valid 0.5646 widths [295, 295, 295] 2911s
+[otto/tabm_gns_member uniform/s2 train] epoch 96 train 0.5702 valid 0.5679 widths [295, 295, 295] 2931s
+[otto/tabm_gns_member uniform/s2 train] epoch 97 train 0.5719 valid 0.5654 widths [295, 295, 295] 2951s
+[otto/tabm_gns_member uniform/s2 train] epoch 98 train 0.5716 valid 0.5640 widths [295, 295, 295] 2972s
+[otto/tabm_gns_member uniform/s2 train] epoch 99 train 0.5692 valid 0.5632 widths [295, 295, 295] 2993s
+[otto/tabm_gns_member uniform/s2 train] epoch 100 train 0.5701 valid 0.5644 widths [295, 295, 295] 3013s
+[otto/tabm_gns_member uniform/s2 train] epoch 101 train 0.5702 valid 0.5642 widths [295, 295, 295] 3032s
+[otto/tabm_gns_member uniform/s2 train] epoch 102 train 0.5754 valid 0.5663 widths [295, 295, 295] 3052s
+[otto/tabm_gns_member uniform/s2 train] epoch 103 train 0.5736 valid 0.5653 widths [295, 295, 295] 3073s
+[otto/tabm_gns_member uniform/s2 train] epoch 104 train 0.5731 valid 0.5635 widths [295, 295, 295] 3093s
+[otto/tabm_gns_member uniform/s2 train] epoch 105 train 0.5704 valid 0.5642 widths [295, 295, 295] 3112s
+[otto/tabm_gns_member uniform/s2 train] epoch 106 train 0.5720 valid 0.5638 widths [295, 295, 295] 3132s
+[otto/tabm_gns_member uniform/s2 train] epoch 107 train 0.5696 valid 0.5625 widths [295, 295, 295] 3152s
+[otto/tabm_gns_member uniform/s2 train] epoch 108 train 0.5723 valid 0.5652 widths [295, 295, 295] 3172s
+[otto/tabm_gns_member uniform/s2 train] epoch 109 train 0.5743 valid 0.5650 widths [295, 295, 295] 3202s
+[otto/tabm_gns_member uniform/s2 train] epoch 110 train 0.5691 valid 0.5612 widths [295, 295, 295] 3239s
+[otto/tabm_gns_member uniform/s2 train] epoch 111 train 0.5756 valid 0.5661 widths [295, 295, 295] 3277s
+[otto/tabm_gns_member uniform/s2 train] epoch 112 train 0.5744 valid 0.5630 widths [295, 295, 295] 3314s
+[otto/tabm_gns_member uniform/s2 train] epoch 113 train 0.5699 valid 0.5590 widths [295, 295, 295] 3351s
+[otto/tabm_gns_member uniform/s2 train] epoch 114 train 0.5683 valid 0.5606 widths [295, 295, 295] 3389s
+[otto/tabm_gns_member uniform/s2 train] epoch 115 train 0.5716 valid 0.5647 widths [295, 295, 295] 3426s
+[otto/tabm_gns_member uniform/s2 train] epoch 116 train 0.5694 valid 0.5621 widths [295, 295, 295] 3465s
+[otto/tabm_gns_member uniform/s2 train] epoch 117 train 0.5622 valid 0.5607 widths [295, 295, 295] 3504s
+[otto/tabm_gns_member uniform/s2 train] epoch 118 train 0.5624 valid 0.5627 widths [295, 295, 295] 3542s
+[otto/tabm_gns uniform/s0 train] epoch 1 train 1.1104 valid 0.7880 widths [251, 251, 251] 35s
+[otto/tabm_gns_member uniform/s2 train] epoch 119 train 0.5623 valid 0.5598 widths [295, 295, 295] 3581s
+[otto/tabm_gns uniform/s0 train] epoch 2 train 0.8423 valid 0.7206 widths [251, 251, 251] 71s
+[otto/tabm_gns_member uniform/s2 train] epoch 120 train 0.5617 valid 0.5627 widths [295, 295, 295] 3619s
+[otto/tabm_gns uniform/s0 train] epoch 3 train 0.8029 valid 0.7048 widths [251, 251, 251] 108s
+[otto/tabm_gns_member uniform/s2 train] epoch 121 train 0.5642 valid 0.5617 widths [295, 295, 295] 3658s
+[otto/tabm_gns uniform/s0 train] epoch 4 train 0.7745 valid 0.6893 widths [251, 251, 251] 144s
+[otto/tabm_gns_member uniform/s2 train] epoch 122 train 0.5678 valid 0.5595 widths [295, 295, 295] 3698s
+[otto/tabm_gns uniform/s0 train] epoch 5 train 0.7552 valid 0.6781 widths [251, 251, 251] 179s
+[otto/tabm_gns_member uniform/s2 train] epoch 123 train 0.5696 valid 0.5595 widths [295, 295, 295] 3736s
+[otto/tabm_gns uniform/s0 train] epoch 6 train 0.7416 valid 0.6710 widths [251, 251, 251] 215s
+[otto/tabm_gns_member uniform/s2 train] epoch 124 train 0.5613 valid 0.5580 widths [295, 295, 295] 3775s
+[otto/tabm_gns uniform/s0 train] epoch 7 train 0.7400 valid 0.6668 widths [251, 251, 251] 250s
+[otto/tabm_gns uniform/s0 train] epoch 8 train 0.7353 valid 0.6449 widths [251, 251, 251] 286s
+[otto/tabm_gns_member uniform/s2 train] epoch 125 train 0.5604 valid 0.5612 widths [295, 295, 295] 3814s
+[otto/tabm_gns uniform/s0 train] epoch 9 train 0.7212 valid 0.6561 widths [251, 251, 251] 322s
+[otto/tabm_gns_member uniform/s2 train] epoch 126 train 0.5614 valid 0.5635 widths [295, 295, 295] 3852s
+[otto/tabm_gns uniform/s0 train] epoch 10 train 0.7141 valid 0.6397 widths [251, 251, 251] 358s
+[otto/tabm_gns_member uniform/s2 train] epoch 127 train 0.5587 valid 0.5635 widths [295, 295, 295] 3891s
+[otto/tabm_gns uniform/s0 train] epoch 11 train 0.7064 valid 0.6393 widths [251, 251, 251] 394s
+[otto/tabm_gns_member uniform/s2 train] epoch 128 train 0.5615 valid 0.5614 widths [295, 295, 295] 3929s
+[otto/tabm_gns uniform/s0 train] epoch 12 train 0.7108 valid 0.6443 widths [251, 251, 251] 431s
+[otto/tabm_gns_member uniform/s2 train] epoch 129 train 0.5618 valid 0.5625 widths [295, 295, 295] 3968s
+[otto/tabm_gns uniform/s0 train] epoch 13 train 0.7036 valid 0.6410 widths [251, 251, 251] 466s
+[otto/tabm_gns_member uniform/s2 train] epoch 130 train 0.5586 valid 0.5586 widths [295, 295, 295] 4007s
+[otto/tabm_gns uniform/s0 train] epoch 14 train 0.7005 valid 0.6339 widths [251, 251, 251] 502s
+[otto/tabm_gns_member uniform/s2 train] epoch 131 train 0.5589 valid 0.5606 widths [295, 295, 295] 4045s
+[otto/tabm_gns uniform/s0 train] epoch 15 train 0.6954 valid 0.6384 widths [251, 251, 251] 538s
+[otto/tabm_gns_member uniform/s2 train] epoch 132 train 0.5605 valid 0.5598 widths [295, 295, 295] 4085s
+[otto/tabm_gns uniform/s0 train] epoch 16 train 0.6941 valid 0.6345 widths [251, 251, 251] 573s
+[otto/tabm_gns_member uniform/s2 train] epoch 133 train 0.5566 valid 0.5580 widths [295, 295, 295] 4123s
+[otto/tabm_gns uniform/s0 train] epoch 17 train 0.6834 valid 0.6243 widths [251, 251, 251] 609s
+[otto/tabm_gns_member uniform/s2 train] epoch 134 train 0.5575 valid 0.5608 widths [295, 295, 295] 4162s
+[otto/tabm_gns uniform/s0 train] epoch 18 train 0.6907 valid 0.6214 widths [251, 251, 251] 644s
+[otto/tabm_gns_member uniform/s2 train] epoch 135 train 0.5592 valid 0.5599 widths [295, 295, 295] 4201s
+[otto/tabm_gns uniform/s0 train] epoch 19 train 0.6915 valid 0.6296 widths [251, 251, 251] 680s
+[otto/tabm_gns_member uniform/s2 train] epoch 136 train 0.5624 valid 0.5583 widths [295, 295, 295] 4240s
+[otto/tabm_gns uniform/s0 train] epoch 20 train 0.6797 valid 0.6193 widths [251, 251, 251] 715s
+[otto/tabm_gns uniform/s0 train] epoch 21 train 0.6759 valid 0.6258 widths [251, 251, 251] 751s
+[otto/tabm_gns_member uniform/s2 train] epoch 137 train 0.5572 valid 0.5565 widths [295, 295, 295] 4279s
+[otto/tabm_gns uniform/s0 train] epoch 22 train 0.6784 valid 0.6115 widths [251, 251, 251] 786s
+[otto/tabm_gns_member uniform/s2 train] epoch 138 train 0.5550 valid 0.5580 widths [295, 295, 295] 4319s
+[otto/tabm_gns uniform/s0 train] epoch 23 train 0.6694 valid 0.6175 widths [251, 251, 251] 822s
+[otto/tabm_gns_member uniform/s2 train] epoch 139 train 0.5512 valid 0.5576 widths [295, 295, 295] 4358s
+[otto/tabm_gns uniform/s0 train] epoch 24 train 0.6671 valid 0.6135 widths [251, 251, 251] 857s
+[otto/tabm_gns_member uniform/s2 train] epoch 140 train 0.5537 valid 0.5604 widths [295, 295, 295] 4394s
+[otto/tabm_gns uniform/s0 train] epoch 25 train 0.6689 valid 0.6127 widths [251, 251, 251] 890s
+[otto/tabm_gns_member uniform/s2 train] epoch 141 train 0.5566 valid 0.5583 widths [295, 295, 295] 4431s
+[otto/tabm_gns uniform/s0 train] epoch 26 train 0.6683 valid 0.6157 widths [251, 251, 251] 923s
+[otto/tabm_gns_member uniform/s2 train] epoch 142 train 0.5586 valid 0.5568 widths [295, 295, 295] 4467s
+[otto/tabm_gns uniform/s0 train] epoch 27 train 0.6717 valid 0.6132 widths [251, 251, 251] 955s
+[otto/tabm_gns_member uniform/s2 train] epoch 143 train 0.5637 valid 0.5605 widths [295, 295, 295] 4502s
+[otto/tabm_gns uniform/s0 train] epoch 28 train 0.6651 valid 0.6136 widths [251, 251, 251] 988s
+[otto/tabm_gns_member uniform/s2 train] epoch 144 train 0.5556 valid 0.5589 widths [295, 295, 295] 4538s
+[otto/tabm_gns uniform/s0 train] epoch 29 train 0.6598 valid 0.6061 widths [251, 251, 251] 1021s
+[otto/tabm_gns_member uniform/s2 train] epoch 145 train 0.5545 valid 0.5614 widths [295, 295, 295] 4574s
+[otto/tabm_gns uniform/s0 train] epoch 30 train 0.6624 valid 0.6030 widths [251, 251, 251] 1055s
+[otto/tabm_gns_member uniform/s2 train] epoch 146 train 0.5550 valid 0.5574 widths [295, 295, 295] 4611s
+[otto/tabm_gns uniform/s0 train] epoch 31 train 0.6559 valid 0.6064 widths [251, 251, 251] 1089s
+[otto/tabm_gns_member uniform/s2 train] epoch 147 train 0.5583 valid 0.5588 widths [295, 295, 295] 4649s
+[otto/tabm_gns uniform/s0 train] epoch 32 train 0.6562 valid 0.6057 widths [251, 251, 251] 1124s
+[otto/tabm_gns uniform/s0 train] epoch 33 train 0.6547 valid 0.6068 widths [251, 251, 251] 1158s
+[otto/tabm_gns_member uniform/s2 train] epoch 148 train 0.5575 valid 0.5553 widths [295, 295, 295] 4685s
+[otto/tabm_gns uniform/s0 train] epoch 34 train 0.6619 valid 0.6023 widths [251, 251, 251] 1190s
+[otto/tabm_gns_member uniform/s2 train] epoch 149 train 0.5573 valid 0.5553 widths [295, 295, 295] 4720s
+[otto/tabm_gns uniform/s0 train] epoch 35 train 0.6579 valid 0.6072 widths [251, 251, 251] 1223s
+[otto/tabm_gns_member uniform/s2 train] epoch 150 train 0.5572 valid 0.5548 widths [295, 295, 295] 4755s
+[otto/tabm_gns uniform/s0 train] epoch 36 train 0.6515 valid 0.6021 widths [251, 251, 251] 1255s
+[otto/tabm_gns_member uniform/s2 train] epoch 151 train 0.5577 valid 0.5592 widths [295, 295, 295] 4790s
+[otto/tabm_gns uniform/s0 train] epoch 37 train 0.6510 valid 0.5978 widths [251, 251, 251] 1288s
+[otto/tabm_gns_member uniform/s2 train] epoch 152 train 0.5500 valid 0.5546 widths [295, 295, 295] 4825s
+[otto/tabm_gns uniform/s0 train] epoch 38 train 0.6485 valid 0.5987 widths [251, 251, 251] 1320s
+[otto/tabm_gns_member uniform/s2 train] epoch 153 train 0.5537 valid 0.5561 widths [295, 295, 295] 4860s
+[otto/tabm_gns uniform/s0 train] epoch 39 train 0.6440 valid 0.5951 widths [251, 251, 251] 1353s
+[otto/tabm_gns_member uniform/s2 train] epoch 154 train 0.5628 valid 0.5590 widths [295, 295, 295] 4896s
+[otto/tabm_gns uniform/s0 train] epoch 40 train 0.6476 valid 0.5960 widths [251, 251, 251] 1385s
+[otto/tabm_gns_member uniform/s2 train] epoch 155 train 0.5594 valid 0.5575 widths [295, 295, 295] 4932s
+[otto/tabm_gns uniform/s0 train] epoch 41 train 0.6414 valid 0.5960 widths [251, 251, 251] 1418s
+[otto/tabm_gns_member uniform/s2 train] epoch 156 train 0.5515 valid 0.5540 widths [295, 295, 295] 4968s
+[otto/tabm_gns uniform/s0 train] epoch 42 train 0.6455 valid 0.5987 widths [251, 251, 251] 1451s
+[otto/tabm_gns_member uniform/s2 train] epoch 157 train 0.5507 valid 0.5553 widths [295, 295, 295] 5004s
+[otto/tabm_gns uniform/s0 train] epoch 43 train 0.6479 valid 0.6002 widths [251, 251, 251] 1485s
+[otto/tabm_gns_member uniform/s2 train] epoch 158 train 0.5606 valid 0.5580 widths [295, 295, 295] 5040s
+[otto/tabm_gns uniform/s0 train] epoch 44 train 0.6529 valid 0.6017 widths [251, 251, 251] 1519s
+[otto/tabm_gns_member uniform/s2 train] epoch 159 train 0.5528 valid 0.5561 widths [295, 295, 295] 5078s
+[otto/tabm_gns uniform/s0 train] epoch 45 train 0.6503 valid 0.5939 widths [251, 251, 251] 1554s
+[otto/tabm_gns uniform/s0 train] epoch 46 train 0.6389 valid 0.5906 widths [251, 251, 251] 1586s
+[otto/tabm_gns_member uniform/s2 train] epoch 160 train 0.5532 valid 0.5563 widths [295, 295, 295] 5113s
+[otto/tabm_gns uniform/s0 train] epoch 47 train 0.6395 valid 0.5911 widths [251, 251, 251] 1619s
+[otto/tabm_gns_member uniform/s2 train] epoch 161 train 0.5517 valid 0.5523 widths [295, 295, 295] 5148s
+[otto/tabm_gns uniform/s0 train] epoch 48 train 0.6375 valid 0.5931 widths [251, 251, 251] 1652s
+[otto/tabm_gns_member uniform/s2 train] epoch 162 train 0.5468 valid 0.5570 widths [295, 295, 295] 5184s
+[otto/tabm_gns uniform/s0 train] epoch 49 train 0.6333 valid 0.5928 widths [251, 251, 251] 1684s
+[otto/tabm_gns_member uniform/s2 train] epoch 163 train 0.5488 valid 0.5541 widths [295, 295, 295] 5219s
+[otto/tabm_gns uniform/s0 train] epoch 50 train 0.6307 valid 0.5918 widths [251, 251, 251] 1716s
+[otto/tabm_gns_member uniform/s2 train] epoch 164 train 0.5559 valid 0.5537 widths [295, 295, 295] 5253s
+[otto/tabm_gns uniform/s0 train] epoch 51 train 0.6262 valid 0.5915 widths [251, 251, 251] 1748s
+[otto/tabm_gns_member uniform/s2 train] epoch 165 train 0.5527 valid 0.5542 widths [295, 295, 295] 5288s
+[otto/tabm_gns uniform/s0 train] epoch 52 train 0.6290 valid 0.5956 widths [251, 251, 251] 1780s
+[otto/tabm_gns_member uniform/s2 train] epoch 166 train 0.5497 valid 0.5544 widths [295, 295, 295] 5323s
+[otto/tabm_gns uniform/s0 train] epoch 53 train 0.6274 valid 0.5867 widths [251, 251, 251] 1813s
+[otto/tabm_gns_member uniform/s2 train] epoch 167 train 0.5545 valid 0.5556 widths [295, 295, 295] 5358s
+[otto/tabm_gns uniform/s0 train] epoch 54 train 0.6287 valid 0.5882 widths [251, 251, 251] 1846s
+[otto/tabm_gns_member uniform/s2 train] epoch 168 train 0.5581 valid 0.5533 widths [295, 295, 295] 5393s
+[otto/tabm_gns uniform/s0 train] epoch 55 train 0.6282 valid 0.5873 widths [251, 251, 251] 1879s
+[otto/tabm_gns_member uniform/s2 train] epoch 169 train 0.5473 valid 0.5553 widths [295, 295, 295] 5428s
+[otto/tabm_gns uniform/s0 train] epoch 56 train 0.6310 valid 0.5959 widths [251, 251, 251] 1912s
+[otto/tabm_gns_member uniform/s2 train] epoch 170 train 0.5486 valid 0.5541 widths [295, 295, 295] 5465s
+[otto/tabm_gns uniform/s0 train] epoch 57 train 0.6344 valid 0.5874 widths [251, 251, 251] 1946s
+[otto/tabm_gns_member uniform/s2 train] epoch 171 train 0.5486 valid 0.5571 widths [295, 295, 295] 5502s
+[otto/tabm_gns uniform/s0 train] epoch 58 train 0.6279 valid 0.5850 widths [251, 251, 251] 1981s
+[otto/tabm_gns_member uniform/s2 train] epoch 172 train 0.5470 valid 0.5515 widths [295, 295, 295] 5539s
+[otto/tabm_gns uniform/s0 train] epoch 59 train 0.6300 valid 0.5895 widths [251, 251, 251] 2015s
+[otto/tabm_gns uniform/s0 train] epoch 60 train 0.6426 valid 0.5904 widths [251, 251, 251] 2047s
+[otto/tabm_gns_member uniform/s2 train] epoch 173 train 0.5490 valid 0.5525 widths [295, 295, 295] 5574s
+[otto/tabm_gns uniform/s0 train] epoch 61 train 0.6341 valid 0.5896 widths [251, 251, 251] 2080s
+[otto/tabm_gns_member uniform/s2 train] epoch 174 train 0.5465 valid 0.5555 widths [295, 295, 295] 5608s
+[otto/tabm_gns uniform/s0 train] epoch 62 train 0.6313 valid 0.5854 widths [251, 251, 251] 2112s
+[otto/tabm_gns_member uniform/s2 train] epoch 175 train 0.5430 valid 0.5541 widths [295, 295, 295] 5643s
+[otto/tabm_gns uniform/s0 train] epoch 63 train 0.6304 valid 0.5843 widths [251, 251, 251] 2145s
+[otto/tabm_gns_member uniform/s2 train] epoch 176 train 0.5490 valid 0.5556 widths [295, 295, 295] 5677s
+[otto/tabm_gns uniform/s0 train] epoch 64 train 0.6289 valid 0.5890 widths [251, 251, 251] 2177s
+[otto/tabm_gns_member uniform/s2 train] epoch 177 train 0.5498 valid 0.5525 widths [295, 295, 295] 5711s
+[otto/tabm_gns uniform/s0 train] epoch 65 train 0.6237 valid 0.5869 widths [251, 251, 251] 2209s
+[otto/tabm_gns_member uniform/s2 train] epoch 178 train 0.5456 valid 0.5541 widths [295, 295, 295] 5746s
+[otto/tabm_gns uniform/s0 train] epoch 66 train 0.6197 valid 0.5854 widths [251, 251, 251] 2241s
+[otto/tabm_gns_member uniform/s2 train] epoch 179 train 0.5462 valid 0.5522 widths [295, 295, 295] 5781s
+[otto/tabm_gns uniform/s0 train] epoch 67 train 0.6217 valid 0.5851 widths [251, 251, 251] 2274s
+[otto/tabm_gns_member uniform/s2 train] epoch 180 train 0.5531 valid 0.5520 widths [295, 295, 295] 5815s
+[otto/tabm_gns uniform/s0 train] epoch 68 train 0.6165 valid 0.5793 widths [251, 251, 251] 2306s
+[otto/tabm_gns_member uniform/s2 train] epoch 181 train 0.5490 valid 0.5552 widths [295, 295, 295] 5849s
+[otto/tabm_gns uniform/s0 train] epoch 69 train 0.6158 valid 0.5825 widths [251, 251, 251] 2337s
+[otto/tabm_gns_member uniform/s2 train] epoch 182 train 0.5478 valid 0.5545 widths [295, 295, 295] 5883s
+[otto/tabm_gns uniform/s0 train] epoch 70 train 0.6214 valid 0.5833 widths [251, 251, 251] 2370s
+[otto/tabm_gns_member uniform/s2 train] epoch 183 train 0.5542 valid 0.5567 widths [295, 295, 295] 5917s
+[otto/tabm_gns uniform/s0 train] epoch 71 train 0.6175 valid 0.5835 widths [251, 251, 251] 2402s
+[otto/tabm_gns_member uniform/s2 train] epoch 184 train 0.5579 valid 0.5534 widths [295, 295, 295] 5952s
+[otto/tabm_gns uniform/s0 train] epoch 72 train 0.6195 valid 0.5883 widths [251, 251, 251] 2435s
+[otto/tabm_gns_member uniform/s2 train] epoch 185 train 0.5485 valid 0.5528 widths [295, 295, 295] 5987s
+[otto/tabm_gns uniform/s0 train] epoch 73 train 0.6207 valid 0.5835 widths [251, 251, 251] 2467s
+[otto/tabm_gns_member uniform/s2 train] epoch 186 train 0.5478 valid 0.5559 widths [295, 295, 295] 6021s
+[otto/tabm_gns uniform/s0 train] epoch 74 train 0.6180 valid 0.5828 widths [251, 251, 251] 2500s
+[otto/tabm_gns_member uniform/s2 train] epoch 187 train 0.5488 valid 0.5530 widths [295, 295, 295] 6056s
+[otto/tabm_gns uniform/s0 train] epoch 75 train 0.6150 valid 0.5772 widths [251, 251, 251] 2532s
+[otto/tabm_gns_member uniform/s2 train] epoch 188 train 0.5449 valid 0.5528 widths [295, 295, 295] 6090s
+[otto/tabm_gns uniform/s0 train] epoch 76 train 0.6129 valid 0.5791 widths [251, 251, 251] 2565s
+[otto/tabm_gns uniform/s0 train] epoch 77 train 0.6171 valid 0.5839 widths [251, 251, 251] 2597s
+[otto/tabm_gns_member uniform/s2 train] epoch 189 train 0.5438 valid 0.5514 widths [295, 295, 295] 6125s
+[otto/tabm_gns uniform/s0 train] epoch 78 train 0.6223 valid 0.5791 widths [251, 251, 251] 2629s
+[otto/tabm_gns_member uniform/s2 train] epoch 190 train 0.5427 valid 0.5540 widths [295, 295, 295] 6159s
+[otto/tabm_gns uniform/s0 train] epoch 79 train 0.6140 valid 0.5868 widths [251, 251, 251] 2662s
+[otto/tabm_gns_member uniform/s2 train] epoch 191 train 0.5470 valid 0.5566 widths [295, 295, 295] 6193s
+[otto/tabm_gns uniform/s0 train] epoch 80 train 0.6167 valid 0.5823 widths [251, 251, 251] 2694s
+[otto/tabm_gns_member uniform/s2 train] epoch 192 train 0.5521 valid 0.5540 widths [295, 295, 295] 6227s
+[otto/tabm_gns uniform/s0 train] epoch 81 train 0.6278 valid 0.5851 widths [251, 251, 251] 2726s
+[otto/tabm_gns_member uniform/s2 train] epoch 193 train 0.5486 valid 0.5553 widths [295, 295, 295] 6262s
+[otto/tabm_gns uniform/s0 train] epoch 82 train 0.6164 valid 0.5787 widths [251, 251, 251] 2758s
+[otto/tabm_gns_member uniform/s2 train] epoch 194 train 0.5449 valid 0.5513 widths [295, 295, 295] 6296s
+[otto/tabm_gns uniform/s0 train] epoch 83 train 0.6129 valid 0.5805 widths [251, 251, 251] 2790s
+[otto/tabm_gns_member uniform/s2 train] epoch 195 train 0.5506 valid 0.5554 widths [295, 295, 295] 6330s
+[otto/tabm_gns uniform/s0 train] epoch 84 train 0.6123 valid 0.5783 widths [251, 251, 251] 2823s
+[otto/tabm_gns_member uniform/s2 train] epoch 196 train 0.5482 valid 0.5523 widths [295, 295, 295] 6364s
+[otto/tabm_gns uniform/s0 train] epoch 85 train 0.6136 valid 0.5791 widths [251, 251, 251] 2855s
+[otto/tabm_gns_member uniform/s2 train] epoch 197 train 0.5443 valid 0.5542 widths [295, 295, 295] 6398s
+[otto/tabm_gns uniform/s0 train] epoch 86 train 0.6106 valid 0.5772 widths [251, 251, 251] 2888s
+[otto/tabm_gns_member uniform/s2 train] epoch 198 train 0.5444 valid 0.5516 widths [295, 295, 295] 6432s
+[otto/tabm_gns uniform/s0 train] epoch 87 train 0.6102 valid 0.5786 widths [251, 251, 251] 2920s
+[otto/tabm_gns_member uniform/s2 train] epoch 199 train 0.5490 valid 0.5550 widths [295, 295, 295] 6469s
+[otto/tabm_gns uniform/s0 train] epoch 88 train 0.6129 valid 0.5771 widths [251, 251, 251] 2955s
+[otto/tabm_gns_member uniform/s2 train] epoch 200 train 0.5470 valid 0.5509 widths [295, 295, 295] 6506s
+[otto/tabm_gns uniform/s0 train] epoch 89 train 0.6112 valid 0.5785 widths [251, 251, 251] 2990s
+[otto/tabm_gns_member uniform/s2 train] epoch 201 train 0.5492 valid 0.5507 widths [295, 295, 295] 6543s
+[otto/tabm_gns uniform/s0 train] epoch 90 train 0.6072 valid 0.5772 widths [251, 251, 251] 3024s
+[otto/tabm_gns_member uniform/s2 train] epoch 202 train 0.5459 valid 0.5526 widths [295, 295, 295] 6578s
+[otto/tabm_gns uniform/s0 train] epoch 91 train 0.6075 valid 0.5768 widths [251, 251, 251] 3057s
+[otto/tabm_gns_member uniform/s2 train] epoch 203 train 0.5437 valid 0.5502 widths [295, 295, 295] 6613s
+[otto/tabm_gns uniform/s0 train] epoch 92 train 0.6053 valid 0.5775 widths [251, 251, 251] 3090s
+[otto/tabm_gns_member uniform/s2 train] epoch 204 train 0.5439 valid 0.5520 widths [295, 295, 295] 6648s
+[otto/tabm_gns uniform/s0 train] epoch 93 train 0.6047 valid 0.5788 widths [251, 251, 251] 3122s
+[otto/tabm_gns uniform/s0 train] epoch 94 train 0.6038 valid 0.5748 widths [251, 251, 251] 3156s
+[otto/tabm_gns_member uniform/s2 train] epoch 205 train 0.5421 valid 0.5509 widths [295, 295, 295] 6683s
+[otto/tabm_gns uniform/s0 train] epoch 95 train 0.6020 valid 0.5753 widths [251, 251, 251] 3188s
+[otto/tabm_gns_member uniform/s2 train] epoch 206 train 0.5403 valid 0.5510 widths [295, 295, 295] 6718s
+[otto/tabm_gns uniform/s0 train] epoch 96 train 0.6032 valid 0.5754 widths [251, 251, 251] 3221s
+[otto/tabm_gns_member uniform/s2 train] epoch 207 train 0.5451 valid 0.5529 widths [295, 295, 295] 6752s
+[otto/tabm_gns uniform/s0 train] epoch 97 train 0.6080 valid 0.5802 widths [251, 251, 251] 3254s
+[otto/tabm_gns_member uniform/s2 train] epoch 208 train 0.5416 valid 0.5513 widths [295, 295, 295] 6787s
+[otto/tabm_gns uniform/s0 train] epoch 98 train 0.6087 valid 0.5770 widths [251, 251, 251] 3287s
+[otto/tabm_gns_member uniform/s2 train] epoch 209 train 0.5418 valid 0.5506 widths [295, 295, 295] 6823s
+[otto/tabm_gns uniform/s0 train] epoch 99 train 0.6091 valid 0.5744 widths [251, 251, 251] 3321s
+[otto/tabm_gns_member uniform/s2 train] epoch 210 train 0.5387 valid 0.5545 widths [295, 295, 295] 6858s
+[otto/tabm_gns uniform/s0 train] epoch 100 train 0.6085 valid 0.5769 widths [251, 251, 251] 3354s
+[otto/tabm_gns_member uniform/s2 train] epoch 211 train 0.5393 valid 0.5497 widths [295, 295, 295] 6894s
+[otto/tabm_gns uniform/s0 train] epoch 101 train 0.6068 valid 0.5728 widths [251, 251, 251] 3389s
+[otto/tabm_gns_member uniform/s2 train] epoch 212 train 0.5407 valid 0.5526 widths [295, 295, 295] 6931s
+[otto/tabm_gns uniform/s0 train] epoch 102 train 0.5992 valid 0.5732 widths [251, 251, 251] 3422s
+[otto/tabm_gns_member uniform/s2 train] epoch 213 train 0.5442 valid 0.5523 widths [295, 295, 295] 6965s
+[otto/tabm_gns uniform/s0 train] epoch 103 train 0.6006 valid 0.5752 widths [251, 251, 251] 3453s
+[otto/tabm_gns_member uniform/s2 train] epoch 214 train 0.5441 valid 0.5517 widths [295, 295, 295] 6997s
+[otto/tabm_gns uniform/s0 train] epoch 104 train 0.6014 valid 0.5740 widths [251, 251, 251] 3483s
+[otto/tabm_gns_member uniform/s2 train] epoch 215 train 0.5442 valid 0.5509 widths [295, 295, 295] 7029s
+[otto/tabm_gns uniform/s0 train] epoch 105 train 0.6031 valid 0.5752 widths [251, 251, 251] 3513s
+[otto/tabm_gns_member uniform/s2 train] epoch 216 train 0.5388 valid 0.5501 widths [295, 295, 295] 7060s
+[otto/tabm_gns uniform/s0 train] epoch 106 train 0.6020 valid 0.5729 widths [251, 251, 251] 3542s
+[otto/tabm_gns_member uniform/s2 train] epoch 217 train 0.5409 valid 0.5511 widths [295, 295, 295] 7091s
+[otto/tabm_gns uniform/s0 train] epoch 107 train 0.6021 valid 0.5738 widths [251, 251, 251] 3571s
+[otto/tabm_gns_member uniform/s2 train] epoch 218 train 0.5391 valid 0.5508 widths [295, 295, 295] 7121s
+[otto/tabm_gns uniform/s0 train] epoch 108 train 0.6022 valid 0.5744 widths [251, 251, 251] 3600s
+[otto/tabm_gns_member uniform/s2 train] epoch 219 train 0.5440 valid 0.5527 widths [295, 295, 295] 7152s
+[otto/tabm_gns uniform/s0 train] epoch 109 train 0.6017 valid 0.5763 widths [251, 251, 251] 3630s
+[otto/tabm_gns_member uniform/s2 train] epoch 220 train 0.5424 valid 0.5525 widths [295, 295, 295] 7183s
+[otto/tabm_gns uniform/s0 train] epoch 110 train 0.6003 valid 0.5738 widths [251, 251, 251] 3659s
+[otto/tabm_gns_member uniform/s2 train] epoch 221 train 0.5397 valid 0.5497 widths [295, 295, 295] 7215s
+[otto/tabm_gns uniform/s0 train] epoch 111 train 0.6008 valid 0.5720 widths [251, 251, 251] 3689s
+[otto/tabm_gns uniform/s0 train] epoch 112 train 0.5992 valid 0.5742 widths [251, 251, 251] 3719s
+[otto/tabm_gns_member uniform/s2 train] epoch 222 train 0.5428 valid 0.5513 widths [295, 295, 295] 7246s
+[otto/tabm_gns uniform/s0 train] epoch 113 train 0.6033 valid 0.5734 widths [251, 251, 251] 3748s
+[otto/tabm_gns_member uniform/s2 train] epoch 223 train 0.5388 valid 0.5498 widths [295, 295, 295] 7278s
+[otto/tabm_gns uniform/s0 train] epoch 114 train 0.6039 valid 0.5759 widths [251, 251, 251] 3778s
+[otto/tabm_gns_member uniform/s2 train] epoch 224 train 0.5387 valid 0.5499 widths [295, 295, 295] 7310s
+[otto/tabm_gns uniform/s0 train] epoch 115 train 0.6018 valid 0.5713 widths [251, 251, 251] 3809s
+[otto/tabm_gns_member uniform/s2 train] epoch 225 train 0.5413 valid 0.5523 widths [295, 295, 295] 7342s
+[otto/tabm_gns uniform/s0 train] epoch 116 train 0.5986 valid 0.5751 widths [251, 251, 251] 3840s
+[otto/tabm_gns_member uniform/s2 train] epoch 226 train 0.5415 valid 0.5502 widths [295, 295, 295] 7376s
+[otto/tabm_gns uniform/s0 train] epoch 117 train 0.6014 valid 0.5719 widths [251, 251, 251] 3872s
+[otto/tabm_gns_member uniform/s2 train] epoch 227 train 0.5384 valid 0.5506 widths [295, 295, 295] 7409s
+[otto/tabm_gns uniform/s0 train] epoch 118 train 0.6037 valid 0.5765 widths [251, 251, 251] 3902s
+[otto/tabm_gns_member uniform/s2 train] epoch 228 train 0.5429 valid 0.5505 widths [295, 295, 295] 7441s
+[otto/tabm_gns uniform/s0 train] epoch 119 train 0.6099 valid 0.5736 widths [251, 251, 251] 3931s
+[otto/tabm_gns_member uniform/s2 train] epoch 229 train 0.5493 valid 0.5498 widths [295, 295, 295] 7473s
+[otto/tabm_gns uniform/s0 train] epoch 120 train 0.6024 valid 0.5721 widths [251, 251, 251] 3961s
+[otto/tabm_gns_member uniform/s2 train] epoch 230 train 0.5424 valid 0.5498 widths [295, 295, 295] 7504s
+[otto/tabm_gns uniform/s0 train] epoch 121 train 0.6022 valid 0.5744 widths [251, 251, 251] 3990s
+[otto/tabm_gns_member uniform/s2 train] epoch 231 train 0.5391 valid 0.5490 widths [295, 295, 295] 7535s
+[otto/tabm_gns uniform/s0 train] epoch 122 train 0.6102 valid 0.5776 widths [251, 251, 251] 4020s
+[otto/tabm_gns_member uniform/s2 train] epoch 232 train 0.5401 valid 0.5490 widths [295, 295, 295] 7566s
+[otto/tabm_gns uniform/s0 train] epoch 123 train 0.6074 valid 0.5710 widths [251, 251, 251] 4049s
+[otto/tabm_gns_member uniform/s2 train] epoch 233 train 0.5441 valid 0.5524 widths [295, 295, 295] 7597s
+[otto/tabm_gns uniform/s0 train] epoch 124 train 0.5990 valid 0.5708 widths [251, 251, 251] 4078s
+[otto/tabm_gns_member uniform/s2 train] epoch 234 train 0.5412 valid 0.5482 widths [295, 295, 295] 7629s
+[otto/tabm_gns uniform/s0 train] epoch 125 train 0.5972 valid 0.5741 widths [251, 251, 251] 4107s
+[otto/tabm_gns_member uniform/s2 train] epoch 235 train 0.5389 valid 0.5502 widths [295, 295, 295] 7659s
+[otto/tabm_gns uniform/s0 train] epoch 126 train 0.5975 valid 0.5737 widths [251, 251, 251] 4136s
+[otto/tabm_gns_member uniform/s2 train] epoch 236 train 0.5385 valid 0.5496 widths [295, 295, 295] 7691s
+[otto/tabm_gns uniform/s0 train] epoch 127 train 0.5971 valid 0.5709 widths [251, 251, 251] 4166s
+[otto/tabm_gns uniform/s0 train] epoch 128 train 0.5946 valid 0.5719 widths [251, 251, 251] 4196s
+[otto/tabm_gns_member uniform/s2 train] epoch 237 train 0.5374 valid 0.5485 widths [295, 295, 295] 7723s
+[otto/tabm_gns uniform/s0 train] epoch 129 train 0.5913 valid 0.5710 widths [251, 251, 251] 4225s
+[otto/tabm_gns_member uniform/s2 train] epoch 238 train 0.5378 valid 0.5519 widths [295, 295, 295] 7755s
+[otto/tabm_gns uniform/s0 train] epoch 130 train 0.5937 valid 0.5700 widths [251, 251, 251] 4256s
+[otto/tabm_gns_member uniform/s2 train] epoch 239 train 0.5379 valid 0.5494 widths [295, 295, 295] 7786s
+[otto/tabm_gns uniform/s0 train] epoch 131 train 0.5950 valid 0.5678 widths [251, 251, 251] 4286s
+[otto/tabm_gns_member uniform/s2 train] epoch 240 train 0.5347 valid 0.5512 widths [295, 295, 295] 7819s
+[otto/tabm_gns uniform/s0 train] epoch 132 train 0.5993 valid 0.5725 widths [251, 251, 251] 4317s
+[otto/tabm_gns_member uniform/s2 train] epoch 241 train 0.5350 valid 0.5487 widths [295, 295, 295] 7853s
+[otto/tabm_gns uniform/s0 train] epoch 133 train 0.5947 valid 0.5692 widths [251, 251, 251] 4349s
+[otto/tabm_gns_member uniform/s2 train] epoch 242 train 0.5339 valid 0.5496 widths [295, 295, 295] 7886s
+[otto/tabm_gns uniform/s0 train] epoch 134 train 0.5899 valid 0.5702 widths [251, 251, 251] 4379s
+[otto/tabm_gns_member uniform/s2 train] epoch 243 train 0.5367 valid 0.5506 widths [295, 295, 295] 7917s
+[otto/tabm_gns uniform/s0 train] epoch 135 train 0.5928 valid 0.5720 widths [251, 251, 251] 4408s
+[otto/tabm_gns_member uniform/s2 train] epoch 244 train 0.5371 valid 0.5504 widths [295, 295, 295] 7948s
+[otto/tabm_gns uniform/s0 train] epoch 136 train 0.5914 valid 0.5684 widths [251, 251, 251] 4438s
+[otto/tabm_gns_member uniform/s2 train] epoch 245 train 0.5330 valid 0.5482 widths [295, 295, 295] 7979s
+[otto/tabm_gns uniform/s0 train] epoch 137 train 0.5908 valid 0.5703 widths [251, 251, 251] 4467s
+[otto/tabm_gns_member uniform/s2 train] epoch 246 train 0.5321 valid 0.5488 widths [295, 295, 295] 8010s
+[otto/tabm_gns uniform/s0 train] epoch 138 train 0.5915 valid 0.5676 widths [251, 251, 251] 4496s
+[otto/tabm_gns_member uniform/s2 train] epoch 247 train 0.5333 valid 0.5511 widths [295, 295, 295] 8040s
+[otto/tabm_gns uniform/s0 train] epoch 139 train 0.5948 valid 0.5734 widths [251, 251, 251] 4525s
+[otto/tabm_gns_member uniform/s2 train] epoch 248 train 0.5357 valid 0.5499 widths [295, 295, 295] 8071s
+[otto/tabm_gns uniform/s0 train] epoch 140 train 0.5904 valid 0.5693 widths [251, 251, 251] 4554s
+[otto/tabm_gns_member uniform/s2 train] epoch 249 train 0.5408 valid 0.5491 widths [295, 295, 295] 8102s
+[otto/tabm_gns uniform/s0 train] epoch 141 train 0.5888 valid 0.5709 widths [251, 251, 251] 4583s
+[otto/tabm_gns_member uniform/s2 train] epoch 250 train 0.5390 valid 0.5496 widths [295, 295, 295] 8133s
+[otto/tabm_gns uniform/s0 train] epoch 142 train 0.5886 valid 0.5678 widths [251, 251, 251] 4612s
+[otto/tabm_gns_member uniform/s2 train] epoch 251 train 0.5449 valid 0.5523 widths [295, 295, 295] 8164s
+[otto/tabm_gns uniform/s0 train] epoch 143 train 0.5892 valid 0.5699 widths [251, 251, 251] 4642s
+[otto/tabm_gns_member uniform/s2 train] epoch 252 train 0.5429 valid 0.5491 widths [295, 295, 295] 8196s
+[otto/tabm_gns uniform/s0 train] epoch 144 train 0.5917 valid 0.5699 widths [251, 251, 251] 4671s
+[otto/tabm_gns_member uniform/s2 train] epoch 253 train 0.5384 valid 0.5504 widths [295, 295, 295] 8227s
+[otto/tabm_gns uniform/s0 train] epoch 145 train 0.5909 valid 0.5682 widths [251, 251, 251] 4700s
+[otto/tabm_gns uniform/s0 train] epoch 146 train 0.5918 valid 0.5693 widths [251, 251, 251] 4730s
+[otto/tabm_gns_member uniform/s2 train] epoch 254 train 0.5365 valid 0.5499 widths [295, 295, 295] 8258s
+[otto/tabm_gns uniform/s0 train] epoch 147 train 0.5884 valid 0.5664 widths [251, 251, 251] 4759s
+[otto/tabm_gns_member uniform/s2 train] epoch 255 train 0.5337 valid 0.5505 widths [295, 295, 295] 8290s
+[otto/tabm_gns uniform/s0 train] epoch 148 train 0.5856 valid 0.5685 widths [251, 251, 251] 4789s
+[otto/tabm_gns_member uniform/s2 train] epoch 256 train 0.5370 valid 0.5495 widths [295, 295, 295] 8322s
+[otto/tabm_gns uniform/s0 train] epoch 149 train 0.5908 valid 0.5699 widths [251, 251, 251] 4821s
+[otto/tabm_gns_member uniform/s2 train] epoch 257 train 0.5387 valid 0.5494 widths [295, 295, 295] 8355s
+[otto/tabm_gns uniform/s0 train] epoch 150 train 0.5925 valid 0.5679 widths [251, 251, 251] 4852s
+[otto/tabm_gns_member uniform/s2 train] epoch 258 train 0.5401 valid 0.5504 widths [295, 295, 295] 8387s
+[otto/tabm_gns uniform/s0 train] epoch 151 train 0.5905 valid 0.5674 widths [251, 251, 251] 4881s
+[otto/tabm_gns_member uniform/s2 train] epoch 259 train 0.5360 valid 0.5513 widths [295, 295, 295] 8418s
+[otto/tabm_gns uniform/s0 train] epoch 152 train 0.5918 valid 0.5703 widths [251, 251, 251] 4910s
+[otto/tabm_gns_member uniform/s2 train] epoch 260 train 0.5362 valid 0.5484 widths [295, 295, 295] 8449s
+[otto/tabm_gns uniform/s0 train] epoch 153 train 0.5935 valid 0.5695 widths [251, 251, 251] 4938s
+[otto/tabm_gns_member uniform/s2 train] epoch 261 train 0.5346 valid 0.5493 widths [295, 295, 295] 8479s
+[otto/tabm_gns uniform/s0 train] epoch 154 train 0.5894 valid 0.5675 widths [251, 251, 251] 4967s
+[otto/tabm_gns_member uniform/s2 train] epoch 262 train 0.5344 valid 0.5477 widths [295, 295, 295] 8509s
+[otto/tabm_gns uniform/s0 train] epoch 155 train 0.5902 valid 0.5669 widths [251, 251, 251] 4996s
+[otto/tabm_gns_member uniform/s2 train] epoch 263 train 0.5401 valid 0.5474 widths [295, 295, 295] 8540s
+[otto/tabm_gns uniform/s0 train] epoch 156 train 0.5914 valid 0.5684 widths [251, 251, 251] 5025s
+[otto/tabm_gns_member uniform/s2 train] epoch 264 train 0.5375 valid 0.5477 widths [295, 295, 295] 8570s
+[otto/tabm_gns uniform/s0 train] epoch 157 train 0.5863 valid 0.5694 widths [251, 251, 251] 5053s
+[otto/tabm_gns_member uniform/s2 train] epoch 265 train 0.5349 valid 0.5484 widths [295, 295, 295] 8601s
+[otto/tabm_gns uniform/s0 train] epoch 158 train 0.5912 valid 0.5697 widths [251, 251, 251] 5082s
+[otto/tabm_gns_member uniform/s2 train] epoch 266 train 0.5335 valid 0.5484 widths [295, 295, 295] 8632s
+[otto/tabm_gns uniform/s0 train] epoch 159 train 0.5912 valid 0.5701 widths [251, 251, 251] 5111s
+[otto/tabm_gns_member uniform/s2 train] epoch 267 train 0.5357 valid 0.5480 widths [295, 295, 295] 8662s
+[otto/tabm_gns uniform/s0 train] epoch 160 train 0.5887 valid 0.5680 widths [251, 251, 251] 5141s
+[otto/tabm_gns_member uniform/s2 train] epoch 268 train 0.5392 valid 0.5504 widths [295, 295, 295] 8694s
+[otto/tabm_gns uniform/s0 train] epoch 161 train 0.5923 valid 0.5660 widths [251, 251, 251] 5170s
+[otto/tabm_gns_member uniform/s2 train] epoch 269 train 0.5361 valid 0.5486 widths [295, 295, 295] 8725s
+[otto/tabm_gns uniform/s0 train] epoch 162 train 0.5888 valid 0.5668 widths [251, 251, 251] 5199s
+[otto/tabm_gns uniform/s0 train] epoch 163 train 0.5876 valid 0.5672 widths [251, 251, 251] 5229s
+[otto/tabm_gns_member uniform/s2 train] epoch 270 train 0.5362 valid 0.5522 widths [295, 295, 295] 8756s
+[otto/tabm_gns uniform/s0 train] epoch 164 train 0.5853 valid 0.5686 widths [251, 251, 251] 5259s
+[otto/tabm_gns_member uniform/s2 train] epoch 271 train 0.5387 valid 0.5497 widths [295, 295, 295] 8787s
+[otto/tabm_gns uniform/s0 train] epoch 165 train 0.5868 valid 0.5693 widths [251, 251, 251] 5288s
+[otto/tabm_gns_member uniform/s2 train] epoch 272 train 0.5407 valid 0.5494 widths [295, 295, 295] 8819s
+[otto/tabm_gns uniform/s0 train] epoch 166 train 0.5905 valid 0.5691 widths [251, 251, 251] 5318s
+[otto/tabm_gns_member uniform/s2 train] epoch 273 train 0.5314 valid 0.5474 widths [295, 295, 295] 8851s
+[otto/tabm_gns uniform/s0 train] epoch 167 train 0.5878 valid 0.5664 widths [251, 251, 251] 5349s
+[otto/tabm_gns_member uniform/s2 train] epoch 274 train 0.5364 valid 0.5475 widths [295, 295, 295] 8884s
+[otto/tabm_gns uniform/s0 train] epoch 168 train 0.5851 valid 0.5671 widths [251, 251, 251] 5380s
+[otto/tabm_gns_member uniform/s2 train] epoch 275 train 0.5351 valid 0.5497 widths [295, 295, 295] 8916s
+[otto/tabm_gns uniform/s0 train] epoch 169 train 0.5846 valid 0.5673 widths [251, 251, 251] 5409s
+[otto/tabm_gns_member uniform/s2 train] epoch 276 train 0.5303 valid 0.5468 widths [295, 295, 295] 8946s
+[otto/tabm_gns uniform/s0 train] epoch 170 train 0.5888 valid 0.5654 widths [251, 251, 251] 5438s
+[otto/tabm_gns_member uniform/s2 train] epoch 277 train 0.5284 valid 0.5463 widths [295, 295, 295] 8977s
+[otto/tabm_gns uniform/s0 train] epoch 171 train 0.5918 valid 0.5683 widths [251, 251, 251] 5467s
+[otto/tabm_gns_member uniform/s2 train] epoch 278 train 0.5305 valid 0.5462 widths [295, 295, 295] 9008s
+[otto/tabm_gns uniform/s0 train] epoch 172 train 0.5886 valid 0.5676 widths [251, 251, 251] 5496s
+[otto/tabm_gns_member uniform/s2 train] epoch 279 train 0.5343 valid 0.5463 widths [295, 295, 295] 9038s
+[otto/tabm_gns uniform/s0 train] epoch 173 train 0.5850 valid 0.5664 widths [251, 251, 251] 5525s
+[otto/tabm_gns_member uniform/s2 train] epoch 280 train 0.5303 valid 0.5464 widths [295, 295, 295] 9069s
+[otto/tabm_gns uniform/s0 train] epoch 174 train 0.5853 valid 0.5681 widths [251, 251, 251] 5554s
+[otto/tabm_gns_member uniform/s2 train] epoch 281 train 0.5328 valid 0.5473 widths [295, 295, 295] 9099s
+[otto/tabm_gns uniform/s0 train] epoch 175 train 0.5833 valid 0.5666 widths [251, 251, 251] 5583s
+[otto/tabm_gns_member uniform/s2 train] epoch 282 train 0.5339 valid 0.5452 widths [295, 295, 295] 9129s
+[otto/tabm_gns uniform/s0 train] epoch 176 train 0.5844 valid 0.5662 widths [251, 251, 251] 5613s
+[otto/tabm_gns_member uniform/s2 train] epoch 283 train 0.5326 valid 0.5484 widths [295, 295, 295] 9160s
+[otto/tabm_gns uniform/s0 train] epoch 177 train 0.5841 valid 0.5660 widths [251, 251, 251] 5642s
+[otto/tabm_gns_member uniform/s2 train] epoch 284 train 0.5340 valid 0.5503 widths [295, 295, 295] 9191s
+[otto/tabm_gns uniform/s0 train] epoch 178 train 0.5823 valid 0.5665 widths [251, 251, 251] 5671s
+[otto/tabm_gns_member uniform/s2 train] epoch 285 train 0.5352 valid 0.5487 widths [295, 295, 295] 9223s
+[otto/tabm_gns uniform/s0 train] epoch 179 train 0.5836 valid 0.5685 widths [251, 251, 251] 5700s
+[otto/tabm_gns_member uniform/s2 train] epoch 286 train 0.5346 valid 0.5480 widths [295, 295, 295] 9254s
+[otto/tabm_gns uniform/s0 train] epoch 180 train 0.5859 valid 0.5673 widths [251, 251, 251] 5729s
+[otto/tabm_gns_member uniform/s2 train] epoch 287 train 0.5297 valid 0.5467 widths [295, 295, 295] 9285s
+[otto/tabm_gns uniform/s0 train] epoch 181 train 0.5853 valid 0.5673 widths [251, 251, 251] 5759s
+[otto/tabm_gns uniform/s0 train] epoch 182 train 0.5822 valid 0.5672 widths [251, 251, 251] 5790s
+[otto/tabm_gns_member uniform/s2 train] epoch 288 train 0.5330 valid 0.5492 widths [295, 295, 295] 9317s
+[otto/tabm_gns uniform/s0 train] epoch 183 train 0.5812 valid 0.5696 widths [251, 251, 251] 5821s
+[otto/tabm_gns_member uniform/s2 train] epoch 289 train 0.5325 valid 0.5483 widths [295, 295, 295] 9350s
+[otto/tabm_gns uniform/s0 train] epoch 184 train 0.5838 valid 0.5646 widths [251, 251, 251] 5851s
+[otto/tabm_gns_member uniform/s2 train] epoch 290 train 0.5311 valid 0.5491 widths [295, 295, 295] 9382s
+[otto/tabm_gns uniform/s0 train] epoch 185 train 0.5855 valid 0.5645 widths [251, 251, 251] 5880s
+[otto/tabm_gns_member uniform/s2 train] epoch 291 train 0.5316 valid 0.5471 widths [295, 295, 295] 9413s
+[otto/tabm_gns uniform/s0 train] epoch 186 train 0.5856 valid 0.5666 widths [251, 251, 251] 5908s
+[otto/tabm_gns_member uniform/s2 train] epoch 292 train 0.5296 valid 0.5482 widths [295, 295, 295] 9443s
+[otto/tabm_gns uniform/s0 train] epoch 187 train 0.5850 valid 0.5666 widths [251, 251, 251] 5937s
+[otto/tabm_gns_member uniform/s2 train] epoch 293 train 0.5340 valid 0.5477 widths [295, 295, 295] 9474s
+[otto/tabm_gns uniform/s0 train] epoch 188 train 0.5841 valid 0.5638 widths [251, 251, 251] 5967s
+[otto/tabm_gns_member uniform/s2 train] epoch 294 train 0.5316 valid 0.5481 widths [295, 295, 295] 9505s
+[otto/tabm_gns uniform/s0 train] epoch 189 train 0.5865 valid 0.5640 widths [251, 251, 251] 5996s
+[otto/tabm_gns_member uniform/s2 train] epoch 295 train 0.5312 valid 0.5462 widths [295, 295, 295] 9535s
+[otto/tabm_gns uniform/s0 train] epoch 190 train 0.5841 valid 0.5657 widths [251, 251, 251] 6025s
+[otto/tabm_gns_member uniform/s2 train] epoch 296 train 0.5400 valid 0.5469 widths [295, 295, 295] 9566s
+[otto/tabm_gns uniform/s0 train] epoch 191 train 0.5801 valid 0.5666 widths [251, 251, 251] 6055s
+[otto/tabm_gns_member uniform/s2 train] epoch 297 train 0.5361 valid 0.5463 widths [295, 295, 295] 9597s
+[otto/tabm_gns uniform/s0 train] epoch 192 train 0.5809 valid 0.5638 widths [251, 251, 251] 6084s
+[otto/tabm_gns_member uniform/s2 train] epoch 298 train 0.5326 valid 0.5482 widths [295, 295, 295] 9628s
+[otto/tabm_gns uniform/s0 train] epoch 193 train 0.5815 valid 0.5645 widths [251, 251, 251] 6113s
+[otto/tabm_gns_member uniform/s2 train] epoch 299 train 0.5321 valid 0.5470 widths [295, 295, 295] 9659s
+[otto/tabm_gns uniform/s0 train] epoch 194 train 0.5802 valid 0.5651 widths [251, 251, 251] 6143s
+[otto/tabm_gns_member uniform/s2 train] epoch 300 train 0.5318 valid 0.5467 widths [295, 295, 295] 9690s
+otto / tabm_uniform_member / seed 2: test={'accuracy': 78.47446670976083, 'logloss': 0.5540913925555138} widths=[295, 295, 295] time=9697s -> /Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/results/tabm_gns/otto/tabm_uniform_member/seed2.json
+otto / tabm_controls_member / seed 2: test=None widths=[317, 385, 193] time=9697s -> /Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/results/tabm_gns/otto/tabm_controls_member/seed2.json
+[otto/tabm_gns uniform/s0 train] epoch 195 train 0.5795 valid 0.5654 widths [251, 251, 251] 6173s
+[otto/tabm_gns uniform/s0 train] epoch 196 train 0.5888 valid 0.5656 widths [251, 251, 251] 6199s
+[otto/tabm_gns uniform/s0 train] epoch 197 train 0.5886 valid 0.5664 widths [251, 251, 251] 6225s
+[otto/tabm_gns uniform/s0 train] epoch 198 train 0.5848 valid 0.5650 widths [251, 251, 251] 6252s
+[otto/tabm_gns uniform/s0 train] epoch 199 train 0.5790 valid 0.5643 widths [251, 251, 251] 6279s
+[otto/tabm_gns uniform/s0 train] epoch 200 train 0.5793 valid 0.5661 widths [251, 251, 251] 6307s
+[otto/tabm_gns uniform/s0 train] epoch 201 train 0.5812 valid 0.5643 widths [251, 251, 251] 6333s
+[otto/tabm_gns uniform/s0 train] epoch 202 train 0.5843 valid 0.5649 widths [251, 251, 251] 6357s
+[otto/tabm_gns uniform/s0 train] epoch 203 train 0.5885 valid 0.5643 widths [251, 251, 251] 6381s
+[otto/tabm_gns uniform/s0 train] epoch 204 train 0.5837 valid 0.5634 widths [251, 251, 251] 6404s
+[otto/tabm_gns uniform/s0 train] epoch 205 train 0.5782 valid 0.5650 widths [251, 251, 251] 6427s
+[otto/tabm_gns uniform/s0 train] epoch 206 train 0.5769 valid 0.5660 widths [251, 251, 251] 6451s
+[otto/tabm_gns uniform/s0 train] epoch 207 train 0.5827 valid 0.5641 widths [251, 251, 251] 6474s
+[otto/tabm_gns uniform/s0 train] epoch 208 train 0.5820 valid 0.5619 widths [251, 251, 251] 6497s
+[otto/tabm_gns uniform/s0 train] epoch 209 train 0.5754 valid 0.5625 widths [251, 251, 251] 6520s
+[otto/tabm_gns uniform/s0 train] epoch 210 train 0.5790 valid 0.5624 widths [251, 251, 251] 6543s
+[otto/tabm_gns uniform/s0 train] epoch 211 train 0.5819 valid 0.5643 widths [251, 251, 251] 6567s
+[otto/tabm_gns uniform/s0 train] epoch 212 train 0.5785 valid 0.5622 widths [251, 251, 251] 6590s
+[otto/tabm_gns uniform/s0 train] epoch 213 train 0.5821 valid 0.5634 widths [251, 251, 251] 6614s
+[otto/tabm_gns uniform/s0 train] epoch 214 train 0.5818 valid 0.5615 widths [251, 251, 251] 6638s
+[otto/tabm_gns uniform/s0 train] epoch 215 train 0.5760 valid 0.5641 widths [251, 251, 251] 6662s
+[otto/tabm_gns uniform/s0 train] epoch 216 train 0.5791 valid 0.5637 widths [251, 251, 251] 6686s
+[otto/tabm_gns uniform/s0 train] epoch 217 train 0.5798 valid 0.5642 widths [251, 251, 251] 6711s
+[otto/tabm_gns uniform/s0 train] epoch 218 train 0.5756 valid 0.5622 widths [251, 251, 251] 6734s
+[otto/tabm_gns uniform/s0 train] epoch 219 train 0.5747 valid 0.5655 widths [251, 251, 251] 6757s
+[otto/tabm_gns uniform/s0 train] epoch 220 train 0.5760 valid 0.5624 widths [251, 251, 251] 6781s
+[otto/tabm_gns uniform/s0 train] epoch 221 train 0.5771 valid 0.5626 widths [251, 251, 251] 6804s
+[otto/tabm_gns uniform/s0 train] epoch 222 train 0.5754 valid 0.5628 widths [251, 251, 251] 6827s
+[otto/tabm_gns uniform/s0 train] epoch 223 train 0.5764 valid 0.5633 widths [251, 251, 251] 6850s
+[otto/tabm_gns uniform/s0 train] epoch 224 train 0.5768 valid 0.5607 widths [251, 251, 251] 6873s
+[otto/tabm_gns uniform/s0 train] epoch 225 train 0.5802 valid 0.5634 widths [251, 251, 251] 6897s
+[otto/tabm_gns uniform/s0 train] epoch 226 train 0.5820 valid 0.5616 widths [251, 251, 251] 6920s
+[otto/tabm_gns uniform/s0 train] epoch 227 train 0.5772 valid 0.5628 widths [251, 251, 251] 6943s
+[otto/tabm_gns uniform/s0 train] epoch 228 train 0.5751 valid 0.5637 widths [251, 251, 251] 6964s
+[otto/tabm_gns uniform/s0 train] epoch 229 train 0.5742 valid 0.5617 widths [251, 251, 251] 6985s
+[otto/tabm_gns uniform/s0 train] epoch 230 train 0.5757 valid 0.5622 widths [251, 251, 251] 7006s
+[otto/tabm_gns uniform/s0 train] epoch 231 train 0.5779 valid 0.5625 widths [251, 251, 251] 7027s
+[otto/tabm_gns uniform/s0 train] epoch 232 train 0.5804 valid 0.5624 widths [251, 251, 251] 7048s
+[otto/tabm_gns uniform/s0 train] epoch 233 train 0.5773 valid 0.5635 widths [251, 251, 251] 7068s
+[otto/tabm_gns uniform/s0 train] epoch 234 train 0.5727 valid 0.5623 widths [251, 251, 251] 7090s
+[otto/tabm_gns uniform/s0 train] epoch 235 train 0.5750 valid 0.5625 widths [251, 251, 251] 7110s
+[otto/tabm_gns uniform/s0 train] epoch 236 train 0.5773 valid 0.5614 widths [251, 251, 251] 7131s
+[otto/tabm_gns uniform/s0 train] epoch 237 train 0.5769 valid 0.5616 widths [251, 251, 251] 7152s
+[otto/tabm_gns uniform/s0 train] epoch 238 train 0.5796 valid 0.5624 widths [251, 251, 251] 7172s
+[otto/tabm_gns uniform/s0 train] epoch 239 train 0.5753 valid 0.5622 widths [251, 251, 251] 7193s
+[otto/tabm_gns uniform/s0 train] epoch 240 train 0.5747 valid 0.5610 widths [251, 251, 251] 7214s
+[otto/tabm_gns uniform/s0 train] epoch 241 train 0.5769 valid 0.5649 widths [251, 251, 251] 7234s
+[otto/tabm_gns uniform/s0 train] epoch 242 train 0.5764 valid 0.5634 widths [251, 251, 251] 7255s
+[otto/tabm_gns uniform/s0 train] epoch 243 train 0.5722 valid 0.5614 widths [251, 251, 251] 7276s
+[otto/tabm_gns uniform/s0 train] epoch 244 train 0.5746 valid 0.5604 widths [251, 251, 251] 7297s
+[otto/tabm_gns uniform/s0 train] epoch 245 train 0.5741 valid 0.5630 widths [251, 251, 251] 7318s
+[otto/tabm_gns uniform/s0 train] epoch 246 train 0.5749 valid 0.5636 widths [251, 251, 251] 7339s
+[otto/tabm_gns uniform/s0 train] epoch 247 train 0.5764 valid 0.5607 widths [251, 251, 251] 7360s
+[otto/tabm_gns uniform/s0 train] epoch 248 train 0.5837 valid 0.5635 widths [251, 251, 251] 7381s
+[otto/tabm_gns uniform/s0 train] epoch 249 train 0.5809 valid 0.5607 widths [251, 251, 251] 7402s
+[otto/tabm_gns uniform/s0 train] epoch 250 train 0.5747 valid 0.5618 widths [251, 251, 251] 7423s
+[otto/tabm_gns uniform/s0 train] epoch 251 train 0.5744 valid 0.5617 widths [251, 251, 251] 7444s
+[otto/tabm_gns uniform/s0 train] epoch 252 train 0.5732 valid 0.5612 widths [251, 251, 251] 7465s
+[otto/tabm_gns uniform/s0 train] epoch 253 train 0.5812 valid 0.5634 widths [251, 251, 251] 7486s
+[otto/tabm_gns uniform/s0 train] epoch 254 train 0.5846 valid 0.5611 widths [251, 251, 251] 7507s
+[otto/tabm_gns uniform/s0 train] epoch 255 train 0.5784 valid 0.5622 widths [251, 251, 251] 7527s
+[otto/tabm_gns uniform/s0 train] epoch 256 train 0.5736 valid 0.5599 widths [251, 251, 251] 7548s
+[otto/tabm_gns uniform/s0 train] epoch 257 train 0.5749 valid 0.5613 widths [251, 251, 251] 7569s
+[otto/tabm_gns uniform/s0 train] epoch 258 train 0.5754 valid 0.5629 widths [251, 251, 251] 7590s
+[otto/tabm_gns uniform/s0 train] epoch 259 train 0.5729 valid 0.5605 widths [251, 251, 251] 7610s
+[otto/tabm_gns uniform/s0 train] epoch 260 train 0.5734 valid 0.5607 widths [251, 251, 251] 7631s
+[otto/tabm_gns uniform/s0 train] epoch 261 train 0.5728 valid 0.5600 widths [251, 251, 251] 7652s
+[otto/tabm_gns uniform/s0 train] epoch 262 train 0.5739 valid 0.5596 widths [251, 251, 251] 7673s
+[otto/tabm_gns uniform/s0 train] epoch 263 train 0.5762 valid 0.5613 widths [251, 251, 251] 7693s
+[otto/tabm_gns uniform/s0 train] epoch 264 train 0.5753 valid 0.5627 widths [251, 251, 251] 7714s
+[otto/tabm_gns uniform/s0 train] epoch 265 train 0.5774 valid 0.5630 widths [251, 251, 251] 7735s
+[otto/tabm_gns uniform/s0 train] epoch 266 train 0.5765 valid 0.5606 widths [251, 251, 251] 7756s
+[otto/tabm_gns uniform/s0 train] epoch 267 train 0.5727 valid 0.5616 widths [251, 251, 251] 7777s
+[otto/tabm_gns uniform/s0 train] epoch 268 train 0.5702 valid 0.5596 widths [251, 251, 251] 7798s
+[otto/tabm_gns uniform/s0 train] epoch 269 train 0.5727 valid 0.5619 widths [251, 251, 251] 7819s
+[otto/tabm_gns uniform/s0 train] epoch 270 train 0.5731 valid 0.5610 widths [251, 251, 251] 7840s
+[otto/tabm_gns uniform/s0 train] epoch 271 train 0.5733 valid 0.5596 widths [251, 251, 251] 7861s
+[otto/tabm_gns uniform/s0 train] epoch 272 train 0.5769 valid 0.5615 widths [251, 251, 251] 7882s
+[otto/tabm_gns uniform/s0 train] epoch 273 train 0.5768 valid 0.5599 widths [251, 251, 251] 7903s
+[otto/tabm_gns uniform/s0 train] epoch 274 train 0.5714 valid 0.5615 widths [251, 251, 251] 7924s
+[otto/tabm_gns uniform/s0 train] epoch 275 train 0.5716 valid 0.5603 widths [251, 251, 251] 7943s
+[otto/tabm_gns uniform/s0 train] epoch 276 train 0.5730 valid 0.5592 widths [251, 251, 251] 7962s
+[otto/tabm_gns uniform/s0 train] epoch 277 train 0.5754 valid 0.5600 widths [251, 251, 251] 7982s
+[otto/tabm_gns uniform/s0 train] epoch 278 train 0.5762 valid 0.5606 widths [251, 251, 251] 8001s
+[otto/tabm_gns uniform/s0 train] epoch 279 train 0.5751 valid 0.5595 widths [251, 251, 251] 8021s
+[otto/tabm_gns uniform/s0 train] epoch 280 train 0.5746 valid 0.5612 widths [251, 251, 251] 8040s
+[otto/tabm_gns uniform/s0 train] epoch 281 train 0.5732 valid 0.5583 widths [251, 251, 251] 8059s
+[otto/tabm_gns uniform/s0 train] epoch 282 train 0.5727 valid 0.5597 widths [251, 251, 251] 8079s
+[otto/tabm_gns uniform/s0 train] epoch 283 train 0.5722 valid 0.5591 widths [251, 251, 251] 8098s
+[otto/tabm_gns uniform/s0 train] epoch 284 train 0.5731 valid 0.5599 widths [251, 251, 251] 8118s
+[otto/tabm_gns uniform/s0 train] epoch 285 train 0.5712 valid 0.5597 widths [251, 251, 251] 8138s
+[otto/tabm_gns uniform/s0 train] epoch 286 train 0.5709 valid 0.5597 widths [251, 251, 251] 8157s
+[otto/tabm_gns uniform/s0 train] epoch 287 train 0.5698 valid 0.5590 widths [251, 251, 251] 8177s
+[otto/tabm_gns uniform/s0 train] epoch 288 train 0.5723 valid 0.5597 widths [251, 251, 251] 8197s
+[otto/tabm_gns uniform/s0 train] epoch 289 train 0.5722 valid 0.5596 widths [251, 251, 251] 8216s
+[otto/tabm_gns uniform/s0 train] epoch 290 train 0.5710 valid 0.5599 widths [251, 251, 251] 8235s
+[otto/tabm_gns uniform/s0 train] epoch 291 train 0.5704 valid 0.5610 widths [251, 251, 251] 8255s
+[otto/tabm_gns uniform/s0 train] epoch 292 train 0.5714 valid 0.5601 widths [251, 251, 251] 8274s
+[otto/tabm_gns uniform/s0 train] epoch 293 train 0.5702 valid 0.5596 widths [251, 251, 251] 8293s
+[otto/tabm_gns uniform/s0 train] epoch 294 train 0.5708 valid 0.5580 widths [251, 251, 251] 8313s
+[otto/tabm_gns uniform/s0 train] epoch 295 train 0.5696 valid 0.5592 widths [251, 251, 251] 8332s
+[otto/tabm_gns uniform/s0 train] epoch 296 train 0.5725 valid 0.5597 widths [251, 251, 251] 8352s
+[otto/tabm_gns uniform/s0 train] epoch 297 train 0.5722 valid 0.5607 widths [251, 251, 251] 8371s
+[otto/tabm_gns uniform/s0 train] epoch 298 train 0.5703 valid 0.5608 widths [251, 251, 251] 8390s
+[otto/tabm_gns uniform/s0 train] epoch 299 train 0.5698 valid 0.5597 widths [251, 251, 251] 8410s
+[otto/tabm_gns uniform/s0 train] epoch 300 train 0.5708 valid 0.5584 widths [251, 251, 251] 8429s
+otto / tabm_uniform / seed 0: test={'accuracy': 78.01389786683905, 'logloss': 0.5754769208767908} widths=[251, 251, 251] time=8433s -> /Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/results/tabm_gns/otto/tabm_uniform/seed0.json
+otto / tabm_controls / seed 0: test=None widths=[290, 344, 141] time=11973s -> /Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/results/tabm_gns/otto/tabm_controls/seed0.json

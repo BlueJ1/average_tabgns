@@ -1,0 +1,382 @@
+{
+ "experiment": "tabm_gns",
+ "dataset": "adult",
+ "method": "mlp_gns",
+ "seed": 2,
+ "task": "classification",
+ "data_info": {
+  "n_rows": 48842,
+  "n_num": 6,
+  "n_cat": 8,
+  "inp_dim": 107,
+  "classes": [
+   "<=50K",
+   ">50K"
+  ]
+ },
+ "widths": [
+  69,
+  22,
+  19,
+  15,
+  11
+ ],
+ "search": {
+  "time_s": 248.87557087512687,
+  "arch_history": [
+   [
+    0,
+    0,
+    0,
+    14,
+    156
+   ],
+   [
+    0,
+    0,
+    0,
+    9,
+    155
+   ],
+   [
+    1,
+    1,
+    0,
+    7,
+    155
+   ],
+   [
+    16,
+    14,
+    4,
+    7,
+    154
+   ],
+   [
+    133,
+    101,
+    55,
+    63,
+    212
+   ],
+   [
+    155,
+    122,
+    70,
+    79,
+    199
+   ],
+   [
+    157,
+    131,
+    73,
+    87,
+    173
+   ],
+   [
+    160,
+    131,
+    71,
+    82,
+    130
+   ],
+   [
+    156,
+    126,
+    67,
+    83,
+    109
+   ],
+   [
+    154,
+    123,
+    61,
+    80,
+    92
+   ],
+   [
+    150,
+    115,
+    55,
+    67,
+    66
+   ],
+   [
+    152,
+    116,
+    48,
+    63,
+    59
+   ],
+   [
+    147,
+    105,
+    45,
+    58,
+    44
+   ],
+   [
+    147,
+    98,
+    40,
+    53,
+    29
+   ],
+   [
+    139,
+    89,
+    36,
+    53,
+    28
+   ],
+   [
+    134,
+    84,
+    35,
+    51,
+    22
+   ],
+   [
+    128,
+    78,
+    31,
+    47,
+    18
+   ],
+   [
+    121,
+    74,
+    28,
+    39,
+    17
+   ],
+   [
+    118,
+    61,
+    28,
+    36,
+    18
+   ],
+   [
+    113,
+    50,
+    24,
+    31,
+    18
+   ],
+   [
+    107,
+    49,
+    24,
+    25,
+    16
+   ],
+   [
+    110,
+    48,
+    22,
+    24,
+    17
+   ],
+   [
+    107,
+    43,
+    20,
+    22,
+    18
+   ],
+   [
+    106,
+    43,
+    20,
+    21,
+    16
+   ],
+   [
+    104,
+    40,
+    19,
+    20,
+    16
+   ],
+   [
+    101,
+    35,
+    21,
+    19,
+    13
+   ],
+   [
+    92,
+    37,
+    18,
+    21,
+    12
+   ],
+   [
+    91,
+    32,
+    19,
+    17,
+    13
+   ],
+   [
+    90,
+    33,
+    18,
+    17,
+    12
+   ],
+   [
+    84,
+    31,
+    14,
+    17,
+    12
+   ],
+   [
+    85,
+    29,
+    14,
+    18,
+    12
+   ],
+   [
+    84,
+    24,
+    15,
+    18,
+    12
+   ],
+   [
+    80,
+    24,
+    16,
+    18,
+    11
+   ],
+   [
+    80,
+    25,
+    15,
+    17,
+    11
+   ],
+   [
+    74,
+    24,
+    18,
+    17,
+    9
+   ],
+   [
+    74,
+    24,
+    16,
+    16,
+    10
+   ],
+   [
+    69,
+    23,
+    17,
+    16,
+    10
+   ],
+   [
+    69,
+    22,
+    19,
+    15,
+    11
+   ]
+  ]
+ },
+ "train": {
+  "time_s": 11.121875750366598
+ },
+ "metrics": {
+  "valid": {
+   "accuracy": 85.32091309243526,
+   "logloss": 0.31739896106965343
+  },
+  "test": {
+   "accuracy": 85.49493295117207,
+   "logloss": 0.3245451614577531
+  }
+ },
+ "params": {
+  "hidden": 2386,
+  "shared": 9929,
+  "full": 9929
+ },
+ "wall_time_s": 260.0258680409752,
+ "config": {
+  "dataset": {
+   "name": "adult",
+   "openml_id": 1590,
+   "task": "classification"
+  },
+  "method": {
+   "name": "mlp_gns",
+   "temperature": 1.0,
+   "arch_lr": 0.05,
+   "gate_initialisation_val": -3,
+   "scale": true,
+   "finetune_epochs": null
+  },
+  "experiment": "tabm_gns",
+  "seed": 2,
+  "results_dir": "results",
+  "overwrite": false,
+  "torch_threads": 1,
+  "tabm": {
+   "widths": [
+    512,
+    512,
+    512
+   ],
+   "k": 32,
+   "dropout": 0.1
+  },
+  "train": {
+   "lr": 0.002,
+   "weight_decay": 0.0003,
+   "batch_size": 256,
+   "epochs": 300,
+   "patience": 20
+  },
+  "mlp": {
+   "widths": [
+    512,
+    512,
+    512,
+    512,
+    512
+   ],
+   "general": {
+    "stop_criteria": "val_loss",
+    "batch_size": 256,
+    "iters": 300,
+    "stop_patience": 20,
+    "weight_lr": 0.001
+   }
+  }
+ },
+ "provenance": {
+  "git_head": "473e8b48d36f91b5cad5c34111bbbc6199317f38",
+  "git_dirty": false,
+  "source_sha256": {
+   "experiments/tabm_gns/__init__.py": "e3b0c44298fc1c14",
+   "experiments/tabm_gns/model.py": "73bb67ac7358f29a",
+   "experiments/tabm_gns/protocol.py": "282860647bea02d5",
+   "experiments/tabm_gns/report.py": "5f1e8c392354fb00",
+   "experiments/tabm_gns/run.py": "b737c8af47828566",
+   "experiments/tabm_gns/test_tabm_gns.py": "eabc20eae7f3af78"
+  },
+  "python": "3.11.5",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "torch": "2.5.1",
+  "torch_threads": 1
+ }
+}
