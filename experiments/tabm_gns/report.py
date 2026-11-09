@@ -16,6 +16,7 @@ from typing import Dict, List, Optional
 import numpy as np
 
 METHODS = ['mlp_large', 'mlp_gns', 'tabm_large', 'tabm_gns', 'tabm_gns_member']
+CONTROL_METHODS = ['tabm_rewind', 'tabm_uniform', 'tabm_rewind_member', 'tabm_uniform_member']
 LABEL = {'mlp_large': 'Large MLP (5×512)', 'mlp_gns': 'TabGNS-MLP', 'tabm_large': 'Large TabM (3×512, k=32)',
          'tabm_gns': 'TabGNS-TabM (shared mask)', 'tabm_gns_member': 'TabGNS-TabM (per-member masks)'}
 BASE = {'mlp_gns': 'mlp_large', 'tabm_gns': 'tabm_large', 'tabm_gns_member': 'tabm_large'}
@@ -225,7 +226,8 @@ def write_csv(runs: List[dict], out: Path) -> None:
   with open(out / 'runs.csv', 'w', newline='') as f:
     w = csv.writer(f)
     w.writerow(cols)
-    for r in sorted(runs, key=lambda r: (r['dataset'], METHODS.index(r['method']), r['seed'])):
+    order = METHODS + CONTROL_METHODS
+    for r in sorted(runs, key=lambda r: (r['dataset'], order.index(r['method']), r['seed'])):
       metric = PRIMARY[r['task']][0]
       w.writerow([r['dataset'], r['method'], r['seed'], r['task'], metric, r['metrics']['test'][metric],
                   r['metrics']['valid'][metric], r.get('metrics_extracted', {}).get('test', {}).get(metric, ''),
