@@ -19,6 +19,7 @@ from __future__ import annotations
 
 import copy
 import math
+import os
 import sys
 import time
 from dataclasses import dataclass, field
@@ -60,6 +61,9 @@ class Prepared:
 
 def _openml_frame(did: int):
   import openml
+  # Read the ARFF (cached as a pickle) rather than the parquet file. OpenML did not serve parquet for these
+  # datasets when the study started, so every run so far read the ARFF; parquet also needs a working pyarrow.
+  os.environ['OPENML_SKIP_PARQUET'] = 'true'
   d = openml.datasets.get_dataset(did, download_data=True, download_qualities=False,
                                   download_features_meta_data=False)
   X, y, cat_mask, names = d.get_data(target=d.default_target_attribute, dataset_format='dataframe')
