@@ -180,12 +180,30 @@ def run_controls(data: Prepared, gcfg: Dict, seed: int, gns_out: Path, masks, ta
     _write(rec, gcfg, out, start)
 
 
+def _method_config(name: str, c: Dict) -> Dict:
+  """The resolved method config `name` as the main sweep used it (its interpolations point at c)."""
+  raw = OmegaConf.load(ROOT / 'experiments' / 'tabm_gns' / 'conf' / 'method' / f'{name}.yaml')
+  merged = OmegaConf.merge(OmegaConf.create({k: v for k, v in c.items() if k != 'method'}), {'method': raw})
+  return cast(Dict[str, Any], OmegaConf.to_container(merged, resolve=True))['method']
+
+
 def run_tabm_controls(data: Prepared, c: Dict, seed: int, out: Path) -> Dict:
   """Controls for a TabGNS-TabM run that finished without saved masks: replays its search (deterministic
   on one CPU thread) to recover the masks, checks the replay against the stored histories, then trains
   the controls. Waits for the matched result if it is still being produced."""
   m = c['method']
   gout = out.parent.parent / m['match'] / out.name
+  mpath = gout.with_suffix('.masks.npz')
+  info: Dict[str, Any] = {'match': m['match']}
+  masks, s, replay_widths = None, None, None
+  if m['rewind'] and not mpath.exists():
+    # The replay only needs the matched run's config, which is this config with method = match, so it can
+    # start before the matched run has finished; the stored result is needed only to check it.
+    gcfg_replay = copy.deepcopy(c)
+    gcfg_replay['method'] = _method_config(m['match'], c)
+    net, s = _search(data, gcfg_replay, seed, tag=f"{data.name}/{m['match']} replay/s{seed}")
+    replay_widths = net.curr_architecture()
+    masks = [mk.numpy() for mk in net.keep_masks()]
   deadline = time.time() + 3600 * m['wait_hours']
   while not is_done(gout):
     if time.time() > deadline:
@@ -195,21 +213,16 @@ def run_tabm_controls(data: Prepared, c: Dict, seed: int, out: Path) -> Dict:
   if 'error' in stored:
     raise RuntimeError(f'{gout} failed')
   gcfg = stored['config']
-  info: Dict[str, Any] = {'match': m['match'], 'matched_widths': stored['widths']}
-  masks = None
-  mpath = gout.with_suffix('.masks.npz')
+  info['matched_widths'] = stored['widths']
   if m['rewind']:
-    if mpath.exists():
+    if s is None:
       masks = list(np.load(mpath).values())
       info['masks'] = 'saved'
     else:
-      net, s = _search(data, gcfg, seed, tag=f"{data.name}/{m['match']} replay/s{seed}")
-      replay_widths = net.curr_architecture()
       info['replay'] = {
         'arch_history_equal': s['arch_history'] == stored['search']['arch_history'],
         'loss_history_equal': [list(x) for x in s['loss_history']] == [list(x) for x in stored['search']['loss_history']],
         'epochs': s['epochs'], 'stored_epochs': stored['search']['epochs'], 'widths': replay_widths}
-      masks = [mk.numpy() for mk in net.keep_masks()]
       if replay_widths == stored['widths']:
         np.savez(mpath, *masks)
       else:
@@ -284,6 +297,20 @@ def main(cfg: DictConfig) -> None:
   if is_done(out) and not c['overwrite']:
     print(f'{out} exists, skipping')
     return
+  lock = out.with_suffix('.lock')  # lets several queues share a list of cells without duplicating work
+  out.parent.mkdir(parents=True, exist_ok=True)
+  try:
+    os.close(os.open(lock, os.O_CREAT | os.O_EXCL | os.O_WRONLY))
+  except FileExistsError:
+    print(f'{lock} exists (running elsewhere), skipping')
+    return
+  try:
+    _main(c, method, out)
+  finally:
+    lock.unlink(missing_ok=True)
+
+
+def _main(c: Dict[str, Any], method: str, out: Path) -> None:
   torch.set_num_threads(c['torch_threads'])
   set_seed(c['seed'])
   data = prepare(c['dataset'], c['seed'])

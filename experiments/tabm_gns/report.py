@@ -23,10 +23,16 @@ DATASETS = ['california', 'adult', 'otto']
 PRIMARY = {'regression': ('rmse', False), 'classification': ('accuracy', True)}  # (metric, higher is better)
 
 
-def load(results: Path) -> List[dict]:
+def load(results: Path, controls_info: Optional[List[dict]] = None) -> List[dict]:
   runs = []
   for p in sorted(results.glob('*/*/seed*.json')):
     r = json.loads(p.read_text())
+    if r.get('placeholder'):
+      continue
+    if r.get('method', '').startswith('tabm_controls'):
+      if controls_info is not None:
+        controls_info.append(r)
+      continue
     if 'error' in r:
       print(f'{p}: run failed:\n{r["error"]}')
       continue
@@ -126,10 +132,56 @@ def summarise(runs: List[dict], out: Path) -> str:
     if base_rs:
       lines.append(f'Large TabM epochs: {ms([r["train"]["epochs"] for r in base_rs.values()], 0)}.')
       lines.append('')
+  lines += controls_section(runs, out)
   lines += ablation_k(runs, out)
   text = '\n'.join(lines)
   (out / 'summary.md').write_text(text)
   return text
+
+
+CONTROLS = {'tabm_gns': ('tabm_rewind', 'tabm_uniform'), 'tabm_gns_member': ('tabm_rewind_member', 'tabm_uniform_member')}
+
+
+def controls_section(runs: List[dict], out: Path) -> List[str]:
+  """Warm start (the method) vs. rewind vs. scratch vs. uniform width, per dataset and variant."""
+  by = defaultdict(dict)
+  for r in runs:
+    by[(r['dataset'], r['method'])][r['seed']] = r
+  lines = ['## What the supernet contributes', '',
+           'All rows use the widths found by TabGNS-TabM (uniform: the same parameter count with equal widths) '
+           'and the same TabM training protocol. *Warm start* = the method (supernet weights, fine-tuned); '
+           '*rewind* = the found widths initialised with the supernet\'s initial weights of the kept neurons; '
+           '*scratch* = the found widths from a fresh initialisation; *uniform* = equal widths, same parameter count. '
+           'Rewind, scratch and uniform share the data order. Δ = paired difference to warm start '
+           '(positive = better than warm start).', '',
+           '| dataset | variant | warm start | rewind | scratch | uniform (width) | Δ rewind | Δ scratch | Δ uniform | Large TabM |',
+           '|---|---|---|---|---|---|---|---|---|---|']
+  any_row = False
+  for ds in DATASETS:
+    for v in ('tabm_gns', 'tabm_gns_member'):
+      g = by.get((ds, v), {})
+      if not g:
+        continue
+      task = next(iter(g.values()))['task']
+      metric, higher = PRIMARY[task]
+      dig = 2 if metric == 'accuracy' else 4
+      sign = 1 if higher else -1
+      warm = {s: r['metrics']['test'][metric] for s, r in g.items()}
+      scratch = {s: r['metrics_scratch']['test'][metric] for s, r in g.items() if 'metrics_scratch' in r}
+      rew = {s: r['metrics']['test'][metric] for s, r in by.get((ds, CONTROLS[v][0]), {}).items()}
+      uni_runs = by.get((ds, CONTROLS[v][1]), {})
+      uni = {s: r['metrics']['test'][metric] for s, r in uni_runs.items()}
+      big = {s: r['metrics']['test'][metric] for s, r in by.get((ds, 'tabm_large'), {}).items()}
+      def d(x):
+        p = paired(x, warm)
+        return f'{sign * p[0]:+.{dig}f} ({sum(sign * e > 0 for e in p[1])}/{len(p[1])})' if p else '–'
+      uw = sorted({r['widths'][0] for r in uni_runs.values()})
+      lines.append(f'| {ds} | {LABEL[v].split("(")[1].rstrip(")")} | {ms(list(warm.values()), dig)} | '
+                   f'{ms(list(rew.values()), dig)} | {ms(list(scratch.values()), dig)} | '
+                   f'{ms(list(uni.values()), dig)} ({", ".join(map(str, uw))}) | {d(rew)} | {d(scratch)} | {d(uni)} | '
+                   f'{ms(list(big.values()), dig)} |')
+      any_row = True
+  return lines + [''] if any_row else []
 
 
 def ablation_k(main_runs: List[dict], out: Path) -> List[str]:
@@ -239,8 +291,21 @@ def main() -> None:
   ap.add_argument('--results', default='results/tabm_gns')
   args = ap.parse_args()
   out = Path(args.results)
-  runs = load(out)
-  print(summarise(runs, out))
+  info: List[dict] = []
+  runs = load(out, info)
+  text = summarise(runs, out)
+  if info:
+    rl = ['## Replays', '', 'Searches replayed to recover masks for the rewind control (one CPU thread, same seeds):', '',
+          '| dataset | run | seed | arch history identical | loss history identical | epochs (replay / stored) |',
+          '|---|---|---|---|---|---|']
+    for r in sorted(info, key=lambda r: (r['dataset'], r['method'], r['seed'])):
+      rp = r.get('replay')
+      if rp:
+        rl.append(f"| {r['dataset']} | {r['match']} | {r['seed']} | {rp['arch_history_equal']} | "
+                  f"{rp['loss_history_equal']} | {rp['epochs']} / {rp['stored_epochs']} |")
+    text += '\n' + '\n'.join(rl) + '\n'
+    (out / 'summary.md').write_text(text)
+  print(text)
   write_csv(runs, out)
   figures(runs, out)
 
