@@ -126,9 +126,44 @@ def summarise(runs: List[dict], out: Path) -> str:
     if base_rs:
       lines.append(f'Large TabM epochs: {ms([r["train"]["epochs"] for r in base_rs.values()], 0)}.')
       lines.append('')
+  lines += ablation_k(runs, out)
   text = '\n'.join(lines)
   (out / 'summary.md').write_text(text)
   return text
+
+
+def ablation_k(main_runs: List[dict], out: Path) -> List[str]:
+  """Ensemble-size ablation: results/tabm_gns/ablation_k<k>/ plus the k=32 main runs (shared mask)."""
+  rows = defaultdict(dict)  # (dataset, k, method) -> seed -> run
+  for r in main_runs:
+    if r['method'] in ('tabm_large', 'tabm_gns'):
+      rows[(r['dataset'], r['config']['tabm']['k'], r['method'])][r['seed']] = r
+  for d in sorted(out.glob('ablation_k*')):
+    for r in load(d):
+      rows[(r['dataset'], r['config']['tabm']['k'], r['method'])][r['seed']] = r
+  ks = sorted({k for (_, k, _) in rows})
+  if len(ks) < 2:
+    return []
+  lines = ['## Ensemble size k (TabGNS-TabM with a shared mask vs. Large TabM of the same k)', '',
+           '| dataset | k | Large TabM | TabGNS-TabM | Δ (paired) | TabGNS widths (per seed) | size vs Large |',
+           '|---|---|---|---|---|---|---|']
+  for ds in DATASETS:
+    for k in ks:
+      big, gns = rows.get((ds, k, 'tabm_large'), {}), rows.get((ds, k, 'tabm_gns'), {})
+      if not big and not gns:
+        continue
+      task = next(iter({**big, **gns}.values()))['task']
+      metric, _ = PRIMARY[task]
+      dig = 2 if metric == 'accuracy' else 4
+      p = paired({s: r['metrics']['test'][metric] for s, r in gns.items()},
+                 {s: r['metrics']['test'][metric] for s, r in big.items()})
+      size = [gns[s]['params']['full'] / big[s]['params']['full'] * 100 for s in gns if s in big]
+      lines.append(f'| {ds} | {k} | {ms([r["metrics"]["test"][metric] for r in big.values()], dig)} | '
+                   f'{ms([r["metrics"]["test"][metric] for r in gns.values()], dig)} | '
+                   f'{f"{p[0]:+.{dig}f}" if p else "–"} | '
+                   f'{" ".join(str(r["widths"]) for _, r in sorted(gns.items()))} | '
+                   f'{f"{np.mean(size):.1f}%" if size else "–"} |')
+  return lines + ['']
 
 
 def write_csv(runs: List[dict], out: Path) -> None:

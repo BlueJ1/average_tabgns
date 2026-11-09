@@ -3,6 +3,7 @@ Correctness checks for the TabGNS -> TabM transfer:  python -m unittest -v exper
 """
 from __future__ import annotations
 
+import copy
 import math
 import unittest
 
@@ -123,6 +124,52 @@ class TestGates(unittest.TestCase):
     for a, g in zip(full, net.gates):
       torch.testing.assert_close(a, g.logits.grad)
     self.assertTrue(all(p.grad is None or not p.grad.any() for p in net.weight_parameters()))
+
+
+class TestControls(unittest.TestCase):
+
+  def test_rewind_takes_initial_weights_of_kept_neurons(self):
+    torch.manual_seed(7)
+    init = GatedTabM(7, [16, 12], 3, 4, 0.0, -3, 1.0)
+    trained = copy.deepcopy(init)
+    with torch.no_grad():
+      for p in trained.parameters():
+        p.add_(1.0)  # "training" moves every weight
+    masks = [torch.rand(16) > 0.5, torch.rand(12) > 0.5]
+    torch.manual_seed(7)
+    fresh = GatedTabM(7, [16, 12], 3, 4, 0.0, -3, 1.0)
+    sub = fresh.extract(scale=False, masks=masks)
+    rows0, rows1 = torch.nonzero(masks[0]).flatten(), torch.nonzero(masks[1]).flatten()
+    self.assertEqual(sub.widths, [len(rows0), len(rows1)])
+    torch.testing.assert_close(sub.linears[0].weight, init.linears[0].weight[rows0])
+    torch.testing.assert_close(sub.linears[1].weight, init.linears[1].weight[rows1][:, rows0])
+    torch.testing.assert_close(sub.linears[1].r, init.linears[1].r[:, rows0])
+    torch.testing.assert_close(sub.head.weight, init.head.weight[:, rows1, :])
+
+  def test_uniform_width_matches_params(self):
+    from experiments.tabm_gns.run import uniform_width
+    target = tabm_params(93, [300, 310, 170], 9, 32)['full']
+    w = uniform_width(93, 3, 9, 32, target)
+    best = abs(tabm_params(93, [w] * 3, 9, 32)['full'] - target)
+    self.assertTrue(all(best <= abs(tabm_params(93, [v] * 3, 9, 32)['full'] - target) for v in (w - 1, w + 1)))
+
+  def test_search_is_deterministic(self):
+    rng = np.random.default_rng(0)
+    X = rng.normal(size=(400, 5)).astype(np.float32)
+    y = (X[:, 0] > 0).astype(np.int64)
+    data = Prepared('toy', 'classification', (X[:240], y[:240]), (X[240:320], y[240:320]), (X[320:], y[320:]), 2, [1] * 5)
+    runs = []
+    for _ in range(2):
+      torch.manual_seed(0)
+      net = GatedTabM(5, [16, 16], 2, 4, 0.1, -1, 1.0, 'member')
+      torch.manual_seed(1)
+      s = search(net, data, {'arch_lr': 0.05, 'epochs': 4, 'patience': 5, 'checkpoint': 'last'},
+                 {'lr': 2e-3, 'weight_decay': 3e-4, 'batch_size': 32}, torch.Generator().manual_seed(2))
+      runs.append((s['arch_history'], s['loss_history'], [g.logits.detach().clone() for g in net.gates]))
+    self.assertEqual(runs[0][0], runs[1][0])
+    self.assertEqual(runs[0][1], runs[1][1])
+    for a, b in zip(runs[0][2], runs[1][2]):
+      self.assertTrue(torch.equal(a, b))
 
 
 class TestLossesAndSearch(unittest.TestCase):

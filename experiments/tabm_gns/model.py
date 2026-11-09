@@ -171,14 +171,16 @@ class GatedTabM(TabM):
     return [int(m.sum()) for m in self.keep_masks()]
 
   @torch.no_grad()
-  def extract(self, scale: bool) -> TabM:
-    """The TabM of the kept neurons (sigmoid(g) >= 0.5), with the supernet's weights.
+  def extract(self, scale: bool, masks: Optional[List[Tensor]] = None) -> TabM:
+    """The TabM of the kept neurons (sigmoid(g) >= 0.5, or the given boolean `masks`), with the supernet's
+    current weights.
 
     With `scale`, a kept neuron's outgoing scale s and bias are multiplied by sigmoid(g), like
     `TabGNS.extract_net` scales the rows of W and b; since sigmoid(g) > 0 this is the same as scaling
-    the neuron's output after ReLU.
+    the neuron's output after ReLU. Passing `masks` from a finished search to a freshly initialised
+    supernet (same seed) gives the found architecture with the supernet's initial weights.
     """
-    masks = self.keep_masks()
+    masks = self.keep_masks() if masks is None else [torch.as_tensor(m, dtype=torch.bool) for m in masks]
     sub = TabM(self.d_in, [int(m.sum()) for m in masks], self.d_out, self.k, self.dropout,
                self.first_r_chunks)
     cols = torch.arange(self.d_in)
