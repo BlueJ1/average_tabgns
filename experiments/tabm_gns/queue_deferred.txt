@@ -1,0 +1,3 @@
+dataset=otto method=tabm_controls seed=2
+dataset=otto method=tabm_controls seed=1
+dataset=otto method=tabm_controls seed=0

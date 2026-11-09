@@ -271,6 +271,15 @@ def is_done(out: Path) -> bool:
     return False
 
 
+def _controls_done(c: Dict, out: Path) -> bool:
+  """A controls cell is done when the control results it asks for exist, so a uniform-only pass
+  (method.rewind=false) does not block a later pass that adds the rewind control."""
+  m = c['method']
+  rewind_name, uniform_name = CONTROL_NAMES[m['match']]
+  wanted = [uniform_name] + ([rewind_name] if m['rewind'] else [])
+  return all(is_done(out.parent.parent / name / out.name) for name in wanted)
+
+
 def _base_record(c: Dict, data: Prepared, method: str) -> Dict[str, Any]:
   return {'experiment': c['experiment'], 'dataset': data.name, 'method': method, 'seed': c['seed'],
           'task': data.task, 'data_info': data.info}
@@ -294,7 +303,7 @@ def main(cfg: DictConfig) -> None:
   out = Path(c['results_dir']) / c['experiment'] / c['dataset']['name'] / method / f"seed{c['seed']}.json"
   if not out.is_absolute():
     out = ROOT / out
-  if is_done(out) and not c['overwrite']:
+  if (_controls_done(c, out) if method.startswith('tabm_controls') else is_done(out)) and not c['overwrite']:
     print(f'{out} exists, skipping')
     return
   lock = out.with_suffix('.lock')  # lets several queues share a list of cells without duplicating work
