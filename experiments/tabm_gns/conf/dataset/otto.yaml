@@ -1,0 +1,5 @@
+# Otto Group Product Classification (OpenML 45548): 61,878 x 93 count features, 9 classes.
+# Also in the TabM benchmark.
+name: otto
+openml_id: 45548
+task: classification

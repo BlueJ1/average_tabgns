@@ -1,0 +1,5 @@
+# California Housing (OpenML 44025, the "california" set of the Grinsztajn et al. benchmark):
+# 20,640 x 8 numeric, regression (median house value, $100k). Also in the TabM benchmark.
+name: california
+openml_id: 44025
+task: regression

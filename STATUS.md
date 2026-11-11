@@ -61,3 +61,41 @@ parallel Higgs jobs.
 - Include DeepMIMO? It is public, but generating the paper's exact export (scenario O1, 18 BSs,
   3.5 GHz → 28/60/140 GHz path loss) is extra work.
 - Fig. 5 on CoverType is ~31 run-hours with 8 gate values × 5 seeds; fewer seeds would cut it.
+
+## Exploration: TabGNS on TabM (`experiments/tabm_gns/`, results in `results/tabm_gns/`)
+
+Goal (user, 2026-11-08): transfer TabGNS to the TabM architecture, test it on three public datasets,
+keep the results in a dedicated folder, open a PR with the findings. Details and results in
+`experiments/tabm_gns/REPORT.md`.
+
+Decisions:
+- **Datasets:** California (OpenML 44025, regression), Adult (1590, binary), Otto (45548, 9 classes):
+  all in the TabM benchmark, none used by the replication. 3 seeds, 60/20/20 splits, preprocessing
+  fitted on train only.
+- **TabM:** own re-implementation of `tabm` 0.0.3's `arch_type='tabm'` (parity unit test), defaults
+  3 × 512, k = 32, dropout 0.1, AdamW lr 2e-3 / wd 3e-4.
+- **Gates are shared by all k members** (pruning a neuron removes a row of the shared W). Two noise
+  variants: one mask per pass (`tabm_gns`) and one mask per member (`tabm_gns_member`).
+- **TabGNS itself is unchanged**, quirks included (P(open) = sigmoid(g − 1) while sampling, last-epoch
+  checkpoint).
+- **Controls** (asked for by the user, 2026-11-09): rewind (found widths with the supernet's initial
+  weights, same seeds), scratch (fresh init), uniform (equal widths, same parameter count).
+- **Datasets are read from OpenML's ARFF, not parquet** (`OPENML_SKIP_PARQUET`): the venv's pyarrow
+  cannot read parquet, and OpenML only started serving parquet for these datasets mid-study.
+- **Time limit** (user, 2026-11-09): processing had to end by 19:00, so the Otto rewind replays
+  (~6–10 h) were deferred to `experiments/tabm_gns/queue_deferred.txt`; they ran 2026-11-10/11.
+
+Findings:
+- TabGNS-TabM matches Large TabM at 3.5–41% of its parameters (better RMSE on California at ~20%,
+  −0.1/−0.2 pp accuracy on Adult at ~4%, equal on Otto at 32–41%).
+- It compresses TabM far less than an MLP (0.9–1.9% there); the found size grows with k.
+- On California and Adult, rewind, scratch and uniform retrainings are as good as the warm-started
+  model: TabGNS works as a size selector, the weights and the uneven shape add nothing. On Otto the
+  warm start is ~1 pp better than scratch, uniform and rewind (rewind = scratch), so what helps
+  there is the supernet's trained weights, not its initialisation.
+
+State:
+- [x] Main grid: 3 datasets × {Large TabM, TabGNS-TabM ×2, Large MLP, TabGNS-MLP} × 3 seeds
+- [x] k ablation (k = 1, 4) on California and Adult
+- [x] Controls: all except Otto rewind and per-member rewind on California/Otto
+- [x] Otto rewind (`queue_deferred.txt`; replays matched the stored searches exactly)

@@ -1,0 +1,6 @@
+# Controls for a finished tabm_gns run that has no saved masks: replay its search (deterministic) to
+# recover the masks, then train the rewind and uniform-width controls (see run.py).
+name: tabm_controls
+match: tabm_gns
+rewind: true
+wait_hours: 12          # wait this long for the matched result if it is still being produced

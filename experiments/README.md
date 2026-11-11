@@ -140,6 +140,14 @@ original `h̃ = g·h`, on a controlled pipeline that fixes the quirks below for 
 change `tabgns/` or `experiments/run.py`. See `experiments/mean_gate/REPORT.md` for the protocol,
 commands and results.
 
+## Exploration: TabGNS on the TabM architecture
+
+`experiments/tabm_gns/` transfers TabGNS from plain MLPs to TabM (Gorishniy et al., ICLR 2025), a
+parameter-efficient ensemble of k=32 MLPs that share their weight matrices. It is tested on three
+public OpenML datasets that are not part of the replication (California, Adult, Otto) and writes its
+results to `results/tabm_gns/`. It does not change `tabgns/` or `experiments/run.py`; the MLP
+reference arms call `experiments.methods` unchanged. See `experiments/tabm_gns/REPORT.md`.
+
 ## Known quirks in `tabgns/`
 
 - `BinaryGumbelSoftmax` uses logits `[g, 1]`, so during the search a gate is open with probability
