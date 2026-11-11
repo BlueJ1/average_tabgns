@@ -61,7 +61,7 @@ the weights the search started from). *Scratch*: the found widths from a fresh i
 | California | per-member | 0.1365 ± 0.0025 | – | 0.1361 ± 0.0020 | 0.1366 ± 0.0016 | 0.1392 ± 0.0023 |
 | Adult | shared mask | 85.80 ± 0.02 | 85.96 ± 0.17 | 85.98 ± 0.12 | 85.96 ± 0.09 | 85.98 ± 0.16 |
 | Adult | per-member | 85.88 ± 0.15 | 86.07 ± 0.19 | 86.06 ± 0.03 | 86.04 ± 0.11 | 85.98 ± 0.16 |
-| Otto | shared mask | 78.83 ± 0.36 | *deferred* | 77.62 ± 0.53 | 77.69 ± 0.30 | 78.96 ± 0.33 |
+| Otto | shared mask | 78.83 ± 0.36 | 77.66 ± 0.23 | 77.62 ± 0.53 | 77.69 ± 0.30 | 78.96 ± 0.33 |
 | Otto | per-member | 78.94 ± 0.30 | – | 77.99 ± 0.38 | 78.09 ± 0.40 | 78.96 ± 0.33 |
 
 On California and Adult all four are within noise of each other; on Adult the three retrained
@@ -72,14 +72,17 @@ size does as well, and better than Large TabM on California. TabGNS is useful th
 **size selector** for TabM: it found that California needs about a fifth of Large TabM and Adult about
 a thirtieth, without a tuning loop.
 
-**5. On Otto, the supernet's weights matter.** Retraining the found widths from scratch loses about
-1 pp of accuracy (−1.21 / −0.95 pp; 0/3 seeds as good as the warm start), and equal widths of the same
-size lose as much (−1.14 / −0.85 pp, 0/3), so the warm start, not the shape, carries Otto. Whether
-this is the supernet's *initial* weights (a lottery-ticket effect) or its *training* is what the
-rewind control answers; it needs the Otto searches replayed and is deferred (below). A caveat that the rewind control will not remove: the
-warm-started model has seen far more training (140–250 search epochs plus 120–190 fine-tuning epochs)
-than a single retraining, and 5 of the 12 Otto retrainings stopped at the 300-epoch cap, so part of the
-gap may be training budget rather than anything the search found.
+**5. On Otto, the supernet's trained weights matter, not its initialisation.** Retraining the found
+widths from scratch loses about 1 pp of accuracy (−1.21 / −0.95 pp; 0/3 seeds as good as the warm
+start), and equal widths of the same size lose as much (−1.14 / −0.85 pp, 0/3), so the warm start, not
+the shape, carries Otto. Starting from the supernet's *initial* weights of the kept neurons does not
+help either: rewind reaches 77.66 ± 0.23 (−1.17 pp, 0/3), the same as scratch. So there is no
+lottery-ticket effect; what the warm start keeps is the weights the supernet *learned* during the
+search. (The three Otto searches were replayed to recover their masks; each replay matched the stored
+arch and loss histories exactly.) A caveat: the warm-started model has seen far more training
+(140–250 search epochs plus 120–190 fine-tuning epochs) than a single retraining, and 6 of the 15 Otto
+retrainings stopped at the 300-epoch cap, so part of the gap may be training budget rather than
+anything the search found.
 
 **Baselines.** The comparisons are the default (Large) TabM, the controls, and TabGNS on an MLP. The
 replication's other NAS baselines (TabNAS, AgE) were not run on TabM, and the TabM paper's numbers
@@ -88,10 +91,6 @@ differ). A tuned-width TabM (e.g. a width search with Optuna) is the natural str
 
 ## Not done (yet)
 
-- **Otto rewind control (shared mask).** The Otto searches finished before masks were saved, so the
-  rewind control first replays each search (deterministic on one CPU thread; the California replay
-  matched the stored arch and loss histories exactly). That is ~6–10 h of CPU for three seeds:
-  `xargs -P 3 -L 1 sh -c '.venv/bin/python -m experiments.tabm_gns.run $0 "$@"' < experiments/tabm_gns/queue_deferred.txt`.
 - **Rewind for the per-member variant on California and Otto** (same reason; not queued:
   `method=tabm_controls_member method.rewind=true` replays those searches). Adult has it, since its
   searches saved masks.

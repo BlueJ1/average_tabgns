@@ -87,7 +87,7 @@ All rows use the widths found by TabGNS-TabM (uniform: the same parameter count 
 | california | per-member masks | 0.1365 ± 0.0025 | – | 0.1361 ± 0.0020 | 0.1366 ± 0.0016 (177, 189, 212) | – | +0.0004 (1/3) | -0.0001 (1/3) | 0.1392 ± 0.0023 |
 | adult | shared mask | 85.80 ± 0.02 | 85.96 ± 0.17 | 85.98 ± 0.12 | 85.96 ± 0.09 (37, 44, 50) | +0.17 (2/3) | +0.19 (3/3) | +0.16 (3/3) | 85.98 ± 0.16 |
 | adult | per-member masks | 85.88 ± 0.15 | 86.07 ± 0.19 | 86.06 ± 0.03 | 86.04 ± 0.11 (30, 44, 72) | +0.19 (3/3) | +0.17 (2/3) | +0.15 (3/3) | 85.98 ± 0.16 |
-| otto | shared mask | 78.83 ± 0.36 | – | 77.62 ± 0.53 | 77.69 ± 0.30 (220, 251, 258) | – | -1.21 (0/3) | -1.14 (0/3) | 78.96 ± 0.33 |
+| otto | shared mask | 78.83 ± 0.36 | 77.66 ± 0.23 | 77.62 ± 0.53 | 77.69 ± 0.30 (220, 251, 258) | -1.17 (0/3) | -1.21 (0/3) | -1.14 (0/3) | 78.96 ± 0.33 |
 | otto | per-member masks | 78.94 ± 0.30 | – | 77.99 ± 0.38 | 78.09 ± 0.40 (259, 295, 308) | – | -0.95 (0/3) | -0.85 (0/3) | 78.96 ± 0.33 |
 
 ## Ensemble size k (TabGNS-TabM with a shared mask vs. Large TabM of the same k)
@@ -109,3 +109,6 @@ Searches replayed to recover masks for the rewind control (one CPU thread, same 
 | dataset | run | seed | arch history identical | loss history identical | epochs (replay / stored) |
 |---|---|---|---|---|---|
 | california | tabm_gns | 2 | True | True | 98 / 98 |
+| otto | tabm_gns | 0 | True | True | 249 / 249 |
+| otto | tabm_gns | 1 | True | True | 181 / 181 |
+| otto | tabm_gns | 2 | True | True | 141 / 141 |

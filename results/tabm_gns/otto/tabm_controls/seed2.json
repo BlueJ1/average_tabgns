@@ -27,12 +27,23 @@
   315,
   172
  ],
+ "replay": {
+  "arch_history_equal": true,
+  "loss_history_equal": true,
+  "epochs": 141,
+  "stored_epochs": 141,
+  "widths": [
+   304,
+   315,
+   172
+  ]
+ },
  "widths": [
   304,
   315,
   172
  ],
- "wall_time_s": 5237.902262500022,
+ "wall_time_s": 14595.825797417201,
  "config": {
   "dataset": {
    "name": "otto",
@@ -42,7 +53,7 @@
   "method": {
    "name": "tabm_controls",
    "match": "tabm_gns",
-   "rewind": false,
+   "rewind": true,
    "wait_hours": 12
   },
   "experiment": "tabm_gns",
@@ -84,13 +95,13 @@
   }
  },
  "provenance": {
-  "git_head": "473e8b48d36f91b5cad5c34111bbbc6199317f38",
+  "git_head": "3572a3cf0741af832f356ee8dfbc1989742b7ff5",
   "git_dirty": false,
   "source_sha256": {
    "experiments/tabm_gns/__init__.py": "e3b0c44298fc1c14",
    "experiments/tabm_gns/model.py": "73bb67ac7358f29a",
    "experiments/tabm_gns/protocol.py": "282860647bea02d5",
-   "experiments/tabm_gns/report.py": "5f1e8c392354fb00",
+   "experiments/tabm_gns/report.py": "0654653055413834",
    "experiments/tabm_gns/run.py": "b737c8af47828566",
    "experiments/tabm_gns/test_tabm_gns.py": "eabc20eae7f3af78"
   },
