@@ -1,0 +1,4 @@
+# A plain TabM with `width` neurons in every hidden layer (k and dropout as the Large TabM), trained with
+# the TabM protocol. Used by the width sweep (REPORT.md); width 512 is the Large TabM itself.
+name: tabm_w${.width}
+width: 64

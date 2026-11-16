@@ -12,6 +12,9 @@ Methods (see REPORT.md):
   tabm_gns_member  same, but every ensemble member draws its own gate mask
   mlp_large        the replication's Large MLP (5x512), unchanged code, same split and preprocessing
   mlp_gns          the replication's TabGNS (tabgns/), unchanged code, same split and preprocessing
+  tabm_width       (name tabm_w<width>) a plain TabM with equal widths, for the width sweep:
+                   experiment=tabm_gns/width_sweep method=tabm_width method.width=64
+  linear           logistic / ridge regression on the same features, C chosen on validation
 """
 from __future__ import annotations
 
@@ -76,9 +79,46 @@ def run_tabm_large(data: Prepared, cfg: Dict, seed: int) -> Dict:
   t = cfg['tabm']
   torch.manual_seed(10_000 * seed + STREAMS['init'])
   model = TabM(data.inp_dim, t['widths'], data.out_dim, t['k'], t['dropout'], data.feature_chunks)
-  train = train_tabm(model, data, cfg['train'], gen(seed, 'data'), tag=f'{data.name}/tabm_large/s{seed}')
+  train = train_tabm(model, data, cfg['train'], gen(seed, 'data'), tag=f"{data.name}/{cfg['method']['name']}/s{seed}")
   return {'widths': list(t['widths']), 'train': train, 'metrics': _eval_all(model, data, _tabm_predict(data.task)),
           'params': tabm_params(data.inp_dim, t['widths'], data.out_dim, t['k'])}
+
+
+def run_tabm_width(data: Prepared, cfg: Dict, seed: int) -> Dict:
+  """Width sweep: the Large TabM's protocol, init and data streams with every layer `method.width` wide
+  (width 512 reproduces tabm_large exactly)."""
+  c = copy.deepcopy(cfg)
+  c['tabm']['widths'] = [int(cfg['method']['width'])] * len(cfg['tabm']['widths'])
+  return run_tabm_large(data, c, seed)
+
+
+def run_linear(data: Prepared, cfg: Dict, seed: int) -> Dict:
+  """Logistic regression (classification) or ridge regression (regression) on the preprocessed features;
+  C (ridge: alpha = 1 / C) is chosen by the primary validation loss (log-loss / RMSE)."""
+  from sklearn.linear_model import LogisticRegression, Ridge
+  clf = data.task == 'classification'
+
+  def fit(C):
+    if clf:
+      return LogisticRegression(C=C, max_iter=5000, random_state=seed).fit(*data.train)
+    return Ridge(alpha=1.0 / C).fit(data.train[0], data.train[1].reshape(-1))
+
+  def predict_fn(m, X):
+    return m.predict_log_proba(X) if clf else m.predict(X)
+
+  start = time.perf_counter()
+  scores = {}
+  best = None
+  for C in cfg['method']['C_grid']:
+    m = fit(C)
+    v = metrics(data.task, predict_fn(m, data.valid[0]), data.valid[1], data)['logloss' if clf else 'rmse']
+    scores[C] = v
+    if best is None or v < best[0]:
+      best = (v, C, m)
+  _, C, model = best
+  n = int(model.coef_.size + np.size(model.intercept_))
+  return {'widths': [], 'train': {'C': C, 'valid_by_C': scores, 'time_s': time.perf_counter() - start},
+          'metrics': _eval_all(model, data, predict_fn), 'params': {'full': n, 'hidden': 0, 'shared': n}}
 
 
 def _supernet(data: Prepared, cfg: Dict, seed: int) -> GatedTabM:
@@ -321,6 +361,10 @@ def main(cfg: DictConfig) -> None:
 
 def _main(c: Dict[str, Any], method: str, out: Path) -> None:
   torch.set_num_threads(c['torch_threads'])
+  # numpy / scipy BLAS (used by scikit-learn) otherwise starts one thread per core in every job; with
+  # several jobs side by side that oversubscribes the CPU badly (the Otto logistic regressions stalled).
+  from threadpoolctl import threadpool_limits
+  threadpool_limits(c['torch_threads'])
   set_seed(c['seed'])
   data = prepare(c['dataset'], c['seed'])
   start = time.perf_counter()
@@ -329,6 +373,10 @@ def _main(c: Dict[str, Any], method: str, out: Path) -> None:
   try:
     if method == 'tabm_large':
       rec.update(run_tabm_large(data, c, c['seed']))
+    elif method.startswith('tabm_w'):
+      rec.update(run_tabm_width(data, c, c['seed']))
+    elif method == 'linear':
+      rec.update(run_linear(data, c, c['seed']))
     elif method.startswith('tabm_gns'):
       rec.update(run_tabm_gns(data, c, c['seed']))
       masks = rec.pop('_masks')

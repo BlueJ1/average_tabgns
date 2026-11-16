@@ -84,10 +84,40 @@ arch and loss histories exactly.) A caveat: the warm-started model has seen far 
 retrainings stopped at the 300-epoch cap, so part of the gap may be training budget rather than
 anything the search found.
 
+**6. Why Adult compresses most: TabGNS stops where accuracy stops improving with width.** TabGNS has
+no size penalty; the gates are trained on validation loss only, so it removes neurons until the loss
+starts to suffer. A sweep of plain TabMs with equal widths (8 to 512 neurons per layer, k = 32, the
+Large TabM's protocol and random streams, 3 seeds) and a linear model on the same features show where
+that point is on each dataset
+([`width_sweep.png`](../../results/tabm_gns/figures/width_sweep.png), full table in `summary.md`):
+
+| dataset | uniform TabM: where the curve flattens | its size | TabGNS-TabM size | linear model (Δ vs Large TabM) |
+|---|---|---|---|---|
+| Adult | width 32: 86.06 ± 0.14, as good as Large (85.98) | 2.6% | 3.5–3.9% | 84.48 (−1.49 pp) |
+| California | width 128: 0.1375 ± 0.0031, better than Large (0.1392) on 3/3 seeds | 10.5% | 19.5–19.8% | 0.2187 (+0.0795) |
+| Otto | does not flatten: width 256 is still 1.19 pp below 512 (77.78 vs 78.96) | – | 32–41% | 71.60 (−7.36 pp) |
+
+- **Adult** needs little capacity. Accuracy is flat from width 32 to 512, and falls below 32 (−0.49 pp at
+  16, −0.96 pp at 8). TabGNS lands just above that knee. The data is not linear (the linear model is
+  1.5 pp worse), but a small network captures what there is to learn.
+- **California** keeps improving up to width 128 and is flat from 128 to 256. TabGNS keeps about twice
+  the knee size: the uniform width-128 TabM matches TabGNS-TabM (0.1375 vs 0.1369) at half its
+  parameters. This fits finding 2, where the California searches stop while still removing neurons.
+- **Otto** uses all the capacity it gets: every halving of the width costs accuracy. TabGNS-TabM matches
+  Large TabM at a third of its size and beats the uniform TabM of similar size (77.78 at 35%) by about
+  1 pp, which is the warm-start effect of finding 5.
+
+So the size TabGNS finds tracks the capacity each dataset uses: about 32 neurons per layer on Adult,
+about 128 on California, and more than 512 on Otto. The MLP results follow the same order (0.9%, 1.3%,
+1.9%). Caveat: 7 of the 12 Otto runs at widths 32–128 stopped at the 300-epoch cap, so the small Otto
+models are somewhat underestimated; the 256 and 512 runs were not capped.
+
 **Baselines.** The comparisons are the default (Large) TabM, the controls, and TabGNS on an MLP. The
 replication's other NAS baselines (TabNAS, AgE) were not run on TabM, and the TabM paper's numbers
 are not comparable (it tunes hyperparameters per dataset and uses numerical embeddings; the splits
-differ). A tuned-width TabM (e.g. a width search with Optuna) is the natural stronger baseline.
+differ). The width sweep (finding 6) is a coarse tuned-width baseline: on California and Adult a
+uniform TabM of the right width does as well as TabGNS-TabM, but finding that width took a sweep of
+six widths, while TabGNS needs one search. On Otto, no uniform TabM below Large TabM's size matches it.
 
 ## Not done (yet)
 
@@ -146,6 +176,8 @@ Unit tests check that the extracted TabM reproduces the supernet with the corres
 | TabGNS search | weight step on a training batch, no-grad validation-loss evaluation on the next validation batch (eval mode), gate step on that batch (still eval mode); Adam lr 0.05 for gates, gate logit init −3, temperature 1, logits [g, 1]; early stopping (patience 20) on the epoch's mean validation-batch loss; the **last** epoch's net is used | all as `tabgns.TabGNS.fit` and `conf/method/tabgns.yaml`, including its quirks (P(open) = sigmoid(g − 1) while sampling, last-epoch checkpoint) |
 | search weights | same optimiser and dropout as TabM training | |
 | after the search | extract, warm-start fine-tune with the TabM training protocol; also train the found widths from a fresh initialisation ("scratch") | fine-tuning as `TabGNSTrainer` |
+| width sweep | plain TabM, k = 32, equal widths 8–256 (512 = Large TabM), Large TabM protocol and random streams | results in `results/tabm_gns/width_sweep/` |
+| linear model | logistic regression (Adult, Otto) or ridge regression (California) on the same preprocessed features; C from {0.001, …, 100} chosen on validation loss | scikit-learn 1.3.2 |
 | controls | rewind, scratch and uniform-width retrainings of each found TabM (see Results, finding 4), same TabM training protocol; rewind, scratch and uniform share one data order | |
 | pairing | within a seed, the supernet starts from exactly the Large TabM's initial weights (unit test); data order, gate noise and the scratch init use separate derived random streams | |
 | MLP reference | `mlp_large` (5 × 512) and `mlp_gns` call `experiments.methods.run_large_mlp` / `run_tabgns` unchanged, with the replication's protocol (Adam/AdamW lr 1e-3, no dropout), on the same splits and preprocessed features | |
@@ -182,6 +214,12 @@ The ensemble-size ablation (California and Adult, shared mask, results in
 ```bash
 python -m experiments.tabm_gns.run -m hydra/launcher=joblib hydra.launcher.n_jobs=2 dataset=california,adult \
     method=tabm_gns,tabm_large tabm.k=1,4 seed=0,1,2 'experiment=tabm_gns/ablation_k${tabm.k}'
+```
+
+The width sweep and the linear model (results in `results/tabm_gns/width_sweep`):
+
+```bash
+xargs -P 6 -L 1 sh -c '.venv/bin/python -m experiments.tabm_gns.run $0 "$@"' < experiments/tabm_gns/queue_width.txt
 ```
 
 Each job runs one (dataset, method, seed) cell on one CPU thread and writes

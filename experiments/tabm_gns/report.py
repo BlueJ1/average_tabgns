@@ -135,6 +135,7 @@ def summarise(runs: List[dict], out: Path) -> str:
       lines.append('')
   lines += controls_section(runs, out)
   lines += ablation_k(runs, out)
+  lines += width_sweep(runs, out)
   text = '\n'.join(lines)
   (out / 'summary.md').write_text(text)
   return text
@@ -219,6 +220,56 @@ def ablation_k(main_runs: List[dict], out: Path) -> List[str]:
   return lines + ['']
 
 
+def _width_sweep_runs(main_runs: List[dict], out: Path) -> Dict:
+  """(dataset, width | 'linear') -> seed -> run, from results/tabm_gns/width_sweep/ plus the main Large TabM
+  runs (width 512, same protocol and streams)."""
+  d = out / 'width_sweep'
+  if not d.exists():
+    return {}
+  by: Dict = defaultdict(dict)
+  for r in load(d):
+    by[(r['dataset'], 'linear' if r['method'] == 'linear' else r['widths'][0])][r['seed']] = r
+  for r in main_runs:
+    if r['method'] == 'tabm_large':
+      by[(r['dataset'], r['widths'][0])][r['seed']] = r
+  return by
+
+
+def width_sweep(main_runs: List[dict], out: Path) -> List[str]:
+  """Uniform-width TabMs (k = 32) at several widths, a linear model, and where TabGNS-TabM lands."""
+  by = _width_sweep_runs(main_runs, out)
+  if not by:
+    return []
+  lines = ['## Width sweep (plain TabM, k = 32, equal widths; the linear model on the same features)', '',
+           'Δ = paired difference to Large TabM (width 512), positive = better. Size = parameters relative to '
+           'Large TabM.', '',
+           '| dataset | model | test metric | Δ vs Large | params | size vs Large | epochs |',
+           '|---|---|---|---|---|---|---|']
+  for ds in DATASETS:
+    large = by.get((ds, 512), {})
+    if not large:
+      continue
+    task = next(iter(large.values()))['task']
+    metric, higher = PRIMARY[task]
+    dig = 2 if metric == 'accuracy' else 4
+    base = {s: r['metrics']['test'][metric] for s, r in large.items()}
+    lp = np.mean([r['params']['full'] for r in large.values()])
+    keys = sorted(k for (d, k) in by if d == ds and k != 'linear') + (['linear'] if (ds, 'linear') in by else [])
+    for k in keys:
+      rs = by[(ds, k)]
+      vals = {s: r['metrics']['test'][metric] for s, r in rs.items()}
+      p = paired(vals, base)
+      sign = 1 if higher else -1
+      delta = f'{sign * p[0]:+.{dig}f} ({sum(sign * x > 0 for x in p[1])}/{len(p[1])})' if p and k != 512 else '–'
+      params = np.mean([r['params']['full'] for r in rs.values()])
+      label = 'linear (C ' + '/'.join(f"{r['train']['C']:g}" for _, r in sorted(rs.items())) + ')' \
+          if k == 'linear' else f'TabM {k}×3'
+      ep = '–' if k == 'linear' else ms([r['train']['epochs'] for r in rs.values()], 0)
+      lines.append(f'| {ds} | {label} | {ms(list(vals.values()), dig)} | {delta} | {fmt_int(params)} | '
+                   f'{params / lp * 100:.1f}% | {ep} |')
+  return lines + ['']
+
+
 def write_csv(runs: List[dict], out: Path) -> None:
   cols = ['dataset', 'method', 'seed', 'task', 'metric', 'test', 'valid', 'test_extracted', 'test_scratch',
           'widths', 'params_full', 'params_hidden', 'params_shared', 'search_epochs', 'search_best_epoch',
@@ -286,6 +337,40 @@ def figures(runs: List[dict], out: Path) -> None:
   fig.tight_layout()
   fig.savefig(fig_dir / 'width_during_search.png', dpi=130)
   plt.close(fig)
+
+  # 3. Width sweep: uniform TabMs by size, TabGNS-TabM results, the linear model.
+  by = _width_sweep_runs(runs, out)
+  if by:
+    fig, axes = plt.subplots(1, len(DATASETS), figsize=(5 * len(DATASETS), 3.8))
+    for ax, ds in zip(axes, DATASETS):
+      ks = sorted(k for (d, k) in by if d == ds and k != 'linear')
+      if not ks:
+        continue
+      metric = PRIMARY[next(iter(by[(ds, ks[0])].values()))['task']][0]
+      x = [np.mean([r['params']['full'] for r in by[(ds, k)].values()]) for k in ks]
+      y = [[r['metrics']['test'][metric] for r in by[(ds, k)].values()] for k in ks]
+      ax.errorbar(x, [np.mean(v) for v in y], yerr=[np.std(v, ddof=1) if len(v) > 1 else 0 for v in y],
+                  c=colors['tabm_large'], marker='s', capsize=3, label='TabM, equal widths')
+      for k, xi, v in zip(ks, x, y):
+        ax.annotate(str(k), (xi, np.mean(v)), textcoords='offset points', xytext=(0, 7), ha='center', fontsize=7)
+      for m in ('tabm_gns', 'tabm_gns_member'):
+        rs = [r for r in runs if r['dataset'] == ds and r['method'] == m]
+        if rs:
+          ax.errorbar(np.mean([r['params']['full'] for r in rs]), np.mean([r['metrics']['test'][metric] for r in rs]),
+                      yerr=np.std([r['metrics']['test'][metric] for r in rs], ddof=1), c=colors[m],
+                      marker=markers[m], capsize=3, ls='none', label=LABEL[m])
+      lin = by.get((ds, 'linear'))
+      if lin:
+        ax.axhline(np.mean([r['metrics']['test'][metric] for r in lin.values()]), c='#52606d', ls=':', label='linear')
+      ax.set_xscale('log')
+      ax.set_xlabel('trainable parameters (log)')
+      ax.set_ylabel(f'test {metric}')
+      ax.set_title(ds)
+      ax.grid(alpha=.3)
+    axes[0].legend(fontsize=7)
+    fig.tight_layout()
+    fig.savefig(fig_dir / 'width_sweep.png', dpi=130)
+    plt.close(fig)
 
 
 def main() -> None:

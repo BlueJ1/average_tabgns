@@ -85,6 +85,12 @@ Decisions:
 - **Time limit** (user, 2026-11-09): processing had to end by 19:00, so the Otto rewind replays
   (~6–10 h) were deferred to `experiments/tabm_gns/queue_deferred.txt`; they ran 2026-11-10/11.
 
+- **Environment rebuilt** (2026-11-15): `~/anaconda3` was removed, so `.venv` is now Homebrew Python
+  3.11 with the earlier versions (torch 2.5.1, scikit-learn 1.3.2, ...), except numpy 1.26.4 (pip
+  cannot pair 2.4.6 with scikit-learn 1.3.2). A stored run reproduced bit for bit.
+- **BLAS threads are capped per job** (`threadpool_limits` in `run.py`): without it, scikit-learn's
+  OpenBLAS oversubscribed the CPU with 6 parallel jobs and the Otto logistic regressions stalled for 7 h.
+
 Findings:
 - TabGNS-TabM matches Large TabM at 3.5–41% of its parameters (better RMSE on California at ~20%,
   −0.1/−0.2 pp accuracy on Adult at ~4%, equal on Otto at 32–41%).
@@ -99,3 +105,6 @@ State:
 - [x] k ablation (k = 1, 4) on California and Adult
 - [x] Controls: all except Otto rewind and per-member rewind on California/Otto
 - [x] Otto rewind (`queue_deferred.txt`; replays matched the stored searches exactly)
+- [x] Width sweep + linear model (`queue_width.txt`, 2026-11-15/16): the found size tracks where
+  accuracy stops improving with width (Adult flat from width 32, California from 128, Otto never below
+  512); this is why Adult compresses most (REPORT.md, finding 6)

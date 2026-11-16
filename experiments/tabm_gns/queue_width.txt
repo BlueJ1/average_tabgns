@@ -1,0 +1,63 @@
+experiment=tabm_gns/width_sweep dataset=otto method=linear seed=0
+experiment=tabm_gns/width_sweep dataset=otto method=linear seed=1
+experiment=tabm_gns/width_sweep dataset=otto method=linear seed=2
+experiment=tabm_gns/width_sweep dataset=california method=linear seed=0
+experiment=tabm_gns/width_sweep dataset=california method=linear seed=1
+experiment=tabm_gns/width_sweep dataset=california method=linear seed=2
+experiment=tabm_gns/width_sweep dataset=adult method=linear seed=0
+experiment=tabm_gns/width_sweep dataset=adult method=linear seed=1
+experiment=tabm_gns/width_sweep dataset=adult method=linear seed=2
+experiment=tabm_gns/width_sweep dataset=otto method=tabm_width method.width=256 seed=0
+experiment=tabm_gns/width_sweep dataset=otto method=tabm_width method.width=256 seed=1
+experiment=tabm_gns/width_sweep dataset=otto method=tabm_width method.width=256 seed=2
+experiment=tabm_gns/width_sweep dataset=california method=tabm_width method.width=256 seed=0
+experiment=tabm_gns/width_sweep dataset=california method=tabm_width method.width=256 seed=1
+experiment=tabm_gns/width_sweep dataset=california method=tabm_width method.width=256 seed=2
+experiment=tabm_gns/width_sweep dataset=adult method=tabm_width method.width=256 seed=0
+experiment=tabm_gns/width_sweep dataset=adult method=tabm_width method.width=256 seed=1
+experiment=tabm_gns/width_sweep dataset=adult method=tabm_width method.width=256 seed=2
+experiment=tabm_gns/width_sweep dataset=otto method=tabm_width method.width=128 seed=0
+experiment=tabm_gns/width_sweep dataset=otto method=tabm_width method.width=128 seed=1
+experiment=tabm_gns/width_sweep dataset=otto method=tabm_width method.width=128 seed=2
+experiment=tabm_gns/width_sweep dataset=california method=tabm_width method.width=128 seed=0
+experiment=tabm_gns/width_sweep dataset=california method=tabm_width method.width=128 seed=1
+experiment=tabm_gns/width_sweep dataset=california method=tabm_width method.width=128 seed=2
+experiment=tabm_gns/width_sweep dataset=adult method=tabm_width method.width=128 seed=0
+experiment=tabm_gns/width_sweep dataset=adult method=tabm_width method.width=128 seed=1
+experiment=tabm_gns/width_sweep dataset=adult method=tabm_width method.width=128 seed=2
+experiment=tabm_gns/width_sweep dataset=otto method=tabm_width method.width=64 seed=0
+experiment=tabm_gns/width_sweep dataset=otto method=tabm_width method.width=64 seed=1
+experiment=tabm_gns/width_sweep dataset=otto method=tabm_width method.width=64 seed=2
+experiment=tabm_gns/width_sweep dataset=california method=tabm_width method.width=64 seed=0
+experiment=tabm_gns/width_sweep dataset=california method=tabm_width method.width=64 seed=1
+experiment=tabm_gns/width_sweep dataset=california method=tabm_width method.width=64 seed=2
+experiment=tabm_gns/width_sweep dataset=adult method=tabm_width method.width=64 seed=0
+experiment=tabm_gns/width_sweep dataset=adult method=tabm_width method.width=64 seed=1
+experiment=tabm_gns/width_sweep dataset=adult method=tabm_width method.width=64 seed=2
+experiment=tabm_gns/width_sweep dataset=otto method=tabm_width method.width=32 seed=0
+experiment=tabm_gns/width_sweep dataset=otto method=tabm_width method.width=32 seed=1
+experiment=tabm_gns/width_sweep dataset=otto method=tabm_width method.width=32 seed=2
+experiment=tabm_gns/width_sweep dataset=california method=tabm_width method.width=32 seed=0
+experiment=tabm_gns/width_sweep dataset=california method=tabm_width method.width=32 seed=1
+experiment=tabm_gns/width_sweep dataset=california method=tabm_width method.width=32 seed=2
+experiment=tabm_gns/width_sweep dataset=adult method=tabm_width method.width=32 seed=0
+experiment=tabm_gns/width_sweep dataset=adult method=tabm_width method.width=32 seed=1
+experiment=tabm_gns/width_sweep dataset=adult method=tabm_width method.width=32 seed=2
+experiment=tabm_gns/width_sweep dataset=otto method=tabm_width method.width=16 seed=0
+experiment=tabm_gns/width_sweep dataset=otto method=tabm_width method.width=16 seed=1
+experiment=tabm_gns/width_sweep dataset=otto method=tabm_width method.width=16 seed=2
+experiment=tabm_gns/width_sweep dataset=california method=tabm_width method.width=16 seed=0
+experiment=tabm_gns/width_sweep dataset=california method=tabm_width method.width=16 seed=1
+experiment=tabm_gns/width_sweep dataset=california method=tabm_width method.width=16 seed=2
+experiment=tabm_gns/width_sweep dataset=adult method=tabm_width method.width=16 seed=0
+experiment=tabm_gns/width_sweep dataset=adult method=tabm_width method.width=16 seed=1
+experiment=tabm_gns/width_sweep dataset=adult method=tabm_width method.width=16 seed=2
+experiment=tabm_gns/width_sweep dataset=otto method=tabm_width method.width=8 seed=0
+experiment=tabm_gns/width_sweep dataset=otto method=tabm_width method.width=8 seed=1
+experiment=tabm_gns/width_sweep dataset=otto method=tabm_width method.width=8 seed=2
+experiment=tabm_gns/width_sweep dataset=california method=tabm_width method.width=8 seed=0
+experiment=tabm_gns/width_sweep dataset=california method=tabm_width method.width=8 seed=1
+experiment=tabm_gns/width_sweep dataset=california method=tabm_width method.width=8 seed=2
+experiment=tabm_gns/width_sweep dataset=adult method=tabm_width method.width=8 seed=0
+experiment=tabm_gns/width_sweep dataset=adult method=tabm_width method.width=8 seed=1
+experiment=tabm_gns/width_sweep dataset=adult method=tabm_width method.width=8 seed=2
