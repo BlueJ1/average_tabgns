@@ -90,7 +90,8 @@ Decisions:
   cannot pair 2.4.6 with scikit-learn 1.3.2). A stored run reproduced bit for bit.
 - **Remote runs on arrhenius** (user, 2026-11-16): `leau4995@arrhenius.it.uu.se`, at most 8 of its 16
   cores (user). Branch checked out as a git worktree at `~/average_tabgns_tabm` (the clone at
-  `~/average_tabgns` stays on main), venv at `~/venvs/tabm` (Python 3.12, same package versions).
+  `~/average_tabgns` stays on main), venv at `~/venvs/tabm` (Python 3.12, same package versions);
+  both removed on 2026-11-18 after the results were copied back and checked.
   Its CPUs (2009 Xeon E5520) are about 6x slower than the Mac per job. Jobs are started with
   `nohup setsid` so they survive a dropped connection; results are copied back with rsync.
 - **Result bookkeeping** (review, 2026-11-18): failed results (`error` records) no longer count as done,
