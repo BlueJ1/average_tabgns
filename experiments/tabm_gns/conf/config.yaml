@@ -1,0 +1,45 @@
+defaults:
+  - dataset: california
+  - method: tabm_gns
+  - _self_
+
+# Results go to ${results_dir}/${experiment}/<dataset>/<method>/seed<seed>.json.
+experiment: tabm_gns
+seed: 0                 # split seed = model seed; init, data order and gate noise use separate derived streams
+results_dir: results
+overwrite: false
+torch_threads: 1        # several single-threaded jobs side by side (STATUS.md: ~3.7x the throughput of one job)
+
+# TabM (tabm 0.0.3, arch_type='tabm', TabM.make defaults without embeddings): 3 blocks of 512, k=32,
+# dropout 0.1. These widths are also the TabGNS search space (the supernet = the Large TabM).
+tabm:
+  widths: [512, 512, 512]
+  k: 32
+  dropout: 0.1
+
+# One training protocol for every TabM (Large TabM, fine-tuning, scratch retraining) and for the
+# weights during the search. lr / weight decay are the tabm package README defaults; epochs, patience
+# and batch size are the replication's (conf/config.yaml).
+train:
+  lr: 0.002
+  weight_decay: 0.0003
+  batch_size: 256
+  epochs: 300
+  patience: 20
+
+# The replication's MLP protocol, for the mlp_large / mlp_gns reference arms (experiments/conf/config.yaml).
+mlp:
+  widths: [512, 512, 512, 512, 512]
+  general:
+    stop_criteria: val_loss
+    batch_size: 256
+    iters: 300
+    stop_patience: 20
+    weight_lr: 0.001
+
+hydra:
+  run:
+    dir: outputs/${experiment}/${dataset.name}/${method.name}/seed${seed}
+  sweep:
+    dir: outputs/multirun/${experiment}/${now:%Y-%m-%d_%H-%M-%S}
+    subdir: ${hydra.job.num}

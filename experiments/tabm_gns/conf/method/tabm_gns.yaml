@@ -1,0 +1,11 @@
+# TabGNS on a gated TabM. Gate hyperparameters as experiments/conf/method/tabgns.yaml.
+name: tabm_gns
+noise: shared           # one gate mask per forward pass for the whole ensemble (TabGNS draws one per pass)
+temperature: 1.0
+arch_lr: 0.05
+gate_initialisation_val: -3
+scale: true
+epochs: ${train.epochs}
+patience: ${train.patience}
+checkpoint: last        # as TabGNS (its EarlyStopper holds the live net, so it returns the last epoch)
+scratch_retrain: true   # also train the found widths from a fresh init, to separate warm start from architecture

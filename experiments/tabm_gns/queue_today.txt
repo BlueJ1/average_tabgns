@@ -1,0 +1,20 @@
+dataset=adult method=mlp_large seed=0
+dataset=adult method=mlp_large seed=1
+dataset=adult method=mlp_large seed=2
+dataset=adult method=mlp_gns seed=0
+dataset=adult method=mlp_gns seed=1
+dataset=adult method=mlp_gns seed=2
+dataset=california method=tabm_gns seed=1
+dataset=california method=tabm_controls seed=2
+dataset=adult method=tabm_large seed=0
+dataset=adult method=tabm_large seed=1
+dataset=adult method=tabm_large seed=2
+dataset=california method=tabm_controls_member seed=0
+dataset=california method=tabm_controls_member seed=1
+dataset=california method=tabm_controls_member seed=2
+dataset=otto method=tabm_controls method.rewind=false seed=0
+dataset=otto method=tabm_controls method.rewind=false seed=1
+dataset=otto method=tabm_controls method.rewind=false seed=2
+dataset=otto method=tabm_controls_member seed=0
+dataset=otto method=tabm_controls_member seed=1
+dataset=otto method=tabm_controls_member seed=2

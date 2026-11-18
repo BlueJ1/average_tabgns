@@ -1,0 +1,216 @@
+{
+ "experiment": "tabm_gns/ablation_k4",
+ "dataset": "adult",
+ "method": "tabm_large",
+ "seed": 2,
+ "task": "classification",
+ "data_info": {
+  "n_rows": 48842,
+  "n_num": 6,
+  "n_cat": 8,
+  "inp_dim": 107,
+  "classes": [
+   "<=50K",
+   ">50K"
+  ]
+ },
+ "widths": [
+  512,
+  512,
+  512
+ ],
+ "train": {
+  "epochs": 27,
+  "best_valid_loss": 0.309841076437411,
+  "time_s": 178.15737154195085,
+  "loss_history": [
+   [
+    0.353464,
+    0.324243
+   ],
+   [
+    0.32132,
+    0.329135
+   ],
+   [
+    0.318622,
+    0.319063
+   ],
+   [
+    0.311149,
+    0.316161
+   ],
+   [
+    0.30865,
+    0.310377
+   ],
+   [
+    0.301418,
+    0.312182
+   ],
+   [
+    0.298667,
+    0.309841
+   ],
+   [
+    0.294431,
+    0.311862
+   ],
+   [
+    0.290906,
+    0.316431
+   ],
+   [
+    0.287916,
+    0.31617
+   ],
+   [
+    0.282572,
+    0.313152
+   ],
+   [
+    0.280566,
+    0.313787
+   ],
+   [
+    0.275553,
+    0.320827
+   ],
+   [
+    0.271082,
+    0.320447
+   ],
+   [
+    0.266869,
+    0.324001
+   ],
+   [
+    0.262931,
+    0.322754
+   ],
+   [
+    0.258334,
+    0.323301
+   ],
+   [
+    0.253939,
+    0.328129
+   ],
+   [
+    0.248672,
+    0.336204
+   ],
+   [
+    0.244992,
+    0.329551
+   ],
+   [
+    0.241189,
+    0.340141
+   ],
+   [
+    0.236763,
+    0.348444
+   ],
+   [
+    0.231896,
+    0.342944
+   ],
+   [
+    0.228781,
+    0.363547
+   ],
+   [
+    0.223762,
+    0.36803
+   ],
+   [
+    0.221055,
+    0.359972
+   ],
+   [
+    0.217644,
+    0.381221
+   ]
+  ]
+ },
+ "metrics": {
+  "valid": {
+   "accuracy": 85.49493295117207,
+   "logloss": 0.309841082001887
+  },
+  "test": {
+   "accuracy": 85.94533729143208,
+   "logloss": 0.31241128180160554
+  }
+ },
+ "params": {
+  "hidden": 524288,
+  "shared": 579072,
+  "full": 599988
+ },
+ "wall_time_s": 179.1194569999352,
+ "config": {
+  "dataset": {
+   "name": "adult",
+   "openml_id": 1590,
+   "task": "classification"
+  },
+  "method": {
+   "name": "tabm_large"
+  },
+  "experiment": "tabm_gns/ablation_k4",
+  "seed": 2,
+  "results_dir": "results",
+  "overwrite": false,
+  "torch_threads": 1,
+  "tabm": {
+   "widths": [
+    512,
+    512,
+    512
+   ],
+   "k": 4,
+   "dropout": 0.1
+  },
+  "train": {
+   "lr": 0.002,
+   "weight_decay": 0.0003,
+   "batch_size": 256,
+   "epochs": 300,
+   "patience": 20
+  },
+  "mlp": {
+   "widths": [
+    512,
+    512,
+    512,
+    512,
+    512
+   ],
+   "general": {
+    "stop_criteria": "val_loss",
+    "batch_size": 256,
+    "iters": 300,
+    "stop_patience": 20,
+    "weight_lr": 0.001
+   }
+  }
+ },
+ "provenance": {
+  "git_head": "b3360d96c5c87992b5a3e6326eb0c81de14398dc",
+  "git_dirty": true,
+  "source_sha256": {
+   "experiments/tabm_gns/__init__.py": "e3b0c44298fc1c14",
+   "experiments/tabm_gns/model.py": "a0cfc64d29ed8844",
+   "experiments/tabm_gns/protocol.py": "eaae84d363b000df",
+   "experiments/tabm_gns/report.py": "b741dabd5e12c474",
+   "experiments/tabm_gns/run.py": "7962713f672dc13b",
+   "experiments/tabm_gns/test_tabm_gns.py": "3878ecd29e0d5389"
+  },
+  "python": "3.11.5",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "torch": "2.5.1",
+  "torch_threads": 1
+ }
+}

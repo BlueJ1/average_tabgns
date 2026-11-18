@@ -1,0 +1,2 @@
+# TabM with the whole search space (3x512, k=32), trained directly. The analogue of the Large MLP.
+name: tabm_large

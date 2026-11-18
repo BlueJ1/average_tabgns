@@ -61,3 +61,66 @@ parallel Higgs jobs.
 - Include DeepMIMO? It is public, but generating the paper's exact export (scenario O1, 18 BSs,
   3.5 GHz → 28/60/140 GHz path loss) is extra work.
 - Fig. 5 on CoverType is ~31 run-hours with 8 gate values × 5 seeds; fewer seeds would cut it.
+
+## Exploration: TabGNS on TabM (`experiments/tabm_gns/`, results in `results/tabm_gns/`)
+
+Goal (user, 2026-11-08): transfer TabGNS to the TabM architecture, test it on three public datasets,
+keep the results in a dedicated folder, open a PR with the findings. Details and results in
+`experiments/tabm_gns/REPORT.md`.
+
+Decisions:
+- **Datasets:** California (OpenML 44025, regression), Adult (1590, binary), Otto (45548, 9 classes):
+  all in the TabM benchmark, none used by the replication. 3 seeds, 60/20/20 splits, preprocessing
+  fitted on train only.
+- **TabM:** own re-implementation of `tabm` 0.0.3's `arch_type='tabm'` (parity unit test), defaults
+  3 × 512, k = 32, dropout 0.1, AdamW lr 2e-3 / wd 3e-4.
+- **Gates are shared by all k members** (pruning a neuron removes a row of the shared W). Two noise
+  variants: one mask per pass (`tabm_gns`) and one mask per member (`tabm_gns_member`).
+- **TabGNS itself is unchanged**, quirks included (P(open) = sigmoid(g − 1) while sampling, last-epoch
+  checkpoint).
+- **Controls** (asked for by the user, 2026-11-09): rewind (found widths with the supernet's initial
+  weights, same seeds), scratch (fresh init), uniform (equal widths, same parameter count).
+- **Datasets are read from OpenML's ARFF, not parquet** (`OPENML_SKIP_PARQUET`): the venv's pyarrow
+  cannot read parquet, and OpenML only started serving parquet for these datasets mid-study.
+- **Time limit** (user, 2026-11-09): processing had to end by 19:00, so the Otto rewind replays
+  (~6–10 h) were deferred to `experiments/tabm_gns/queue_deferred.txt`; they ran 2026-11-10/11.
+
+- **Environment rebuilt** (2026-11-15): `~/anaconda3` was removed, so `.venv` is now Homebrew Python
+  3.11 with the earlier versions (torch 2.5.1, scikit-learn 1.3.2, ...), except numpy 1.26.4 (pip
+  cannot pair 2.4.6 with scikit-learn 1.3.2). A stored run reproduced bit for bit.
+- **Remote runs on arrhenius** (user, 2026-11-16): `leau4995@arrhenius.it.uu.se`, at most 8 of its 16
+  cores (user). Branch checked out as a git worktree at `~/average_tabgns_tabm` (the clone at
+  `~/average_tabgns` stays on main), venv at `~/venvs/tabm` (Python 3.12, same package versions);
+  both removed on 2026-11-18 after the results were copied back and checked.
+  Its CPUs (2009 Xeon E5520) are about 6x slower than the Mac per job. Jobs are started with
+  `nohup setsid` so they survive a dropped connection; results are copied back with rsync.
+- **Result bookkeeping** (review, 2026-11-18): failed results (`error` records) no longer count as done,
+  so queues retry them; every control and every saved mask file stores the `source_id` of the
+  TabGNS-TabM result it belongs to (`experiments/tabm_gns/ids.py`), and controls are retrained when
+  the source changes; a search replay must reproduce the stored histories and widths, or the rewind
+  control is skipped. Existing controls and masks were checked against their sources and tagged.
+- **BLAS threads are capped per job** (`threadpool_limits` in `run.py`): without it, scikit-learn's
+  OpenBLAS oversubscribed the CPU with 6 parallel jobs and the Otto logistic regressions stalled for 7 h.
+
+Findings:
+- TabGNS-TabM keeps 3.5–41% of Large TabM's parameters; paired score differences to Large TabM are
+  small (RMSE −0.002 on California, −0.02 to −0.18 pp accuracy on Adult and Otto, Adult log-loss
+  slightly worse on every seed). Reported as observed differences, not as equivalence (review, 11-18).
+- It compresses TabM far less than an MLP (0.9–1.9% there); within TabM the found size grows with k.
+  The cause of the gap between the backbones is open (they also differ in depth, dropout, protocol).
+- On California and Adult, rewind, scratch and uniform retrainings score about the same or better than
+  the warm-started model: TabGNS mainly selects a size. On Otto the full search-and-fine-tune pipeline
+  is ~1 pp better than retraining; rewind = scratch rules out an initialisation effect, but the warm
+  start also trained longer, so the effect of the trained weights is not isolated (no matched-budget run).
+- Widths for the tuned-width comparison are chosen on validation (best mean validation score).
+
+State:
+- [x] Main grid: 3 datasets × {Large TabM, TabGNS-TabM ×2, Large MLP, TabGNS-MLP} × 3 seeds
+- [x] k ablation (k = 1, 4) on California and Adult
+- [x] Controls: all except Otto rewind and per-member rewind on California/Otto
+- [x] Otto rewind (`queue_deferred.txt`; replays matched the stored searches exactly)
+- [x] Width sweep + linear model (`queue_width.txt`, 2026-11-15/16): the found size tracks where
+  accuracy stops improving with width (Adult flat from width 32, California from 128, Otto never below
+  512); this is why Adult compresses most (REPORT.md, finding 6)
+- [x] Search patience on California (`queue_patience.txt`, run on arrhenius 2026-11-16/18): patience 200
+  (cap 600 epochs) gives 19% smaller TabMs with better RMSE on 3/3 seeds (REPORT.md, finding 7)

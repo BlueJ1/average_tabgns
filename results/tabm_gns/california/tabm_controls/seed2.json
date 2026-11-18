@@ -1,0 +1,102 @@
+{
+ "experiment": "tabm_gns",
+ "dataset": "california",
+ "method": "tabm_controls",
+ "seed": 2,
+ "task": "regression",
+ "data_info": {
+  "n_rows": 20640,
+  "n_num": 8,
+  "n_cat": 0,
+  "inp_dim": 8
+ },
+ "match": "tabm_gns",
+ "matched_widths": [
+  187,
+  174,
+  254
+ ],
+ "replay": {
+  "arch_history_equal": true,
+  "loss_history_equal": true,
+  "epochs": 98,
+  "stored_epochs": 98,
+  "widths": [
+   187,
+   174,
+   254
+  ]
+ },
+ "widths": [
+  187,
+  174,
+  254
+ ],
+ "wall_time_s": 6671.432999833021,
+ "config": {
+  "dataset": {
+   "name": "california",
+   "openml_id": 44025,
+   "task": "regression"
+  },
+  "method": {
+   "name": "tabm_controls",
+   "match": "tabm_gns",
+   "rewind": true,
+   "wait_hours": 12
+  },
+  "experiment": "tabm_gns",
+  "seed": 2,
+  "results_dir": "results",
+  "overwrite": false,
+  "torch_threads": 1,
+  "tabm": {
+   "widths": [
+    512,
+    512,
+    512
+   ],
+   "k": 32,
+   "dropout": 0.1
+  },
+  "train": {
+   "lr": 0.002,
+   "weight_decay": 0.0003,
+   "batch_size": 256,
+   "epochs": 300,
+   "patience": 20
+  },
+  "mlp": {
+   "widths": [
+    512,
+    512,
+    512,
+    512,
+    512
+   ],
+   "general": {
+    "stop_criteria": "val_loss",
+    "batch_size": 256,
+    "iters": 300,
+    "stop_patience": 20,
+    "weight_lr": 0.001
+   }
+  }
+ },
+ "provenance": {
+  "git_head": "473e8b48d36f91b5cad5c34111bbbc6199317f38",
+  "git_dirty": false,
+  "source_sha256": {
+   "experiments/tabm_gns/__init__.py": "e3b0c44298fc1c14",
+   "experiments/tabm_gns/model.py": "73bb67ac7358f29a",
+   "experiments/tabm_gns/protocol.py": "282860647bea02d5",
+   "experiments/tabm_gns/report.py": "5f1e8c392354fb00",
+   "experiments/tabm_gns/run.py": "b737c8af47828566",
+   "experiments/tabm_gns/test_tabm_gns.py": "eabc20eae7f3af78"
+  },
+  "python": "3.11.5",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "torch": "2.5.1",
+  "torch_threads": 1
+ }
+}

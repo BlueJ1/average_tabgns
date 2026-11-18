@@ -1,0 +1,6 @@
+# Uniform-width control for a finished tabm_gns_member run without saved masks. The rewind control is
+# not replayed for this variant (a replay costs a full search); runs with saved masks get both inline.
+name: tabm_controls_member
+match: tabm_gns_member
+rewind: false
+wait_hours: 12

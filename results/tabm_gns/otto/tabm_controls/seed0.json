@@ -1,0 +1,113 @@
+{
+ "experiment": "tabm_gns",
+ "dataset": "otto",
+ "method": "tabm_controls",
+ "seed": 0,
+ "task": "classification",
+ "data_info": {
+  "n_rows": 61878,
+  "n_num": 93,
+  "n_cat": 0,
+  "inp_dim": 93,
+  "classes": [
+   "Class_1",
+   "Class_2",
+   "Class_3",
+   "Class_4",
+   "Class_5",
+   "Class_6",
+   "Class_7",
+   "Class_8",
+   "Class_9"
+  ]
+ },
+ "match": "tabm_gns",
+ "matched_widths": [
+  290,
+  344,
+  141
+ ],
+ "replay": {
+  "arch_history_equal": true,
+  "loss_history_equal": true,
+  "epochs": 249,
+  "stored_epochs": 249,
+  "widths": [
+   290,
+   344,
+   141
+  ]
+ },
+ "widths": [
+  290,
+  344,
+  141
+ ],
+ "wall_time_s": 20788.0477767922,
+ "config": {
+  "dataset": {
+   "name": "otto",
+   "openml_id": 45548,
+   "task": "classification"
+  },
+  "method": {
+   "name": "tabm_controls",
+   "match": "tabm_gns",
+   "rewind": true,
+   "wait_hours": 12
+  },
+  "experiment": "tabm_gns",
+  "seed": 0,
+  "results_dir": "results",
+  "overwrite": false,
+  "torch_threads": 1,
+  "tabm": {
+   "widths": [
+    512,
+    512,
+    512
+   ],
+   "k": 32,
+   "dropout": 0.1
+  },
+  "train": {
+   "lr": 0.002,
+   "weight_decay": 0.0003,
+   "batch_size": 256,
+   "epochs": 300,
+   "patience": 20
+  },
+  "mlp": {
+   "widths": [
+    512,
+    512,
+    512,
+    512,
+    512
+   ],
+   "general": {
+    "stop_criteria": "val_loss",
+    "batch_size": 256,
+    "iters": 300,
+    "stop_patience": 20,
+    "weight_lr": 0.001
+   }
+  }
+ },
+ "provenance": {
+  "git_head": "3572a3cf0741af832f356ee8dfbc1989742b7ff5",
+  "git_dirty": false,
+  "source_sha256": {
+   "experiments/tabm_gns/__init__.py": "e3b0c44298fc1c14",
+   "experiments/tabm_gns/model.py": "73bb67ac7358f29a",
+   "experiments/tabm_gns/protocol.py": "282860647bea02d5",
+   "experiments/tabm_gns/report.py": "0654653055413834",
+   "experiments/tabm_gns/run.py": "b737c8af47828566",
+   "experiments/tabm_gns/test_tabm_gns.py": "eabc20eae7f3af78"
+  },
+  "python": "3.11.5",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "torch": "2.5.1",
+  "torch_threads": 1
+ }
+}

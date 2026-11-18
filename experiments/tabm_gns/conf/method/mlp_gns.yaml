@@ -1,0 +1,7 @@
+# The replication's TabGNS (experiments.methods.run_tabgns -> tabgns/), unchanged code and settings.
+name: mlp_gns
+temperature: 1.0
+arch_lr: 0.05
+gate_initialisation_val: -3
+scale: true
+finetune_epochs: null

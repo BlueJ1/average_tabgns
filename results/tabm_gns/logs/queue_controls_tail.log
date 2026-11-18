@@ -1,0 +1,871 @@
+[2026-11-09 09:01:02,126][openml.config][INFO] - No config file found at /Users/uni/.openml/config, using default configuration.
+[2026-11-09 09:01:02,308][urllib3.poolmanager][INFO] - Redirecting http://data.openml.org/datasets/0004/45548/dataset_45548.pq -> https://data.openml.org:443/datasets/0004/45548/dataset_45548.pq
+[2026-11-09 09:01:02,440][openml.datasets.functions][WARNING] - Could not download file from https://data.openml.org/datasets/0004/45548/dataset_45548.pq: server failed with HTTP status code 503
+[2026-11-09 09:01:02,441][openml.datasets.functions][WARNING] - Failed to download parquet, fallback on ARFF.
+[2026-11-09 09:01:02,442][openml.datasets.dataset][INFO] - pickle load data Otto-Group-Product-Classification-Challenge
+[2026-11-09 09:01:02,446][openml.datasets.dataset][INFO] - Going to remove the following attributes: ['id']
+[2026-11-09 09:01:02,790][openml.config][INFO] - No config file found at /Users/uni/.openml/config, using default configuration.
+[2026-11-09 09:01:02,898][urllib3.poolmanager][INFO] - Redirecting http://data.openml.org/datasets/0004/44025/dataset_44025.pq -> https://data.openml.org:443/datasets/0004/44025/dataset_44025.pq
+[2026-11-09 09:01:03,027][openml.datasets.functions][WARNING] - Could not download file from https://data.openml.org/datasets/0004/44025/dataset_44025.pq: server failed with HTTP status code 503
+[2026-11-09 09:01:03,028][openml.datasets.functions][WARNING] - Failed to download parquet, fallback on ARFF.
+[2026-11-09 09:01:03,028][openml.datasets.dataset][INFO] - pickle load data california
+[california/tabm_gns/s0 search] epoch 1 train 0.9978 valid 0.9957 arch [0, 0, 0] p_open [0.0502, 0.0506, 0.0504] 69s
+[california/tabm_gns/s0 search] epoch 2 train 0.9999 valid 0.9980 arch [0, 0, 0] p_open [0.0539, 0.0548, 0.0563] 147s
+[california/tabm_gns/s0 search] epoch 3 train 1.0007 valid 1.0006 arch [0, 1, 2] p_open [0.0608, 0.0628, 0.0694] 213s
+[otto/tabm_gns replay/s0 search] epoch 1 train 2.0626 valid 2.0518 arch [0, 4, 171] p_open [0.0643, 0.1067, 0.3345] 215s
+[california/tabm_gns/s0 search] epoch 4 train 0.9980 valid 1.0022 arch [30, 32, 27] p_open [0.1205, 0.1226, 0.1115] 270s
+[california/tabm_gns/s0 search] epoch 5 train 0.7166 valid 0.6386 arch [109, 93, 95] p_open [0.2347, 0.2265, 0.2279] 321s
+[california/tabm_gns/s0 search] epoch 6 train 0.4778 valid 0.4202 arch [123, 122, 135] p_open [0.2596, 0.2638, 0.2727] 371s
+[otto/tabm_gns replay/s0 search] epoch 2 train 1.8783 valid 1.8273 arch [31, 78, 273] p_open [0.1143, 0.2077, 0.5029] 380s
+[california/tabm_gns/s0 search] epoch 7 train 0.4181 valid 0.3622 arch [127, 134, 143] p_open [0.2721, 0.2823, 0.2906] 425s
+[california/tabm_gns/s0 search] epoch 8 train 0.3744 valid 0.3294 arch [141, 144, 156] p_open [0.2853, 0.2989, 0.313] 476s
+[california/tabm_gns/s0 search] epoch 9 train 0.3551 valid 0.3121 arch [148, 149, 167] p_open [0.303, 0.3196, 0.333] 528s
+[otto/tabm_gns replay/s0 search] epoch 3 train 1.4073 valid 1.2577 arch [85, 182, 329] p_open [0.2082, 0.3747, 0.6269] 543s
+[california/tabm_gns/s0 search] epoch 10 train 0.3362 valid 0.3053 arch [153, 156, 173] p_open [0.3113, 0.3258, 0.3451] 579s
+[california/tabm_gns/s0 search] epoch 11 train 0.3235 valid 0.2936 arch [155, 156, 173] p_open [0.3151, 0.3286, 0.3533] 627s
+[california/tabm_gns/s0 search] epoch 12 train 0.3117 valid 0.2748 arch [156, 159, 180] p_open [0.3199, 0.3311, 0.3642] 676s
+[otto/tabm_gns replay/s0 search] epoch 4 train 1.0847 valid 0.9291 arch [122, 225, 345] p_open [0.2718, 0.4511, 0.6647] 694s
+[california/tabm_gns/s0 search] epoch 13 train 0.2961 valid 0.2642 arch [161, 162, 185] p_open [0.3281, 0.3361, 0.3746] 725s
+[california/tabm_gns/s0 search] epoch 14 train 0.2868 valid 0.2595 arch [166, 161, 192] p_open [0.3384, 0.3423, 0.3876] 773s
+[california/tabm_gns/s0 search] epoch 15 train 0.2801 valid 0.2558 arch [172, 164, 198] p_open [0.3485, 0.3479, 0.4033] 820s
+[otto/tabm_gns replay/s0 search] epoch 5 train 0.9604 valid 0.8195 arch [145, 250, 346] p_open [0.3158, 0.4914, 0.6775] 844s
+[california/tabm_gns/s0 search] epoch 16 train 0.2707 valid 0.2402 arch [176, 171, 208] p_open [0.356, 0.3541, 0.4158] 869s
+[california/tabm_gns/s0 search] epoch 17 train 0.2622 valid 0.2376 arch [178, 171, 213] p_open [0.3607, 0.3568, 0.424] 916s
+[california/tabm_gns/s0 search] epoch 18 train 0.2562 valid 0.2273 arch [177, 174, 216] p_open [0.3685, 0.3588, 0.4332] 964s
+[otto/tabm_gns replay/s0 search] epoch 6 train 0.8955 valid 0.7685 arch [165, 255, 354] p_open [0.3477, 0.5156, 0.6873] 991s
+[california/tabm_gns/s0 search] epoch 19 train 0.2482 valid 0.2153 arch [189, 174, 221] p_open [0.3788, 0.3625, 0.4436] 1013s
+[california/tabm_gns/s0 search] epoch 20 train 0.2411 valid 0.2148 arch [194, 174, 225] p_open [0.3886, 0.3656, 0.4525] 1062s
+[california/tabm_gns/s0 search] epoch 21 train 0.2357 valid 0.2121 arch [196, 177, 225] p_open [0.3962, 0.3679, 0.4587] 1113s
+[otto/tabm_gns replay/s0 search] epoch 7 train 0.8538 valid 0.7414 arch [177, 267, 357] p_open [0.3735, 0.5281, 0.695] 1143s
+[california/tabm_gns/s0 search] epoch 22 train 0.2324 valid 0.2042 arch [198, 178, 229] p_open [0.4023, 0.37, 0.4631] 1162s
+[california/tabm_gns/s0 search] epoch 23 train 0.2261 valid 0.2037 arch [200, 178, 234] p_open [0.4076, 0.372, 0.4677] 1210s
+[california/tabm_gns/s0 search] epoch 24 train 0.2246 valid 0.2029 arch [209, 182, 240] p_open [0.4166, 0.3748, 0.4716] 1259s
+[otto/tabm_gns replay/s0 search] epoch 8 train 0.8215 valid 0.7184 arch [190, 272, 357] p_open [0.3943, 0.5405, 0.7009] 1293s
+[california/tabm_gns/s0 search] epoch 25 train 0.2188 valid 0.1939 arch [216, 183, 243] p_open [0.4269, 0.3771, 0.4764] 1306s
+[california/tabm_gns/s0 search] epoch 26 train 0.2165 valid 0.1920 arch [218, 183, 244] p_open [0.4326, 0.3792, 0.4811] 1354s
+[california/tabm_gns/s0 search] epoch 27 train 0.2134 valid 0.1892 arch [223, 187, 246] p_open [0.4375, 0.3824, 0.4855] 1406s
+[otto/tabm_gns replay/s0 search] epoch 9 train 0.8065 valid 0.7018 arch [200, 278, 357] p_open [0.4117, 0.5494, 0.7031] 1445s
+[california/tabm_gns/s0 search] epoch 28 train 0.2101 valid 0.1893 arch [226, 187, 248] p_open [0.4431, 0.3854, 0.4898] 1456s
+[california/tabm_gns/s0 search] epoch 29 train 0.2078 valid 0.1954 arch [228, 188, 250] p_open [0.4478, 0.3871, 0.4931] 1504s
+[california/tabm_gns/s0 search] epoch 30 train 0.2042 valid 0.1881 arch [230, 188, 249] p_open [0.452, 0.3891, 0.4953] 1552s
+[otto/tabm_gns replay/s0 search] epoch 10 train 0.7909 valid 0.6951 arch [211, 279, 357] p_open [0.4274, 0.5568, 0.706] 1594s
+[california/tabm_gns/s0 search] epoch 31 train 0.2034 valid 0.1887 arch [231, 187, 251] p_open [0.4543, 0.3905, 0.4981] 1600s
+[california/tabm_gns/s0 search] epoch 32 train 0.2026 valid 0.1840 arch [233, 187, 252] p_open [0.4568, 0.3925, 0.5014] 1648s
+[california/tabm_gns/s0 search] epoch 33 train 0.2004 valid 0.1775 arch [234, 188, 255] p_open [0.4578, 0.3934, 0.5047] 1697s
+[otto/tabm_gns replay/s0 search] epoch 11 train 0.7797 valid 0.6822 arch [215, 282, 361] p_open [0.4378, 0.5625, 0.7092] 1743s
+[california/tabm_gns/s0 search] epoch 34 train 0.1982 valid 0.1819 arch [232, 188, 255] p_open [0.4594, 0.3948, 0.5087] 1745s
+[california/tabm_gns/s0 search] epoch 35 train 0.1966 valid 0.1784 arch [234, 188, 257] p_open [0.4635, 0.3959, 0.5121] 1793s
+[california/tabm_gns/s0 search] epoch 36 train 0.1950 valid 0.1822 arch [236, 189, 257] p_open [0.4642, 0.3961, 0.5133] 1841s
+[california/tabm_gns/s0 search] epoch 37 train 0.1938 valid 0.1744 arch [236, 189, 260] p_open [0.4668, 0.3969, 0.5155] 1889s
+[otto/tabm_gns replay/s0 search] epoch 12 train 0.7725 valid 0.6787 arch [226, 289, 362] p_open [0.4495, 0.5713, 0.7109] 1892s
+[california/tabm_gns/s0 search] epoch 38 train 0.1925 valid 0.1726 arch [235, 189, 261] p_open [0.469, 0.3985, 0.5183] 1937s
+[california/tabm_gns/s0 search] epoch 39 train 0.1885 valid 0.1811 arch [237, 188, 262] p_open [0.4699, 0.3999, 0.5201] 1985s
+[california/tabm_gns/s0 search] epoch 40 train 0.1903 valid 0.1706 arch [237, 186, 262] p_open [0.4704, 0.4005, 0.5218] 2034s
+[otto/tabm_gns replay/s0 search] epoch 13 train 0.7542 valid 0.6691 arch [226, 292, 360] p_open [0.4577, 0.576, 0.7112] 2041s
+[california/tabm_gns/s0 search] epoch 41 train 0.1870 valid 0.1744 arch [238, 188, 264] p_open [0.4716, 0.4016, 0.524] 2082s
+[california/tabm_gns/s0 search] epoch 42 train 0.1858 valid 0.1693 arch [240, 189, 263] p_open [0.4723, 0.4019, 0.5254] 2130s
+[california/tabm_gns/s0 search] epoch 43 train 0.1847 valid 0.1704 arch [242, 189, 264] p_open [0.4727, 0.4025, 0.5262] 2178s
+[otto/tabm_gns replay/s0 search] epoch 14 train 0.7422 valid 0.6597 arch [230, 291, 362] p_open [0.4667, 0.5801, 0.7126] 2191s
+[california/tabm_gns/s0 search] epoch 44 train 0.1853 valid 0.1700 arch [238, 189, 262] p_open [0.4717, 0.4022, 0.5268] 2226s
+[california/tabm_gns/s0 search] epoch 45 train 0.1825 valid 0.1732 arch [237, 189, 265] p_open [0.47, 0.4021, 0.528] 2273s
+[california/tabm_gns/s0 search] epoch 46 train 0.1822 valid 0.1709 arch [239, 187, 264] p_open [0.4717, 0.4019, 0.5289] 2322s
+[otto/tabm_gns replay/s0 search] epoch 15 train 0.7338 valid 0.6513 arch [235, 294, 364] p_open [0.4766, 0.5841, 0.7159] 2339s
+[california/tabm_gns/s0 search] epoch 47 train 0.1809 valid 0.1636 arch [241, 187, 264] p_open [0.4711, 0.4015, 0.529] 2369s
+[california/tabm_gns/s0 search] epoch 48 train 0.1811 valid 0.1680 arch [242, 187, 264] p_open [0.4712, 0.4016, 0.5302] 2417s
+[california/tabm_gns/s0 search] epoch 49 train 0.1801 valid 0.1656 arch [240, 187, 265] p_open [0.4697, 0.4012, 0.5314] 2465s
+[otto/tabm_gns replay/s0 search] epoch 16 train 0.7254 valid 0.6490 arch [240, 295, 363] p_open [0.485, 0.587, 0.7187] 2489s
+[california/tabm_gns/s0 search] epoch 50 train 0.1798 valid 0.1639 arch [239, 186, 266] p_open [0.4703, 0.4015, 0.5331] 2512s
+[california/tabm_gns/s0 search] epoch 51 train 0.1791 valid 0.1643 arch [237, 185, 266] p_open [0.4692, 0.4018, 0.5347] 2560s
+[california/tabm_gns/s0 search] epoch 52 train 0.1781 valid 0.1674 arch [237, 185, 265] p_open [0.4693, 0.4021, 0.5352] 2608s
+[otto/tabm_gns replay/s0 search] epoch 17 train 0.7268 valid 0.6418 arch [244, 298, 366] p_open [0.4911, 0.5908, 0.7205] 2638s
+[california/tabm_gns/s0 search] epoch 53 train 0.1757 valid 0.1625 arch [235, 185, 267] p_open [0.4693, 0.4014, 0.5377] 2656s
+[california/tabm_gns/s0 search] epoch 54 train 0.1775 valid 0.1686 arch [232, 184, 267] p_open [0.4661, 0.4003, 0.5392] 2704s
+[california/tabm_gns/s0 search] epoch 55 train 0.1764 valid 0.1627 arch [231, 183, 266] p_open [0.4647, 0.3997, 0.5407] 2752s
+[otto/tabm_gns replay/s0 search] epoch 18 train 0.7211 valid 0.6442 arch [245, 299, 369] p_open [0.4968, 0.5952, 0.7227] 2786s
+[california/tabm_gns/s0 search] epoch 56 train 0.1749 valid 0.1650 arch [231, 185, 268] p_open [0.4642, 0.4008, 0.5424] 2800s
+[california/tabm_gns/s0 search] epoch 57 train 0.1729 valid 0.1613 arch [233, 186, 268] p_open [0.4653, 0.4011, 0.5441] 2848s
+[california/tabm_gns/s0 search] epoch 58 train 0.1740 valid 0.1611 arch [232, 187, 271] p_open [0.4654, 0.402, 0.5458] 2896s
+[otto/tabm_gns replay/s0 search] epoch 19 train 0.7089 valid 0.6340 arch [246, 299, 368] p_open [0.5003, 0.5977, 0.7222] 2935s
+[california/tabm_gns/s0 search] epoch 59 train 0.1729 valid 0.1632 arch [236, 189, 272] p_open [0.467, 0.4031, 0.5474] 2943s
+[california/tabm_gns/s0 search] epoch 60 train 0.1720 valid 0.1614 arch [237, 189, 275] p_open [0.4674, 0.4024, 0.5512] 2991s
+[california/tabm_gns/s0 search] epoch 61 train 0.1712 valid 0.1638 arch [235, 187, 274] p_open [0.4667, 0.4014, 0.5517] 3039s
+[otto/tabm_gns replay/s0 search] epoch 20 train 0.7100 valid 0.6326 arch [254, 299, 365] p_open [0.5027, 0.5983, 0.7208] 3084s
+[california/tabm_gns/s0 search] epoch 62 train 0.1711 valid 0.1596 arch [234, 187, 274] p_open [0.4658, 0.402, 0.5521] 3088s
+[california/tabm_gns/s0 search] epoch 63 train 0.1704 valid 0.1605 arch [234, 187, 275] p_open [0.4642, 0.4017, 0.5532] 3136s
+[california/tabm_gns/s0 search] epoch 64 train 0.1714 valid 0.1645 arch [232, 188, 277] p_open [0.4627, 0.4025, 0.5553] 3183s
+[california/tabm_gns/s0 search] epoch 65 train 0.1703 valid 0.1587 arch [230, 187, 278] p_open [0.46, 0.402, 0.5555] 3231s
+[otto/tabm_gns replay/s0 search] epoch 21 train 0.6987 valid 0.6303 arch [252, 300, 367] p_open [0.5061, 0.5995, 0.7221] 3232s
+[california/tabm_gns/s0 search] epoch 66 train 0.1688 valid 0.1600 arch [232, 186, 277] p_open [0.4577, 0.4013, 0.5554] 3279s
+[california/tabm_gns/s0 search] epoch 67 train 0.1690 valid 0.1588 arch [230, 187, 275] p_open [0.4558, 0.4015, 0.5559] 3328s
+[california/tabm_gns/s0 search] epoch 68 train 0.1699 valid 0.1575 arch [228, 186, 274] p_open [0.4525, 0.4012, 0.5559] 3376s
+[otto/tabm_gns replay/s0 search] epoch 22 train 0.6843 valid 0.6198 arch [253, 298, 367] p_open [0.5088, 0.6001, 0.7219] 3381s
+[california/tabm_gns/s0 search] epoch 69 train 0.1679 valid 0.1590 arch [225, 186, 274] p_open [0.4499, 0.4006, 0.5559] 3424s
+[california/tabm_gns/s0 search] epoch 70 train 0.1679 valid 0.1573 arch [224, 187, 275] p_open [0.4471, 0.4009, 0.5562] 3472s
+[california/tabm_gns/s0 search] epoch 71 train 0.1691 valid 0.1535 arch [224, 189, 278] p_open [0.4449, 0.4016, 0.5572] 3521s
+[otto/tabm_gns replay/s0 search] epoch 23 train 0.6862 valid 0.6183 arch [257, 300, 369] p_open [0.512, 0.602, 0.7232] 3532s
+[california/tabm_gns/s0 search] epoch 72 train 0.1683 valid 0.1639 arch [222, 191, 278] p_open [0.4417, 0.4007, 0.5573] 3569s
+[california/tabm_gns/s0 search] epoch 73 train 0.1670 valid 0.1631 arch [222, 190, 279] p_open [0.4399, 0.4007, 0.558] 3617s
+[california/tabm_gns/s0 search] epoch 74 train 0.1668 valid 0.1552 arch [224, 187, 282] p_open [0.4376, 0.3997, 0.5611] 3665s
+[otto/tabm_gns replay/s0 search] epoch 24 train 0.6991 valid 0.6242 arch [257, 300, 370] p_open [0.511, 0.6035, 0.7261] 3680s
+[california/tabm_gns/s0 search] epoch 75 train 0.1660 valid 0.1575 arch [219, 189, 283] p_open [0.4345, 0.3997, 0.5619] 3713s
+[california/tabm_gns/s0 search] epoch 76 train 0.1662 valid 0.1574 arch [217, 188, 283] p_open [0.4328, 0.3994, 0.563] 3761s
+[california/tabm_gns/s0 search] epoch 77 train 0.1663 valid 0.1583 arch [218, 188, 282] p_open [0.4321, 0.3994, 0.5634] 3808s
+[otto/tabm_gns replay/s0 search] epoch 25 train 0.6867 valid 0.6167 arch [256, 302, 371] p_open [0.5127, 0.6049, 0.7275] 3829s
+[california/tabm_gns/s0 search] epoch 78 train 0.1660 valid 0.1601 arch [218, 187, 284] p_open [0.4305, 0.3995, 0.5637] 3856s
+[california/tabm_gns/s0 search] epoch 79 train 0.1662 valid 0.1589 arch [222, 187, 286] p_open [0.4287, 0.4002, 0.5657] 3904s
+[california/tabm_gns/s0 search] epoch 80 train 0.1648 valid 0.1553 arch [215, 188, 288] p_open [0.4249, 0.4009, 0.5666] 3952s
+[otto/tabm_gns replay/s0 search] epoch 26 train 0.6800 valid 0.6124 arch [258, 303, 370] p_open [0.5144, 0.6074, 0.7274] 3978s
+[california/tabm_gns/s0 search] epoch 81 train 0.1662 valid 0.1511 arch [211, 187, 288] p_open [0.4227, 0.4004, 0.5674] 4000s
+[california/tabm_gns/s0 search] epoch 82 train 0.1652 valid 0.1540 arch [210, 188, 286] p_open [0.4195, 0.4004, 0.5681] 4047s
+[california/tabm_gns/s0 search] epoch 83 train 0.1650 valid 0.1532 arch [208, 190, 289] p_open [0.4161, 0.4012, 0.5696] 4095s
+[otto/tabm_gns replay/s0 search] epoch 27 train 0.6745 valid 0.6116 arch [258, 308, 371] p_open [0.5149, 0.6094, 0.7272] 4125s
+[california/tabm_gns/s0 search] epoch 84 train 0.1635 valid 0.1574 arch [206, 189, 288] p_open [0.4144, 0.3999, 0.5692] 4144s
+[california/tabm_gns/s0 search] epoch 85 train 0.1641 valid 0.1538 arch [204, 189, 289] p_open [0.4119, 0.4003, 0.5693] 4193s
+[california/tabm_gns/s0 search] epoch 86 train 0.1641 valid 0.1586 arch [204, 190, 288] p_open [0.4091, 0.3986, 0.5681] 4241s
+[otto/tabm_gns replay/s0 search] epoch 28 train 0.6624 valid 0.6104 arch [259, 309, 371] p_open [0.5134, 0.6101, 0.725] 4272s
+[california/tabm_gns/s0 search] epoch 87 train 0.1642 valid 0.1528 arch [204, 189, 286] p_open [0.4072, 0.3972, 0.5677] 4289s
+[california/tabm_gns/s0 search] epoch 88 train 0.1637 valid 0.1545 arch [203, 187, 285] p_open [0.405, 0.3967, 0.5674] 4337s
+[california/tabm_gns/s0 search] epoch 89 train 0.1648 valid 0.1520 arch [204, 186, 287] p_open [0.4048, 0.3954, 0.568] 4385s
+[otto/tabm_gns replay/s0 search] epoch 29 train 0.6637 valid 0.6010 arch [257, 307, 372] p_open [0.5129, 0.6115, 0.723] 4421s
+[california/tabm_gns/s0 search] epoch 90 train 0.1642 valid 0.1524 arch [203, 186, 285] p_open [0.4022, 0.3949, 0.5674] 4433s
+[california/tabm_gns/s0 search] epoch 91 train 0.1648 valid 0.1571 arch [204, 184, 285] p_open [0.4003, 0.3933, 0.5658] 4480s
+[california/tabm_gns/s0 search] epoch 92 train 0.1636 valid 0.1655 arch [201, 182, 284] p_open [0.3994, 0.3925, 0.5651] 4528s
+[otto/tabm_gns replay/s0 search] epoch 30 train 0.6622 valid 0.6047 arch [260, 309, 372] p_open [0.513, 0.6135, 0.7233] 4569s
+[california/tabm_gns/s0 search] epoch 93 train 0.1634 valid 0.1530 arch [201, 183, 284] p_open [0.397, 0.3903, 0.5645] 4575s
+[california/tabm_gns/s0 search] epoch 94 train 0.1614 valid 0.1533 arch [197, 181, 283] p_open [0.3954, 0.3889, 0.5643] 4624s
+[california/tabm_gns/s0 search] epoch 95 train 0.1614 valid 0.1523 arch [195, 179, 283] p_open [0.3926, 0.3881, 0.5636] 4672s
+[otto/tabm_gns replay/s0 search] epoch 31 train 0.6559 valid 0.5979 arch [258, 309, 373] p_open [0.513, 0.6142, 0.7247] 4716s
+[california/tabm_gns/s0 search] epoch 96 train 0.1619 valid 0.1537 arch [191, 180, 281] p_open [0.3894, 0.3875, 0.5631] 4720s
+[california/tabm_gns/s0 search] epoch 97 train 0.1620 valid 0.1525 arch [191, 178, 282] p_open [0.3886, 0.3879, 0.5646] 4768s
+[california/tabm_gns/s0 search] epoch 98 train 0.1616 valid 0.1555 arch [193, 180, 283] p_open [0.3863, 0.3896, 0.5647] 4815s
+[california/tabm_gns/s0 search] epoch 99 train 0.1615 valid 0.1489 arch [191, 179, 283] p_open [0.384, 0.3887, 0.5649] 4863s
+[otto/tabm_gns replay/s0 search] epoch 32 train 0.6534 valid 0.5980 arch [260, 311, 371] p_open [0.5148, 0.6161, 0.7243] 4865s
+[california/tabm_gns/s0 search] epoch 100 train 0.1613 valid 0.1555 arch [187, 179, 282] p_open [0.3806, 0.3873, 0.5654] 4911s
+[california/tabm_gns/s0 search] epoch 101 train 0.1619 valid 0.1547 arch [188, 181, 284] p_open [0.378, 0.3888, 0.5667] 4959s
+[california/tabm_gns/s0 search] epoch 102 train 0.1602 valid 0.1526 arch [187, 182, 284] p_open [0.3753, 0.3903, 0.5679] 5006s
+[otto/tabm_gns replay/s0 search] epoch 33 train 0.6523 valid 0.5950 arch [262, 312, 375] p_open [0.5175, 0.6168, 0.7246] 5013s
+[california/tabm_gns/s0 search] epoch 103 train 0.1605 valid 0.1519 arch [185, 184, 284] p_open [0.373, 0.3893, 0.5684] 5055s
+[california/tabm_gns/s0 search] epoch 104 train 0.1605 valid 0.1525 arch [184, 181, 286] p_open [0.3697, 0.3887, 0.5689] 5101s
+[california/tabm_gns/s0 search] epoch 105 train 0.1604 valid 0.1532 arch [183, 184, 285] p_open [0.3673, 0.3878, 0.5693] 5149s
+[otto/tabm_gns replay/s0 search] epoch 34 train 0.6591 valid 0.5970 arch [263, 312, 375] p_open [0.5168, 0.6181, 0.7228] 5162s
+[california/tabm_gns/s0 search] epoch 106 train 0.1592 valid 0.1498 arch [182, 182, 289] p_open [0.3656, 0.3878, 0.5706] 5197s
+[california/tabm_gns/s0 search] epoch 107 train 0.1609 valid 0.1495 arch [182, 184, 289] p_open [0.3633, 0.3883, 0.5701] 5245s
+[california/tabm_gns/s0 search] epoch 108 train 0.1598 valid 0.1521 arch [181, 184, 289] p_open [0.3598, 0.3889, 0.5704] 5293s
+[otto/tabm_gns replay/s0 search] epoch 35 train 0.6575 valid 0.5992 arch [264, 318, 373] p_open [0.5203, 0.6233, 0.7224] 5308s
+[california/tabm_gns/s0 search] epoch 109 train 0.1596 valid 0.1556 arch [179, 183, 288] p_open [0.3577, 0.3873, 0.571] 5342s
+[california/tabm_gns/s0 search] epoch 110 train 0.1601 valid 0.1529 arch [180, 184, 288] p_open [0.3557, 0.3866, 0.5724] 5391s
+[california/tabm_gns/s0 search] epoch 111 train 0.1593 valid 0.1531 arch [180, 186, 289] p_open [0.3536, 0.3873, 0.5726] 5440s
+[otto/tabm_gns replay/s0 search] epoch 36 train 0.6494 valid 0.5949 arch [266, 321, 375] p_open [0.5229, 0.6253, 0.7203] 5458s
+[california/tabm_gns/s0 search] epoch 112 train 0.1583 valid 0.1514 arch [179, 187, 289] p_open [0.353, 0.3868, 0.5729] 5488s
+[california/tabm_gns/s0 search] epoch 113 train 0.1584 valid 0.1539 arch [177, 187, 289] p_open [0.352, 0.3853, 0.5739] 5536s
+[california/tabm_gns/s0 search] epoch 114 train 0.1585 valid 0.1521 arch [176, 185, 291] p_open [0.3501, 0.3833, 0.5752] 5583s
+[otto/tabm_gns replay/s0 search] epoch 37 train 0.6477 valid 0.5925 arch [265, 320, 372] p_open [0.5229, 0.6252, 0.7147] 5606s
+[california/tabm_gns/s0 search] epoch 115 train 0.1573 valid 0.1534 arch [174, 186, 289] p_open [0.3481, 0.3822, 0.5746] 5631s
+[california/tabm_gns/s0 search] epoch 116 train 0.1575 valid 0.1481 arch [174, 184, 289] p_open [0.3463, 0.3813, 0.5739] 5678s
+[california/tabm_gns/s0 search] epoch 117 train 0.1579 valid 0.1503 arch [175, 182, 289] p_open [0.3453, 0.3786, 0.5735] 5726s
+[otto/tabm_gns replay/s0 search] epoch 38 train 0.6415 valid 0.5888 arch [267, 320, 371] p_open [0.5252, 0.6268, 0.712] 5756s
+[california/tabm_gns/s0 search] epoch 118 train 0.1566 valid 0.1525 arch [172, 182, 287] p_open [0.3441, 0.3775, 0.5726] 5774s
+[california/tabm_gns/s0 search] epoch 119 train 0.1576 valid 0.1497 arch [172, 179, 285] p_open [0.3432, 0.3777, 0.5718] 5822s
+[california/tabm_gns/s0 search] epoch 120 train 0.1564 valid 0.1508 arch [171, 179, 287] p_open [0.342, 0.3768, 0.5721] 5871s
+[otto/tabm_gns replay/s0 search] epoch 39 train 0.6427 valid 0.5919 arch [269, 320, 371] p_open [0.5261, 0.6246, 0.7048] 5906s
+[california/tabm_gns/s0 search] epoch 121 train 0.1558 valid 0.1485 arch [172, 179, 288] p_open [0.3416, 0.3755, 0.5739] 5919s
+[california/tabm_gns/s0 search] epoch 122 train 0.1569 valid 0.1504 arch [172, 179, 289] p_open [0.3407, 0.3755, 0.5737] 5968s
+[california/tabm_gns/s0 search] epoch 123 train 0.1557 valid 0.1455 arch [169, 179, 289] p_open [0.3381, 0.374, 0.5739] 6015s
+[otto/tabm_gns replay/s0 search] epoch 40 train 0.6523 valid 0.5941 arch [266, 321, 370] p_open [0.5282, 0.6262, 0.7038] 6054s
+[california/tabm_gns/s0 search] epoch 124 train 0.1568 valid 0.1550 arch [169, 178, 289] p_open [0.3369, 0.3731, 0.5744] 6063s
+[california/tabm_gns/s0 search] epoch 125 train 0.1567 valid 0.1505 arch [168, 177, 293] p_open [0.3359, 0.3718, 0.5777] 6109s
+[california/tabm_gns/s0 search] epoch 126 train 0.1576 valid 0.1590 arch [168, 177, 293] p_open [0.3347, 0.3694, 0.5773] 6156s
+[otto/tabm_gns replay/s0 search] epoch 41 train 0.6427 valid 0.5870 arch [271, 326, 370] p_open [0.5294, 0.6279, 0.7013] 6203s
+[california/tabm_gns/s0 search] epoch 127 train 0.1554 valid 0.1513 arch [168, 174, 293] p_open [0.3334, 0.3684, 0.5783] 6206s
+[california/tabm_gns/s0 search] epoch 128 train 0.1569 valid 0.1481 arch [166, 170, 295] p_open [0.331, 0.3667, 0.5791] 14394s
+[california/tabm_gns/s0 search] epoch 129 train 0.1558 valid 0.1540 arch [166, 174, 295] p_open [0.3299, 0.3663, 0.5797] 14443s
+[california/tabm_gns/s0 search] epoch 130 train 0.1572 valid 0.1479 arch [167, 178, 295] p_open [0.3306, 0.3683, 0.581] 14490s
+[otto/tabm_gns replay/s0 search] epoch 42 train 0.6400 valid 0.5886 arch [271, 325, 367] p_open [0.5295, 0.6278, 0.6937] 14492s
+[california/tabm_gns/s0 search] epoch 131 train 0.1558 valid 0.1486 arch [168, 176, 294] p_open [0.3309, 0.3683, 0.5802] 14540s
+[california/tabm_gns/s0 search] epoch 132 train 0.1566 valid 0.1464 arch [165, 176, 293] p_open [0.3307, 0.3687, 0.5799] 14594s
+[california/tabm_gns/s0 search] epoch 133 train 0.1556 valid 0.1473 arch [165, 175, 292] p_open [0.3308, 0.3666, 0.5792] 14648s
+[otto/tabm_gns replay/s0 search] epoch 43 train 0.6417 valid 0.5893 arch [270, 324, 362] p_open [0.5282, 0.6273, 0.6885] 14654s
+[california/tabm_gns/s0 search] epoch 134 train 0.1559 valid 0.1503 arch [166, 175, 293] p_open [0.3303, 0.3677, 0.5801] 14704s
+[california/tabm_gns/s0 search] epoch 135 train 0.1554 valid 0.1454 arch [166, 176, 293] p_open [0.33, 0.3667, 0.5805] 14759s
+[california/tabm_gns/s0 search] epoch 136 train 0.1560 valid 0.1488 arch [164, 175, 293] p_open [0.33, 0.3667, 0.5803] 14818s
+[california/tabm_gns/s0 search] epoch 137 train 0.1550 valid 0.1492 arch [166, 174, 294] p_open [0.3287, 0.3655, 0.5814] 14866s
+[california/tabm_gns/s0 search] epoch 138 train 0.1546 valid 0.1460 arch [165, 174, 295] p_open [0.329, 0.3655, 0.5815] 14908s
+[california/tabm_gns/s0 search] epoch 139 train 0.1547 valid 0.1462 arch [164, 176, 296] p_open [0.3279, 0.3651, 0.5819] 14951s
+[california/tabm_gns/s0 search] epoch 140 train 0.1544 valid 0.1473 arch [164, 175, 295] p_open [0.3278, 0.3655, 0.5821] 14993s
+[california/tabm_gns/s0 search] epoch 141 train 0.1543 valid 0.1472 arch [163, 175, 295] p_open [0.327, 0.3642, 0.5816] 15036s
+[california/tabm_gns/s0 search] epoch 142 train 0.1549 valid 0.1472 arch [164, 175, 294] p_open [0.3273, 0.3654, 0.5809] 15079s
+[california/tabm_gns/s0 search] epoch 143 train 0.1559 valid 0.1521 arch [165, 174, 293] p_open [0.3273, 0.3655, 0.5803] 15122s
+[california/tabm_gns/s0 search] epoch 144 train 0.1545 valid 0.1464 arch [166, 175, 293] p_open [0.3263, 0.3653, 0.5792] 15162s
+[california/tabm_gns/s0 search] epoch 145 train 0.1540 valid 0.1452 arch [165, 175, 294] p_open [0.3246, 0.3633, 0.5781] 15202s
+[california/tabm_gns/s0 search] epoch 146 train 0.1546 valid 0.1503 arch [165, 174, 296] p_open [0.3244, 0.3628, 0.5794] 15242s
+[california/tabm_gns/s0 search] epoch 147 train 0.1547 valid 0.1478 arch [165, 175, 294] p_open [0.3246, 0.3627, 0.5785] 15281s
+[california/tabm_gns/s0 search] epoch 148 train 0.1541 valid 0.1506 arch [164, 171, 291] p_open [0.3225, 0.3599, 0.5765] 15322s
+[california/tabm_gns/s0 search] epoch 149 train 0.1549 valid 0.1461 arch [163, 170, 291] p_open [0.3209, 0.3588, 0.575] 15361s
+[california/tabm_gns/s0 search] epoch 150 train 0.1557 valid 0.1465 arch [160, 172, 292] p_open [0.3202, 0.3591, 0.5748] 15400s
+[california/tabm_gns/s0 search] epoch 151 train 0.1541 valid 0.1475 arch [161, 172, 292] p_open [0.3198, 0.3591, 0.5753] 15441s
+[california/tabm_gns/s0 search] epoch 152 train 0.1542 valid 0.1438 arch [161, 170, 291] p_open [0.3195, 0.3591, 0.575] 15482s
+[california/tabm_gns/s0 search] epoch 153 train 0.1539 valid 0.1485 arch [163, 172, 292] p_open [0.3204, 0.3604, 0.5756] 15520s
+[california/tabm_gns/s0 search] epoch 154 train 0.1557 valid 0.1467 arch [164, 171, 292] p_open [0.3203, 0.3596, 0.5769] 15559s
+[california/tabm_gns/s0 search] epoch 155 train 0.1547 valid 0.1488 arch [165, 171, 294] p_open [0.319, 0.3591, 0.5768] 15599s
+[california/tabm_gns/s0 search] epoch 156 train 0.1550 valid 0.1481 arch [165, 169, 295] p_open [0.3197, 0.3595, 0.5779] 15636s
+[california/tabm_gns/s0 search] epoch 157 train 0.1540 valid 0.1470 arch [163, 168, 296] p_open [0.3196, 0.3571, 0.5792] 15672s
+[california/tabm_gns/s0 search] epoch 158 train 0.1547 valid 0.1474 arch [163, 169, 294] p_open [0.3198, 0.3561, 0.5791] 15713s
+[california/tabm_gns/s0 search] epoch 159 train 0.1541 valid 0.1444 arch [164, 167, 294] p_open [0.3202, 0.3547, 0.5777] 15751s
+[california/tabm_gns/s0 search] epoch 160 train 0.1541 valid 0.1473 arch [166, 168, 293] p_open [0.3211, 0.3531, 0.5768] 15789s
+[california/tabm_gns/s0 search] epoch 161 train 0.1538 valid 0.1466 arch [166, 167, 292] p_open [0.3213, 0.3524, 0.5764] 15826s
+[california/tabm_gns/s0 search] epoch 162 train 0.1529 valid 0.1435 arch [166, 165, 293] p_open [0.3218, 0.3525, 0.5764] 15863s
+[california/tabm_gns/s0 search] epoch 163 train 0.1540 valid 0.1473 arch [164, 165, 295] p_open [0.3203, 0.352, 0.5761] 15903s
+[california/tabm_gns/s0 search] epoch 164 train 0.1531 valid 0.1462 arch [164, 167, 293] p_open [0.3186, 0.3527, 0.5762] 15942s
+[california/tabm_gns/s0 search] epoch 165 train 0.1548 valid 0.1438 arch [161, 167, 291] p_open [0.3183, 0.3545, 0.5756] 15975s
+[california/tabm_gns/s0 search] epoch 166 train 0.1536 valid 0.1450 arch [163, 166, 292] p_open [0.3185, 0.3538, 0.575] 16007s
+[california/tabm_gns/s0 search] epoch 167 train 0.1528 valid 0.1459 arch [162, 168, 292] p_open [0.3179, 0.3545, 0.5749] 16040s
+[california/tabm_gns/s0 search] epoch 168 train 0.1531 valid 0.1494 arch [160, 167, 293] p_open [0.3169, 0.354, 0.5759] 16073s
+[california/tabm_gns/s0 search] epoch 169 train 0.1550 valid 0.1433 arch [159, 167, 294] p_open [0.3166, 0.3537, 0.577] 16105s
+[california/tabm_gns/s0 search] epoch 170 train 0.1527 valid 0.1492 arch [161, 168, 295] p_open [0.3168, 0.3542, 0.5774] 16138s
+[california/tabm_gns/s0 search] epoch 171 train 0.1527 valid 0.1442 arch [161, 169, 296] p_open [0.317, 0.3559, 0.5787] 16171s
+[california/tabm_gns/s0 search] epoch 172 train 0.1537 valid 0.1456 arch [162, 170, 296] p_open [0.3163, 0.3565, 0.5787] 16203s
+[california/tabm_gns/s0 search] epoch 173 train 0.1524 valid 0.1476 arch [161, 173, 296] p_open [0.3141, 0.3563, 0.5769] 16236s
+[california/tabm_gns/s0 search] epoch 174 train 0.1525 valid 0.1508 arch [162, 171, 295] p_open [0.3141, 0.3567, 0.577] 16268s
+[california/tabm_gns/s0 search] epoch 175 train 0.1527 valid 0.1489 arch [159, 173, 295] p_open [0.3139, 0.3579, 0.5765] 16300s
+[california/tabm_gns/s0 search] epoch 176 train 0.1527 valid 0.1463 arch [158, 173, 295] p_open [0.3132, 0.3573, 0.5758] 16333s
+[california/tabm_gns/s0 search] epoch 177 train 0.1523 valid 0.1434 arch [158, 174, 294] p_open [0.3118, 0.3576, 0.5756] 16365s
+[california/tabm_gns/s0 search] epoch 178 train 0.1524 valid 0.1476 arch [158, 174, 293] p_open [0.3108, 0.3569, 0.5749] 16397s
+[california/tabm_gns/s0 search] epoch 179 train 0.1517 valid 0.1450 arch [159, 174, 293] p_open [0.3105, 0.3572, 0.5732] 16428s
+[california/tabm_gns/s0 search] epoch 180 train 0.1529 valid 0.1478 arch [157, 176, 292] p_open [0.3075, 0.3577, 0.5727] 16456s
+[california/tabm_gns/s0 search] epoch 181 train 0.1522 valid 0.1443 arch [154, 175, 292] p_open [0.3052, 0.3576, 0.5731] 16485s
+[california/tabm_gns/s0 search] epoch 182 train 0.1521 valid 0.1472 arch [154, 176, 290] p_open [0.3029, 0.3583, 0.5722] 16514s
+[california/tabm_gns/s0 search] epoch 183 train 0.1521 valid 0.1445 arch [154, 175, 290] p_open [0.302, 0.3577, 0.5725] 16542s
+[california/tabm_gns/s0 search] epoch 184 train 0.1519 valid 0.1450 arch [154, 174, 292] p_open [0.3015, 0.3575, 0.5728] 16571s
+[california/tabm_gns/s0 search] epoch 185 train 0.1513 valid 0.1473 arch [153, 173, 293] p_open [0.3004, 0.3567, 0.5718] 16599s
+[california/tabm_gns/s0 search] epoch 186 train 0.1505 valid 0.1418 arch [154, 173, 292] p_open [0.3009, 0.3565, 0.5718] 16628s
+[california/tabm_gns/s0 search] epoch 187 train 0.1512 valid 0.1486 arch [153, 175, 292] p_open [0.3, 0.3574, 0.5724] 16657s
+[california/tabm_gns/s0 search] epoch 188 train 0.1510 valid 0.1448 arch [153, 175, 292] p_open [0.2999, 0.3559, 0.5714] 16686s
+[california/tabm_gns/s0 search] epoch 189 train 0.1511 valid 0.1457 arch [152, 173, 292] p_open [0.3007, 0.3546, 0.5724] 16716s
+[california/tabm_gns/s0 search] epoch 190 train 0.1517 valid 0.1471 arch [151, 174, 293] p_open [0.3001, 0.3534, 0.574] 16745s
+[california/tabm_gns/s0 search] epoch 191 train 0.1509 valid 0.1421 arch [149, 172, 293] p_open [0.2989, 0.3524, 0.5738] 16774s
+[california/tabm_gns/s0 search] epoch 192 train 0.1513 valid 0.1439 arch [150, 171, 294] p_open [0.299, 0.3517, 0.5731] 16801s
+[california/tabm_gns/s0 search] epoch 193 train 0.1520 valid 0.1431 arch [150, 170, 293] p_open [0.2986, 0.3512, 0.5718] 16830s
+[california/tabm_gns/s0 search] epoch 194 train 0.1516 valid 0.1412 arch [151, 171, 292] p_open [0.2979, 0.3506, 0.571] 16858s
+[california/tabm_gns/s0 search] epoch 195 train 0.1506 valid 0.1495 arch [151, 170, 290] p_open [0.2983, 0.3508, 0.5714] 16886s
+[california/tabm_gns/s0 search] epoch 196 train 0.1503 valid 0.1450 arch [151, 171, 290] p_open [0.2971, 0.3493, 0.5699] 16914s
+[california/tabm_gns/s0 search] epoch 197 train 0.1519 valid 0.1469 arch [151, 172, 290] p_open [0.2956, 0.3487, 0.5688] 16943s
+[california/tabm_gns/s0 search] epoch 198 train 0.1510 valid 0.1506 arch [149, 169, 289] p_open [0.2946, 0.3476, 0.5676] 16971s
+[california/tabm_gns/s0 search] epoch 199 train 0.1518 valid 0.1457 arch [149, 168, 288] p_open [0.2944, 0.3452, 0.567] 17000s
+[california/tabm_gns/s0 search] epoch 200 train 0.1510 valid 0.1420 arch [150, 166, 288] p_open [0.2958, 0.3441, 0.5665] 17028s
+[california/tabm_gns/s0 search] epoch 201 train 0.1510 valid 0.1445 arch [153, 168, 288] p_open [0.2976, 0.3457, 0.5663] 17057s
+[california/tabm_gns/s0 search] epoch 202 train 0.1529 valid 0.1457 arch [152, 168, 287] p_open [0.297, 0.3459, 0.5654] 17085s
+[california/tabm_gns/s0 search] epoch 203 train 0.1518 valid 0.1438 arch [151, 168, 287] p_open [0.2971, 0.3455, 0.5652] 17112s
+[california/tabm_gns/s0 search] epoch 204 train 0.1506 valid 0.1460 arch [151, 166, 288] p_open [0.2964, 0.3452, 0.5652] 17139s
+[california/tabm_gns/s0 search] epoch 205 train 0.1513 valid 0.1428 arch [151, 165, 288] p_open [0.2959, 0.3448, 0.5653] 17166s
+[california/tabm_gns/s0 search] epoch 206 train 0.1504 valid 0.1450 arch [152, 166, 289] p_open [0.2957, 0.3445, 0.5643] 17193s
+[california/tabm_gns/s0 search] epoch 207 train 0.1516 valid 0.1502 arch [151, 166, 287] p_open [0.2947, 0.344, 0.5634] 17221s
+[california/tabm_gns/s0 search] epoch 208 train 0.1514 valid 0.1422 arch [151, 165, 287] p_open [0.2936, 0.3433, 0.5627] 17248s
+[california/tabm_gns/s0 search] epoch 209 train 0.1518 valid 0.1450 arch [151, 166, 288] p_open [0.2943, 0.3438, 0.5628] 17275s
+[california/tabm_gns/s0 search] epoch 210 train 0.1505 valid 0.1444 arch [150, 168, 288] p_open [0.2934, 0.3436, 0.5625] 17302s
+[california/tabm_gns/s0 search] epoch 211 train 0.1523 valid 0.1452 arch [150, 169, 287] p_open [0.2916, 0.3436, 0.5622] 17328s
+[california/tabm_gns/s0 search] epoch 212 train 0.1523 valid 0.1421 arch [148, 168, 287] p_open [0.2909, 0.3437, 0.5623] 17355s
+[california/tabm_gns/s0 search] epoch 213 train 0.1507 valid 0.1453 arch [146, 166, 286] p_open [0.2904, 0.3437, 0.5628] 17379s
+[california/tabm_gns/s0 search] epoch 214 train 0.1500 valid 0.1414 arch [147, 166, 286] p_open [0.2892, 0.3425, 0.5619] 17404s
+[california/tabm_gns/s0 finetune train] epoch 1 train 0.1497 valid 0.1438 widths [147, 166, 286] 5s
+[california/tabm_gns/s0 finetune train] epoch 2 train 0.1464 valid 0.1441 widths [147, 166, 286] 10s
+[california/tabm_gns/s0 finetune train] epoch 3 train 0.1458 valid 0.1462 widths [147, 166, 286] 16s
+[california/tabm_gns/s0 finetune train] epoch 4 train 0.1470 valid 0.1436 widths [147, 166, 286] 21s
+[california/tabm_gns/s0 finetune train] epoch 5 train 0.1462 valid 0.1440 widths [147, 166, 286] 26s
+[california/tabm_gns/s0 finetune train] epoch 6 train 0.1456 valid 0.1427 widths [147, 166, 286] 32s
+[california/tabm_gns/s0 finetune train] epoch 7 train 0.1457 valid 0.1440 widths [147, 166, 286] 37s
+[california/tabm_gns/s0 finetune train] epoch 8 train 0.1448 valid 0.1422 widths [147, 166, 286] 42s
+[california/tabm_gns/s0 finetune train] epoch 9 train 0.1445 valid 0.1452 widths [147, 166, 286] 48s
+[california/tabm_gns/s0 finetune train] epoch 10 train 0.1441 valid 0.1441 widths [147, 166, 286] 53s
+[california/tabm_gns/s0 finetune train] epoch 11 train 0.1450 valid 0.1424 widths [147, 166, 286] 58s
+[california/tabm_gns/s0 finetune train] epoch 12 train 0.1455 valid 0.1418 widths [147, 166, 286] 63s
+[california/tabm_gns/s0 finetune train] epoch 13 train 0.1440 valid 0.1438 widths [147, 166, 286] 69s
+[california/tabm_gns/s0 finetune train] epoch 14 train 0.1441 valid 0.1422 widths [147, 166, 286] 74s
+[california/tabm_gns/s0 finetune train] epoch 15 train 0.1435 valid 0.1430 widths [147, 166, 286] 79s
+[california/tabm_gns/s0 finetune train] epoch 16 train 0.1434 valid 0.1428 widths [147, 166, 286] 84s
+[california/tabm_gns/s0 finetune train] epoch 17 train 0.1430 valid 0.1417 widths [147, 166, 286] 90s
+[california/tabm_gns/s0 finetune train] epoch 18 train 0.1425 valid 0.1421 widths [147, 166, 286] 95s
+[california/tabm_gns/s0 finetune train] epoch 19 train 0.1432 valid 0.1423 widths [147, 166, 286] 100s
+[california/tabm_gns/s0 finetune train] epoch 20 train 0.1436 valid 0.1429 widths [147, 166, 286] 105s
+[california/tabm_gns/s0 finetune train] epoch 21 train 0.1422 valid 0.1423 widths [147, 166, 286] 111s
+[california/tabm_gns/s0 finetune train] epoch 22 train 0.1439 valid 0.1427 widths [147, 166, 286] 116s
+[california/tabm_gns/s0 finetune train] epoch 23 train 0.1440 valid 0.1439 widths [147, 166, 286] 121s
+[california/tabm_gns/s0 finetune train] epoch 24 train 0.1430 valid 0.1441 widths [147, 166, 286] 126s
+[california/tabm_gns/s0 finetune train] epoch 25 train 0.1427 valid 0.1431 widths [147, 166, 286] 132s
+[california/tabm_gns/s0 finetune train] epoch 26 train 0.1435 valid 0.1425 widths [147, 166, 286] 137s
+[california/tabm_gns/s0 finetune train] epoch 27 train 0.1416 valid 0.1423 widths [147, 166, 286] 142s
+[california/tabm_gns/s0 finetune train] epoch 28 train 0.1415 valid 0.1423 widths [147, 166, 286] 147s
+[california/tabm_gns/s0 finetune train] epoch 29 train 0.1420 valid 0.1432 widths [147, 166, 286] 152s
+[california/tabm_gns/s0 finetune train] epoch 30 train 0.1415 valid 0.1427 widths [147, 166, 286] 158s
+[california/tabm_gns/s0 finetune train] epoch 31 train 0.1410 valid 0.1415 widths [147, 166, 286] 163s
+[california/tabm_gns/s0 finetune train] epoch 32 train 0.1421 valid 0.1429 widths [147, 166, 286] 168s
+[california/tabm_gns/s0 finetune train] epoch 33 train 0.1419 valid 0.1425 widths [147, 166, 286] 173s
+[california/tabm_gns/s0 finetune train] epoch 34 train 0.1414 valid 0.1415 widths [147, 166, 286] 179s
+[california/tabm_gns/s0 finetune train] epoch 35 train 0.1418 valid 0.1410 widths [147, 166, 286] 184s
+[california/tabm_gns/s0 finetune train] epoch 36 train 0.1419 valid 0.1411 widths [147, 166, 286] 189s
+[california/tabm_gns/s0 finetune train] epoch 37 train 0.1414 valid 0.1432 widths [147, 166, 286] 194s
+[california/tabm_gns/s0 finetune train] epoch 38 train 0.1420 valid 0.1441 widths [147, 166, 286] 199s
+[california/tabm_gns/s0 finetune train] epoch 39 train 0.1411 valid 0.1429 widths [147, 166, 286] 204s
+[california/tabm_gns/s0 finetune train] epoch 40 train 0.1416 valid 0.1425 widths [147, 166, 286] 209s
+[california/tabm_gns/s0 finetune train] epoch 41 train 0.1403 valid 0.1423 widths [147, 166, 286] 215s
+[california/tabm_gns/s0 finetune train] epoch 42 train 0.1413 valid 0.1413 widths [147, 166, 286] 220s
+[california/tabm_gns/s0 finetune train] epoch 43 train 0.1409 valid 0.1438 widths [147, 166, 286] 225s
+[california/tabm_gns/s0 finetune train] epoch 44 train 0.1407 valid 0.1404 widths [147, 166, 286] 230s
+[california/tabm_gns/s0 finetune train] epoch 45 train 0.1404 valid 0.1420 widths [147, 166, 286] 235s
+[california/tabm_gns/s0 finetune train] epoch 46 train 0.1404 valid 0.1416 widths [147, 166, 286] 240s
+[california/tabm_gns/s0 finetune train] epoch 47 train 0.1403 valid 0.1417 widths [147, 166, 286] 245s
+[california/tabm_gns/s0 finetune train] epoch 48 train 0.1414 valid 0.1418 widths [147, 166, 286] 250s
+[california/tabm_gns/s0 finetune train] epoch 49 train 0.1407 valid 0.1424 widths [147, 166, 286] 255s
+[california/tabm_gns/s0 finetune train] epoch 50 train 0.1406 valid 0.1415 widths [147, 166, 286] 261s
+[california/tabm_gns/s0 finetune train] epoch 51 train 0.1392 valid 0.1428 widths [147, 166, 286] 266s
+[california/tabm_gns/s0 finetune train] epoch 52 train 0.1407 valid 0.1420 widths [147, 166, 286] 271s
+[california/tabm_gns/s0 finetune train] epoch 53 train 0.1397 valid 0.1414 widths [147, 166, 286] 276s
+[california/tabm_gns/s0 finetune train] epoch 54 train 0.1393 valid 0.1410 widths [147, 166, 286] 281s
+[california/tabm_gns/s0 finetune train] epoch 55 train 0.1397 valid 0.1433 widths [147, 166, 286] 286s
+[california/tabm_gns/s0 finetune train] epoch 56 train 0.1404 valid 0.1444 widths [147, 166, 286] 291s
+[california/tabm_gns/s0 finetune train] epoch 57 train 0.1392 valid 0.1418 widths [147, 166, 286] 296s
+[california/tabm_gns/s0 finetune train] epoch 58 train 0.1397 valid 0.1434 widths [147, 166, 286] 300s
+[california/tabm_gns/s0 finetune train] epoch 59 train 0.1395 valid 0.1417 widths [147, 166, 286] 305s
+[california/tabm_gns/s0 finetune train] epoch 60 train 0.1392 valid 0.1424 widths [147, 166, 286] 309s
+[california/tabm_gns/s0 finetune train] epoch 61 train 0.1403 valid 0.1445 widths [147, 166, 286] 314s
+[california/tabm_gns/s0 finetune train] epoch 62 train 0.1385 valid 0.1417 widths [147, 166, 286] 319s
+[california/tabm_gns/s0 finetune train] epoch 63 train 0.1396 valid 0.1429 widths [147, 166, 286] 324s
+[california/tabm_gns/s0 finetune train] epoch 64 train 0.1385 valid 0.1406 widths [147, 166, 286] 328s
+[california/tabm_gns/s0 scratch train] epoch 1 train 0.4801 valid 0.3027 widths [147, 166, 286] 5s
+[california/tabm_gns/s0 scratch train] epoch 2 train 0.3169 valid 0.2765 widths [147, 166, 286] 9s
+[california/tabm_gns/s0 scratch train] epoch 3 train 0.2988 valid 0.2591 widths [147, 166, 286] 14s
+[california/tabm_gns/s0 scratch train] epoch 4 train 0.2779 valid 0.2459 widths [147, 166, 286] 19s
+[california/tabm_gns/s0 scratch train] epoch 5 train 0.2635 valid 0.2363 widths [147, 166, 286] 23s
+[california/tabm_gns/s0 scratch train] epoch 6 train 0.2561 valid 0.2263 widths [147, 166, 286] 28s
+[california/tabm_gns/s0 scratch train] epoch 7 train 0.2437 valid 0.2172 widths [147, 166, 286] 33s
+[california/tabm_gns/s0 scratch train] epoch 8 train 0.2372 valid 0.2103 widths [147, 166, 286] 37s
+[california/tabm_gns/s0 scratch train] epoch 9 train 0.2288 valid 0.2165 widths [147, 166, 286] 42s
+[california/tabm_gns/s0 scratch train] epoch 10 train 0.2244 valid 0.2029 widths [147, 166, 286] 47s
+[california/tabm_gns/s0 scratch train] epoch 11 train 0.2208 valid 0.1977 widths [147, 166, 286] 51s
+[california/tabm_gns/s0 scratch train] epoch 12 train 0.2160 valid 0.1929 widths [147, 166, 286] 56s
+[california/tabm_gns/s0 scratch train] epoch 13 train 0.2099 valid 0.1879 widths [147, 166, 286] 61s
+[california/tabm_gns/s0 scratch train] epoch 14 train 0.2079 valid 0.2039 widths [147, 166, 286] 65s
+[california/tabm_gns/s0 scratch train] epoch 15 train 0.2069 valid 0.1835 widths [147, 166, 286] 70s
+[california/tabm_gns/s0 scratch train] epoch 16 train 0.2041 valid 0.1874 widths [147, 166, 286] 75s
+[california/tabm_gns/s0 scratch train] epoch 17 train 0.2014 valid 0.1806 widths [147, 166, 286] 80s
+[california/tabm_gns/s0 scratch train] epoch 18 train 0.1984 valid 0.1800 widths [147, 166, 286] 84s
+[california/tabm_gns/s0 scratch train] epoch 19 train 0.1965 valid 0.1847 widths [147, 166, 286] 89s
+[california/tabm_gns/s0 scratch train] epoch 20 train 0.1949 valid 0.1795 widths [147, 166, 286] 94s
+[california/tabm_gns/s0 scratch train] epoch 21 train 0.1941 valid 0.1755 widths [147, 166, 286] 99s
+[california/tabm_gns/s0 scratch train] epoch 22 train 0.1916 valid 0.1776 widths [147, 166, 286] 104s
+[california/tabm_gns/s0 scratch train] epoch 23 train 0.1913 valid 0.1773 widths [147, 166, 286] 108s
+[california/tabm_gns/s0 scratch train] epoch 24 train 0.1904 valid 0.1775 widths [147, 166, 286] 113s
+[california/tabm_gns/s0 scratch train] epoch 25 train 0.1902 valid 0.1753 widths [147, 166, 286] 118s
+[california/tabm_gns/s0 scratch train] epoch 26 train 0.1866 valid 0.1743 widths [147, 166, 286] 122s
+[california/tabm_gns/s0 scratch train] epoch 27 train 0.1885 valid 0.1731 widths [147, 166, 286] 127s
+[california/tabm_gns/s0 scratch train] epoch 28 train 0.1847 valid 0.1731 widths [147, 166, 286] 132s
+[california/tabm_gns/s0 scratch train] epoch 29 train 0.1861 valid 0.1689 widths [147, 166, 286] 137s
+[california/tabm_gns/s0 scratch train] epoch 30 train 0.1831 valid 0.1680 widths [147, 166, 286] 141s
+[california/tabm_gns/s0 scratch train] epoch 31 train 0.1813 valid 0.1701 widths [147, 166, 286] 146s
+[california/tabm_gns/s0 scratch train] epoch 32 train 0.1814 valid 0.1689 widths [147, 166, 286] 150s
+[california/tabm_gns/s0 scratch train] epoch 33 train 0.1796 valid 0.1669 widths [147, 166, 286] 155s
+[california/tabm_gns/s0 scratch train] epoch 34 train 0.1803 valid 0.1665 widths [147, 166, 286] 160s
+[california/tabm_gns/s0 scratch train] epoch 35 train 0.1807 valid 0.1670 widths [147, 166, 286] 165s
+[california/tabm_gns/s0 scratch train] epoch 36 train 0.1799 valid 0.1699 widths [147, 166, 286] 169s
+[california/tabm_gns/s0 scratch train] epoch 37 train 0.1774 valid 0.1671 widths [147, 166, 286] 174s
+[california/tabm_gns/s0 scratch train] epoch 38 train 0.1763 valid 0.1644 widths [147, 166, 286] 179s
+[california/tabm_gns/s0 scratch train] epoch 39 train 0.1750 valid 0.1660 widths [147, 166, 286] 184s
+[california/tabm_gns/s0 scratch train] epoch 40 train 0.1754 valid 0.1668 widths [147, 166, 286] 189s
+[california/tabm_gns/s0 scratch train] epoch 41 train 0.1741 valid 0.1669 widths [147, 166, 286] 193s
+[california/tabm_gns/s0 scratch train] epoch 42 train 0.1750 valid 0.1645 widths [147, 166, 286] 198s
+[california/tabm_gns/s0 scratch train] epoch 43 train 0.1724 valid 0.1646 widths [147, 166, 286] 203s
+[california/tabm_gns/s0 scratch train] epoch 44 train 0.1718 valid 0.1620 widths [147, 166, 286] 207s
+[california/tabm_gns/s0 scratch train] epoch 45 train 0.1696 valid 0.1626 widths [147, 166, 286] 212s
+[california/tabm_gns/s0 scratch train] epoch 46 train 0.1706 valid 0.1626 widths [147, 166, 286] 216s
+[california/tabm_gns/s0 scratch train] epoch 47 train 0.1711 valid 0.1626 widths [147, 166, 286] 221s
+[california/tabm_gns/s0 scratch train] epoch 48 train 0.1699 valid 0.1616 widths [147, 166, 286] 226s
+[california/tabm_gns/s0 scratch train] epoch 49 train 0.1695 valid 0.1600 widths [147, 166, 286] 231s
+[california/tabm_gns/s0 scratch train] epoch 50 train 0.1677 valid 0.1617 widths [147, 166, 286] 235s
+[california/tabm_gns/s0 scratch train] epoch 51 train 0.1685 valid 0.1617 widths [147, 166, 286] 240s
+[california/tabm_gns/s0 scratch train] epoch 52 train 0.1679 valid 0.1585 widths [147, 166, 286] 244s
+[california/tabm_gns/s0 scratch train] epoch 53 train 0.1668 valid 0.1603 widths [147, 166, 286] 249s
+[california/tabm_gns/s0 scratch train] epoch 54 train 0.1670 valid 0.1602 widths [147, 166, 286] 254s
+[california/tabm_gns/s0 scratch train] epoch 55 train 0.1684 valid 0.1597 widths [147, 166, 286] 259s
+[california/tabm_gns/s0 scratch train] epoch 56 train 0.1669 valid 0.1591 widths [147, 166, 286] 263s
+[california/tabm_gns/s0 scratch train] epoch 57 train 0.1646 valid 0.1573 widths [147, 166, 286] 268s
+[california/tabm_gns/s0 scratch train] epoch 58 train 0.1648 valid 0.1587 widths [147, 166, 286] 273s
+[california/tabm_gns/s0 scratch train] epoch 59 train 0.1645 valid 0.1560 widths [147, 166, 286] 278s
+[california/tabm_gns/s0 scratch train] epoch 60 train 0.1646 valid 0.1574 widths [147, 166, 286] 282s
+[california/tabm_gns/s0 scratch train] epoch 61 train 0.1640 valid 0.1578 widths [147, 166, 286] 287s
+[california/tabm_gns/s0 scratch train] epoch 62 train 0.1637 valid 0.1564 widths [147, 166, 286] 295s
+[california/tabm_gns/s0 scratch train] epoch 63 train 0.1621 valid 0.1577 widths [147, 166, 286] 302s
+[california/tabm_gns/s0 scratch train] epoch 64 train 0.1613 valid 0.1591 widths [147, 166, 286] 310s
+[california/tabm_gns/s0 scratch train] epoch 65 train 0.1604 valid 0.1574 widths [147, 166, 286] 317s
+[california/tabm_gns/s0 scratch train] epoch 66 train 0.1607 valid 0.1563 widths [147, 166, 286] 325s
+[california/tabm_gns/s0 scratch train] epoch 67 train 0.1604 valid 0.1558 widths [147, 166, 286] 332s
+[california/tabm_gns/s0 scratch train] epoch 68 train 0.1603 valid 0.1559 widths [147, 166, 286] 339s
+[california/tabm_gns/s0 scratch train] epoch 69 train 0.1595 valid 0.1571 widths [147, 166, 286] 347s
+[california/tabm_gns/s0 scratch train] epoch 70 train 0.1589 valid 0.1543 widths [147, 166, 286] 355s
+[california/tabm_gns/s0 scratch train] epoch 71 train 0.1585 valid 0.1560 widths [147, 166, 286] 363s
+[california/tabm_gns/s0 scratch train] epoch 72 train 0.1604 valid 0.1543 widths [147, 166, 286] 371s
+[california/tabm_gns/s0 scratch train] epoch 73 train 0.1589 valid 0.1590 widths [147, 166, 286] 379s
+[california/tabm_gns/s0 scratch train] epoch 74 train 0.1578 valid 0.1541 widths [147, 166, 286] 386s
+[california/tabm_gns/s0 scratch train] epoch 75 train 0.1588 valid 0.1554 widths [147, 166, 286] 394s
+[california/tabm_gns/s0 scratch train] epoch 76 train 0.1585 valid 0.1560 widths [147, 166, 286] 402s
+[california/tabm_gns/s0 scratch train] epoch 77 train 0.1585 valid 0.1525 widths [147, 166, 286] 410s
+[california/tabm_gns/s0 scratch train] epoch 78 train 0.1572 valid 0.1533 widths [147, 166, 286] 417s
+[california/tabm_gns/s0 scratch train] epoch 79 train 0.1564 valid 0.1519 widths [147, 166, 286] 425s
+[california/tabm_gns/s0 scratch train] epoch 80 train 0.1561 valid 0.1554 widths [147, 166, 286] 433s
+[california/tabm_gns/s0 scratch train] epoch 81 train 0.1566 valid 0.1550 widths [147, 166, 286] 441s
+[california/tabm_gns/s0 scratch train] epoch 82 train 0.1555 valid 0.1532 widths [147, 166, 286] 448s
+[california/tabm_gns/s0 scratch train] epoch 83 train 0.1551 valid 0.1524 widths [147, 166, 286] 456s
+[california/tabm_gns/s0 scratch train] epoch 84 train 0.1547 valid 0.1517 widths [147, 166, 286] 464s
+[california/tabm_gns/s0 scratch train] epoch 85 train 0.1540 valid 0.1533 widths [147, 166, 286] 471s
+[california/tabm_gns/s0 scratch train] epoch 86 train 0.1552 valid 0.1527 widths [147, 166, 286] 479s
+[california/tabm_gns/s0 scratch train] epoch 87 train 0.1534 valid 0.1549 widths [147, 166, 286] 487s
+[california/tabm_gns/s0 scratch train] epoch 88 train 0.1539 valid 0.1547 widths [147, 166, 286] 495s
+[california/tabm_gns/s0 scratch train] epoch 89 train 0.1544 valid 0.1522 widths [147, 166, 286] 503s
+[california/tabm_gns/s0 scratch train] epoch 90 train 0.1521 valid 0.1517 widths [147, 166, 286] 511s
+[california/tabm_gns/s0 scratch train] epoch 91 train 0.1528 valid 0.1523 widths [147, 166, 286] 518s
+[california/tabm_gns/s0 scratch train] epoch 92 train 0.1529 valid 0.1508 widths [147, 166, 286] 526s
+[california/tabm_gns/s0 scratch train] epoch 93 train 0.1514 valid 0.1504 widths [147, 166, 286] 534s
+[california/tabm_gns/s0 scratch train] epoch 94 train 0.1528 valid 0.1509 widths [147, 166, 286] 542s
+[california/tabm_gns/s0 scratch train] epoch 95 train 0.1513 valid 0.1512 widths [147, 166, 286] 550s
+[california/tabm_gns/s0 scratch train] epoch 96 train 0.1513 valid 0.1500 widths [147, 166, 286] 558s
+[california/tabm_gns/s0 scratch train] epoch 97 train 0.1520 valid 0.1554 widths [147, 166, 286] 567s
+[california/tabm_gns/s0 scratch train] epoch 98 train 0.1533 valid 0.1492 widths [147, 166, 286] 575s
+[california/tabm_gns/s0 scratch train] epoch 99 train 0.1509 valid 0.1526 widths [147, 166, 286] 583s
+[california/tabm_gns/s0 scratch train] epoch 100 train 0.1527 valid 0.1513 widths [147, 166, 286] 591s
+[california/tabm_gns/s0 scratch train] epoch 101 train 0.1503 valid 0.1513 widths [147, 166, 286] 599s
+[california/tabm_gns/s0 scratch train] epoch 102 train 0.1499 valid 0.1491 widths [147, 166, 286] 608s
+[california/tabm_gns/s0 scratch train] epoch 103 train 0.1496 valid 0.1502 widths [147, 166, 286] 616s
+[california/tabm_gns/s0 scratch train] epoch 104 train 0.1492 valid 0.1497 widths [147, 166, 286] 623s
+[california/tabm_gns/s0 scratch train] epoch 105 train 0.1494 valid 0.1498 widths [147, 166, 286] 631s
+[california/tabm_gns/s0 scratch train] epoch 106 train 0.1488 valid 0.1495 widths [147, 166, 286] 639s
+[california/tabm_gns/s0 scratch train] epoch 107 train 0.1486 valid 0.1495 widths [147, 166, 286] 648s
+[california/tabm_gns/s0 scratch train] epoch 108 train 0.1481 valid 0.1504 widths [147, 166, 286] 656s
+[california/tabm_gns/s0 scratch train] epoch 109 train 0.1496 valid 0.1492 widths [147, 166, 286] 665s
+[california/tabm_gns/s0 scratch train] epoch 110 train 0.1480 valid 0.1485 widths [147, 166, 286] 673s
+[california/tabm_gns/s0 scratch train] epoch 111 train 0.1494 valid 0.1488 widths [147, 166, 286] 682s
+[california/tabm_gns/s0 scratch train] epoch 112 train 0.1482 valid 0.1487 widths [147, 166, 286] 690s
+[california/tabm_gns/s0 scratch train] epoch 113 train 0.1475 valid 0.1501 widths [147, 166, 286] 698s
+[california/tabm_gns/s0 scratch train] epoch 114 train 0.1486 valid 0.1503 widths [147, 166, 286] 706s
+[california/tabm_gns/s0 scratch train] epoch 115 train 0.1479 valid 0.1485 widths [147, 166, 286] 715s
+[california/tabm_gns/s0 scratch train] epoch 116 train 0.1483 valid 0.1500 widths [147, 166, 286] 724s
+[california/tabm_gns/s0 scratch train] epoch 117 train 0.1472 valid 0.1480 widths [147, 166, 286] 732s
+[california/tabm_gns/s0 scratch train] epoch 118 train 0.1473 valid 0.1500 widths [147, 166, 286] 741s
+[california/tabm_gns/s0 scratch train] epoch 119 train 0.1462 valid 0.1486 widths [147, 166, 286] 749s
+[california/tabm_gns/s0 scratch train] epoch 120 train 0.1462 valid 0.1496 widths [147, 166, 286] 757s
+[california/tabm_gns/s0 scratch train] epoch 121 train 0.1473 valid 0.1483 widths [147, 166, 286] 766s
+[california/tabm_gns/s0 scratch train] epoch 122 train 0.1459 valid 0.1491 widths [147, 166, 286] 774s
+[california/tabm_gns/s0 scratch train] epoch 123 train 0.1465 valid 0.1499 widths [147, 166, 286] 782s
+[california/tabm_gns/s0 scratch train] epoch 124 train 0.1466 valid 0.1486 widths [147, 166, 286] 790s
+[california/tabm_gns/s0 scratch train] epoch 125 train 0.1450 valid 0.1479 widths [147, 166, 286] 798s
+[california/tabm_gns/s0 scratch train] epoch 126 train 0.1455 valid 0.1470 widths [147, 166, 286] 806s
+[california/tabm_gns/s0 scratch train] epoch 127 train 0.1446 valid 0.1482 widths [147, 166, 286] 815s
+[california/tabm_gns/s0 scratch train] epoch 128 train 0.1443 valid 0.1489 widths [147, 166, 286] 823s
+[california/tabm_gns/s0 scratch train] epoch 129 train 0.1446 valid 0.1490 widths [147, 166, 286] 831s
+[california/tabm_gns/s0 scratch train] epoch 130 train 0.1457 valid 0.1468 widths [147, 166, 286] 839s
+[california/tabm_gns/s0 scratch train] epoch 131 train 0.1444 valid 0.1464 widths [147, 166, 286] 847s
+[california/tabm_gns/s0 scratch train] epoch 132 train 0.1434 valid 0.1503 widths [147, 166, 286] 856s
+[california/tabm_gns/s0 scratch train] epoch 133 train 0.1448 valid 0.1493 widths [147, 166, 286] 864s
+[california/tabm_gns/s0 scratch train] epoch 134 train 0.1442 valid 0.1499 widths [147, 166, 286] 873s
+[california/tabm_gns/s0 scratch train] epoch 135 train 0.1443 valid 0.1464 widths [147, 166, 286] 881s
+[california/tabm_gns/s0 scratch train] epoch 136 train 0.1432 valid 0.1484 widths [147, 166, 286] 889s
+[california/tabm_gns/s0 scratch train] epoch 137 train 0.1432 valid 0.1498 widths [147, 166, 286] 897s
+[california/tabm_gns/s0 scratch train] epoch 138 train 0.1424 valid 0.1477 widths [147, 166, 286] 906s
+[california/tabm_gns/s0 scratch train] epoch 139 train 0.1434 valid 0.1479 widths [147, 166, 286] 914s
+[california/tabm_gns/s0 scratch train] epoch 140 train 0.1423 valid 0.1478 widths [147, 166, 286] 923s
+[california/tabm_gns/s0 scratch train] epoch 141 train 0.1425 valid 0.1456 widths [147, 166, 286] 931s
+[california/tabm_gns/s0 scratch train] epoch 142 train 0.1428 valid 0.1454 widths [147, 166, 286] 939s
+[california/tabm_gns/s0 scratch train] epoch 143 train 0.1424 valid 0.1513 widths [147, 166, 286] 948s
+[california/tabm_gns/s0 scratch train] epoch 144 train 0.1442 valid 0.1473 widths [147, 166, 286] 956s
+[california/tabm_gns/s0 scratch train] epoch 145 train 0.1427 valid 0.1452 widths [147, 166, 286] 964s
+[california/tabm_gns/s0 scratch train] epoch 146 train 0.1423 valid 0.1483 widths [147, 166, 286] 972s
+[california/tabm_gns/s0 scratch train] epoch 147 train 0.1418 valid 0.1482 widths [147, 166, 286] 981s
+[california/tabm_gns/s0 scratch train] epoch 148 train 0.1418 valid 0.1477 widths [147, 166, 286] 989s
+[california/tabm_gns/s0 scratch train] epoch 149 train 0.1424 valid 0.1461 widths [147, 166, 286] 997s
+[california/tabm_gns/s0 scratch train] epoch 150 train 0.1412 valid 0.1479 widths [147, 166, 286] 1006s
+[california/tabm_gns/s0 scratch train] epoch 151 train 0.1416 valid 0.1483 widths [147, 166, 286] 1014s
+[california/tabm_gns/s0 scratch train] epoch 152 train 0.1413 valid 0.1463 widths [147, 166, 286] 1022s
+[california/tabm_gns/s0 scratch train] epoch 153 train 0.1404 valid 0.1459 widths [147, 166, 286] 1030s
+[california/tabm_gns/s0 scratch train] epoch 154 train 0.1404 valid 0.1458 widths [147, 166, 286] 1039s
+[california/tabm_gns/s0 scratch train] epoch 155 train 0.1413 valid 0.1480 widths [147, 166, 286] 1047s
+[california/tabm_gns/s0 scratch train] epoch 156 train 0.1406 valid 0.1468 widths [147, 166, 286] 1055s
+[california/tabm_gns/s0 scratch train] epoch 157 train 0.1410 valid 0.1450 widths [147, 166, 286] 1063s
+[california/tabm_gns/s0 scratch train] epoch 158 train 0.1404 valid 0.1484 widths [147, 166, 286] 1071s
+[california/tabm_gns/s0 scratch train] epoch 159 train 0.1415 valid 0.1471 widths [147, 166, 286] 1080s
+[california/tabm_gns/s0 scratch train] epoch 160 train 0.1404 valid 0.1466 widths [147, 166, 286] 1088s
+[california/tabm_gns/s0 scratch train] epoch 161 train 0.1403 valid 0.1483 widths [147, 166, 286] 1097s
+[california/tabm_gns/s0 scratch train] epoch 162 train 0.1408 valid 0.1483 widths [147, 166, 286] 1105s
+[california/tabm_gns/s0 scratch train] epoch 163 train 0.1403 valid 0.1452 widths [147, 166, 286] 1113s
+[california/tabm_gns/s0 scratch train] epoch 164 train 0.1395 valid 0.1455 widths [147, 166, 286] 1121s
+[california/tabm_gns/s0 scratch train] epoch 165 train 0.1411 valid 0.1457 widths [147, 166, 286] 1130s
+[california/tabm_gns/s0 scratch train] epoch 166 train 0.1396 valid 0.1450 widths [147, 166, 286] 1138s
+[california/tabm_gns/s0 scratch train] epoch 167 train 0.1389 valid 0.1466 widths [147, 166, 286] 1146s
+[california/tabm_gns/s0 scratch train] epoch 168 train 0.1389 valid 0.1476 widths [147, 166, 286] 1155s
+[california/tabm_gns/s0 scratch train] epoch 169 train 0.1394 valid 0.1450 widths [147, 166, 286] 1163s
+[california/tabm_gns/s0 scratch train] epoch 170 train 0.1391 valid 0.1466 widths [147, 166, 286] 1171s
+[california/tabm_gns/s0 scratch train] epoch 171 train 0.1391 valid 0.1493 widths [147, 166, 286] 1180s
+[california/tabm_gns/s0 scratch train] epoch 172 train 0.1386 valid 0.1466 widths [147, 166, 286] 1188s
+[california/tabm_gns/s0 scratch train] epoch 173 train 0.1390 valid 0.1460 widths [147, 166, 286] 1197s
+[california/tabm_gns/s0 scratch train] epoch 174 train 0.1386 valid 0.1471 widths [147, 166, 286] 1205s
+[california/tabm_gns/s0 scratch train] epoch 175 train 0.1391 valid 0.1463 widths [147, 166, 286] 1213s
+[california/tabm_gns/s0 scratch train] epoch 176 train 0.1384 valid 0.1471 widths [147, 166, 286] 1221s
+[california/tabm_gns/s0 scratch train] epoch 177 train 0.1381 valid 0.1473 widths [147, 166, 286] 1230s
+[california/tabm_gns/s0 scratch train] epoch 178 train 0.1378 valid 0.1472 widths [147, 166, 286] 1238s
+[california/tabm_gns/s0 scratch train] epoch 179 train 0.1380 valid 0.1451 widths [147, 166, 286] 1246s
+[california/tabm_gns/s0 scratch train] epoch 180 train 0.1382 valid 0.1478 widths [147, 166, 286] 1255s
+[california/tabm_gns/s0 scratch train] epoch 181 train 0.1375 valid 0.1465 widths [147, 166, 286] 1263s
+[california/tabm_gns/s0 scratch train] epoch 182 train 0.1385 valid 0.1459 widths [147, 166, 286] 1271s
+[california/tabm_gns/s0 scratch train] epoch 183 train 0.1373 valid 0.1456 widths [147, 166, 286] 1280s
+[california/tabm_gns/s0 scratch train] epoch 184 train 0.1371 valid 0.1487 widths [147, 166, 286] 1288s
+[california/tabm_gns/s0 scratch train] epoch 185 train 0.1372 valid 0.1458 widths [147, 166, 286] 1297s
+[california/tabm_gns/s0 scratch train] epoch 186 train 0.1378 valid 0.1462 widths [147, 166, 286] 1305s
+[california/tabm_gns rewind/s0 train] epoch 1 train 0.5289 valid 0.3484 widths [147, 166, 286] 8s
+[california/tabm_gns rewind/s0 train] epoch 2 train 0.3356 valid 0.2874 widths [147, 166, 286] 17s
+[california/tabm_gns rewind/s0 train] epoch 3 train 0.3044 valid 0.2704 widths [147, 166, 286] 25s
+[california/tabm_gns rewind/s0 train] epoch 4 train 0.2826 valid 0.2551 widths [147, 166, 286] 33s
+[california/tabm_gns rewind/s0 train] epoch 5 train 0.2682 valid 0.2433 widths [147, 166, 286] 41s
+[california/tabm_gns rewind/s0 train] epoch 6 train 0.2605 valid 0.2337 widths [147, 166, 286] 49s
+[california/tabm_gns rewind/s0 train] epoch 7 train 0.2480 valid 0.2241 widths [147, 166, 286] 58s
+[california/tabm_gns rewind/s0 train] epoch 8 train 0.2405 valid 0.2159 widths [147, 166, 286] 66s
+[california/tabm_gns rewind/s0 train] epoch 9 train 0.2315 valid 0.2213 widths [147, 166, 286] 74s
+[california/tabm_gns rewind/s0 train] epoch 10 train 0.2246 valid 0.2058 widths [147, 166, 286] 83s
+[california/tabm_gns rewind/s0 train] epoch 11 train 0.2206 valid 0.1983 widths [147, 166, 286] 91s
+[california/tabm_gns rewind/s0 train] epoch 12 train 0.2163 valid 0.1923 widths [147, 166, 286] 100s
+[california/tabm_gns rewind/s0 train] epoch 13 train 0.2104 valid 0.1896 widths [147, 166, 286] 108s
+[california/tabm_gns rewind/s0 train] epoch 14 train 0.2087 valid 0.2030 widths [147, 166, 286] 116s
+[california/tabm_gns rewind/s0 train] epoch 15 train 0.2082 valid 0.1850 widths [147, 166, 286] 125s
+[california/tabm_gns rewind/s0 train] epoch 16 train 0.2035 valid 0.1897 widths [147, 166, 286] 133s
+[california/tabm_gns rewind/s0 train] epoch 17 train 0.2021 valid 0.1819 widths [147, 166, 286] 142s
+[california/tabm_gns rewind/s0 train] epoch 18 train 0.1990 valid 0.1815 widths [147, 166, 286] 150s
+[california/tabm_gns rewind/s0 train] epoch 19 train 0.1968 valid 0.1857 widths [147, 166, 286] 158s
+[california/tabm_gns rewind/s0 train] epoch 20 train 0.1950 valid 0.1800 widths [147, 166, 286] 167s
+[california/tabm_gns rewind/s0 train] epoch 21 train 0.1948 valid 0.1775 widths [147, 166, 286] 174s
+[california/tabm_gns rewind/s0 train] epoch 22 train 0.1921 valid 0.1801 widths [147, 166, 286] 182s
+[california/tabm_gns rewind/s0 train] epoch 23 train 0.1924 valid 0.1790 widths [147, 166, 286] 190s
+[california/tabm_gns rewind/s0 train] epoch 24 train 0.1909 valid 0.1798 widths [147, 166, 286] 197s
+[california/tabm_gns rewind/s0 train] epoch 25 train 0.1909 valid 0.1765 widths [147, 166, 286] 205s
+[california/tabm_gns rewind/s0 train] epoch 26 train 0.1872 valid 0.1797 widths [147, 166, 286] 213s
+[california/tabm_gns rewind/s0 train] epoch 27 train 0.1893 valid 0.1748 widths [147, 166, 286] 221s
+[california/tabm_gns rewind/s0 train] epoch 28 train 0.1861 valid 0.1755 widths [147, 166, 286] 229s
+[california/tabm_gns rewind/s0 train] epoch 29 train 0.1875 valid 0.1723 widths [147, 166, 286] 236s
+[california/tabm_gns rewind/s0 train] epoch 30 train 0.1845 valid 0.1707 widths [147, 166, 286] 244s
+[california/tabm_gns rewind/s0 train] epoch 31 train 0.1832 valid 0.1720 widths [147, 166, 286] 252s
+[california/tabm_gns rewind/s0 train] epoch 32 train 0.1831 valid 0.1722 widths [147, 166, 286] 260s
+[california/tabm_gns rewind/s0 train] epoch 33 train 0.1812 valid 0.1705 widths [147, 166, 286] 268s
+[california/tabm_gns rewind/s0 train] epoch 34 train 0.1810 valid 0.1690 widths [147, 166, 286] 276s
+[california/tabm_gns rewind/s0 train] epoch 35 train 0.1805 valid 0.1693 widths [147, 166, 286] 283s
+[california/tabm_gns rewind/s0 train] epoch 36 train 0.1817 valid 0.1749 widths [147, 166, 286] 291s
+[california/tabm_gns rewind/s0 train] epoch 37 train 0.1790 valid 0.1715 widths [147, 166, 286] 298s
+[california/tabm_gns rewind/s0 train] epoch 38 train 0.1782 valid 0.1662 widths [147, 166, 286] 306s
+[california/tabm_gns rewind/s0 train] epoch 39 train 0.1761 valid 0.1676 widths [147, 166, 286] 314s
+[california/tabm_gns rewind/s0 train] epoch 40 train 0.1766 valid 0.1690 widths [147, 166, 286] 321s
+[california/tabm_gns rewind/s0 train] epoch 41 train 0.1757 valid 0.1687 widths [147, 166, 286] 329s
+[california/tabm_gns rewind/s0 train] epoch 42 train 0.1764 valid 0.1672 widths [147, 166, 286] 337s
+[california/tabm_gns rewind/s0 train] epoch 43 train 0.1732 valid 0.1681 widths [147, 166, 286] 345s
+[california/tabm_gns rewind/s0 train] epoch 44 train 0.1731 valid 0.1645 widths [147, 166, 286] 353s
+[california/tabm_gns rewind/s0 train] epoch 45 train 0.1716 valid 0.1668 widths [147, 166, 286] 361s
+[california/tabm_gns rewind/s0 train] epoch 46 train 0.1724 valid 0.1642 widths [147, 166, 286] 369s
+[california/tabm_gns rewind/s0 train] epoch 47 train 0.1722 valid 0.1647 widths [147, 166, 286] 376s
+[california/tabm_gns rewind/s0 train] epoch 48 train 0.1722 valid 0.1647 widths [147, 166, 286] 384s
+[california/tabm_gns rewind/s0 train] epoch 49 train 0.1710 valid 0.1615 widths [147, 166, 286] 392s
+[california/tabm_gns rewind/s0 train] epoch 50 train 0.1692 valid 0.1633 widths [147, 166, 286] 400s
+[california/tabm_gns rewind/s0 train] epoch 51 train 0.1704 valid 0.1642 widths [147, 166, 286] 408s
+[california/tabm_gns rewind/s0 train] epoch 52 train 0.1692 valid 0.1621 widths [147, 166, 286] 416s
+[california/tabm_gns rewind/s0 train] epoch 53 train 0.1691 valid 0.1616 widths [147, 166, 286] 425s
+[california/tabm_gns rewind/s0 train] epoch 54 train 0.1683 valid 0.1611 widths [147, 166, 286] 433s
+[california/tabm_gns rewind/s0 train] epoch 55 train 0.1694 valid 0.1631 widths [147, 166, 286] 441s
+[california/tabm_gns rewind/s0 train] epoch 56 train 0.1699 valid 0.1627 widths [147, 166, 286] 449s
+[california/tabm_gns rewind/s0 train] epoch 57 train 0.1660 valid 0.1597 widths [147, 166, 286] 457s
+[california/tabm_gns rewind/s0 train] epoch 58 train 0.1665 valid 0.1603 widths [147, 166, 286] 465s
+[california/tabm_gns rewind/s0 train] epoch 59 train 0.1670 valid 0.1588 widths [147, 166, 286] 473s
+[california/tabm_gns rewind/s0 train] epoch 60 train 0.1664 valid 0.1600 widths [147, 166, 286] 480s
+[california/tabm_gns rewind/s0 train] epoch 61 train 0.1659 valid 0.1586 widths [147, 166, 286] 488s
+[california/tabm_gns rewind/s0 train] epoch 62 train 0.1654 valid 0.1585 widths [147, 166, 286] 496s
+[california/tabm_gns rewind/s0 train] epoch 63 train 0.1632 valid 0.1585 widths [147, 166, 286] 504s
+[california/tabm_gns rewind/s0 train] epoch 64 train 0.1633 valid 0.1600 widths [147, 166, 286] 512s
+[california/tabm_gns rewind/s0 train] epoch 65 train 0.1621 valid 0.1595 widths [147, 166, 286] 519s
+[california/tabm_gns rewind/s0 train] epoch 66 train 0.1632 valid 0.1599 widths [147, 166, 286] 527s
+[california/tabm_gns rewind/s0 train] epoch 67 train 0.1626 valid 0.1572 widths [147, 166, 286] 535s
+[california/tabm_gns rewind/s0 train] epoch 68 train 0.1619 valid 0.1568 widths [147, 166, 286] 542s
+[california/tabm_gns rewind/s0 train] epoch 69 train 0.1615 valid 0.1601 widths [147, 166, 286] 550s
+[california/tabm_gns rewind/s0 train] epoch 70 train 0.1605 valid 0.1560 widths [147, 166, 286] 557s
+[california/tabm_gns rewind/s0 train] epoch 71 train 0.1603 valid 0.1567 widths [147, 166, 286] 565s
+[california/tabm_gns rewind/s0 train] epoch 72 train 0.1621 valid 0.1556 widths [147, 166, 286] 572s
+[california/tabm_gns rewind/s0 train] epoch 73 train 0.1609 valid 0.1602 widths [147, 166, 286] 580s
+[california/tabm_gns rewind/s0 train] epoch 74 train 0.1593 valid 0.1558 widths [147, 166, 286] 587s
+[california/tabm_gns rewind/s0 train] epoch 75 train 0.1601 valid 0.1559 widths [147, 166, 286] 595s
+[california/tabm_gns rewind/s0 train] epoch 76 train 0.1599 valid 0.1569 widths [147, 166, 286] 603s
+[california/tabm_gns rewind/s0 train] epoch 77 train 0.1596 valid 0.1548 widths [147, 166, 286] 610s
+[california/tabm_gns rewind/s0 train] epoch 78 train 0.1590 valid 0.1545 widths [147, 166, 286] 618s
+[california/tabm_gns rewind/s0 train] epoch 79 train 0.1582 valid 0.1534 widths [147, 166, 286] 625s
+[california/tabm_gns rewind/s0 train] epoch 80 train 0.1575 valid 0.1567 widths [147, 166, 286] 633s
+[california/tabm_gns rewind/s0 train] epoch 81 train 0.1588 valid 0.1564 widths [147, 166, 286] 640s
+[california/tabm_gns rewind/s0 train] epoch 82 train 0.1575 valid 0.1540 widths [147, 166, 286] 648s
+[california/tabm_gns rewind/s0 train] epoch 83 train 0.1569 valid 0.1546 widths [147, 166, 286] 656s
+[california/tabm_gns rewind/s0 train] epoch 84 train 0.1561 valid 0.1530 widths [147, 166, 286] 663s
+[california/tabm_gns rewind/s0 train] epoch 85 train 0.1557 valid 0.1551 widths [147, 166, 286] 671s
+[california/tabm_gns rewind/s0 train] epoch 86 train 0.1564 valid 0.1548 widths [147, 166, 286] 678s
+[california/tabm_gns rewind/s0 train] epoch 87 train 0.1549 valid 0.1574 widths [147, 166, 286] 686s
+[california/tabm_gns rewind/s0 train] epoch 88 train 0.1554 valid 0.1558 widths [147, 166, 286] 693s
+[california/tabm_gns rewind/s0 train] epoch 89 train 0.1562 valid 0.1539 widths [147, 166, 286] 701s
+[california/tabm_gns rewind/s0 train] epoch 90 train 0.1545 valid 0.1517 widths [147, 166, 286] 709s
+[california/tabm_gns rewind/s0 train] epoch 91 train 0.1542 valid 0.1540 widths [147, 166, 286] 717s
+[california/tabm_gns rewind/s0 train] epoch 92 train 0.1537 valid 0.1531 widths [147, 166, 286] 724s
+[california/tabm_gns rewind/s0 train] epoch 93 train 0.1530 valid 0.1510 widths [147, 166, 286] 732s
+[california/tabm_gns rewind/s0 train] epoch 94 train 0.1548 valid 0.1526 widths [147, 166, 286] 740s
+[california/tabm_gns rewind/s0 train] epoch 95 train 0.1530 valid 0.1520 widths [147, 166, 286] 748s
+[california/tabm_gns rewind/s0 train] epoch 96 train 0.1523 valid 0.1512 widths [147, 166, 286] 755s
+[california/tabm_gns rewind/s0 train] epoch 97 train 0.1532 valid 0.1585 widths [147, 166, 286] 763s
+[california/tabm_gns rewind/s0 train] epoch 98 train 0.1545 valid 0.1506 widths [147, 166, 286] 771s
+[california/tabm_gns rewind/s0 train] epoch 99 train 0.1527 valid 0.1547 widths [147, 166, 286] 779s
+[california/tabm_gns rewind/s0 train] epoch 100 train 0.1538 valid 0.1519 widths [147, 166, 286] 787s
+[california/tabm_gns rewind/s0 train] epoch 101 train 0.1520 valid 0.1528 widths [147, 166, 286] 795s
+[california/tabm_gns rewind/s0 train] epoch 102 train 0.1515 valid 0.1503 widths [147, 166, 286] 802s
+[california/tabm_gns rewind/s0 train] epoch 103 train 0.1505 valid 0.1517 widths [147, 166, 286] 810s
+[california/tabm_gns rewind/s0 train] epoch 104 train 0.1506 valid 0.1511 widths [147, 166, 286] 818s
+[california/tabm_gns rewind/s0 train] epoch 105 train 0.1506 valid 0.1507 widths [147, 166, 286] 826s
+[california/tabm_gns rewind/s0 train] epoch 106 train 0.1506 valid 0.1504 widths [147, 166, 286] 834s
+[california/tabm_gns rewind/s0 train] epoch 107 train 0.1503 valid 0.1499 widths [147, 166, 286] 842s
+[california/tabm_gns rewind/s0 train] epoch 108 train 0.1506 valid 0.1524 widths [147, 166, 286] 850s
+[california/tabm_gns rewind/s0 train] epoch 109 train 0.1514 valid 0.1508 widths [147, 166, 286] 858s
+[california/tabm_gns rewind/s0 train] epoch 110 train 0.1505 valid 0.1501 widths [147, 166, 286] 867s
+[california/tabm_gns rewind/s0 train] epoch 111 train 0.1510 valid 0.1501 widths [147, 166, 286] 875s
+[california/tabm_gns rewind/s0 train] epoch 112 train 0.1499 valid 0.1491 widths [147, 166, 286] 883s
+[california/tabm_gns rewind/s0 train] epoch 113 train 0.1487 valid 0.1514 widths [147, 166, 286] 891s
+[california/tabm_gns rewind/s0 train] epoch 114 train 0.1495 valid 0.1525 widths [147, 166, 286] 899s
+[california/tabm_gns rewind/s0 train] epoch 115 train 0.1496 valid 0.1499 widths [147, 166, 286] 907s
+[california/tabm_gns rewind/s0 train] epoch 116 train 0.1498 valid 0.1514 widths [147, 166, 286] 914s
+[california/tabm_gns rewind/s0 train] epoch 117 train 0.1490 valid 0.1489 widths [147, 166, 286] 922s
+[california/tabm_gns rewind/s0 train] epoch 118 train 0.1489 valid 0.1516 widths [147, 166, 286] 930s
+[california/tabm_gns rewind/s0 train] epoch 119 train 0.1477 valid 0.1494 widths [147, 166, 286] 938s
+[california/tabm_gns rewind/s0 train] epoch 120 train 0.1481 valid 0.1517 widths [147, 166, 286] 945s
+[california/tabm_gns rewind/s0 train] epoch 121 train 0.1485 valid 0.1492 widths [147, 166, 286] 953s
+[california/tabm_gns rewind/s0 train] epoch 122 train 0.1478 valid 0.1501 widths [147, 166, 286] 961s
+[california/tabm_gns rewind/s0 train] epoch 123 train 0.1484 valid 0.1507 widths [147, 166, 286] 968s
+[california/tabm_gns rewind/s0 train] epoch 124 train 0.1476 valid 0.1498 widths [147, 166, 286] 976s
+[california/tabm_gns rewind/s0 train] epoch 125 train 0.1467 valid 0.1498 widths [147, 166, 286] 984s
+[california/tabm_gns rewind/s0 train] epoch 126 train 0.1474 valid 0.1486 widths [147, 166, 286] 991s
+[california/tabm_gns rewind/s0 train] epoch 127 train 0.1465 valid 0.1482 widths [147, 166, 286] 999s
+[california/tabm_gns rewind/s0 train] epoch 128 train 0.1459 valid 0.1504 widths [147, 166, 286] 1007s
+[california/tabm_gns rewind/s0 train] epoch 129 train 0.1466 valid 0.1504 widths [147, 166, 286] 1015s
+[california/tabm_gns rewind/s0 train] epoch 130 train 0.1468 valid 0.1478 widths [147, 166, 286] 1023s
+[california/tabm_gns rewind/s0 train] epoch 131 train 0.1455 valid 0.1478 widths [147, 166, 286] 1031s
+[california/tabm_gns rewind/s0 train] epoch 132 train 0.1454 valid 0.1513 widths [147, 166, 286] 1038s
+[california/tabm_gns rewind/s0 train] epoch 133 train 0.1467 valid 0.1505 widths [147, 166, 286] 1046s
+[california/tabm_gns rewind/s0 train] epoch 134 train 0.1462 valid 0.1514 widths [147, 166, 286] 1054s
+[california/tabm_gns rewind/s0 train] epoch 135 train 0.1456 valid 0.1470 widths [147, 166, 286] 1062s
+[california/tabm_gns rewind/s0 train] epoch 136 train 0.1450 valid 0.1495 widths [147, 166, 286] 1069s
+[california/tabm_gns rewind/s0 train] epoch 137 train 0.1448 valid 0.1502 widths [147, 166, 286] 1077s
+[california/tabm_gns rewind/s0 train] epoch 138 train 0.1444 valid 0.1490 widths [147, 166, 286] 1084s
+[california/tabm_gns rewind/s0 train] epoch 139 train 0.1447 valid 0.1481 widths [147, 166, 286] 1092s
+[california/tabm_gns rewind/s0 train] epoch 140 train 0.1447 valid 0.1488 widths [147, 166, 286] 1100s
+[california/tabm_gns rewind/s0 train] epoch 141 train 0.1443 valid 0.1465 widths [147, 166, 286] 1108s
+[california/tabm_gns rewind/s0 train] epoch 142 train 0.1450 valid 0.1474 widths [147, 166, 286] 1115s
+[california/tabm_gns rewind/s0 train] epoch 143 train 0.1442 valid 0.1533 widths [147, 166, 286] 1123s
+[california/tabm_gns rewind/s0 train] epoch 144 train 0.1461 valid 0.1483 widths [147, 166, 286] 1131s
+[california/tabm_gns rewind/s0 train] epoch 145 train 0.1444 valid 0.1467 widths [147, 166, 286] 1139s
+[california/tabm_gns rewind/s0 train] epoch 146 train 0.1445 valid 0.1506 widths [147, 166, 286] 1147s
+[california/tabm_gns rewind/s0 train] epoch 147 train 0.1441 valid 0.1498 widths [147, 166, 286] 1154s
+[california/tabm_gns rewind/s0 train] epoch 148 train 0.1438 valid 0.1488 widths [147, 166, 286] 1162s
+[california/tabm_gns rewind/s0 train] epoch 149 train 0.1442 valid 0.1467 widths [147, 166, 286] 1170s
+[california/tabm_gns rewind/s0 train] epoch 150 train 0.1431 valid 0.1489 widths [147, 166, 286] 1178s
+[california/tabm_gns rewind/s0 train] epoch 151 train 0.1443 valid 0.1491 widths [147, 166, 286] 1186s
+[california/tabm_gns rewind/s0 train] epoch 152 train 0.1428 valid 0.1488 widths [147, 166, 286] 1193s
+[california/tabm_gns rewind/s0 train] epoch 153 train 0.1431 valid 0.1476 widths [147, 166, 286] 1201s
+[california/tabm_gns rewind/s0 train] epoch 154 train 0.1432 valid 0.1466 widths [147, 166, 286] 1209s
+[california/tabm_gns rewind/s0 train] epoch 155 train 0.1431 valid 0.1489 widths [147, 166, 286] 1217s
+[california/tabm_gns rewind/s0 train] epoch 156 train 0.1427 valid 0.1473 widths [147, 166, 286] 1225s
+[california/tabm_gns rewind/s0 train] epoch 157 train 0.1434 valid 0.1464 widths [147, 166, 286] 1233s
+[california/tabm_gns rewind/s0 train] epoch 158 train 0.1425 valid 0.1494 widths [147, 166, 286] 1242s
+[california/tabm_gns rewind/s0 train] epoch 159 train 0.1429 valid 0.1487 widths [147, 166, 286] 1250s
+[california/tabm_gns rewind/s0 train] epoch 160 train 0.1424 valid 0.1474 widths [147, 166, 286] 1258s
+[california/tabm_gns rewind/s0 train] epoch 161 train 0.1424 valid 0.1507 widths [147, 166, 286] 1266s
+[california/tabm_gns rewind/s0 train] epoch 162 train 0.1430 valid 0.1490 widths [147, 166, 286] 1275s
+[california/tabm_gns rewind/s0 train] epoch 163 train 0.1422 valid 0.1458 widths [147, 166, 286] 1283s
+[california/tabm_gns rewind/s0 train] epoch 164 train 0.1422 valid 0.1464 widths [147, 166, 286] 1291s
+[california/tabm_gns rewind/s0 train] epoch 165 train 0.1431 valid 0.1472 widths [147, 166, 286] 1299s
+[california/tabm_gns rewind/s0 train] epoch 166 train 0.1418 valid 0.1460 widths [147, 166, 286] 1308s
+[california/tabm_gns rewind/s0 train] epoch 167 train 0.1410 valid 0.1469 widths [147, 166, 286] 1316s
+[california/tabm_gns rewind/s0 train] epoch 168 train 0.1412 valid 0.1489 widths [147, 166, 286] 1324s
+[california/tabm_gns rewind/s0 train] epoch 169 train 0.1415 valid 0.1453 widths [147, 166, 286] 1332s
+[california/tabm_gns rewind/s0 train] epoch 170 train 0.1417 valid 0.1474 widths [147, 166, 286] 1340s
+[california/tabm_gns rewind/s0 train] epoch 171 train 0.1417 valid 0.1499 widths [147, 166, 286] 1348s
+[california/tabm_gns rewind/s0 train] epoch 172 train 0.1403 valid 0.1469 widths [147, 166, 286] 1356s
+[california/tabm_gns rewind/s0 train] epoch 173 train 0.1407 valid 0.1476 widths [147, 166, 286] 1364s
+[california/tabm_gns rewind/s0 train] epoch 174 train 0.1408 valid 0.1472 widths [147, 166, 286] 1371s
+[california/tabm_gns rewind/s0 train] epoch 175 train 0.1413 valid 0.1468 widths [147, 166, 286] 1379s
+[california/tabm_gns rewind/s0 train] epoch 176 train 0.1405 valid 0.1477 widths [147, 166, 286] 1387s
+[california/tabm_gns rewind/s0 train] epoch 177 train 0.1400 valid 0.1482 widths [147, 166, 286] 1394s
+[california/tabm_gns rewind/s0 train] epoch 178 train 0.1398 valid 0.1473 widths [147, 166, 286] 1402s
+[california/tabm_gns rewind/s0 train] epoch 179 train 0.1407 valid 0.1458 widths [147, 166, 286] 1409s
+[california/tabm_gns rewind/s0 train] epoch 180 train 0.1409 valid 0.1490 widths [147, 166, 286] 1417s
+[california/tabm_gns rewind/s0 train] epoch 181 train 0.1401 valid 0.1469 widths [147, 166, 286] 1425s
+[california/tabm_gns rewind/s0 train] epoch 182 train 0.1407 valid 0.1474 widths [147, 166, 286] 1432s
+[california/tabm_gns rewind/s0 train] epoch 183 train 0.1401 valid 0.1461 widths [147, 166, 286] 1440s
+[california/tabm_gns rewind/s0 train] epoch 184 train 0.1402 valid 0.1503 widths [147, 166, 286] 1448s
+[california/tabm_gns rewind/s0 train] epoch 185 train 0.1393 valid 0.1461 widths [147, 166, 286] 1456s
+[california/tabm_gns rewind/s0 train] epoch 186 train 0.1395 valid 0.1477 widths [147, 166, 286] 1463s
+[california/tabm_gns rewind/s0 train] epoch 187 train 0.1388 valid 0.1467 widths [147, 166, 286] 1471s
+[california/tabm_gns rewind/s0 train] epoch 188 train 0.1401 valid 0.1476 widths [147, 166, 286] 1479s
+[california/tabm_gns rewind/s0 train] epoch 189 train 0.1389 valid 0.1485 widths [147, 166, 286] 1486s
+[california/tabm_gns uniform/s0 train] epoch 1 train 0.4820 valid 0.3091 widths [192, 192, 192] 8s
+[california/tabm_gns uniform/s0 train] epoch 2 train 0.3156 valid 0.2714 widths [192, 192, 192] 15s
+[california/tabm_gns uniform/s0 train] epoch 3 train 0.2944 valid 0.2577 widths [192, 192, 192] 23s
+[california/tabm_gns uniform/s0 train] epoch 4 train 0.2738 valid 0.2416 widths [192, 192, 192] 31s
+[california/tabm_gns uniform/s0 train] epoch 5 train 0.2580 valid 0.2295 widths [192, 192, 192] 38s
+[california/tabm_gns uniform/s0 train] epoch 6 train 0.2499 valid 0.2207 widths [192, 192, 192] 46s
+[california/tabm_gns uniform/s0 train] epoch 7 train 0.2384 valid 0.2155 widths [192, 192, 192] 54s
+[california/tabm_gns uniform/s0 train] epoch 8 train 0.2330 valid 0.2071 widths [192, 192, 192] 62s
+[california/tabm_gns uniform/s0 train] epoch 9 train 0.2247 valid 0.2144 widths [192, 192, 192] 69s
+[california/tabm_gns uniform/s0 train] epoch 10 train 0.2197 valid 0.2031 widths [192, 192, 192] 77s
+[california/tabm_gns uniform/s0 train] epoch 11 train 0.2163 valid 0.1956 widths [192, 192, 192] 85s
+[california/tabm_gns uniform/s0 train] epoch 12 train 0.2127 valid 0.1897 widths [192, 192, 192] 93s
+[california/tabm_gns uniform/s0 train] epoch 13 train 0.2069 valid 0.1865 widths [192, 192, 192] 100s
+[california/tabm_gns uniform/s0 train] epoch 14 train 0.2052 valid 0.2025 widths [192, 192, 192] 108s
+[california/tabm_gns uniform/s0 train] epoch 15 train 0.2047 valid 0.1843 widths [192, 192, 192] 115s
+[california/tabm_gns uniform/s0 train] epoch 16 train 0.2010 valid 0.1889 widths [192, 192, 192] 123s
+[california/tabm_gns uniform/s0 train] epoch 17 train 0.1987 valid 0.1797 widths [192, 192, 192] 130s
+[california/tabm_gns uniform/s0 train] epoch 18 train 0.1968 valid 0.1801 widths [192, 192, 192] 138s
+[california/tabm_gns uniform/s0 train] epoch 19 train 0.1948 valid 0.1824 widths [192, 192, 192] 146s
+[california/tabm_gns uniform/s0 train] epoch 20 train 0.1930 valid 0.1784 widths [192, 192, 192] 153s
+[california/tabm_gns uniform/s0 train] epoch 21 train 0.1922 valid 0.1758 widths [192, 192, 192] 161s
+[california/tabm_gns uniform/s0 train] epoch 22 train 0.1896 valid 0.1782 widths [192, 192, 192] 168s
+[california/tabm_gns uniform/s0 train] epoch 23 train 0.1903 valid 0.1758 widths [192, 192, 192] 176s
+[california/tabm_gns uniform/s0 train] epoch 24 train 0.1890 valid 0.1780 widths [192, 192, 192] 183s
+[california/tabm_gns uniform/s0 train] epoch 25 train 0.1886 valid 0.1751 widths [192, 192, 192] 191s
+[california/tabm_gns uniform/s0 train] epoch 26 train 0.1851 valid 0.1776 widths [192, 192, 192] 199s
+[california/tabm_gns uniform/s0 train] epoch 27 train 0.1867 valid 0.1735 widths [192, 192, 192] 206s
+[california/tabm_gns uniform/s0 train] epoch 28 train 0.1841 valid 0.1739 widths [192, 192, 192] 214s
+[california/tabm_gns uniform/s0 train] epoch 29 train 0.1847 valid 0.1705 widths [192, 192, 192] 222s
+[california/tabm_gns uniform/s0 train] epoch 30 train 0.1824 valid 0.1693 widths [192, 192, 192] 229s
+[california/tabm_gns uniform/s0 train] epoch 31 train 0.1807 valid 0.1713 widths [192, 192, 192] 237s
+[california/tabm_gns uniform/s0 train] epoch 32 train 0.1809 valid 0.1701 widths [192, 192, 192] 244s
+[california/tabm_gns uniform/s0 train] epoch 33 train 0.1785 valid 0.1695 widths [192, 192, 192] 252s
+[california/tabm_gns uniform/s0 train] epoch 34 train 0.1793 valid 0.1683 widths [192, 192, 192] 260s
+[california/tabm_gns uniform/s0 train] epoch 35 train 0.1783 valid 0.1686 widths [192, 192, 192] 267s
+[california/tabm_gns uniform/s0 train] epoch 36 train 0.1783 valid 0.1714 widths [192, 192, 192] 275s
+[california/tabm_gns uniform/s0 train] epoch 37 train 0.1766 valid 0.1698 widths [192, 192, 192] 283s
+[california/tabm_gns uniform/s0 train] epoch 38 train 0.1752 valid 0.1644 widths [192, 192, 192] 290s
+[california/tabm_gns uniform/s0 train] epoch 39 train 0.1741 valid 0.1676 widths [192, 192, 192] 298s
+[california/tabm_gns uniform/s0 train] epoch 40 train 0.1747 valid 0.1666 widths [192, 192, 192] 306s
+[california/tabm_gns uniform/s0 train] epoch 41 train 0.1728 valid 0.1670 widths [192, 192, 192] 313s
+[california/tabm_gns uniform/s0 train] epoch 42 train 0.1737 valid 0.1659 widths [192, 192, 192] 321s
+[california/tabm_gns uniform/s0 train] epoch 43 train 0.1707 valid 0.1669 widths [192, 192, 192] 328s
+[california/tabm_gns uniform/s0 train] epoch 44 train 0.1710 valid 0.1641 widths [192, 192, 192] 336s
+[california/tabm_gns uniform/s0 train] epoch 45 train 0.1685 valid 0.1638 widths [192, 192, 192] 344s
+[california/tabm_gns uniform/s0 train] epoch 46 train 0.1693 valid 0.1621 widths [192, 192, 192] 351s
+[california/tabm_gns uniform/s0 train] epoch 47 train 0.1689 valid 0.1620 widths [192, 192, 192] 359s
+[california/tabm_gns uniform/s0 train] epoch 48 train 0.1690 valid 0.1632 widths [192, 192, 192] 367s
+[california/tabm_gns uniform/s0 train] epoch 49 train 0.1683 valid 0.1594 widths [192, 192, 192] 374s
+[california/tabm_gns uniform/s0 train] epoch 50 train 0.1669 valid 0.1624 widths [192, 192, 192] 382s
+[california/tabm_gns uniform/s0 train] epoch 51 train 0.1677 valid 0.1637 widths [192, 192, 192] 390s
+[california/tabm_gns uniform/s0 train] epoch 52 train 0.1660 valid 0.1604 widths [192, 192, 192] 397s
+[california/tabm_gns uniform/s0 train] epoch 53 train 0.1660 valid 0.1611 widths [192, 192, 192] 405s
+[california/tabm_gns uniform/s0 train] epoch 54 train 0.1656 valid 0.1618 widths [192, 192, 192] 413s
+[california/tabm_gns uniform/s0 train] epoch 55 train 0.1660 valid 0.1611 widths [192, 192, 192] 420s
+[california/tabm_gns uniform/s0 train] epoch 56 train 0.1650 valid 0.1603 widths [192, 192, 192] 428s
+[california/tabm_gns uniform/s0 train] epoch 57 train 0.1627 valid 0.1582 widths [192, 192, 192] 435s
+[california/tabm_gns uniform/s0 train] epoch 58 train 0.1627 valid 0.1585 widths [192, 192, 192] 443s
+[california/tabm_gns uniform/s0 train] epoch 59 train 0.1624 valid 0.1573 widths [192, 192, 192] 451s
+[california/tabm_gns uniform/s0 train] epoch 60 train 0.1632 valid 0.1590 widths [192, 192, 192] 459s
+[california/tabm_gns uniform/s0 train] epoch 61 train 0.1621 valid 0.1584 widths [192, 192, 192] 466s
+[california/tabm_gns uniform/s0 train] epoch 62 train 0.1605 valid 0.1586 widths [192, 192, 192] 474s
+[california/tabm_gns uniform/s0 train] epoch 63 train 0.1588 valid 0.1571 widths [192, 192, 192] 481s
+[california/tabm_gns uniform/s0 train] epoch 64 train 0.1590 valid 0.1586 widths [192, 192, 192] 489s
+[california/tabm_gns uniform/s0 train] epoch 65 train 0.1580 valid 0.1578 widths [192, 192, 192] 496s
+[california/tabm_gns uniform/s0 train] epoch 66 train 0.1582 valid 0.1585 widths [192, 192, 192] 504s
+[california/tabm_gns uniform/s0 train] epoch 67 train 0.1574 valid 0.1568 widths [192, 192, 192] 511s
+[california/tabm_gns uniform/s0 train] epoch 68 train 0.1575 valid 0.1552 widths [192, 192, 192] 519s
+[california/tabm_gns uniform/s0 train] epoch 69 train 0.1568 valid 0.1584 widths [192, 192, 192] 527s
+[california/tabm_gns uniform/s0 train] epoch 70 train 0.1561 valid 0.1560 widths [192, 192, 192] 534s
+[california/tabm_gns uniform/s0 train] epoch 71 train 0.1559 valid 0.1569 widths [192, 192, 192] 542s
+[california/tabm_gns uniform/s0 train] epoch 72 train 0.1578 valid 0.1547 widths [192, 192, 192] 549s
+[california/tabm_gns uniform/s0 train] epoch 73 train 0.1563 valid 0.1605 widths [192, 192, 192] 557s
+[california/tabm_gns uniform/s0 train] epoch 74 train 0.1545 valid 0.1551 widths [192, 192, 192] 565s
+[california/tabm_gns uniform/s0 train] epoch 75 train 0.1551 valid 0.1562 widths [192, 192, 192] 572s
+[california/tabm_gns uniform/s0 train] epoch 76 train 0.1548 valid 0.1552 widths [192, 192, 192] 580s
+[california/tabm_gns uniform/s0 train] epoch 77 train 0.1547 valid 0.1542 widths [192, 192, 192] 588s
+[california/tabm_gns uniform/s0 train] epoch 78 train 0.1536 valid 0.1544 widths [192, 192, 192] 595s
+[california/tabm_gns uniform/s0 train] epoch 79 train 0.1527 valid 0.1524 widths [192, 192, 192] 603s
+[california/tabm_gns uniform/s0 train] epoch 80 train 0.1525 valid 0.1556 widths [192, 192, 192] 611s
+[california/tabm_gns uniform/s0 train] epoch 81 train 0.1535 valid 0.1557 widths [192, 192, 192] 618s
+[california/tabm_gns uniform/s0 train] epoch 82 train 0.1523 valid 0.1538 widths [192, 192, 192] 626s
+[california/tabm_gns uniform/s0 train] epoch 83 train 0.1513 valid 0.1541 widths [192, 192, 192] 633s
+[california/tabm_gns uniform/s0 train] epoch 84 train 0.1515 valid 0.1537 widths [192, 192, 192] 641s
+[california/tabm_gns uniform/s0 train] epoch 85 train 0.1504 valid 0.1538 widths [192, 192, 192] 649s
+[california/tabm_gns uniform/s0 train] epoch 86 train 0.1513 valid 0.1537 widths [192, 192, 192] 656s
+[california/tabm_gns uniform/s0 train] epoch 87 train 0.1501 valid 0.1562 widths [192, 192, 192] 664s
+[california/tabm_gns uniform/s0 train] epoch 88 train 0.1497 valid 0.1558 widths [192, 192, 192] 672s
+[california/tabm_gns uniform/s0 train] epoch 89 train 0.1507 valid 0.1541 widths [192, 192, 192] 679s
+[california/tabm_gns uniform/s0 train] epoch 90 train 0.1494 valid 0.1518 widths [192, 192, 192] 687s
+[california/tabm_gns uniform/s0 train] epoch 91 train 0.1489 valid 0.1519 widths [192, 192, 192] 694s
+[california/tabm_gns uniform/s0 train] epoch 92 train 0.1489 valid 0.1527 widths [192, 192, 192] 702s
+[california/tabm_gns uniform/s0 train] epoch 93 train 0.1477 valid 0.1510 widths [192, 192, 192] 709s
+[california/tabm_gns uniform/s0 train] epoch 94 train 0.1492 valid 0.1516 widths [192, 192, 192] 717s
+[california/tabm_gns uniform/s0 train] epoch 95 train 0.1475 valid 0.1525 widths [192, 192, 192] 724s
+[california/tabm_gns uniform/s0 train] epoch 96 train 0.1482 valid 0.1511 widths [192, 192, 192] 732s
+[california/tabm_gns uniform/s0 train] epoch 97 train 0.1478 valid 0.1586 widths [192, 192, 192] 740s
+[california/tabm_gns uniform/s0 train] epoch 98 train 0.1499 valid 0.1512 widths [192, 192, 192] 748s
+[california/tabm_gns uniform/s0 train] epoch 99 train 0.1471 valid 0.1534 widths [192, 192, 192] 756s
+[california/tabm_gns uniform/s0 train] epoch 100 train 0.1487 valid 0.1511 widths [192, 192, 192] 764s
+[california/tabm_gns uniform/s0 train] epoch 101 train 0.1467 valid 0.1527 widths [192, 192, 192] 772s
+[california/tabm_gns uniform/s0 train] epoch 102 train 0.1464 valid 0.1497 widths [192, 192, 192] 780s
+[california/tabm_gns uniform/s0 train] epoch 103 train 0.1454 valid 0.1513 widths [192, 192, 192] 788s
+[california/tabm_gns uniform/s0 train] epoch 104 train 0.1449 valid 0.1507 widths [192, 192, 192] 796s
+[california/tabm_gns uniform/s0 train] epoch 105 train 0.1453 valid 0.1515 widths [192, 192, 192] 804s
+[california/tabm_gns uniform/s0 train] epoch 106 train 0.1447 valid 0.1505 widths [192, 192, 192] 813s
+[california/tabm_gns uniform/s0 train] epoch 107 train 0.1448 valid 0.1503 widths [192, 192, 192] 821s
+[california/tabm_gns uniform/s0 train] epoch 108 train 0.1445 valid 0.1512 widths [192, 192, 192] 829s
+[california/tabm_gns uniform/s0 train] epoch 109 train 0.1454 valid 0.1494 widths [192, 192, 192] 837s
+[california/tabm_gns uniform/s0 train] epoch 110 train 0.1449 valid 0.1514 widths [192, 192, 192] 845s
+[california/tabm_gns uniform/s0 train] epoch 111 train 0.1457 valid 0.1499 widths [192, 192, 192] 853s
+[california/tabm_gns uniform/s0 train] epoch 112 train 0.1447 valid 0.1484 widths [192, 192, 192] 861s
+[california/tabm_gns uniform/s0 train] epoch 113 train 0.1435 valid 0.1510 widths [192, 192, 192] 869s
+[california/tabm_gns uniform/s0 train] epoch 114 train 0.1434 valid 0.1512 widths [192, 192, 192] 877s
+[california/tabm_gns uniform/s0 train] epoch 115 train 0.1436 valid 0.1502 widths [192, 192, 192] 885s
+[california/tabm_gns uniform/s0 train] epoch 116 train 0.1442 valid 0.1500 widths [192, 192, 192] 892s
+[california/tabm_gns uniform/s0 train] epoch 117 train 0.1434 valid 0.1496 widths [192, 192, 192] 900s
+[california/tabm_gns uniform/s0 train] epoch 118 train 0.1430 valid 0.1507 widths [192, 192, 192] 908s
+[california/tabm_gns uniform/s0 train] epoch 119 train 0.1422 valid 0.1494 widths [192, 192, 192] 915s
+[california/tabm_gns uniform/s0 train] epoch 120 train 0.1423 valid 0.1506 widths [192, 192, 192] 923s
+[california/tabm_gns uniform/s0 train] epoch 121 train 0.1429 valid 0.1492 widths [192, 192, 192] 931s
+[california/tabm_gns uniform/s0 train] epoch 122 train 0.1418 valid 0.1497 widths [192, 192, 192] 939s
+[california/tabm_gns uniform/s0 train] epoch 123 train 0.1425 valid 0.1500 widths [192, 192, 192] 946s
+[california/tabm_gns uniform/s0 train] epoch 124 train 0.1417 valid 0.1491 widths [192, 192, 192] 954s
+[california/tabm_gns uniform/s0 train] epoch 125 train 0.1412 valid 0.1498 widths [192, 192, 192] 962s
+[california/tabm_gns uniform/s0 train] epoch 126 train 0.1416 valid 0.1488 widths [192, 192, 192] 969s
+[california/tabm_gns uniform/s0 train] epoch 127 train 0.1409 valid 0.1483 widths [192, 192, 192] 977s
+[california/tabm_gns uniform/s0 train] epoch 128 train 0.1402 valid 0.1494 widths [192, 192, 192] 985s
+[california/tabm_gns uniform/s0 train] epoch 129 train 0.1404 valid 0.1495 widths [192, 192, 192] 992s
+[california/tabm_gns uniform/s0 train] epoch 130 train 0.1411 valid 0.1479 widths [192, 192, 192] 1000s
+[california/tabm_gns uniform/s0 train] epoch 131 train 0.1395 valid 0.1477 widths [192, 192, 192] 1008s
+[california/tabm_gns uniform/s0 train] epoch 132 train 0.1392 valid 0.1509 widths [192, 192, 192] 1015s
+[california/tabm_gns uniform/s0 train] epoch 133 train 0.1402 valid 0.1497 widths [192, 192, 192] 1023s
+[california/tabm_gns uniform/s0 train] epoch 134 train 0.1405 valid 0.1507 widths [192, 192, 192] 1031s
+[california/tabm_gns uniform/s0 train] epoch 135 train 0.1401 valid 0.1480 widths [192, 192, 192] 1038s
+[california/tabm_gns uniform/s0 train] epoch 136 train 0.1386 valid 0.1493 widths [192, 192, 192] 1046s
+[california/tabm_gns uniform/s0 train] epoch 137 train 0.1384 valid 0.1510 widths [192, 192, 192] 1054s
+[california/tabm_gns uniform/s0 train] epoch 138 train 0.1383 valid 0.1495 widths [192, 192, 192] 1061s
+[california/tabm_gns uniform/s0 train] epoch 139 train 0.1388 valid 0.1485 widths [192, 192, 192] 1069s
+[california/tabm_gns uniform/s0 train] epoch 140 train 0.1376 valid 0.1490 widths [192, 192, 192] 1077s
+[california/tabm_gns uniform/s0 train] epoch 141 train 0.1380 valid 0.1461 widths [192, 192, 192] 1084s
+[california/tabm_gns uniform/s0 train] epoch 142 train 0.1389 valid 0.1469 widths [192, 192, 192] 1092s
+[california/tabm_gns uniform/s0 train] epoch 143 train 0.1374 valid 0.1518 widths [192, 192, 192] 1100s
+[california/tabm_gns uniform/s0 train] epoch 144 train 0.1394 valid 0.1477 widths [192, 192, 192] 1108s
+[california/tabm_gns uniform/s0 train] epoch 145 train 0.1380 valid 0.1469 widths [192, 192, 192] 1116s
+[california/tabm_gns uniform/s0 train] epoch 146 train 0.1389 valid 0.1506 widths [192, 192, 192] 1124s
+[california/tabm_gns uniform/s0 train] epoch 147 train 0.1384 valid 0.1503 widths [192, 192, 192] 1132s
+[california/tabm_gns uniform/s0 train] epoch 148 train 0.1374 valid 0.1496 widths [192, 192, 192] 1139s
+[california/tabm_gns uniform/s0 train] epoch 149 train 0.1384 valid 0.1475 widths [192, 192, 192] 1147s
+[california/tabm_gns uniform/s0 train] epoch 150 train 0.1375 valid 0.1485 widths [192, 192, 192] 1155s
+[california/tabm_gns uniform/s0 train] epoch 151 train 0.1377 valid 0.1493 widths [192, 192, 192] 1163s
+[california/tabm_gns uniform/s0 train] epoch 152 train 0.1366 valid 0.1475 widths [192, 192, 192] 1170s
+[california/tabm_gns uniform/s0 train] epoch 153 train 0.1364 valid 0.1472 widths [192, 192, 192] 1178s
+[california/tabm_gns uniform/s0 train] epoch 154 train 0.1363 valid 0.1470 widths [192, 192, 192] 1186s
+[california/tabm_gns uniform/s0 train] epoch 155 train 0.1371 valid 0.1495 widths [192, 192, 192] 1194s
+[california/tabm_gns uniform/s0 train] epoch 156 train 0.1358 valid 0.1475 widths [192, 192, 192] 1202s
+[california/tabm_gns uniform/s0 train] epoch 157 train 0.1364 valid 0.1471 widths [192, 192, 192] 1211s
+[california/tabm_gns uniform/s0 train] epoch 158 train 0.1369 valid 0.1496 widths [192, 192, 192] 1219s
+[california/tabm_gns uniform/s0 train] epoch 159 train 0.1370 valid 0.1486 widths [192, 192, 192] 1227s
+[california/tabm_gns uniform/s0 train] epoch 160 train 0.1364 valid 0.1487 widths [192, 192, 192] 1235s
+[california/tabm_gns uniform/s0 train] epoch 161 train 0.1355 valid 0.1489 widths [192, 192, 192] 1243s
+california / tabm_gns / seed 0: test={'rmse': 0.1339164670231278, 'mse': 0.017933620139956474} widths=[147, 166, 286] time=19042s -> /Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/results/tabm_gns/california/tabm_gns/seed0.json
+california / tabm_rewind / seed 0: test={'rmse': 0.13452598439632535, 'mse': 0.01809724047780037} widths=[147, 166, 286] time=1488s -> /Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/results/tabm_gns/california/tabm_rewind/seed0.json
+california / tabm_uniform / seed 0: test={'rmse': 0.13620560942223386, 'mse': 0.018551968038082123} widths=[192, 192, 192] time=1244s -> /Users/uni/Programming/average_tabgns/.claude/worktrees/tabgns-tabm-transfer-f53a85/results/tabm_gns/california/tabm_uniform/seed0.json

@@ -1,0 +1,5 @@
+# Adult (OpenML 1590): 48,842 x 14 (6 numeric, 8 categorical with missing values), binary (income > 50k).
+# Also in the TabM benchmark.
+name: adult
+openml_id: 1590
+task: classification

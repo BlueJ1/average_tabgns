@@ -1,0 +1,9 @@
+experiment=tabm_gns/patience200 dataset=california method=tabm_gns method.patience=200 method.epochs=600 +method.controls=false seed=0
+experiment=tabm_gns/patience200 dataset=california method=tabm_gns method.patience=200 method.epochs=600 +method.controls=false seed=1
+experiment=tabm_gns/patience200 dataset=california method=tabm_gns method.patience=200 method.epochs=600 +method.controls=false seed=2
+experiment=tabm_gns/patience200 dataset=california method=tabm_gns_member method.patience=200 method.epochs=600 +method.controls=false seed=0
+experiment=tabm_gns/patience200 dataset=california method=tabm_gns_member method.patience=200 method.epochs=600 +method.controls=false seed=1
+experiment=tabm_gns/patience200 dataset=california method=tabm_gns_member method.patience=200 method.epochs=600 +method.controls=false seed=2
+experiment=tabm_gns/patience20_arrhenius dataset=california method=tabm_gns +method.controls=false seed=0
+experiment=tabm_gns/patience20_arrhenius dataset=california method=tabm_gns +method.controls=false seed=1
+experiment=tabm_gns/patience20_arrhenius dataset=california method=tabm_gns +method.controls=false seed=2
