@@ -28,13 +28,14 @@ import sys
 import time
 import traceback
 from pathlib import Path
-from typing import Any, Dict, cast
+from typing import Any, Dict, List, Optional, cast
 
 import hydra
 import numpy as np
 import torch
 from omegaconf import DictConfig, OmegaConf
 
+from experiments.tabm_gns.ids import source_id
 from experiments.tabm_gns.model import GatedTabM, TabM, mlp_params, tabm_params
 from experiments.tabm_gns.protocol import Prepared, metrics, predict, prepare, search, train_tabm
 from tabgns.utils import set_seed
@@ -199,19 +200,49 @@ def run_uniform(data: Prepared, cfg: Dict, seed: int, target: int) -> Dict:
           'params': tabm_params(data.inp_dim, widths, data.out_dim, t['k']), 'target_params_full': target}
 
 
-def run_controls(data: Prepared, gcfg: Dict, seed: int, gns_out: Path, masks, target: int,
+def control_current(out: Path, source: str) -> bool:
+  """A successful control result exists and was trained for this source result."""
+  r = read_result(out)
+  return is_done(out) and r is not None and r.get('source_id') == source
+
+
+def save_masks(path: Path, masks, source: str) -> None:
+  np.savez(path, *masks, source_id=np.array(source))
+
+
+def load_masks(path: Path, source: str) -> Optional[List[np.ndarray]]:
+  """The saved masks if they belong to this source result, else None."""
+  if not path.exists():
+    return None
+  z = np.load(path)
+  if 'source_id' not in z.files or str(z['source_id']) != source:
+    return None
+  return [z[k] for k in sorted((k for k in z.files if k.startswith('arr_')), key=lambda k: int(k[4:]))]
+
+
+def replay_matches(s: Dict, widths: List[int], stored: Dict) -> bool:
+  """A replayed search reproduces the stored one: same architecture and loss histories and same widths.
+  Equal widths alone are not enough (a different set of neurons can survive)."""
+  return (s['arch_history'] == stored['search']['arch_history']
+          and [list(x) for x in s['loss_history']] == [list(x) for x in stored['search']['loss_history']]
+          and widths == stored['widths'])
+
+
+def run_controls(data: Prepared, gcfg: Dict, seed: int, gns_out: Path, masks, target: int, source: str,
                  do_rewind: bool = True, do_uniform: bool = True) -> None:
-  """Runs the controls of the TabGNS-TabM result at gns_out and writes them next to it."""
+  """Runs the controls of the TabGNS-TabM result at gns_out (identity `source`) and writes them next to it.
+  An existing control is reused only if it is a successful result for the same source."""
   variant = gcfg['method']['name']
   for name, do, fn in ((CONTROL_NAMES[variant][0], do_rewind and masks is not None,
                         lambda: run_rewind(data, gcfg, seed, masks)),
                        (CONTROL_NAMES[variant][1], do_uniform, lambda: run_uniform(data, gcfg, seed, target))):
     out = gns_out.parent.parent / name / gns_out.name
-    if not do or is_done(out):
+    if not do or control_current(out, source):
       continue
     start = time.perf_counter()
     rec = _base_record(gcfg, data, name)
     rec['control_of'] = variant
+    rec['source_id'] = source
     try:
       rec.update(fn())
     except Exception:
@@ -236,7 +267,7 @@ def run_tabm_controls(data: Prepared, c: Dict, seed: int, out: Path) -> Dict:
   mpath = gout.with_suffix('.masks.npz')
   info: Dict[str, Any] = {'match': m['match']}
   masks, s, replay_widths = None, None, None
-  if m['rewind'] and not mpath.exists():
+  if m['rewind'] and not mpath.exists():  # saved masks are checked against the stored result below
     # The replay only needs the matched run's config, which is this config with method = match, so it can
     # start before the matched run has finished; the stored result is needed only to check it.
     gcfg_replay = copy.deepcopy(c)
@@ -245,29 +276,37 @@ def run_tabm_controls(data: Prepared, c: Dict, seed: int, out: Path) -> Dict:
     replay_widths = net.curr_architecture()
     masks = [mk.numpy() for mk in net.keep_masks()]
   deadline = time.time() + 3600 * m['wait_hours']
-  while not is_done(gout):
+  while True:
+    stored = read_result(gout)
+    if stored is not None and not stored.get('placeholder', False):
+      if 'error' in stored:
+        raise RuntimeError(f'{gout} failed')
+      break
     if time.time() > deadline:
       raise TimeoutError(f'{gout} did not appear')
     time.sleep(60)
-  stored = json.loads(gout.read_text())
-  if 'error' in stored:
-    raise RuntimeError(f'{gout} failed')
   gcfg = stored['config']
+  source = source_id(stored)
   info['matched_widths'] = stored['widths']
+  info['source_id'] = source
   if m['rewind']:
     if s is None:
-      masks = list(np.load(mpath).values())
-      info['masks'] = 'saved'
+      masks = load_masks(mpath, source)
+      info['masks'] = 'saved' if masks is not None else 'saved masks belong to a different source run; rewind skipped'
     else:
+      ok = replay_matches(s, replay_widths, stored)
       info['replay'] = {
         'arch_history_equal': s['arch_history'] == stored['search']['arch_history'],
         'loss_history_equal': [list(x) for x in s['loss_history']] == [list(x) for x in stored['search']['loss_history']],
-        'epochs': s['epochs'], 'stored_epochs': stored['search']['epochs'], 'widths': replay_widths}
-      if replay_widths == stored['widths']:
-        np.savez(mpath, *masks)
+        'epochs': s['epochs'], 'stored_epochs': stored['search']['epochs'], 'widths': replay_widths,
+        'accepted': ok}
+      if ok:
+        save_masks(mpath, masks, source)
       else:
-        info['replay']['warning'] = 'replay found different widths; rewind uses the replayed masks'
-  run_controls(data, gcfg, seed, gout, masks, stored['params']['full'], do_rewind=m['rewind'])
+        masks = None
+        info['replay']['warning'] = 'replay differs from the stored search; masks not saved, rewind skipped'
+        print(f'{gout}: replay differs from the stored search; rewind skipped', file=sys.stderr)
+  run_controls(data, gcfg, seed, gout, masks, stored['params']['full'], source, do_rewind=m['rewind'])
   info['widths'] = stored['widths']
   return info
 
@@ -301,23 +340,34 @@ def run_mlp(data: Prepared, cfg: Dict, seed: int, which: str) -> Dict:
   return rec
 
 
-def is_done(out: Path) -> bool:
-  """A result exists and is not a placeholder (placeholders only block superseded sweeps)."""
+def read_result(out: Path) -> Optional[Dict]:
   if not out.exists():
-    return False
+    return None
   try:
-    return not json.loads(out.read_text()).get('placeholder', False)
+    return json.loads(out.read_text())
   except json.JSONDecodeError:
-    return False
+    return None
+
+
+def is_done(out: Path) -> bool:
+  """A successful result exists. Placeholders (which only block superseded sweeps) and failed runs (kept
+  with an 'error' record for diagnosis) do not count, so a rerun retries them."""
+  r = read_result(out)
+  return r is not None and not r.get('placeholder', False) and 'error' not in r
 
 
 def _controls_done(c: Dict, out: Path) -> bool:
-  """A controls cell is done when the control results it asks for exist, so a uniform-only pass
-  (method.rewind=false) does not block a later pass that adds the rewind control."""
+  """A controls cell is done when the control results it asks for exist and were trained for the current
+  source result, so a uniform-only pass (method.rewind=false) does not block a later pass that adds the
+  rewind control, and a rerun source invalidates its controls."""
   m = c['method']
   rewind_name, uniform_name = CONTROL_NAMES[m['match']]
+  gout = out.parent.parent / m['match'] / out.name
+  if not is_done(gout):
+    return False
+  source = source_id(read_result(gout))
   wanted = [uniform_name] + ([rewind_name] if m['rewind'] else [])
-  return all(is_done(out.parent.parent / name / out.name) for name in wanted)
+  return all(control_current(out.parent.parent / name / out.name, source) for name in wanted)
 
 
 def _base_record(c: Dict, data: Prepared, method: str) -> Dict[str, Any]:
@@ -381,7 +431,7 @@ def _main(c: Dict[str, Any], method: str, out: Path) -> None:
       rec.update(run_tabm_gns(data, c, c['seed']))
       masks = rec.pop('_masks')
       out.parent.mkdir(parents=True, exist_ok=True)
-      np.savez(out.with_suffix('.masks.npz'), *masks)
+      save_masks(out.with_suffix('.masks.npz'), masks, source_id(rec))
     elif method.startswith('tabm_controls'):
       rec.update(run_tabm_controls(data, c, c['seed'], out))
     elif method == 'mlp_large':
@@ -396,7 +446,7 @@ def _main(c: Dict[str, Any], method: str, out: Path) -> None:
   rec.pop('_masks', None)
   _write(rec, c, out, start)
   if masks is not None and 'error' not in rec and c['method'].get('controls', True):
-    run_controls(data, c, c['seed'], out, masks, rec['params']['full'])
+    run_controls(data, c, c['seed'], out, masks, rec['params']['full'], source_id(rec))
 
 
 if __name__ == '__main__':

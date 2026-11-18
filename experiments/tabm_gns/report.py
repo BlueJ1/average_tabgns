@@ -15,6 +15,8 @@ from typing import Dict, List, Optional
 
 import numpy as np
 
+from experiments.tabm_gns.ids import source_id
+
 METHODS = ['mlp_large', 'mlp_gns', 'tabm_large', 'tabm_gns', 'tabm_gns_member']
 CONTROL_METHODS = ['tabm_rewind', 'tabm_uniform', 'tabm_rewind_member', 'tabm_uniform_member']
 LABEL = {'mlp_large': 'Large MLP (5×512)', 'mlp_gns': 'TabGNS-MLP', 'tabm_large': 'Large TabM (3×512, k=32)',
@@ -171,8 +173,12 @@ def controls_section(runs: List[dict], out: Path) -> List[str]:
       sign = 1 if higher else -1
       warm = {s: r['metrics']['test'][metric] for s, r in g.items()}
       scratch = {s: r['metrics_scratch']['test'][metric] for s, r in g.items() if 'metrics_scratch' in r}
-      rew = {s: r['metrics']['test'][metric] for s, r in by.get((ds, CONTROLS[v][0]), {}).items()}
-      uni_runs = by.get((ds, CONTROLS[v][1]), {})
+      # Only controls trained for the current source result (a rerun source invalidates its controls).
+      def current(name):
+        return {s: r for s, r in by.get((ds, name), {}).items()
+                if s in g and r.get('source_id') == source_id(g[s])}
+      rew = {s: r['metrics']['test'][metric] for s, r in current(CONTROLS[v][0]).items()}
+      uni_runs = current(CONTROLS[v][1])
       uni = {s: r['metrics']['test'][metric] for s, r in uni_runs.items()}
       big = {s: r['metrics']['test'][metric] for s, r in by.get((ds, 'tabm_large'), {}).items()}
       def d(x):
@@ -243,9 +249,9 @@ def width_sweep(main_runs: List[dict], out: Path) -> List[str]:
     return []
   lines = ['## Width sweep (plain TabM, k = 32, equal widths; the linear model on the same features)', '',
            'Δ = paired difference to Large TabM (width 512), positive = better. Size = parameters relative to '
-           'Large TabM.', '',
-           '| dataset | model | test metric | Δ vs Large | params | size vs Large | epochs |',
-           '|---|---|---|---|---|---|---|']
+           'Large TabM. "selected" marks the width with the best mean validation score in the reported metric.', '',
+           '| dataset | model | valid metric | test metric | Δ vs Large | params | size vs Large | epochs |',
+           '|---|---|---|---|---|---|---|---|']
   for ds in DATASETS:
     large = by.get((ds, 512), {})
     if not large:
@@ -255,7 +261,10 @@ def width_sweep(main_runs: List[dict], out: Path) -> List[str]:
     dig = 2 if metric == 'accuracy' else 4
     base = {s: r['metrics']['test'][metric] for s, r in large.items()}
     lp = np.mean([r['params']['full'] for r in large.values()])
-    keys = sorted(k for (d, k) in by if d == ds and k != 'linear') + (['linear'] if (ds, 'linear') in by else [])
+    widths = sorted(k for (d, k) in by if d == ds and k != 'linear')
+    keys = widths + (['linear'] if (ds, 'linear') in by else [])
+    vmean = {k: np.mean([r['metrics']['valid'][metric] for r in by[(ds, k)].values()]) for k in widths}
+    selected = (max if higher else min)(widths, key=lambda k: vmean[k])
     for k in keys:
       rs = by[(ds, k)]
       vals = {s: r['metrics']['test'][metric] for s, r in rs.items()}
@@ -264,9 +273,10 @@ def width_sweep(main_runs: List[dict], out: Path) -> List[str]:
       delta = f'{sign * p[0]:+.{dig}f} ({sum(sign * x > 0 for x in p[1])}/{len(p[1])})' if p and k != 512 else '–'
       params = np.mean([r['params']['full'] for r in rs.values()])
       label = 'linear (C ' + '/'.join(f"{r['train']['C']:g}" for _, r in sorted(rs.items())) + ')' \
-          if k == 'linear' else f'TabM {k}×3'
+          if k == 'linear' else f'TabM {k}×3' + (' (selected)' if k == selected else '')
       ep = '–' if k == 'linear' else ms([r['train']['epochs'] for r in rs.values()], 0)
-      lines.append(f'| {ds} | {label} | {ms(list(vals.values()), dig)} | {delta} | {fmt_int(params)} | '
+      valid = ms([r['metrics']['valid'][metric] for r in rs.values()], dig)
+      lines.append(f'| {ds} | {label} | {valid} | {ms(list(vals.values()), dig)} | {delta} | {fmt_int(params)} | '
                    f'{params / lp * 100:.1f}% | {ep} |')
   return lines + ['']
 

@@ -172,6 +172,66 @@ class TestControls(unittest.TestCase):
       self.assertTrue(torch.equal(a, b))
 
 
+class TestResultBookkeeping(unittest.TestCase):
+
+  def setUp(self):
+    import tempfile
+    from pathlib import Path
+    self.dir = Path(tempfile.mkdtemp())
+    self.src = {'dataset': 'toy', 'method': 'tabm_gns', 'seed': 0, 'widths': [3, 2],
+                'params': {'full': 100}, 'search': {'arch_history': [[4, 3], [3, 2]], 'loss_history': [[1.0, 0.9], [0.8, 0.7]]}}
+
+  def _write(self, name, rec):
+    import json
+    p = self.dir / name
+    p.write_text(json.dumps(rec))
+    return p
+
+  def test_failed_results_are_not_done(self):
+    from experiments.tabm_gns.run import is_done
+    self.assertTrue(is_done(self._write('ok.json', {'metrics': {}})))
+    self.assertFalse(is_done(self._write('failed.json', {'error': 'Traceback ...'})))
+    self.assertFalse(is_done(self._write('placeholder.json', {'placeholder': True})))
+    self.assertFalse(is_done(self.dir / 'missing.json'))
+
+  def test_controls_follow_their_source(self):
+    from experiments.tabm_gns.run import control_current, source_id
+    sid = source_id(self.src)
+    ctrl = self._write('ctrl.json', {'metrics': {}, 'source_id': sid})
+    self.assertTrue(control_current(ctrl, sid))
+    rerun = copy.deepcopy(self.src)
+    rerun['params']['full'] = 120  # the source was rerun and found a different architecture
+    self.assertNotEqual(source_id(rerun), sid)
+    self.assertFalse(control_current(ctrl, source_id(rerun)))
+    self.assertFalse(control_current(self._write('old.json', {'metrics': {}}), sid))  # no recorded source
+    self.assertFalse(control_current(self._write('bad.json', {'error': 'x', 'source_id': sid}), sid))
+
+  def test_masks_are_tied_to_their_source(self):
+    from experiments.tabm_gns.run import load_masks, save_masks, source_id
+    masks = [np.array([True, False, True, True]), np.array([True, True, False])]
+    path = self.dir / 'm.npz'
+    save_masks(path, masks, source_id(self.src))
+    loaded = load_masks(path, source_id(self.src))
+    self.assertEqual(len(loaded), 2)
+    self.assertTrue(all(np.array_equal(a, b) for a, b in zip(loaded, masks)))
+    other = copy.deepcopy(self.src)
+    other['search']['loss_history'][1][1] = 0.71
+    self.assertIsNone(load_masks(path, source_id(other)))
+    np.savez(path, *masks)  # masks without a source identity are not trusted
+    self.assertIsNone(load_masks(path, source_id(self.src)))
+
+  def test_replay_must_match_histories_not_just_widths(self):
+    from experiments.tabm_gns.run import replay_matches
+    s = copy.deepcopy(self.src['search'])
+    self.assertTrue(replay_matches(s, [3, 2], self.src))
+    s['arch_history'][0] = [4, 2]  # same final widths, different path
+    self.assertFalse(replay_matches(s, [3, 2], self.src))
+    s = copy.deepcopy(self.src['search'])
+    s['loss_history'][0][1] = 0.95
+    self.assertFalse(replay_matches(s, [3, 2], self.src))
+    self.assertFalse(replay_matches(copy.deepcopy(self.src['search']), [2, 3], self.src))
+
+
 class TestLossesAndSearch(unittest.TestCase):
 
   def test_ensemble_output(self):

@@ -93,17 +93,25 @@ Decisions:
   `~/average_tabgns` stays on main), venv at `~/venvs/tabm` (Python 3.12, same package versions).
   Its CPUs (2009 Xeon E5520) are about 6x slower than the Mac per job. Jobs are started with
   `nohup setsid` so they survive a dropped connection; results are copied back with rsync.
+- **Result bookkeeping** (review, 2026-11-18): failed results (`error` records) no longer count as done,
+  so queues retry them; every control and every saved mask file stores the `source_id` of the
+  TabGNS-TabM result it belongs to (`experiments/tabm_gns/ids.py`), and controls are retrained when
+  the source changes; a search replay must reproduce the stored histories and widths, or the rewind
+  control is skipped. Existing controls and masks were checked against their sources and tagged.
 - **BLAS threads are capped per job** (`threadpool_limits` in `run.py`): without it, scikit-learn's
   OpenBLAS oversubscribed the CPU with 6 parallel jobs and the Otto logistic regressions stalled for 7 h.
 
 Findings:
-- TabGNS-TabM matches Large TabM at 3.5–41% of its parameters (better RMSE on California at ~20%,
-  −0.1/−0.2 pp accuracy on Adult at ~4%, equal on Otto at 32–41%).
-- It compresses TabM far less than an MLP (0.9–1.9% there); the found size grows with k.
-- On California and Adult, rewind, scratch and uniform retrainings are as good as the warm-started
-  model: TabGNS works as a size selector, the weights and the uneven shape add nothing. On Otto the
-  warm start is ~1 pp better than scratch, uniform and rewind (rewind = scratch), so what helps
-  there is the supernet's trained weights, not its initialisation.
+- TabGNS-TabM keeps 3.5–41% of Large TabM's parameters; paired score differences to Large TabM are
+  small (RMSE −0.002 on California, −0.02 to −0.18 pp accuracy on Adult and Otto, Adult log-loss
+  slightly worse on every seed). Reported as observed differences, not as equivalence (review, 11-18).
+- It compresses TabM far less than an MLP (0.9–1.9% there); within TabM the found size grows with k.
+  The cause of the gap between the backbones is open (they also differ in depth, dropout, protocol).
+- On California and Adult, rewind, scratch and uniform retrainings score about the same or better than
+  the warm-started model: TabGNS mainly selects a size. On Otto the full search-and-fine-tune pipeline
+  is ~1 pp better than retraining; rewind = scratch rules out an initialisation effect, but the warm
+  start also trained longer, so the effect of the trained weights is not isolated (no matched-budget run).
+- Widths for the tuned-width comparison are chosen on validation (best mean validation score).
 
 State:
 - [x] Main grid: 3 datasets × {Large TabM, TabGNS-TabM ×2, Large MLP, TabGNS-MLP} × 3 seeds
