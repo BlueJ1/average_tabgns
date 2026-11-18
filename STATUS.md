@@ -88,6 +88,11 @@ Decisions:
 - **Environment rebuilt** (2026-11-15): `~/anaconda3` was removed, so `.venv` is now Homebrew Python
   3.11 with the earlier versions (torch 2.5.1, scikit-learn 1.3.2, ...), except numpy 1.26.4 (pip
   cannot pair 2.4.6 with scikit-learn 1.3.2). A stored run reproduced bit for bit.
+- **Remote runs on arrhenius** (user, 2026-11-16): `leau4995@arrhenius.it.uu.se`, at most 8 of its 16
+  cores (user). Branch checked out as a git worktree at `~/average_tabgns_tabm` (the clone at
+  `~/average_tabgns` stays on main), venv at `~/venvs/tabm` (Python 3.12, same package versions).
+  Its CPUs (2009 Xeon E5520) are about 6x slower than the Mac per job. Jobs are started with
+  `nohup setsid` so they survive a dropped connection; results are copied back with rsync.
 - **BLAS threads are capped per job** (`threadpool_limits` in `run.py`): without it, scikit-learn's
   OpenBLAS oversubscribed the CPU with 6 parallel jobs and the Otto logistic regressions stalled for 7 h.
 
@@ -108,3 +113,5 @@ State:
 - [x] Width sweep + linear model (`queue_width.txt`, 2026-11-15/16): the found size tracks where
   accuracy stops improving with width (Adult flat from width 32, California from 128, Otto never below
   512); this is why Adult compresses most (REPORT.md, finding 6)
+- [x] Search patience on California (`queue_patience.txt`, run on arrhenius 2026-11-16/18): patience 200
+  (cap 600 epochs) gives 19% smaller TabMs with better RMSE on 3/3 seeds (REPORT.md, finding 7)

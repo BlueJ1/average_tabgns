@@ -136,6 +136,7 @@ def summarise(runs: List[dict], out: Path) -> str:
   lines += controls_section(runs, out)
   lines += ablation_k(runs, out)
   lines += width_sweep(runs, out)
+  lines += patience_test(out)
   text = '\n'.join(lines)
   (out / 'summary.md').write_text(text)
   return text
@@ -267,6 +268,40 @@ def width_sweep(main_runs: List[dict], out: Path) -> List[str]:
       ep = '–' if k == 'linear' else ms([r['train']['epochs'] for r in rs.values()], 0)
       lines.append(f'| {ds} | {label} | {ms(list(vals.values()), dig)} | {delta} | {fmt_int(params)} | '
                    f'{params / lp * 100:.1f}% | {ep} |')
+  return lines + ['']
+
+
+def patience_test(out: Path) -> List[str]:
+  """California searches with the default patience (20) and patience 200 (search cap 600 epochs), all run
+  on the same machine (arrhenius): results/tabm_gns/patience20_arrhenius and patience200."""
+  arms = [('patience20_arrhenius', 'tabm_gns', 'patience 20, shared mask'),
+          ('patience200', 'tabm_gns', 'patience 200, shared mask'),
+          ('patience200', 'tabm_gns_member', 'patience 200, per-member masks')]
+  by = {}
+  for exp, m, _ in arms:
+    d = out / exp
+    if d.exists():
+      by[(exp, m)] = {r['seed']: r for r in load(d) if r['method'] == m and r['dataset'] == 'california'}
+  if not any(by.values()):
+    return []
+  large = 676128  # Large TabM parameters on California (3 x 512, k = 32)
+  base = {s: r['metrics']['test']['rmse'] for s, r in by.get(('patience20_arrhenius', 'tabm_gns'), {}).items()}
+  lines = ['## Search patience (California, all runs on arrhenius)', '',
+           'Δ = paired RMSE difference to patience 20 (shared mask, same seed and machine); negative = better.', '',
+           '| search | test RMSE | Δ vs patience 20 | scratch RMSE | params | size vs Large | kept neurons | search epochs (best) |',
+           '|---|---|---|---|---|---|---|---|']
+  for exp, m, label in arms:
+    rs = by.get((exp, m), {})
+    if not rs:
+      continue
+    vals = {s: r['metrics']['test']['rmse'] for s, r in rs.items()}
+    pd_ = paired(vals, base) if exp != 'patience20_arrhenius' else None
+    delta = f'{pd_[0]:+.4f} ({sum(x < 0 for x in pd_[1])}/{len(pd_[1])})' if pd_ else '–'
+    params = np.mean([r['params']['full'] for r in rs.values()])
+    lines.append(f'| {label} | {ms(list(vals.values()), 4)} | {delta} | '
+                 f'{ms([r["metrics_scratch"]["test"]["rmse"] for r in rs.values()], 4)} | {fmt_int(params)} | '
+                 f'{params / large * 100:.1f}% | {" ".join(str(sum(r["widths"])) for _, r in sorted(rs.items()))} | '
+                 f'{" ".join(str(r["search"]["epochs"]) + " (" + str(r["search"]["best_epoch"]) + ")" for _, r in sorted(rs.items()))} |')
   return lines + ['']
 
 

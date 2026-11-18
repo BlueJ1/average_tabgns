@@ -133,6 +133,16 @@ All rows use the widths found by TabGNS-TabM (uniform: the same parameter count 
 | otto | TabM 512×3 | 78.96 ± 0.33 | – | 853,696 | 100.0% | 185 ± 60 |
 | otto | linear (C 0.1/0.01/0.01) | 71.60 ± 0.06 | -7.36 (0/3) | 846 | 0.1% | – |
 
+## Search patience (California, all runs on arrhenius)
+
+Δ = paired RMSE difference to patience 20 (shared mask, same seed and machine); negative = better.
+
+| search | test RMSE | Δ vs patience 20 | scratch RMSE | params | size vs Large | kept neurons | search epochs (best) |
+|---|---|---|---|---|---|---|---|
+| patience 20, shared mask | 0.1374 ± 0.0031 | – | 0.1375 ± 0.0025 | 122,725 | 18.2% | 581 563 587 | 234 (214) 144 (124) 176 (156) |
+| patience 200, shared mask | 0.1353 ± 0.0031 | -0.0021 (3/3) | 0.1371 ± 0.0023 | 99,955 | 14.8% | 530 438 502 | 600 (403) 598 (398) 600 (569) |
+| patience 200, per-member masks | 0.1351 ± 0.0029 | -0.0023 (3/3) | 0.1378 ± 0.0028 | 97,234 | 14.4% | 547 447 428 | 561 (361) 598 (398) 600 (569) |
+
 ## Replays
 
 Searches replayed to recover masks for the rewind control (one CPU thread, same seeds):

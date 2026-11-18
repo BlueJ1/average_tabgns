@@ -44,7 +44,7 @@ the shared W serves k differently scaled members, so closing it costs more valid
 larger ensemble. The search's stopping rule also sets the size: TabGNS stops on the validation loss,
 and on California and Otto the TabM networks are still losing neurons when it stops
 ([`width_during_search.png`](../../results/tabm_gns/figures/width_during_search.png)), while the MLP
-searches shrink much faster. A longer search patience might find smaller TabMs (not tested).
+searches shrink much faster. A longer search patience does find smaller TabMs (finding 7).
 
 **3. Shared vs. per-member gate noise makes no consistent difference** in accuracy. Per-member masks
 keep larger networks on Otto (41% vs 32%).
@@ -102,7 +102,8 @@ that point is on each dataset
   1.5 pp worse), but a small network captures what there is to learn.
 - **California** keeps improving up to width 128 and is flat from 128 to 256. TabGNS keeps about twice
   the knee size: the uniform width-128 TabM matches TabGNS-TabM (0.1375 vs 0.1369) at half its
-  parameters. This fits finding 2, where the California searches stop while still removing neurons.
+  parameters. This fits finding 2, where the California searches stop while still removing neurons;
+  a longer search closes part of that gap (finding 7).
 - **Otto** uses all the capacity it gets: every halving of the width costs accuracy. TabGNS-TabM matches
   Large TabM at a third of its size and beats the uniform TabM of similar size (77.78 at 35%) by about
   1 pp, which is the warm-start effect of finding 5.
@@ -111,6 +112,33 @@ So the size TabGNS finds tracks the capacity each dataset uses: about 32 neurons
 about 128 on California, and more than 512 on Otto. The MLP results follow the same order (0.9%, 1.3%,
 1.9%). Caveat: 7 of the 12 Otto runs at widths 32–128 stopped at the 300-epoch cap, so the small Otto
 models are somewhat underestimated; the 256 and 512 runs were not capped.
+
+**7. A longer search finds smaller and better TabMs on California.** The searches start with almost
+every gate closed, open gates quickly for 40–60 epochs, and then close the ones that do not help. On
+California that second phase is a slow drift of about one neuron per epoch, and the validation loss is
+nearly flat while it happens, so the default stopping rule (patience 20) ends the search mid-drift. We
+reran the California searches with patience 200 and a cap of 600 search epochs (all on one machine,
+arrhenius, 3 seeds; full table in `summary.md`):
+
+| search | test RMSE | Δ vs patience 20 (paired) | params (vs Large) | kept neurons | search epochs (best) |
+|---|---|---|---|---|---|
+| patience 20, shared mask | 0.1374 ± 0.0031 | – | 122,725 (18.2%) | 563–587 | 144–234 |
+| patience 200, shared mask | 0.1353 ± 0.0031 | −0.0021 (better 3/3) | 99,955 (14.8%) | 438–530 | 598–600 (398–569) |
+| patience 200, per-member masks | 0.1351 ± 0.0029 | −0.0023 (better 3/3) | 97,234 (14.4%) | 428–547 | 561–600 (361–569) |
+
+- With the same seed a long run follows exactly the same path as the short one until the short one
+  stops, so the difference comes only from the extra search epochs. The validation loss kept reaching
+  new lows 170–390 epochs after patience 20 stopped (shared masks).
+- The longer searches end with 19% fewer parameters (30% on one seed) and a better test RMSE on
+  every seed. Patience 20 was too short for California, not just for the size but for accuracy too.
+- Two of the three shared-mask runs (and one per-member run) hit the 600-epoch cap, one with its best
+  validation loss at epoch 569, so they had not converged. The found TabMs (12–18% of Large TabM) are
+  still larger than the uniform width-128 TabM that does as well (10.5%, finding 6).
+- With the longer search the warm start beats retraining the found widths from scratch (0.1353 vs
+  0.1371), unlike after the short search (0.1374 vs 0.1375). The scratch retrainings still match the
+  short search's results at the smaller size.
+- The patience-20 runs on arrhenius agree with the Mac runs (0.1374 vs 0.1369 RMSE, 18.2% vs 19.8%
+  size); results differ slightly between the machines because the CPUs differ.
 
 **Baselines.** The comparisons are the default (Large) TabM, the controls, and TabGNS on an MLP. The
 replication's other NAS baselines (TabNAS, AgE) were not run on TabM, and the TabM paper's numbers
@@ -177,6 +205,7 @@ Unit tests check that the extracted TabM reproduces the supernet with the corres
 | search weights | same optimiser and dropout as TabM training | |
 | after the search | extract, warm-start fine-tune with the TabM training protocol; also train the found widths from a fresh initialisation ("scratch") | fine-tuning as `TabGNSTrainer` |
 | width sweep | plain TabM, k = 32, equal widths 8–256 (512 = Large TabM), Large TabM protocol and random streams | results in `results/tabm_gns/width_sweep/` |
+| search patience | California only: TabGNS-TabM with search patience 200 and at most 600 search epochs (shared and per-member masks), and patience 20 as the same-machine reference; controls off | run on arrhenius (2 × Xeon E5520, Linux), results in `results/tabm_gns/patience200` and `patience20_arrhenius` |
 | linear model | logistic regression (Adult, Otto) or ridge regression (California) on the same preprocessed features; C from {0.001, …, 100} chosen on validation loss | scikit-learn 1.3.2 |
 | controls | rewind, scratch and uniform-width retrainings of each found TabM (see Results, finding 4), same TabM training protocol; rewind, scratch and uniform share one data order | |
 | pairing | within a seed, the supernet starts from exactly the Large TabM's initial weights (unit test); data order, gate noise and the scratch init use separate derived random streams | |
@@ -220,6 +249,13 @@ The width sweep and the linear model (results in `results/tabm_gns/width_sweep`)
 
 ```bash
 xargs -P 6 -L 1 sh -c '.venv/bin/python -m experiments.tabm_gns.run $0 "$@"' < experiments/tabm_gns/queue_width.txt
+```
+
+The search-patience test (California, results in `results/tabm_gns/patience200` and
+`patience20_arrhenius`; run on arrhenius, about 37 h with 8 parallel jobs on its 2009 CPUs):
+
+```bash
+xargs -P 8 -L 1 sh -c '.venv/bin/python -m experiments.tabm_gns.run $0 "$@"' < experiments/tabm_gns/queue_patience.txt
 ```
 
 Each job runs one (dataset, method, seed) cell on one CPU thread and writes
